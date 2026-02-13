@@ -16,6 +16,8 @@ If you are in chat, prefer `instructions/chat/trigger_chat.md`.
    - `./.venv/Scripts/python.exe agent_tools/activate_kernel.py --profile LITE|STANDARD|FULL`
 3. Load static context:
    - `PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe agent_tools/load_static_context.py`
+   - Optional consolidated context:
+   - `PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe agent_tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path>`
 4. Edit `agent/user_task.yaml`:
    - Required: `mode`, `objective`, `files`, `constraints`
    - Optional: `mode_profile`, `config`, `risk_tolerance`, `phase`, `validation`

@@ -21,6 +21,12 @@ Purpose: compact reference for chat commands.
 
 ## Context refresh
 - `load_static_context.py`
+- `load_full_context.py --task-plan <path> --system-config <path> --summary <path> [--on-demand treemap]`
+
+## Validation
+- `schema_validator.py <file> --type user_task|task_plan|system_config|envelope|report|plan_doc`
+- Alias types supported: `plan` (task_plan), `config` (system_config)
+- `validate_message.py <file> --type plan|config|...` (compatibility validator)
 
 ## Optional plan docs
 - `plan_doc.py init --id <id> --title <title> --objective <text>`

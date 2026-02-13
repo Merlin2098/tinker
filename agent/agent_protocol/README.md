@@ -21,6 +21,7 @@ agent_protocol/
     execution_report.schema.json
     system_config.schema.yaml
     user_task.schema.yaml
+    plan_doc.schema.yaml
   message_queue/
     pending/
     in_progress/
@@ -52,6 +53,7 @@ CREATED -> VALIDATED -> QUEUED -> IN_PROGRESS -> COMPLETED/FAILED/ROLLED_BACK ->
 - Execution Report: `schemas/execution_report.schema.json`
 - System Config: `schemas/system_config.schema.yaml`
 - User Task Contract: `schemas/user_task.schema.yaml`
+- Plan Doc (optional review/handoff artifact): `schemas/plan_doc.schema.yaml`
 
 ## Version
 

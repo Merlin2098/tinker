@@ -1,109 +1,51 @@
-# Invoker
+﻿# Tinker
 
-## Deterministic Capability Orchestration for AI Agents
+## Minimal, Wrapper-First Toolkit for Agentic Workflows
 
-![Status](https://img.shields.io/badge/status-active-blue)
-![Architecture](https://img.shields.io/badge/architecture-deterministic-green)
-![Design](https://img.shields.io/badge/design-model--agnostic-orange)
+Tinker is a portable toolkit for deterministic AI-assisted execution.
 
-Invoker is a **portable governance layer + structural template** for
-orchestrating AI agents with control, predictability, and token
-efficiency.
+Core principles:
+- Wrappers/scripts in `agent_tools/` are the execution source of truth.
+- Skills in `agent/skills/` are thin interfaces, not business-logic containers.
+- Governance is centralized and minimal (`.clinerules`, `agent/rules/agent_rules.md`).
+- Kernel profiles are capability allowlists, not role orchestration.
 
-It is not a runtime.\
-It is not an SDK.\
-It is not a plug-and-play framework.
+## Quick Start
 
-------------------------------------------------------------------------
+1. Activate profile
+- `./.venv/Scripts/python.exe agent_tools/activate_kernel.py --profile LITE`
 
-## Why Invoker Exists
+2. Refresh static context
+- `./.venv/Scripts/python.exe agent_tools/load_static_context.py`
 
-LLMs tend to:
+3. Prepare task contract
+- Edit `agent/user_task.yaml`
+- Optional helper: `./.venv/Scripts/python.exe agent_tools/user_task_builder.py --help`
 
--   Overconsume tokens
--   Redesign unnecessarily
--   Hallucinate without explicit contracts
--   Blur intention and execution
+4. Execute via wrapper-first flow
+- `./.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill <skill> --args-file <args.json>`
 
-Invoker enforces:
+## Key Paths
 
--   Determinism over creativity
--   Explicit task contracts
--   Selective capability activation
--   Operational kernel modes
--   Separation of intention and execution
+- Skills index: `agent/skills/_index.yaml`
+- Trigger engine: `agent/skills/_trigger_engine.yaml`
+- Canonical wrappers: `agent_tools/wrappers/*.py`
+- Wrapper runner: `agent_tools/run_wrapper.py`
+- User task schema: `agent/agent_protocol/schemas/user_task.schema.yaml`
+- Optional plan-doc schema: `agent/agent_protocol/schemas/plan_doc.schema.yaml`
 
-------------------------------------------------------------------------
+## Validation and Safety
 
-## Quickstart
+- Generic schema validator:
+  - `./.venv/Scripts/python.exe agent_tools/schema_validator.py <file> --type <type>`
+- Message validator:
+  - `./.venv/Scripts/python.exe agent_tools/validate_message.py <file> --type <type>`
+- Execution simulator (test-oriented):
+  - `./.venv/Scripts/python.exe agent_tools/simulate_execution.py <task_plan.json>`
 
-### Install
+## Optional Collaboration Artifacts
 
-``` bash
-python install_invoker.py
-```
-
-### Select Kernel
-
-``` bash
-invoker use standard
-invoker status
-```
-
-### Create Task
-
-``` bash
-invoker task template
-# or
-invoker task build
-```
-
-Edit:
-
-    agent/user_task.yaml
-
-### Execution Flow
-
-Task → Kernel → Triggers → Instructions → Skills → Agent Action
-
-------------------------------------------------------------------------
-
-## Core Concepts
-
-### Kernel
-
-Defines operational mode, limits, and permissions.
-
-### Task.yaml
-
-Explicit contract:
-
-``` yaml
-Objective:
-Files:
-Config:
-Constraints:
-Risk Tolerance:
-```
-
-### Triggers
-
-Deterministic selection engine.
-
-### Instructions
-
-Model-family overrides extending base instructions.
-
-### Skills
-
-Governed procedural units (meta.yaml + body.md).
-
-------------------------------------------------------------------------
-
-## Documentation
-
-See `architecture.md` for full system specification.
-
-------------------------------------------------------------------------
-
-**Last updated:** 2026-02-12
+Plan docs are optional review/handoff artifacts:
+- Active: `agent/agent_outputs/plans/plan_active/`
+- Archive: `agent/agent_outputs/plans/archive/`
+- Utility: `./.venv/Scripts/python.exe agent_tools/plan_doc.py --help`

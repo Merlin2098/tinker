@@ -24,6 +24,19 @@ This repository uses a thin-skill + canonical-wrapper model.
    - `python agent_tools/load_static_context.py`
 4. Use `agent/agent_outputs/context.json` as compact index; load heavy files on demand.
 
+## Canonical Tooling
+- Wrapper execution:
+  - `python agent_tools/run_wrapper.py --skill <skill> --args-file <json>`
+- Schema validation:
+  - `python agent_tools/schema_validator.py <file> --type <type>`
+  - Supported aliases include `plan` -> `task_plan` and `config` -> `system_config`.
+- Full context assembly (optional fast-start context):
+  - `python agent_tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path>`
+- Kernel profile state:
+  - `python agent_tools/activate_kernel.py --profile LITE|STANDARD|FULL`
+  - `python agent_tools/mode_selector.py --write-state` (resolve + persist active profile)
+  - `python agent_tools/kernel_guard.py --prefer active|task` (non-interactive mismatch handling)
+
 ## Optional Plan Docs (Review/Handoff)
 - Plan docs are optional helper artifacts for human review or cross-agent handoff.
 - They are not required for normal wrapper-first execution.
