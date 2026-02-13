@@ -1,141 +1,28 @@
-# Plantilla DUMMIES en espanol (explicada para principiantes)
-#
-# Esta plantilla te ayuda a llenar `agent/user_task.yaml`.
-# Regla simple:
-# 1) Primero usa Phase A para validar.
-# 2) Luego Phase B para ejecutar (solo si validation.status = PASSED).
-#
-# Como pasar de Phase A a Phase B:
-# - Ejecuta la validacion con phase: A_CONTRACT_VALIDATION.
-# - Si el veredicto es PASSED, actualiza:
-#   - phase: B_EXECUTION
-#   - validation.status: PASSED
-#   - validation.validated_by: quien valido (ej: agent_inspector o tu nombre)
-#   - validation.validated_at: fecha y hora en formato ISO-8601 (ej: 2026-02-12T00:00:00Z)
-# - Luego ejecuta el trigger otra vez con esta linea exacta:
-#   Run task from agent/user_task.yaml
-#
-# Ejemplo rapido (Phase A):
-# role: senior
-# mode: ANALYZE_AND_IMPLEMENT
-# objective: |
-#   Revisar data/01_process.py y explicar errores.
-# files:
-#   - data/01_process.py
-# config:
-#   sources:
-#     - id: plan
-#       path: agent/agent_outputs/plans/example/task_plan.json
-#       purpose: Plan de ejemplo
-# constraints: |
-#   Solo revisar, no ejecutar cambios.
-# risk_tolerance: LOW
-# phase: A_CONTRACT_VALIDATION
-# validation:
-#   status: PENDING
-#   validated_by: null
-#   validated_at: null
-#   notes: "Pendiente de validacion."
-#
-# Ejemplo rapido (Phase B):
-# phase: B_EXECUTION
-# validation:
-#   status: PASSED
-#   validated_by: agent_inspector
-#   validated_at: "2026-02-12T00:00:00Z"
-#   notes: "Validado para ejecucion."
-#
-# Importante:
-# - Este archivo es una GUIA.
-# - El contrato oficial que usa el framework es `agent/user_task.yaml`.
+# Plantilla minima (compatibilidad)
+# El rol se conserva solo por compatibilidad de esquema.
 
-# role: Quien va a hacer la tarea.
-# Opciones validas:
-# - senior
-# - executor
-# - inspector
-# - junior
-# Nota: si usas executor o junior, el schema exige phase: B_EXECUTION.
 role: senior
-
-# mode: Como trabajara el agente.
-# Opciones validas:
-# - ANALYZE_ONLY (solo analiza)
-# - ANALYZE_AND_IMPLEMENT (analiza y luego implementa)
-# - IMPLEMENT_ONLY (implementa directo)
 mode: ANALYZE_AND_IMPLEMENT
-
-# mode_profile: Perfil del kernel.
-# Opciones validas:
-# - LITE
-# - STANDARD
-# - FULL
-mode_profile: LITE
-
-# objective: Objetivo principal de la tarea (obligatorio).
 objective: |
-  Explica aqui exactamente que quieres que haga el agente.
+  Reemplaza con el objetivo exacto.
 
-# files: Lista de archivos o carpetas objetivo.
-# Debe tener al menos 1 elemento.
 files:
   - path/to/target_file.py
 
-# config.sources: Fuentes de configuracion explicitas.
-# Cada fuente tiene:
-# - id: nombre corto unico para esa fuente
-# - path: ruta del archivo de entrada
-# - purpose: para que se usa esa fuente
-# Debe existir al menos 1 fuente.
 config:
   sources:
-    - id: source_1
+    - id: entrada_principal
       path: agent/agent_outputs/plans/example/task_plan.json
-      purpose: Plan de ejecucion de entrada
-    - id: source_2
-      path: agent/agent_outputs/plans/example/system_config.yaml
-      purpose: Restricciones tecnicas de ejecucion
+      purpose: Artefacto de entrada
 
-# constraints: Reglas duras que el agente NO debe romper.
 constraints: |
-  Escribe aqui limites claros (alcance, archivos, estilo, etc.).
+  Escribe limites claros y verificables.
 
-# risk_tolerance: Nivel de riesgo aceptado.
-# Opciones validas:
-# - LOW
-# - MEDIUM
-# - HIGH
-risk_tolerance: LOW
-
-# phase: Fase del flujo.
-# Opciones validas:
-# - A_CONTRACT_VALIDATION
-# - B_EXECUTION
-#
-# Flujo recomendado:
-# - Empieza con A_CONTRACT_VALIDATION
-# - Cambia a B_EXECUTION solo despues de validar
+risk_tolerance: MEDIUM
 phase: A_CONTRACT_VALIDATION
 
-# validation: Estado de validacion del contrato.
-# status opciones:
-# - PENDING (aun no validado)
-# - PASSED (validado OK)
-# - FAILED (validacion fallo)
-#
-# validated_by:
-# - Quien hizo la validacion.
-# - Ejemplo: "agent_inspector" o tu nombre ("juan").
-#
-# validated_at:
-# - Fecha y hora exacta de la validacion (ISO-8601).
-# - Ejemplo: "2026-02-12T00:00:00Z"
-#
-# Reglas importantes:
-# - Si phase = B_EXECUTION -> status debe ser PASSED
-# - Si phase = B_EXECUTION -> validated_by y validated_at no pueden ser null
 validation:
   status: PENDING
   validated_by: null
   validated_at: null
-  notes: "Pendiente de validacion."
+  notes: Pendiente de validacion.

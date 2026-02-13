@@ -1,27 +1,26 @@
-role: inspector
-mode: ANALYZE_ONLY
-
+# Minimal user_task template (compatibility-first)
+role: senior
+mode: ANALYZE_AND_IMPLEMENT
 objective: |
-  Produce a structural refactor plan without execution.
+  Replace with exact objective.
 
 files:
-  - src/
+  - path/to/target_file.py
 
 config:
   sources:
-    - id: architecture_constraints
-      path: docs/architecture_constraints.md
-      purpose: Planning boundaries
+    - id: primary_input
+      path: agent/agent_outputs/plans/example/task_plan.json
+      purpose: Primary input artifact
 
 constraints: |
-  Planning only. No direct code execution.
-  Preserve existing behavior in proposed plan.
+  Replace with hard boundaries.
 
 risk_tolerance: MEDIUM
-phase: B_EXECUTION
+phase: A_CONTRACT_VALIDATION
 
 validation:
-  status: PASSED
-  validated_by: agent_senior
-  validated_at: "2026-02-12T00:00:00Z"
-  notes: "Inspector planning contract validated."
+  status: PENDING
+  validated_by: null
+  validated_at: null
+  notes: Pending validation.

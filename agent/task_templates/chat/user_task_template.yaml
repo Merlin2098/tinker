@@ -1,32 +1,26 @@
-# Chat template for agent/user_task.yaml (edit as needed)
+# Minimal user_task template (compatibility-first)
 role: senior
 mode: ANALYZE_AND_IMPLEMENT
-mode_profile:
-
 objective: |
-  Explica aqui exactamente que quieres que haga el agente.
+  Replace with exact objective.
 
 files:
   - path/to/target_file.py
 
 config:
   sources:
-    - id: source_1
+    - id: primary_input
       path: agent/agent_outputs/plans/example/task_plan.json
-      purpose: Plan de ejecucion de entrada
-    - id: source_2
-      path: agent/agent_outputs/plans/example/system_config.yaml
-      purpose: Restricciones tecnicas de ejecucion
+      purpose: Primary input artifact
 
 constraints: |
-  Escribe aqui limites claros (alcance, archivos, estilo, etc.).
+  Replace with hard boundaries.
 
-risk_tolerance: LOW
-
+risk_tolerance: MEDIUM
 phase: A_CONTRACT_VALIDATION
 
 validation:
   status: PENDING
   validated_by: null
   validated_at: null
-  notes: "Pendiente de validacion."
+  notes: Pending validation.

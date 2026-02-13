@@ -1,28 +1,26 @@
+# Minimal user_task template (compatibility-first)
 role: senior
-mode: ANALYZE_ONLY
-
+mode: ANALYZE_AND_IMPLEMENT
 objective: |
-  Analyze architecture and risks without implementing changes.
+  Replace with exact objective.
 
 files:
-  - src/pipeline/
-  - src/domain/
+  - path/to/target_file.py
 
 config:
   sources:
-    - id: analysis_scope
-      path: docs/analysis_scope.md
-      purpose: Scope boundaries for analysis
+    - id: primary_input
+      path: agent/agent_outputs/plans/example/task_plan.json
+      purpose: Primary input artifact
 
 constraints: |
-  Read-only analysis. No implementation.
-  Explicitly report unknowns; do not infer missing inputs.
+  Replace with hard boundaries.
 
-risk_tolerance: LOW
-phase: B_EXECUTION
+risk_tolerance: MEDIUM
+phase: A_CONTRACT_VALIDATION
 
 validation:
-  status: PASSED
-  validated_by: agent_inspector
-  validated_at: "2026-02-12T00:00:00Z"
-  notes: "Exploratory analysis contract validated."
+  status: PENDING
+  validated_by: null
+  validated_at: null
+  notes: Pending validation.

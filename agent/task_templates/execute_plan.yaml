@@ -1,31 +1,26 @@
-role: executor
-mode: IMPLEMENT_ONLY
-
+# Minimal user_task template (compatibility-first)
+role: senior
+mode: ANALYZE_AND_IMPLEMENT
 objective: |
-  Execute the approved plan exactly as validated.
+  Replace with exact objective.
 
 files:
-  - src/service/processor.py
-  - src/service/config.yaml
+  - path/to/target_file.py
 
 config:
   sources:
-    - id: task_plan
+    - id: primary_input
       path: agent/agent_outputs/plans/example/task_plan.json
-      purpose: Approved action plan
-    - id: system_config
-      path: agent/agent_outputs/plans/example/system_config.yaml
-      purpose: Approved execution constraints
+      purpose: Primary input artifact
 
 constraints: |
-  Execute only approved actions.
-  No refactors, no inferred instructions, no extra artifacts.
+  Replace with hard boundaries.
 
-risk_tolerance: LOW
-phase: B_EXECUTION
+risk_tolerance: MEDIUM
+phase: A_CONTRACT_VALIDATION
 
 validation:
-  status: PASSED
-  validated_by: agent_inspector
-  validated_at: "2026-02-12T00:00:00Z"
-  notes: "Execution contract validated."
+  status: PENDING
+  validated_by: null
+  validated_at: null
+  notes: Pending validation.

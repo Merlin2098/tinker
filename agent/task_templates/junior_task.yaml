@@ -1,27 +1,26 @@
-role: junior
-mode: IMPLEMENT_ONLY
-
+# Minimal user_task template (compatibility-first)
+role: senior
+mode: ANALYZE_AND_IMPLEMENT
 objective: |
-  Apply the explicitly requested change only.
+  Replace with exact objective.
 
 files:
-  - src/module/target_file.py
+  - path/to/target_file.py
 
 config:
   sources:
-    - id: implementation_instructions
+    - id: primary_input
       path: agent/agent_outputs/plans/example/task_plan.json
-      purpose: Explicit execution instructions
+      purpose: Primary input artifact
 
 constraints: |
-  Maximum 3 files. Maximum 50 lines changed per file.
-  Do not perform analysis. Do not expand scope.
+  Replace with hard boundaries.
 
-risk_tolerance: LOW
-phase: B_EXECUTION
+risk_tolerance: MEDIUM
+phase: A_CONTRACT_VALIDATION
 
 validation:
-  status: PASSED
-  validated_by: agent_inspector
-  validated_at: "2026-02-12T00:00:00Z"
-  notes: "Contract validated. Approved for junior execution."
+  status: PENDING
+  validated_by: null
+  validated_at: null
+  notes: Pending validation.
