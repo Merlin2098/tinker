@@ -13,52 +13,29 @@ the active profile to match the task.
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import subprocess
 import sys
-from pathlib import Path
 from typing import Optional
 
 try:
-    import yaml
-except Exception as exc:  # pragma: no cover
-    raise SystemExit(f"PyYAML required: {exc}")
-
-
-VALID_PROFILES = {"LITE", "STANDARD", "FULL"}
-
-
-def project_root() -> Path:
-    return Path(__file__).resolve().parent.parent
-
-
-def load_yaml(path: Path) -> dict:
-    if not path.exists():
-        return {}
-    data = yaml.safe_load(path.read_text(encoding="utf-8"))
-    return data if isinstance(data, dict) else {}
-
-
-def resolve_state_path(agent_id: Optional[str]) -> Path:
-    runtime_dir = project_root() / "agent" / "agent_outputs" / "runtime"
-    if agent_id:
-        return runtime_dir / f"active_profile.{agent_id}.json"
-    return runtime_dir / "active_profile.json"
-
-
-def load_state(path: Path) -> dict:
-    if not path.exists():
-        return {}
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return {}
-
-
-def normalize_profile(value: object) -> str:
-    s = str(value or "").strip().upper()
-    return s
+    from agent_tools._profile_state import (
+        VALID_PROFILES,
+        load_state,
+        load_yaml,
+        normalize_profile,
+        project_root,
+        resolve_state_path,
+    )
+except ImportError:
+    from _profile_state import (  # type: ignore
+        VALID_PROFILES,
+        load_state,
+        load_yaml,
+        normalize_profile,
+        project_root,
+        resolve_state_path,
+    )
 
 
 def activate_kernel(profile: str, agent_id: Optional[str]) -> int:

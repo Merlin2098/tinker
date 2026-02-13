@@ -9,35 +9,24 @@ This is intentionally idempotent and safe for multi-agent usage.
 from __future__ import annotations
 
 import argparse
-import json
-from datetime import datetime, timezone
 from pathlib import Path
 
-
-def project_root() -> Path:
-    return Path(__file__).resolve().parent.parent
-
-
-def profile_path(profile: str) -> Path:
-    return project_root() / "agent" / "profiles" / f"{profile.lower()}.yaml"
-
-
-def state_path(agent_id: str | None, explicit: str | None) -> Path:
-    if explicit:
-        return Path(explicit)
-    runtime_dir = project_root() / "agent" / "agent_outputs" / "runtime"
-    if agent_id:
-        return runtime_dir / f"active_profile.{agent_id}.json"
-    return runtime_dir / "active_profile.json"
-
-
-def load_state(path: Path) -> dict:
-    if not path.exists():
-        return {}
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return {}
+try:
+    from agent_tools._profile_state import (
+        VALID_PROFILES,
+        load_state,
+        profile_path,
+        resolve_state_path,
+        write_state,
+    )
+except ImportError:
+    from _profile_state import (  # type: ignore
+        VALID_PROFILES,
+        load_state,
+        profile_path,
+        resolve_state_path,
+        write_state,
+    )
 
 
 def main() -> int:
@@ -48,15 +37,14 @@ def main() -> int:
     args = parser.parse_args()
 
     profile = args.profile.strip().upper()
-    if profile not in {"LITE", "STANDARD", "FULL"}:
+    if profile not in VALID_PROFILES:
         raise SystemExit(f"Invalid profile: {profile}")
 
     p_path = profile_path(profile)
     if not p_path.exists():
         raise SystemExit(f"Profile file not found: {p_path}")
 
-    out_path = state_path(args.agent_id, args.state_path)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path = resolve_state_path(args.agent_id, args.state_path)
 
     current = load_state(out_path)
     if current.get("profile") == profile:
@@ -64,14 +52,7 @@ def main() -> int:
         print(f"State file: {out_path}")
         return 0
 
-    payload = {
-        "profile": profile,
-        "agent_id": args.agent_id,
-        "profile_path": str(p_path),
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "activate_kernel",
-    }
-    out_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    write_state(out_path, profile, agent_id=args.agent_id, source="activate_kernel")
     print(f"Kernel activated: {profile}")
     print(f"Profile path: {p_path}")
     print(f"State file: {out_path}")

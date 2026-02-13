@@ -10,53 +10,15 @@ Use context_loader.enrich_context() to attach them when needed.
 
 import os
 import json
-import yaml
 from typing import Dict, Any, List, Optional
 try:
     from .load_static_context import load_static_context
     from .context_loader import enrich_context
+    from ._context_common import load_json_file, load_yaml_file, project_root, resolve_and_validate
 except (ImportError, ValueError):
     from load_static_context import load_static_context
     from context_loader import enrich_context
-
-
-def _project_root() -> str:
-    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-def _resolve_path(path: str) -> str:
-    if os.path.isabs(path):
-        return os.path.abspath(path)
-    return os.path.abspath(os.path.join(_project_root(), path))
-
-
-def _is_under_project_root(path: str) -> bool:
-    root = _project_root()
-    try:
-        rel = os.path.relpath(path, root)
-    except ValueError:
-        return False
-    return not rel.startswith("..") and rel != ".."
-
-
-def _resolve_and_validate(path: str, *, must_exist: bool) -> str:
-    abs_path = _resolve_path(path)
-    if not _is_under_project_root(abs_path):
-        raise ValueError(f"Path escapes project_root: {path}")
-    if must_exist and not os.path.exists(abs_path):
-        raise FileNotFoundError(f"File not found: {path}")
-    return abs_path
-
-
-
-def load_yaml_file(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
-
-
-def load_json_file(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    from _context_common import load_json_file, load_yaml_file, project_root, resolve_and_validate  # type: ignore
 
 
 def load_full_context(
@@ -79,15 +41,15 @@ def load_full_context(
     dynamic_context: Dict[str, Any] = {}
 
     # Task plan
-    task_plan_abs = _resolve_and_validate(task_plan_path, must_exist=True)
+    task_plan_abs = resolve_and_validate(task_plan_path, must_exist=True)
     dynamic_context["task_plan"] = load_json_file(task_plan_abs)
 
     # System config
-    system_config_abs = _resolve_and_validate(system_config_path, must_exist=True)
+    system_config_abs = resolve_and_validate(system_config_path, must_exist=True)
     dynamic_context["system_config"] = load_yaml_file(system_config_abs)
 
     # Summary
-    summary_abs = _resolve_and_validate(summary_path, must_exist=True)
+    summary_abs = resolve_and_validate(summary_path, must_exist=True)
     dynamic_context["summary"] = load_yaml_file(summary_abs)
 
     # 3. Combinar contexto
@@ -101,7 +63,7 @@ def load_full_context(
 
 
 def save_context_as_json(full_context, output_path="agent/agent_outputs/context.json"):
-    output_abs = _resolve_and_validate(output_path, must_exist=False)
+    output_abs = resolve_and_validate(output_path, must_exist=False)
     os.makedirs(os.path.dirname(output_abs), exist_ok=True)
     with open(output_abs, "w", encoding="utf-8") as f:
         json.dump(full_context, f, indent=2)

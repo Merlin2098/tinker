@@ -28,9 +28,12 @@ Usage:
 """
 
 import os
-import yaml
 from typing import Any, Dict, List
 
+try:
+    from agent_tools._context_common import load_yaml_file, project_root
+except ImportError:
+    from _context_common import load_yaml_file, project_root  # type: ignore
 
 # ---------------------------------------------------------------------------
 # Project root resolution
@@ -38,7 +41,7 @@ from typing import Any, Dict, List
 
 def get_project_root() -> str:
     """Resolve the HOST project root (parent of agent_tools/)."""
-    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return str(project_root())
 
 
 _CONFIG_FILENAME = "agent_framework_config.yaml"
@@ -75,8 +78,7 @@ def _load_registry() -> Dict[str, Dict[str, str]]:
         return dict(_FALLBACK_REGISTRY)
 
     try:
-        with open(config_path, "r", encoding="utf-8") as f:
-            config = yaml.safe_load(f) or {}
+        config = load_yaml_file(config_path) or {}
     except Exception:
         return dict(_FALLBACK_REGISTRY)
 
