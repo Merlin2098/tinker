@@ -55,6 +55,12 @@ Purpose: command-specific reference for chat operation.
 - `./.venv/Scripts/python.exe agent_tools/git_checkpoint.py sync`
 - `./.venv/Scripts/python.exe agent_tools/git_checkpoint.py commit-sync --message "<checkpoint message>"`
 
+## Natural-language shortcut intents
+- `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit"`
+- `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "sync"`
+- `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit and sync"`
+- `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit" --message "<checkpoint message>"`
+
 ## Notes
 - `mode_profile` is optional.
 - `phase` and `validation` are optional compatibility fields, not hard requirements.

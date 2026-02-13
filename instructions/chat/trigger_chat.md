@@ -12,6 +12,9 @@ Use these exact phrases in chat:
 - `Tinker: validate`
 - `Tinker: run`
 - `Run task from agent/user_task.yaml`
+- `commit`
+- `sync`
+- `commit and sync`
 
 ## Kernel commands (chat)
 - `Kernel LITE`
@@ -33,6 +36,16 @@ Use these exact phrases in chat:
    - `./.venv/Scripts/python.exe agent_tools/plan_doc.py --help`
 7. Execution trigger command:
    - `Tinker: run` or `Run task from agent/user_task.yaml`
+
+## Shortcut intent routing
+- If the user says `commit`, run:
+  - `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit"`
+- If the user says `sync`, run:
+  - `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "sync"`
+- If the user says `commit and sync`, run:
+  - `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit and sync"`
+- Optional explicit commit message:
+  - `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit" --message "<checkpoint message>"`
 
 ## Notes
 - `mode_profile` in `agent/user_task.yaml` is optional; leave empty unless explicitly needed.
