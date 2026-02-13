@@ -1,28 +1,26 @@
-# Markdown Explorer
-
-> **Status**: DORMANT — Registry-only placeholder. Implementation pending.
+# Skill: markdown_explorer (Thin Interface)
 
 ## Purpose
+Inspect Markdown structure through the canonical execution wrapper.
 
-Parses Markdown files extracting headings, links, code blocks, and structure.
+Business logic lives in:
+- `agent_tools/wrappers/markdown_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Activation Criteria
+## Inputs
+- `path` (string, required): `.md`/`.markdown` file path under repository root.
+- `encoding` (string, optional, default `utf-8-sig`)
+- `preview_chars` (integer, optional, default `400`)
 
-This skill will be activated when:
-- markdown
-- explore markdown
-- md structure
-- markdown headings
+## Execution
 
-## Dependencies
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill markdown_explorer --args-json "{\"path\":\"README.md\"}"
+```
 
-- Requires: file_explorer
-- Required by: None
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `line_count`, `heading_count`, `headings_preview`
+- `link_count`, `links_preview`, `code_block_count`
+- `text_preview`, `truncated`, `size_bytes`
 
-## Implementation Notes
-
-This skill is registered in `skills_registry.yaml` but has no implementation yet.
-When implementing, follow the patterns established by similar skills in the `file_exploration` cluster.
-
----
-*Stub generated: 2026-02-09 | Registry version: 2.0.0*

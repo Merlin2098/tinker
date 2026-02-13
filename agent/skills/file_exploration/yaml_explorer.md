@@ -1,28 +1,25 @@
-# YAML Explorer
+# Skill: yaml_explorer (Thin Interface)
 
-## Responsibility
-Parse YAML configuration files safely, handling complex hierarchies, anchors, and aliases.
+## Purpose
+Inspect YAML structure through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Safe Parsing**:
-    -   Use `safe_load` to prevent code execution vulnerabilities.
-    -   Handle YAML syntax errors (indentation issues) with clear feedback.
-2.  **Structure Handling**:
-    -   Resolve anchors and aliases correctly to fully expand the data structure.
-    -   Maintain hierarchy and data types (booleans, timestamps, nulls).
-3.  **Validation**:
-    -   Ensure the root element matches expected types (e.g., dict vs list).
-    -   Check for duplicate keys (which standard YAML parsers might overwrite silently).
-4.  **Navigation**:
-    -   Allow dot-notation access to nested configuration properties.
+Business logic lives in:
+- `agent_tools/wrappers/yaml_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import YAMLExplorer
+## Inputs
+- `path` (string, required): `.yaml`/`.yml` file path under repository root.
+- `encoding` (string, optional, default `utf-8-sig`)
+- `schema_depth` (integer, optional, default `2`)
+- `max_items` (integer, optional, default `20`)
 
-yaml_tool = YAMLExplorer()
-config = yaml_tool.load("deploy.yaml")
+## Execution
 
-# Auto-resolves aliases
-db_host = config.get("database.primary.host")
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill yaml_explorer --args-json "{\"path\":\"agent/user_task.yaml\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `data_type`, `top_level_key_count`, `top_level_keys`, `item_count`
+- `schema_preview`, `line_count`, `size_bytes`

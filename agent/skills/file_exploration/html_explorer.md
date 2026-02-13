@@ -1,30 +1,25 @@
-# HTML Explorer
+# Skill: html_explorer (Thin Interface)
 
-## Responsibility
-Parse HTML documents to extract relevant content while stripping unnecessary elements. It supports DOM traversal and querying via CSS selectors or XPath.
+## Purpose
+Inspect HTML metadata, links, and text preview through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Load and Clean**:
-    -   Load HTML from file or URL content.
-    -   Use a parser (e.g., BeautifulSoup) to build the DOM.
-    -   Remove non-content tags: `<script>`, `<style>`, `<meta>`, `<noscript>`, and comments.
-2.  **Content Extraction**:
-    -   Extract the main content text, preserving structural formatting (paragraphs, headers).
-    -   Extract specific elements using CSS selectors (e.g., `div.content`, `table.results`).
-    -   Extract all links (`href` attributes) and media sources (`src` attributes).
-3.  **Table parsing**:
-    -   Convert HTML `<table>` elements into structured data (lists/JSON).
-4.  **Metadata Extraction**:
-    -   Extract page title, description, and OpenGraph metadata.
+Business logic lives in:
+- `agent_tools/wrappers/html_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import HTMLExplorer
+## Inputs
+- `path` (string, required): `.html`/`.htm` file path under repository root.
+- `encoding` (string, optional, default `utf-8-sig`)
+- `preview_chars` (integer, optional, default `400`)
 
-html_tool = HTMLExplorer()
-page_data = html_tool.parse("index.html")
+## Execution
 
-title = page_data.title
-main_text = html_tool.extract_text("div#main-content")
-links = html_tool.extract_links()
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill html_explorer --args-json "{\"path\":\"docs/index.html\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `title`, `tag_count`, `top_tags`
+- `table_count`, `link_count`, `links_preview`
+- `text_preview`, `truncated`, `size_bytes`

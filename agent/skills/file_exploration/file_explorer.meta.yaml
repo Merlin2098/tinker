@@ -4,18 +4,35 @@ category: File Exploration
 tier: core
 cluster: file_exploration
 priority: 75
-purpose: "Unified facade: detects file type, delegates to format-specific explorer"
+purpose: "Facade explorer: routes file inspection to canonical format-specific wrappers"
 triggers:
   keywords: [explore file, inspect file, file info, file metadata, analyze file, what is this file]
-  match_extensions: []
-  match_phases: []
+  match_extensions: [".csv", ".xlsx", ".json", ".yaml", ".xml", ".html", ".pdf", ".docx", ".pptx", ".parquet", ".db", ".duckdb", ".pbix", ".md"]
+  match_phases: [analyze, ingest]
   match_errors: []
 requires: []
 exclusive_with: []
-role: facade
-modes: [ANALYZE_AND_IMPLEMENT]
+modes: [IMPLEMENT_ONLY]
 agent_binding:
   mandatory: [agent_inspector, agent_senior]
   optional: [agent_executor]
+max_phase: 2
 body_file: "file_explorer.md"
-token_estimate: 600
+token_estimate: 280
+execution:
+  entrypoint: "agent_tools/wrappers/file_explorer_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill file_explorer --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [path]
+    properties:
+      path:
+        type: string
+      force_skill:
+        type: string
+      delegate_args:
+        type: object
+      encoding:
+        type: string
+      preview_chars:
+        type: integer

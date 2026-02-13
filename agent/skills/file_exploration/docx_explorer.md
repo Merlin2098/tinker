@@ -1,32 +1,24 @@
-# Word Explorer
+# Skill: docx_explorer (Thin Interface)
 
-## Responsibility
-Read Microsoft Word (`.docx`) documents to extract text, tables, and structural elements.
+## Purpose
+Inspect DOCX structure, metadata, and paragraph preview through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Load Document**:
-    -   Open `.docx` file.
-    -   Access the main document body, headers, and footers.
-2.  **Text Extraction**:
-    -   Iterate through paragraphs.
-    -   Extract text while preserving basic styling hooks (bold, italic) or flattening to plain text.
-    -   Read headers and footers.
-3.  **Table Extraction**:
-    -   Identify tables within the document.
-    -   Extract table cell contents into structured lists/grids.
-4.  **Section Handling**:
-    -   Handle documents with multiple sections (different headers/orientations).
-5.  **Metadata**:
-    -   Extract document properties (author, revision number, created/modified dates).
+Business logic lives in:
+- `agent_tools/wrappers/docx_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import DocxExplorer
+## Inputs
+- `path` (string, required): `.docx` file path under repository root.
+- `preview_paragraphs` (integer, optional, default `10`)
 
-docx_tool = DocxExplorer()
-doc = docx_tool.read("specs.docx")
+## Execution
 
-print(doc.text) # Full text
-for table in doc.tables:
-    process_table(table)
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill docx_explorer --args-json "{\"path\":\"docs/spec.docx\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `paragraph_count`, `table_count`
+- `header_part_count`, `footer_part_count`
+- `paragraphs_preview`, `metadata`, `size_bytes`

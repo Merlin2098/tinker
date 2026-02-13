@@ -1,0 +1,33 @@
+name: docx_explorer
+version: "1.0.0"
+category: File Exploration
+tier: lazy
+cluster: file_exploration
+priority: 50
+purpose: "Explore DOCX structure and paragraph previews through canonical wrapper execution"
+triggers:
+  keywords: [docx, word document, inspect docx, explore word]
+  match_extensions: [".docx"]
+  match_phases: [analyze]
+  match_errors: []
+requires: [file_explorer]
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_inspector, agent_senior]
+  optional: [agent_executor]
+max_phase: 2
+body_file: "docx_explorer.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/docx_explorer_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill docx_explorer --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [path]
+    properties:
+      path:
+        type: string
+      preview_paragraphs:
+        type: integer
+

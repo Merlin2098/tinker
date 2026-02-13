@@ -1,0 +1,35 @@
+name: markdown_explorer
+version: "1.0.0"
+category: File Exploration
+tier: dormant
+cluster: file_exploration
+priority: 50
+purpose: "Explore Markdown headings, links, and code blocks through canonical wrapper execution"
+triggers:
+  keywords: [markdown, md structure, explore markdown, markdown headings]
+  match_extensions: [".md", ".markdown"]
+  match_phases: [analyze]
+  match_errors: []
+requires: [file_explorer]
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_inspector, agent_senior]
+  optional: [agent_executor]
+max_phase: 2
+body_file: "markdown_explorer.md"
+token_estimate: 180
+execution:
+  entrypoint: "agent_tools/wrappers/markdown_explorer_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill markdown_explorer --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [path]
+    properties:
+      path:
+        type: string
+      encoding:
+        type: string
+      preview_chars:
+        type: integer
+

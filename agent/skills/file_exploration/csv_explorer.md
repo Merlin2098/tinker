@@ -1,32 +1,25 @@
-# CSV Explorer
+# Skill: csv_explorer (Thin Interface)
 
-## Responsibility
-Read CSV files robustly, handling various delimiters, encodings, and common data quality issues.
+## Purpose
+Inspect CSV files through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Sniffing and Detection**:
-    -   Detect file encoding (UTF-8, Latin-1, etc.).
-    -   Sniff the dialect: delimiter (comma, tab, semicolon), quote character, and line terminator.
-2.  **Reading**:
-    -   Read the file into a structured format (e.g., Pandas DataFrame or list of dicts).
-    -   Handle missing headers (generate default names `col1`, `col2`...) or extra headers.
-3.  **Validation**:
-    -   Check for consistent column counts across rows.
-    -   Identify potential data type mismatches in columns.
-    -   Detect duplicate rows.
-4.  **Cleaning**:
-    -   Strip whitespace from string values.
-    -   Handle various representations of null (e.g., "NA", "null", "-", "").
-5.  **Output**:
-    -   Return the cleaned dataset and a report on any rows skipped or fixed.
+Business logic lives in:
+- `agent_tools/wrappers/csv_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import CSVExplorer
+## Inputs
+- `path` (string, required): `.csv` file path under repository root.
+- `encoding` (string, optional, default `utf-8-sig`)
+- `preview_rows` (integer, optional, default `5`, range `0..200`)
 
-csv_tool = CSVExplorer()
-dataset = csv_tool.read("raw_data.csv", fix_encoding=True)
+## Execution
 
-print(dataset.columns)
-print(dataset.head())
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill csv_explorer --args-json "{\"path\":\"data/example.csv\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `encoding`, `delimiter`, `quotechar`
+- `row_count`, `column_count`, `columns`
+- `rows_preview`, `size_bytes`

@@ -16,40 +16,82 @@ from pathlib import Path
 from typing import Any, Callable
 
 try:
+    from agent_tools.wrappers.csv_explorer_wrapper import run as run_csv_explorer
     from agent_tools.wrappers.connect_duckdb_wrapper import run as run_connect_duckdb
+    from agent_tools.wrappers.db_explorer_wrapper import run as run_db_explorer
+    from agent_tools.wrappers.docx_explorer_wrapper import run as run_docx_explorer
+    from agent_tools.wrappers.excel_explorer_wrapper import run as run_excel_explorer
     from agent_tools.wrappers.excel_to_parquet_wrapper import run as run_excel_to_parquet
+    from agent_tools.wrappers.file_explorer_wrapper import run as run_file_explorer
+    from agent_tools.wrappers.html_explorer_wrapper import run as run_html_explorer
+    from agent_tools.wrappers.json_explorer_wrapper import run as run_json_explorer
     from agent_tools.wrappers.load_json_files_wrapper import run as run_load_json_files
     from agent_tools.wrappers.load_sql_queries_wrapper import run as run_load_sql_queries
     from agent_tools.wrappers.load_yaml_files_wrapper import run as run_load_yaml_files
+    from agent_tools.wrappers.markdown_explorer_wrapper import run as run_markdown_explorer
+    from agent_tools.wrappers.parquet_explorer_wrapper import run as run_parquet_explorer
     from agent_tools.wrappers.parquet_to_excel_polars_xlsxwriter_wrapper import run as run_parquet_to_excel_polars_xlsxwriter
+    from agent_tools.wrappers.pdf_explorer_wrapper import run as run_pdf_explorer
+    from agent_tools.wrappers.powerbi_explorer_wrapper import run as run_powerbi_explorer
+    from agent_tools.wrappers.pptx_explorer_wrapper import run as run_pptx_explorer
     from agent_tools.wrappers.query_parquet_duckdb_wrapper import run as run_query_parquet_duckdb
     from agent_tools.wrappers.read_excel_pandas_wrapper import run as run_read_excel_pandas
     from agent_tools.wrappers.read_excel_polars_openpyxl_wrapper import run as run_read_excel_polars_openpyxl
+    from agent_tools.wrappers.xml_explorer_wrapper import run as run_xml_explorer
+    from agent_tools.wrappers.yaml_explorer_wrapper import run as run_yaml_explorer
 except ImportError:
     # Allow direct execution as a script from project root.
+    from wrappers.csv_explorer_wrapper import run as run_csv_explorer
     from wrappers.connect_duckdb_wrapper import run as run_connect_duckdb
+    from wrappers.db_explorer_wrapper import run as run_db_explorer
+    from wrappers.docx_explorer_wrapper import run as run_docx_explorer
+    from wrappers.excel_explorer_wrapper import run as run_excel_explorer
     from wrappers.excel_to_parquet_wrapper import run as run_excel_to_parquet
+    from wrappers.file_explorer_wrapper import run as run_file_explorer
+    from wrappers.html_explorer_wrapper import run as run_html_explorer
+    from wrappers.json_explorer_wrapper import run as run_json_explorer
     from wrappers.load_json_files_wrapper import run as run_load_json_files
     from wrappers.load_sql_queries_wrapper import run as run_load_sql_queries
     from wrappers.load_yaml_files_wrapper import run as run_load_yaml_files
+    from wrappers.markdown_explorer_wrapper import run as run_markdown_explorer
+    from wrappers.parquet_explorer_wrapper import run as run_parquet_explorer
     from wrappers.parquet_to_excel_polars_xlsxwriter_wrapper import run as run_parquet_to_excel_polars_xlsxwriter
+    from wrappers.pdf_explorer_wrapper import run as run_pdf_explorer
+    from wrappers.powerbi_explorer_wrapper import run as run_powerbi_explorer
+    from wrappers.pptx_explorer_wrapper import run as run_pptx_explorer
     from wrappers.query_parquet_duckdb_wrapper import run as run_query_parquet_duckdb
     from wrappers.read_excel_pandas_wrapper import run as run_read_excel_pandas
     from wrappers.read_excel_polars_openpyxl_wrapper import run as run_read_excel_polars_openpyxl
+    from wrappers.xml_explorer_wrapper import run as run_xml_explorer
+    from wrappers.yaml_explorer_wrapper import run as run_yaml_explorer
 
 
 WrapperFunc = Callable[[dict[str, Any]], dict[str, Any]]
 
 WRAPPER_REGISTRY: dict[str, WrapperFunc] = {
+    "csv_explorer": run_csv_explorer,
     "connect_duckdb": run_connect_duckdb,
+    "db_explorer": run_db_explorer,
+    "docx_explorer": run_docx_explorer,
+    "excel_explorer": run_excel_explorer,
     "excel_to_parquet": run_excel_to_parquet,
+    "file_explorer": run_file_explorer,
+    "html_explorer": run_html_explorer,
+    "json_explorer": run_json_explorer,
     "load_json_files": run_load_json_files,
     "load_sql_queries": run_load_sql_queries,
     "load_yaml_files": run_load_yaml_files,
+    "markdown_explorer": run_markdown_explorer,
+    "parquet_explorer": run_parquet_explorer,
     "parquet_to_excel_polars_xlsxwriter": run_parquet_to_excel_polars_xlsxwriter,
+    "pdf_explorer": run_pdf_explorer,
+    "powerbi_explorer": run_powerbi_explorer,
+    "pptx_explorer": run_pptx_explorer,
     "query_parquet_duckdb": run_query_parquet_duckdb,
     "read_excel_pandas": run_read_excel_pandas,
     "read_excel_polars_openpyxl": run_read_excel_polars_openpyxl,
+    "xml_explorer": run_xml_explorer,
+    "yaml_explorer": run_yaml_explorer,
 }
 
 

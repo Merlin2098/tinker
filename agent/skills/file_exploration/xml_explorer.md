@@ -1,35 +1,25 @@
-# XML Explorer
+# Skill: xml_explorer (Thin Interface)
 
-## Responsibility
-Parse XML content, validate structure against schemas (XSD), and extract specific nodes or attributes. It is robust against namespaces and can handle malformed XML within reason.
+## Purpose
+Inspect XML hierarchy and text preview through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Parsing**:
-    -   Load XML string or file.
-    -   Parse the document tree.
-    -   Handle `lxml` or `xml.etree.ElementTree` parsing errors with descriptive messages.
-2.  **Validation**:
-    -   (Optional) If an XSD schema is provided, validate the XML against it.
-    -   Report validation errors including line numbers and specific constraints violated.
-3.  **Namespace Handling**:
-    -   Detect and register namespaces to simplify XPath queries.
-    -   Clean or normalize namespaces if requested for easier processing.
-4.  **Extraction**:
-    -   Execute XPath queries to select nodes, attributes, or text content.
-    -   Convert complex sub-trees into dictionary/JSON representations.
-5.  **Sanitization**:
-    -   Attempt to repair common XML syntax errors (e.g., unclosed tags) if "lenient mode" is enabled.
+Business logic lives in:
+- `agent_tools/wrappers/xml_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import XMLExplorer
+## Inputs
+- `path` (string, required): `.xml` file path under repository root.
+- `encoding` (string, optional, default `utf-8-sig`)
+- `preview_chars` (integer, optional, default `400`)
 
-xml_tool = XMLExplorer()
-data = xml_tool.parse("config.xml", schema="config.xsd")
+## Execution
 
-# Get specific setting
-timeout = xml_tool.query("//setting[@name='timeout']/@value")
-
-# Convert to dict
-config_dict = xml_tool.to_dict()
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill xml_explorer --args-json "{\"path\":\"config/sample.xml\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `root_tag`, `namespace_count`, `namespaces`
+- `element_count`, `attribute_count`, `top_child_tags`
+- `text_preview`, `truncated`, `size_bytes`

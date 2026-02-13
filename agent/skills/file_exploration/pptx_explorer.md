@@ -1,32 +1,23 @@
-# PowerPoint Explorer
+# Skill: pptx_explorer (Thin Interface)
 
-## Responsibility
-Extract content from PowerPoint (`.pptx`) presentations, including text, speaker notes, and slide metadata.
+## Purpose
+Inspect PPTX slides, text fragments, and metadata through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Load Presentation**:
-    -   Open `.pptx` file.
-    -   Count total slides and identify hidden slides.
-2.  **Text Extraction**:
-    -   Iterate through slides.
-    -   Extract text from titles, body placeholders, text boxes, and tables.
-    -   Maintain the reading order of elements.
-3.  **Notes Extraction**:
-    -   Extract text from the speaker notes section for each slide.
-4.  **Image/Media Discovery**:
-    -   List images and media embedded in slides.
-    -   (Optional) Save embedded images to a temporary directory.
-5.  **Metadata**:
-    -   Extract core properties (title, subject, author).
+Business logic lives in:
+- `agent_tools/wrappers/pptx_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import PPTXExplorer
+## Inputs
+- `path` (string, required): `.pptx` file path under repository root.
+- `preview_slides` (integer, optional, default `5`)
 
-pptx_tool = PPTXExplorer()
-presentation = pptx_tool.read("pitch_deck.pptx")
+## Execution
 
-for slide in presentation.slides:
-    print(f"Slide {slide.number}: {slide.title}")
-    print(f"Notes: {slide.notes}")
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill pptx_explorer --args-json "{\"path\":\"docs/pitch.pptx\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `slide_count`, `notes_slide_count`, `media_asset_count`
+- `slides_preview`, `metadata`, `size_bytes`

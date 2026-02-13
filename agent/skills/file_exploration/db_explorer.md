@@ -1,36 +1,26 @@
-# Database Explorer
+# Skill: db_explorer (Thin Interface)
 
-## Responsibility
-Connect to and explore relational (SQL) and NoSQL databases to discover schemas and extract data.
+## Purpose
+Inspect local SQLite/DuckDB files through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Connection Management**:
-    -   Establish connections using connection strings or provided credentials.
-    -   Support common dialects: PostgreSQL, MySQL, SQLite, SQL Server.
-    -   Handle connection timeouts and authentication errors.
-2.  **Schema Discovery**:
-    -   List available tables and views.
-    -   Describe table schemas: column names, types, primary keys, and foreign keys.
-3.  **Query Execution**:
-    -   Execute `SELECT` queries safely (read-only mode enforced where possible).
-    -   Support parameterized queries to prevent injection.
-    -   Handle query errors (syntax, runtime).
-4.  **Data Extraction**:
-    -   Fetch query results as list of dictionaries or DataFrames.
-    -   Handle data type conversion (decimals, datetimes) to Python native types.
-5.  **NoSQL Support (Optional/Extensible)**:
-    -   Adapt behaviors for document stores (MongoDB) using collection listings and `find` operations.
+Business logic lives in:
+- `agent_tools/wrappers/db_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import DBExplorer
+## Inputs
+- `path` (string, required): `.db`/`.sqlite`/`.duckdb` file path under repository root.
+- `read_only` (boolean, optional, default `true`)
+- `table` (string, optional)
+- `preview_rows` (integer, optional, default `20`, range `0..500`)
 
-db_tool = DBExplorer()
-db_tool.connect("postgresql://user:pass@localhost:5432/mydb")
+## Execution
 
-# Discovery
-tables = db_tool.list_tables()
-
-# Query
-data = db_tool.query("SELECT * FROM users WHERE active = %s", params=(True,))
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill db_explorer --args-json "{\"path\":\"data/app.duckdb\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `engine`, `path`, `resolved_path`
+- `table_count`, `tables`, `selected_table`
+- `table_schema`, `preview_rows`, `rows_preview`
+- `size_bytes`

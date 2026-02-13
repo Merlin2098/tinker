@@ -1,35 +1,25 @@
-# JSON Explorer
+# Skill: json_explorer (Thin Interface)
 
-## Responsibility
-Parse and validate JSON data, supporting large files via streaming and schema validation.
+## Purpose
+Inspect JSON structure through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Parsing**:
-    -   Load JSON content from file.
-    -   For small files: Load fully into memory.
-    -   For large files: Use a streaming parser (e.g., `ijson`) to iterate over records without loading the entire file.
-2.  **Validation**:
-    -   Check for syntax errors (bracket mismatch, trailing commas).
-    -   (Optional) Validate against a provided JSON Schema.
-3.  **Structure Analysis**:
-    -   Identify the root structure (object vs. array).
-    -   Extract keys or infer schema from the data if explicit schema is missing.
-4.  **Access/Query**:
-    -   Support JSONPath queries to extract specific subsets of data.
+Business logic lives in:
+- `agent_tools/wrappers/json_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import JSONExplorer
+## Inputs
+- `path` (string, required): `.json` file path under repository root.
+- `encoding` (string, optional, default `utf-8-sig`)
+- `schema_depth` (integer, optional, default `2`)
+- `max_items` (integer, optional, default `20`)
 
-json_tool = JSONExplorer()
+## Execution
 
-# Standard load
-data = json_tool.load("users.json")
-
-# Streaming large file
-for record in json_tool.stream("large_log_dump.json", item_path="logs.item"):
-    process(record)
-
-# Validation
-is_valid = json_tool.validate("payload.json", schema="schema.json")
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill json_explorer --args-json "{\"path\":\"agent/agent_outputs/context.json\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `data_type`, `top_level_key_count`, `top_level_keys`, `item_count`
+- `schema_preview`, `line_count`, `size_bytes`

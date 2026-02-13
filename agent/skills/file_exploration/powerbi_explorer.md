@@ -1,29 +1,24 @@
-# Power BI Explorer
+# Skill: powerbi_explorer (Thin Interface)
 
-## Responsibility
-Inspect Power BI (`.pbix`, `.pbit`) files to extract data models, relationships, and metadata.
+## Purpose
+Inspect `.pbix`/`.pbit` package structure through the canonical execution wrapper.
 
-## Detailed Behavior
-1.  **Package Inspection**:
-    -   Treat the file as a ZIP archive (which it is internally).
-    -   Extract key components: `DataModel`, `Report/Layout`.
-2.  **Data Model Extraction**:
-    -   Parse the internal data model schema.
-    -   Extract table names, column names, and data types.
-    -   Identify relationships between tables.
-3.  **Measure Extraction**:
-    -   Extract DAX measure definitions and calculated columns.
-4.  **Export**:
-    -   (Partial Support) If data is embedded, attempt to export underlying datasets to JSON or CSV.
-    -   Generate a report of the data model structure.
+Business logic lives in:
+- `agent_tools/wrappers/powerbi_explorer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Example Usage
-```python
-from agent.skills.file_exploration import PowerBIExplorer
+## Inputs
+- `path` (string, required): `.pbix` or `.pbit` path under repository root.
+- `preview_chars` (integer, optional, default `500`)
 
-pbi_tool = PowerBIExplorer()
-model = pbi_tool.analyze("dashboard.pbix")
+## Execution
 
-print(model.tables)
-print(model.measures) # List of DAX formulas
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill powerbi_explorer --args-json "{\"path\":\"reports/model.pbix\"}"
 ```
+
+## Output Contract
+- `status`, `skill`, `path`, `resolved_path`
+- `member_count`, `members_preview`
+- `has_data_model`, `layout_files`, `diagram_files`
+- `layout_preview`, `size_bytes`
