@@ -1,5 +1,5 @@
-﻿# Plantilla minima (compatibilidad)
-# El rol se conserva solo por compatibilidad de esquema.
+# Plantilla user_task de Tinker (minima)
+# Campos requeridos: mode, objective, files, constraints
 
 mode: ANALYZE_AND_IMPLEMENT
 objective: |
@@ -8,20 +8,20 @@ objective: |
 files:
   - path/to/target_file.py
 
-config:
-  sources:
-    - id: entrada_principal
-      path: agent/agent_outputs/plans/example/task_plan.json
-      purpose: Artefacto de entrada
-
 constraints: |
   Escribe limites claros y verificables.
 
-risk_tolerance: MEDIUM
-phase: A_CONTRACT_VALIDATION
-
-validation:
-  status: PENDING
-  validated_by: null
-  validated_at: null
-  notes: Pendiente de validacion.
+# Campos opcionales de compatibilidad:
+# mode_profile: STANDARD
+# config:
+#   sources:
+#     - id: entrada_principal
+#       path: agent/agent_outputs/plans/example/task_plan.json
+#       purpose: Artefacto de entrada
+# risk_tolerance: MEDIUM
+# phase: A_CONTRACT_VALIDATION
+# validation:
+#   status: PENDING
+#   validated_by: null
+#   validated_at: null
+#   notes: Pendiente de validacion.
