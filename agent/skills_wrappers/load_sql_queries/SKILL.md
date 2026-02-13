@@ -12,7 +12,7 @@ Source of truth remains in the Invoker framework paths listed below.
 
 ## Source Files
 - Body (Layer 3): `agent/skills/formats/load_sql_queries.md`
-- Metadata (Layer 2): `(not found)`
+- Metadata (Layer 2): `agent/skills/formats/load_sql_queries.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

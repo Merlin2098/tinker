@@ -1,0 +1,40 @@
+name: query_parquet_duckdb
+version: "1.0.0"
+category: Database
+tier: lazy
+cluster: data_pipeline
+priority: 55
+purpose: "Execute SQL queries on Parquet-oriented workloads through canonical wrapper execution"
+triggers:
+  keywords: [query parquet, sql on parquet, duckdb query, parquet sql, analytical query]
+  match_extensions: [".parquet", ".sql", ".duckdb", ".db"]
+  match_phases: [transform]
+  match_errors: ["duckdb.Error", "ParserException"]
+requires: [connect_duckdb]
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "query_parquet_duckdb.md"
+token_estimate: 300
+execution:
+  entrypoint: "agent_tools/wrappers/query_parquet_duckdb_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill query_parquet_duckdb --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [sql_query]
+    properties:
+      sql_query:
+        type: string
+      database_path:
+        type: string
+      read_only:
+        type: boolean
+      allow_write:
+        type: boolean
+      preview_rows:
+        type: integer
+      config:
+        type: object
