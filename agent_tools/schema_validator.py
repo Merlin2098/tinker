@@ -32,6 +32,7 @@ except Exception:  # pragma: no cover
 try:
     from agent_tools._schema_utils import (
         HAS_JSONSCHEMA,
+        SCHEMA_TYPE_ALIASES,
         SCHEMA_FILES,
         get_builtin_schema_path,
         iter_validation_errors,
@@ -40,6 +41,7 @@ try:
 except ImportError:
     from _schema_utils import (  # type: ignore
         HAS_JSONSCHEMA,
+        SCHEMA_TYPE_ALIASES,
         SCHEMA_FILES,
         get_builtin_schema_path,
         iter_validation_errors,
@@ -227,7 +229,7 @@ Examples:
     )
     parser.add_argument(
         "--type",
-        choices=sorted(SCHEMA_FILES.keys()),
+        choices=sorted(set(list(SCHEMA_FILES.keys()) + list(SCHEMA_TYPE_ALIASES.keys()))),
         help="Built-in schema type",
     )
     parser.add_argument(
