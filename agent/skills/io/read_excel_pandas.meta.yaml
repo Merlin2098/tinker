@@ -1,0 +1,45 @@
+name: read_excel_pandas
+version: "1.0.0"
+category: IO
+tier: lazy
+cluster: data_pipeline
+priority: 50
+purpose: "Load Excel files with pandas through canonical wrapper execution"
+triggers:
+  keywords: [read excel, pandas excel, exploratory excel, inspect spreadsheet, load xlsx]
+  match_extensions: [".xlsx", ".xls"]
+  match_phases: [ingest, config]
+  match_errors: ["FileNotFoundError", "ValueError"]
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "read_excel_pandas.md"
+token_estimate: 240
+execution:
+  entrypoint: "agent_tools/wrappers/read_excel_pandas_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill read_excel_pandas --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [path]
+    properties:
+      path:
+        type: string
+      sheet_name:
+        anyOf:
+          - type: string
+          - type: integer
+      header_row:
+        type: integer
+      usecols:
+        anyOf:
+          - type: string
+          - type: array
+      nrows:
+        type: integer
+      preview_rows:
+        type: integer
+

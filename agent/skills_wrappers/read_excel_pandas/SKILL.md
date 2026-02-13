@@ -12,7 +12,7 @@ Source of truth remains in the Invoker framework paths listed below.
 
 ## Source Files
 - Body (Layer 3): `agent/skills/io/read_excel_pandas.md`
-- Metadata (Layer 2): `(not found)`
+- Metadata (Layer 2): `agent/skills/io/read_excel_pandas.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

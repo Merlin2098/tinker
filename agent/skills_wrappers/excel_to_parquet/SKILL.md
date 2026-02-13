@@ -12,7 +12,7 @@ Source of truth remains in the Invoker framework paths listed below.
 
 ## Source Files
 - Body (Layer 3): `agent/skills/io/excel_to_parquet.md`
-- Metadata (Layer 2): `(not found)`
+- Metadata (Layer 2): `agent/skills/io/excel_to_parquet.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 
