@@ -6,6 +6,7 @@ Copies the Tinker framework footprint into one or more destination projects and
 merges host-facing files:
 - requirements.txt: add missing deps (do not remove)
 - .gitignore: add missing lines from instructions/model_agnostic/.gitignore.host
+- .pre-commit-config.yaml: overwrite if present (when provided by framework)
 
 This tool is intentionally conservative:
 - By default it does not overwrite existing framework files (only merges).
@@ -377,6 +378,7 @@ def main() -> int:
     root = framework_root()
     inv_reqs = root / "requirements.txt"
     inv_gitignore_host = root / "instructions" / "model_agnostic" / ".gitignore.host"
+    inv_precommit = root / ".pre-commit-config.yaml"
 
     if not args.skip_requirements and not inv_reqs.exists():
         raise SystemExit(f"Tinker requirements.txt not found: {inv_reqs}")
@@ -421,7 +423,7 @@ def main() -> int:
 
         detect_legacy(dest_root, report)
         backup_root = None
-        if args.backup and (args.overwrite_framework or args.migrate_legacy_instructions):
+        if args.backup:
             backup_root = dest_root / ".tinker_backups" / now_stamp()
 
         if args.migrate_legacy_instructions:
@@ -457,6 +459,17 @@ def main() -> int:
 
         if not args.skip_gitignore:
             merge_gitignore(inv_gitignore_host, dest_root / ".gitignore", dry_run=args.dry_run, report=report)
+
+        if inv_precommit.exists():
+            copy_file(
+                inv_precommit,
+                dest_root,
+                dest_root / ".pre-commit-config.yaml",
+                overwrite=True,
+                backup_root=backup_root,
+                dry_run=args.dry_run,
+                report=report,
+            )
 
         print_report(dest_root, report)
 
