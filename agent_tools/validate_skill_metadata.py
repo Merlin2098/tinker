@@ -25,7 +25,6 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 SKILLS_DIR = PROJECT_ROOT / "agent" / "skills"
 INDEX_FILE = SKILLS_DIR / "_index.yaml"
-RUN_WRAPPER_PATH = PROJECT_ROOT / "agent_tools" / "run_wrapper.py"
 
 REQUIRED_FIELDS = {
     "name",
@@ -78,10 +77,11 @@ def find_body_file(skill_name: str) -> Path | None:
 
 
 def load_wrapper_skill_names() -> set[str]:
-    if not RUN_WRAPPER_PATH.exists():
-        return set()
-    content = RUN_WRAPPER_PATH.read_text(encoding="utf-8")
-    return set(re.findall(r'^\s*"([^"]+)":\s*_bind_skill', content, re.MULTILINE))
+    try:
+        from agent_tools.run_wrapper import WRAPPER_REGISTRY
+    except ImportError:
+        from run_wrapper import WRAPPER_REGISTRY  # type: ignore
+    return set(WRAPPER_REGISTRY.keys())
 
 
 def validate_meta_fields(meta_data: dict[str, Any], skill_name: str) -> tuple[list[str], list[str]]:

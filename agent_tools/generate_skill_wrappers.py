@@ -31,7 +31,6 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 SKILLS_DIR = PROJECT_ROOT / "agent" / "skills"
 INDEX_PATH = SKILLS_DIR / "_index.yaml"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "agent" / "skills_wrappers"
-RUN_WRAPPER_PATH = PROJECT_ROOT / "agent_tools" / "run_wrapper.py"
 
 EXECUTION_EXEMPT_CLUSTERS = {"runtime"}
 BUSINESS_LOGIC_PATTERNS: list[tuple[re.Pattern[str], str]] = [
@@ -159,10 +158,11 @@ def _scan_business_logic(body_path: Path, skill_name: str) -> list[str]:
 
 
 def load_wrapper_skill_names() -> set[str]:
-    if not RUN_WRAPPER_PATH.exists():
-        return set()
-    content = RUN_WRAPPER_PATH.read_text(encoding="utf-8")
-    return set(re.findall(r'^\s*"([^"]+)":\s*_bind_skill', content, re.MULTILINE))
+    try:
+        from agent_tools.run_wrapper import WRAPPER_REGISTRY
+    except ImportError:
+        from run_wrapper import WRAPPER_REGISTRY  # type: ignore
+    return set(WRAPPER_REGISTRY.keys())
 
 
 def evaluate_skill_contracts(skills: list[SkillRef], wrapper_skills: set[str]) -> list[str]:
