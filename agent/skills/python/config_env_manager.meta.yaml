@@ -1,0 +1,28 @@
+name: config_env_manager
+version: "1.0.0"
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 50
+purpose: "Config and env vars with dotenv, multi-environment"
+triggers:
+  keywords: ["config_env_manager", "config env manager", "config"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "config_env_manager.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/config_env_manager_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill config_env_manager --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties: {}

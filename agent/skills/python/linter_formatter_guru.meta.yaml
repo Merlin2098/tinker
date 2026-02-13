@@ -1,0 +1,28 @@
+name: linter_formatter_guru
+version: "1.0.0"
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 48
+purpose: "Pylint, Flake8, Black, Autopep8 with pre-commit hooks"
+triggers:
+  keywords: ["linter_formatter_guru", "linter formatter guru", "linter"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "linter_formatter_guru.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/linter_formatter_guru_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill linter_formatter_guru --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties: {}

@@ -1,0 +1,28 @@
+name: ui_layout_proportionality
+version: "1.0.0"
+category: UI
+tier: lazy
+cluster: ui
+priority: 50
+purpose: "Adaptive layouts across screen resolutions"
+triggers:
+  keywords: ["ui_layout_proportionality", "ui layout proportionality", "ui"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "ui_layout_proportionality.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/ui_layout_proportionality_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill ui_layout_proportionality --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties: {}

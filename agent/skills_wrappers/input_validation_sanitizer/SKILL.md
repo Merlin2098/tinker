@@ -12,7 +12,7 @@ Source of truth remains in the Invoker framework paths listed below.
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_handling/input_validation_sanitizer.md`
-- Metadata (Layer 2): `(not found)`
+- Metadata (Layer 2): `agent/skills/file_handling/input_validation_sanitizer.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

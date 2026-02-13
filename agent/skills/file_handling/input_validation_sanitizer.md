@@ -1,28 +1,30 @@
-# Input Validation Sanitizer
-
-> **Status**: DORMANT — Registry-only placeholder. Implementation pending.
+# Skill: input_validation_sanitizer (Thin Interface)
 
 ## Purpose
+Validate and sanitize a single input payload through the canonical wrapper.
 
-Validates and sanitizes incoming file data ensuring correct types, ranges, and formats.
+Business logic lives in:
+- `agent_tools/wrappers/input_validation_sanitizer_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Activation Criteria
+## Inputs
+- `value` (any, required): Payload to validate.
+- `expected_type` (string, optional): `string|integer|number|boolean|list|object`
+- `strip_strings` (boolean, optional, default `true`)
+- `allow_empty` (boolean, optional, default `false`)
+- `min_length`, `max_length` (integer, optional)
+- `min_value`, `max_value` (number, optional)
+- `allowed_values` (array, optional)
+- `pattern` (string regex, optional, string values only)
 
-This skill will be activated when:
-- validate input
-- sanitize data
-- input check
-- data cleaning
+## Execution
 
-## Dependencies
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill input_validation_sanitizer --args-json "{\"value\":\"  abc  \",\"expected_type\":\"string\",\"min_length\":3}"
+```
 
-- Requires: input_file_handler
-- Required by: None
-
-## Implementation Notes
-
-This skill is registered in `skills_registry.yaml` but has no implementation yet.
-When implementing, follow the patterns established by similar skills in the `file_handling` cluster.
-
----
-*Stub generated: 2026-02-09 | Registry version: 2.0.0*
+## Output Contract
+- `status`, `skill`, `value_type`, `sanitized_value`
+- `applied.expected_type`, `applied.strip_strings`, `applied.allow_empty`
+- `applied.min_length`, `applied.max_length`, `applied.min_value`, `applied.max_value`
+- `applied.allowed_values_count`, `applied.pattern`

@@ -23,6 +23,7 @@ try:
     from agent_tools.wrappers.excel_explorer_wrapper import run as run_excel_explorer
     from agent_tools.wrappers.excel_to_parquet_wrapper import run as run_excel_to_parquet
     from agent_tools.wrappers.file_explorer_wrapper import run as run_file_explorer
+    from agent_tools.wrappers.generate_exe_pyinstaller_onedir_wrapper import run as run_generate_exe_pyinstaller_onedir
     from agent_tools.wrappers.html_explorer_wrapper import run as run_html_explorer
     from agent_tools.wrappers.json_explorer_wrapper import run as run_json_explorer
     from agent_tools.wrappers.load_json_files_wrapper import run as run_load_json_files
@@ -37,6 +38,12 @@ try:
     from agent_tools.wrappers.query_parquet_duckdb_wrapper import run as run_query_parquet_duckdb
     from agent_tools.wrappers.read_excel_pandas_wrapper import run as run_read_excel_pandas
     from agent_tools.wrappers.read_excel_polars_openpyxl_wrapper import run as run_read_excel_polars_openpyxl
+    from agent_tools.wrappers.execution_timer_wrapper import run as run_execution_timer
+    from agent_tools.wrappers.input_file_handler_wrapper import run as run_input_file_handler
+    from agent_tools.wrappers.input_validation_sanitizer_wrapper import run as run_input_validation_sanitizer
+    from agent_tools.wrappers.log_bundle_folder_management_wrapper import run as run_log_bundle_folder_management
+    from agent_tools.wrappers.log_overwrite_policy_wrapper import run as run_log_overwrite_policy
+    from agent_tools.wrappers.setup_medallion_structure_wrapper import run as run_setup_medallion_structure
     from agent_tools.wrappers.xml_explorer_wrapper import run as run_xml_explorer
     from agent_tools.wrappers.yaml_explorer_wrapper import run as run_yaml_explorer
 except ImportError:
@@ -48,6 +55,7 @@ except ImportError:
     from wrappers.excel_explorer_wrapper import run as run_excel_explorer
     from wrappers.excel_to_parquet_wrapper import run as run_excel_to_parquet
     from wrappers.file_explorer_wrapper import run as run_file_explorer
+    from wrappers.generate_exe_pyinstaller_onedir_wrapper import run as run_generate_exe_pyinstaller_onedir
     from wrappers.html_explorer_wrapper import run as run_html_explorer
     from wrappers.json_explorer_wrapper import run as run_json_explorer
     from wrappers.load_json_files_wrapper import run as run_load_json_files
@@ -62,6 +70,12 @@ except ImportError:
     from wrappers.query_parquet_duckdb_wrapper import run as run_query_parquet_duckdb
     from wrappers.read_excel_pandas_wrapper import run as run_read_excel_pandas
     from wrappers.read_excel_polars_openpyxl_wrapper import run as run_read_excel_polars_openpyxl
+    from wrappers.execution_timer_wrapper import run as run_execution_timer
+    from wrappers.input_file_handler_wrapper import run as run_input_file_handler
+    from wrappers.input_validation_sanitizer_wrapper import run as run_input_validation_sanitizer
+    from wrappers.log_bundle_folder_management_wrapper import run as run_log_bundle_folder_management
+    from wrappers.log_overwrite_policy_wrapper import run as run_log_overwrite_policy
+    from wrappers.setup_medallion_structure_wrapper import run as run_setup_medallion_structure
     from wrappers.xml_explorer_wrapper import run as run_xml_explorer
     from wrappers.yaml_explorer_wrapper import run as run_yaml_explorer
 
@@ -73,11 +87,17 @@ WRAPPER_REGISTRY: dict[str, WrapperFunc] = {
     "connect_duckdb": run_connect_duckdb,
     "db_explorer": run_db_explorer,
     "docx_explorer": run_docx_explorer,
+    "execution_timer": run_execution_timer,
     "excel_explorer": run_excel_explorer,
     "excel_to_parquet": run_excel_to_parquet,
     "file_explorer": run_file_explorer,
+    "generate_exe_pyinstaller_onedir": run_generate_exe_pyinstaller_onedir,
     "html_explorer": run_html_explorer,
+    "input_file_handler": run_input_file_handler,
+    "input_validation_sanitizer": run_input_validation_sanitizer,
     "json_explorer": run_json_explorer,
+    "log_bundle_folder_management": run_log_bundle_folder_management,
+    "log_overwrite_policy": run_log_overwrite_policy,
     "load_json_files": run_load_json_files,
     "load_sql_queries": run_load_sql_queries,
     "load_yaml_files": run_load_yaml_files,
@@ -90,6 +110,7 @@ WRAPPER_REGISTRY: dict[str, WrapperFunc] = {
     "query_parquet_duckdb": run_query_parquet_duckdb,
     "read_excel_pandas": run_read_excel_pandas,
     "read_excel_polars_openpyxl": run_read_excel_polars_openpyxl,
+    "setup_medallion_structure": run_setup_medallion_structure,
     "xml_explorer": run_xml_explorer,
     "yaml_explorer": run_yaml_explorer,
 }

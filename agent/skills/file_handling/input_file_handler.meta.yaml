@@ -17,4 +17,29 @@ agent_binding:
   mandatory: [agent_executor, agent_senior]
   optional: []
 body_file: "input_file_handler.md"
-token_estimate: 600
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/input_file_handler_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill input_file_handler --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [path]
+    properties:
+      path:
+        type: string
+      must_exist:
+        type: boolean
+      allowed_extensions:
+        type: array
+        items:
+          type: string
+      encoding:
+        type: string
+      include_preview:
+        type: boolean
+      max_preview_lines:
+        type: integer
+      preview_chars:
+        type: integer
+      force_text_preview:
+        type: boolean

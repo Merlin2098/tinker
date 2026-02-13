@@ -1,0 +1,28 @@
+name: async_concurrency_expert
+version: "1.0.0"
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 55
+purpose: "Async/await, event loops, concurrent task handling"
+triggers:
+  keywords: ["async_concurrency_expert", "async concurrency expert", "async"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "async_concurrency_expert.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/async_concurrency_expert_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill async_concurrency_expert --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties: {}

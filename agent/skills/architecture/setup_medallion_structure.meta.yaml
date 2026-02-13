@@ -1,0 +1,38 @@
+name: setup_medallion_structure
+version: "1.0.0"
+category: Architecture
+tier: lazy
+cluster: data_pipeline
+priority: 50
+purpose: "Bronze/Silver/Gold data lake directory structure"
+triggers:
+  keywords: ["setup_medallion_structure", "setup medallion structure", "setup"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "setup_medallion_structure.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/setup_medallion_structure_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill setup_medallion_structure --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: [base_path]
+    properties:
+      base_path:
+        type: string
+      layers:
+        type: array
+        items:
+          type: string
+      create_if_missing:
+        type: boolean
+      validate_only:
+        type: boolean

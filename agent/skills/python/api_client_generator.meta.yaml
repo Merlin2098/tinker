@@ -1,0 +1,28 @@
+name: api_client_generator
+version: "1.0.0"
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 45
+purpose: "Type-safe API clients for REST/GraphQL"
+triggers:
+  keywords: ["api_client_generator", "api client generator", "api"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "api_client_generator.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/api_client_generator_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill api_client_generator --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties: {}

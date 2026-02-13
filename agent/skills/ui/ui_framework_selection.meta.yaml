@@ -1,0 +1,28 @@
+name: ui_framework_selection
+version: "1.0.0"
+category: UI
+tier: lazy
+cluster: ui
+priority: 55
+purpose: "Tkinter for MVP, PySide6 for production"
+triggers:
+  keywords: ["ui_framework_selection", "ui framework selection", "ui"]
+  match_extensions: []
+  match_phases: [implement]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+max_phase: 2
+body_file: "ui_framework_selection.md"
+token_estimate: 220
+execution:
+  entrypoint: "agent_tools/wrappers/ui_framework_selection_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill ui_framework_selection --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties: {}
