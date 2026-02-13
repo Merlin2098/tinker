@@ -1,8 +1,8 @@
 {
   "_context_profile": {
-    "name": "default",
-    "source": "default",
-    "reason": "none"
+    "name": "interactive_terminal",
+    "source": "arg",
+    "reason": "explicit"
   },
   "skills_registry": {
     "metadata": {
@@ -10,7 +10,7 @@
       "total_skills": 78,
       "total_categories": 17,
       "last_updated": "2026-02-12",
-      "framework": "Invoker Agent Framework",
+      "framework": "Tinker Agent Framework",
       "tiers": {
         "core": 26,
         "lazy": 52,
@@ -53,7 +53,7 @@
     }
   },
   "file_tree": {
-    "max_depth": 2,
+    "max_depth": 3,
     "tree": [
       "\u251c\u2500\u2500 .agent/",
       "\u2502   \u2514\u2500\u2500 workflows/",
@@ -65,30 +65,15 @@
       "\u251c\u2500\u2500 README.md",
       "\u251c\u2500\u2500 __init__.py",
       "\u251c\u2500\u2500 agent/",
-      "\u2502   \u251c\u2500\u2500 agent_executor/",
-      "\u2502   \u2502   \u251c\u2500\u2500 agent_executor.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 context/",
-      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
-      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
-      "\u2502   \u251c\u2500\u2500 agent_inspector/",
-      "\u2502   \u2502   \u251c\u2500\u2500 agent_inspector.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 context/",
-      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
-      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
-      "\u2502   \u251c\u2500\u2500 agent_junior/",
-      "\u2502   \u2502   \u251c\u2500\u2500 agent_junior.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 context/",
-      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
-      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
       "\u2502   \u251c\u2500\u2500 agent_protocol/",
       "\u2502   \u2502   \u251c\u2500\u2500 README.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 message_queue/",
       "\u2502   \u2502   \u2514\u2500\u2500 schemas/",
-      "\u2502   \u251c\u2500\u2500 agent_senior/",
-      "\u2502   \u2502   \u251c\u2500\u2500 agent_senior.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 context/",
-      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
-      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
+      "\u2502   \u2502       \u251c\u2500\u2500 execution_report.schema.json",
+      "\u2502   \u2502       \u251c\u2500\u2500 system_config.schema.yaml",
+      "\u2502   \u2502       \u251c\u2500\u2500 task_envelope.schema.json",
+      "\u2502   \u2502       \u251c\u2500\u2500 task_plan.schema.json",
+      "\u2502   \u2502       \u2514\u2500\u2500 user_task.schema.yaml",
+      "\u2502   \u251c\u2500\u2500 analysis/",
       "\u2502   \u251c\u2500\u2500 kernel/",
       "\u2502   \u2502   \u251c\u2500\u2500 kernel.yaml",
       "\u2502   \u2502   \u2514\u2500\u2500 kernel_rules.md",
@@ -97,95 +82,173 @@
       "\u2502   \u2502   \u251c\u2500\u2500 lite.yaml",
       "\u2502   \u2502   \u2514\u2500\u2500 standard.yaml",
       "\u2502   \u251c\u2500\u2500 rules/",
+      "\u2502   \u2502   \u251c\u2500\u2500 README.md",
       "\u2502   \u2502   \u251c\u2500\u2500 agent_rules.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 agent_structural_alignment_guidelines.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 claude_md_clarification.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 debugging_limits.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 phase0_preflight.md",
-      "\u2502   \u2502   \u251c\u2500\u2500 regulatory_principles_v1.md",
       "\u2502   \u2502   \u2514\u2500\u2500 user_fault_heuristic.md",
       "\u2502   \u251c\u2500\u2500 skills_wrappers/",
       "\u2502   \u2502   \u251c\u2500\u2500 ambiguity_escalation/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 api_client_generator/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 artifact_persistence_discipline/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 async_concurrency_expert/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 brainstorming_design_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 code_analysis_qa_gate/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 code_structuring_pythonic/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 config_env_manager/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 connect_duckdb/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 context_loading_protocol/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 csv_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 data_integrity_guardian/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 db_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 debugger_orchestrator/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 decision_process_flow/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 dependency_audit/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 devops_packaging/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 docx_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 excel_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 excel_to_parquet/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 execution_flow_orchestration/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 execution_timer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 externalized_logic_handler/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 file_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 generate_exe_pyinstaller_onedir/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 git_rollback_strategy/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 html_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 immutable_resource_respect/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 input_file_handler/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 input_validation_sanitizer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 json_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 library_manager/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 linter_formatter_guru/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 llm_inference_optimization/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 load_json_files/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 load_sql_queries/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 load_yaml_files/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 log_bundle_folder_management/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 log_overwrite_policy/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 markdown_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 microservices_api_architect/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 minimal_documentation_policy/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 naming_control_flow/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 output_validation_checklist/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 parquet_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 parquet_to_excel_polars_xlsxwriter/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 path_traversal_prevention/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 pdf_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 performance_profiler/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 plan_archive_protocol/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 powerbi_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 pptx_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 protected_file_validation/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 python_venv_executor/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 query_parquet_duckdb/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 read_excel_pandas/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 read_excel_polars_openpyxl/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 refactoring_assistant/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 regression_test_automation/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 risk_scoring_matrix/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 root_cause_tracing/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 scope_control_discipline/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 secure_python_practices/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 serialization_persistence/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 setup_medallion_structure/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 skill_authority_first/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 systematic_debugging/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 testing_qa_mentor/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 type_master/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_application_assets/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_framework_selection/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_identity_policy/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_layout_proportionality/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_splash_and_lazy_loading/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_theme_binding/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 ui_widget_modularity/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 verification_before_completion/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 workspace_model_awareness/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u251c\u2500\u2500 xml_explorer/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u2502   \u2514\u2500\u2500 yaml_explorer/",
+      "\u2502   \u2502       \u2514\u2500\u2500 SKILL.md",
       "\u2502   \u251c\u2500\u2500 task_templates/",
+      "\u2502   \u2502   \u251c\u2500\u2500 chat/",
+      "\u2502   \u2502   \u2502   \u2514\u2500\u2500 user_task_template.yaml",
       "\u2502   \u2502   \u251c\u2500\u2500 execute_plan.yaml",
       "\u2502   \u2502   \u251c\u2500\u2500 exploratory_analysis.yaml",
       "\u2502   \u2502   \u251c\u2500\u2500 feature_refactor.yaml",
@@ -204,24 +267,70 @@
       "\u2502   \u251c\u2500\u2500 config_validator.py",
       "\u2502   \u251c\u2500\u2500 context_loader.py",
       "\u2502   \u251c\u2500\u2500 generate_skill_wrappers.py",
+      "\u2502   \u251c\u2500\u2500 kernel_guard.py",
       "\u2502   \u251c\u2500\u2500 load_full_context.py",
       "\u2502   \u251c\u2500\u2500 load_static_context.py",
       "\u2502   \u251c\u2500\u2500 mode_selector.py",
+      "\u2502   \u251c\u2500\u2500 run_wrapper.py",
       "\u2502   \u251c\u2500\u2500 schema_validator.py",
       "\u2502   \u251c\u2500\u2500 simulate_execution.py",
       "\u2502   \u251c\u2500\u2500 treemap.py",
+      "\u2502   \u251c\u2500\u2500 user_task_builder.py",
       "\u2502   \u251c\u2500\u2500 validate_message.py",
-      "\u2502   \u2514\u2500\u2500 validate_skill_metadata.py",
+      "\u2502   \u251c\u2500\u2500 validate_skill_metadata.py",
+      "\u2502   \u2514\u2500\u2500 wrappers/",
+      "\u2502       \u251c\u2500\u2500 __init__.py",
+      "\u2502       \u251c\u2500\u2500 _explorer_common.py",
+      "\u2502       \u251c\u2500\u2500 connect_duckdb_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 csv_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 db_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 docx_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 excel_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 excel_to_parquet_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 execution_timer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 file_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 generate_exe_pyinstaller_onedir_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 html_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 input_file_handler_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 input_validation_sanitizer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 json_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 load_json_files_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 load_sql_queries_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 load_yaml_files_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 log_bundle_folder_management_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 log_overwrite_policy_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 markdown_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 parquet_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 parquet_to_excel_polars_xlsxwriter_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 pdf_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 policy_guidance_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 powerbi_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 pptx_explorer_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 python_quality_advisor_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 query_parquet_duckdb_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 read_excel_pandas_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 read_excel_polars_openpyxl_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 setup_medallion_structure_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 ui_advisor_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 xml_explorer_wrapper.py",
+      "\u2502       \u2514\u2500\u2500 yaml_explorer_wrapper.py",
+      "\u251c\u2500\u2500 architecture.md",
+      "\u251c\u2500\u2500 install_tinker.py",
       "\u251c\u2500\u2500 instructions/",
-      "\u2502   \u251c\u2500\u2500 .gitignore.host",
-      "\u2502   \u251c\u2500\u2500 PORTABLE_DEPLOYMENT.md",
-      "\u2502   \u251c\u2500\u2500 activate_kernel.cmd",
-      "\u2502   \u251c\u2500\u2500 activate_kernel.sh",
-      "\u2502   \u251c\u2500\u2500 instructions_dummies.md",
-      "\u2502   \u251c\u2500\u2500 kernel_profiles.md",
-      "\u2502   \u251c\u2500\u2500 trigger_antigravity.md",
-      "\u2502   \u251c\u2500\u2500 trigger_generic.md",
-      "\u2502   \u2514\u2500\u2500 trigger_vscode.md",
+      "\u2502   \u251c\u2500\u2500 chat/",
+      "\u2502   \u2502   \u251c\u2500\u2500 command_glossary_chat.md",
+      "\u2502   \u2502   \u2514\u2500\u2500 trigger_chat.md",
+      "\u2502   \u251c\u2500\u2500 claude/",
+      "\u2502   \u2502   \u251c\u2500\u2500 trigger_antigravity.md",
+      "\u2502   \u2502   \u2514\u2500\u2500 trigger_vscode.md",
+      "\u2502   \u2514\u2500\u2500 model_agnostic/",
+      "\u2502       \u251c\u2500\u2500 .gitignore.host",
+      "\u2502       \u251c\u2500\u2500 PORTABLE_DEPLOYMENT.md",
+      "\u2502       \u251c\u2500\u2500 activate_kernel.cmd",
+      "\u2502       \u251c\u2500\u2500 activate_kernel.sh",
+      "\u2502       \u251c\u2500\u2500 instructions_dummies.md",
+      "\u2502       \u251c\u2500\u2500 kernel_profiles.md",
+      "\u2502       \u2514\u2500\u2500 trigger_generic.md",
       "\u2514\u2500\u2500 requirements.txt"
     ]
   },
@@ -264,25 +373,13 @@
     "agent_tools/config_validator.py": [
       "def validate_config_files()"
     ],
-    "agent_tools/context_loader.py": [
-      "def get_project_root()",
-      "def _load_registry()",
-      "def _get_registry()",
-      "def list_available()",
-      "def load_on_demand(name)",
-      "def enrich_context(base_context, file_names)"
-    ],
-    "agent_tools/generate_skill_wrappers.py": [
-      "class SkillRef",
+    "agent_tools/kernel_guard.py": [
+      "def project_root()",
       "def load_yaml(path)",
-      "def load_index(index_path)",
-      "def find_body_file(skills_dir, skill_name)",
-      "def find_meta_file(skills_dir, skill_name)",
-      "def to_repo_rel(path)",
-      "def build_skill_refs(skills_dir, entries)",
-      "def render_wrapper(skill)",
-      "def write_wrappers(skills, output_dir, dry_run)",
-      "def clean_stale_dirs(output_dir, keep_skill_names, dry_run)",
+      "def resolve_state_path(agent_id)",
+      "def load_state(path)",
+      "def normalize_profile(value)",
+      "def activate_kernel(profile, agent_id)",
       "def main()"
     ],
     "agent_tools/load_full_context.py": [
@@ -295,38 +392,6 @@
       "def load_full_context(task_plan_path, system_config_path, summary_path, on_demand)",
       "def save_context_as_json(full_context, output_path)"
     ],
-    "agent_tools/load_static_context.py": [
-      "def _load_framework_config()",
-      "def _deep_merge_dicts(base, override)",
-      "def _resolve_static_context_config(requested_profile)",
-      "def _is_non_empty_str(value)",
-      "def _rule_matches(rule, env)",
-      "def _auto_detect_profile(full_cfg, profiles)",
-      "def _get_excluded_from_signatures(static_cfg)",
-      "def _get_excluded_dirs_from_tree(static_cfg)",
-      "def _get_static_context_limits(static_cfg)",
-      "def _get_truncation_policy(static_cfg)",
-      "def _load_gitignore_spec(root)",
-      "def load_yaml_file(path)",
-      "def _file_metadata(path)",
-      "def _file_ref(path)",
-      "def _compact_skills_index(full_registry)",
-      "def _schema_summary(path)",
-      "def _generate_file_tree(root, max_depth, spec)",
-      "def _extract_python_signatures(root, max_depth, spec)",
-      "def _serialized_line_count(data)",
-      "def _trim_python_signatures_once(context, trim_fraction_percent)",
-      "def _trim_file_tree_once(context, trim_fraction_percent)",
-      "def _trim_schema_summaries_once(context, minimum_schema_top_level_keys)",
-      "def _trim_agent_rules_sections_once(context, minimum_agent_rules_sections)",
-      "def _drop_python_signatures(context)",
-      "def _drop_schema_summaries(context)",
-      "def _drop_agent_rules_sections(context)",
-      "def _drop_file_tree_to_minimum(context, minimum)",
-      "def _enforce_context_line_budget(context, max_lines, policy)",
-      "def load_static_context(profile)",
-      "def save_static_context_as_json(context, output_path, max_lines)"
-    ],
     "agent_tools/mode_selector.py": [
       "def project_root()",
       "def load_yaml(path)",
@@ -334,6 +399,13 @@
       "def resolve_state_path(agent_id)",
       "def load_state(path)",
       "def profile_file(profile)",
+      "def main()"
+    ],
+    "agent_tools/run_wrapper.py": [
+      "def _bind_skill(runner, skill_name)",
+      "def _load_args_json(raw)",
+      "def _load_args_file(path)",
+      "def _parse_args()",
       "def main()"
     ],
     "agent_tools/schema_validator.py": [
@@ -387,13 +459,215 @@
       "def print_report(report, verbose)",
       "def main()"
     ],
-    "agent_tools/validate_skill_metadata.py": [
-      "def load_yaml(path)",
-      "def collect_skills_from_index(index_path)",
-      "def find_meta_file(skill_name)",
-      "def find_body_file(skill_name)",
-      "def validate_meta_fields(meta_data, skill_name)",
-      "def main()"
+    "agent_tools/wrappers/connect_duckdb_wrapper.py": [
+      "def _project_root()",
+      "def _bool(value, default)",
+      "def _normalize_config(raw)",
+      "def _resolve_database_path(raw_path, read_only)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/csv_explorer_wrapper.py": [
+      "def _normalize_headers(header_row)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/db_explorer_wrapper.py": [
+      "def _table_name(value)",
+      "def _duckdb_tables(conn)",
+      "def _duckdb_schema(conn, table)",
+      "def _sqlite_tables(conn)",
+      "def _sqlite_schema(conn, table)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/docx_explorer_wrapper.py": [
+      "def _core_props(zf)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/excel_explorer_wrapper.py": [
+      "def _sheet_name(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/excel_to_parquet_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_input_excel_path(raw_path)",
+      "def _resolve_output_parquet_path(raw_path)",
+      "def _sheet_name(value, default)",
+      "def _bool(value, default)",
+      "def _compression(value, default)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/execution_timer_wrapper.py": [
+      "def _parse_task_type(value)",
+      "def _parse_float(value, field)",
+      "def _format_general(elapsed_seconds)",
+      "def _resolve_elapsed(args)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/file_explorer_wrapper.py": [
+      "def _read_generic_text(path, encoding, preview_chars)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/generate_exe_pyinstaller_onedir_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_repo_dir(raw_path)",
+      "def _parse_string_list(raw)",
+      "def _tail(text, max_lines)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/html_explorer_wrapper.py": [
+      "class _HTMLSummaryParser",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/input_file_handler_wrapper.py": [
+      "def _normalize_extensions(raw)",
+      "def _is_text_like(path)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/input_validation_sanitizer_wrapper.py": [
+      "def _normalize_expected_type(value)",
+      "def _type_matches(expected_type, value)",
+      "def _type_name(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/json_explorer_wrapper.py": [
+      "def _type_name(value)",
+      "def _schema_preview(value, depth, max_depth, max_items)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/load_json_files_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_input_path(raw_path)",
+      "def _encoding(value, default)",
+      "def _type_name(data)",
+      "def _summary(data)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/load_sql_queries_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_input_path(raw_path)",
+      "def _encoding(value, default)",
+      "def _int(value, default)",
+      "def _bool(value, default)",
+      "def _strip_sql_comments(sql_text)",
+      "def _statement_count(sql_text)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/load_yaml_files_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_input_path(raw_path)",
+      "def _encoding(value, default)",
+      "def _type_name(data)",
+      "def _summary(data)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/log_bundle_folder_management_wrapper.py": [
+      "def _project_root()",
+      "def _app_name(raw)",
+      "def _resolve_custom_path(raw)",
+      "def _default_folder(app_name, bundled_mode)",
+      "def _ensure_not_inside_bundle(path, bundle_root)",
+      "def _validate_writable(folder)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/log_overwrite_policy_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_log_path(raw_path)",
+      "def _parse_header_lines(raw)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/markdown_explorer_wrapper.py": [
+      "def _count_code_fences(lines)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/parquet_explorer_wrapper.py": [
+      "def _columns(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/parquet_to_excel_polars_xlsxwriter_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_input_parquet_path(raw_path)",
+      "def _resolve_output_excel_path(raw_path)",
+      "def _sheet_name(value, default)",
+      "def _bool(value, default)",
+      "def _max_rows(value, default)",
+      "def _to_excel_value(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/pdf_explorer_wrapper.py": [
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/policy_guidance_wrapper.py": [
+      "def _parse_strings(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/powerbi_explorer_wrapper.py": [
+      "def _safe_json_preview(raw, max_chars)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/pptx_explorer_wrapper.py": [
+      "def _core_props(zf)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/python_quality_advisor_wrapper.py": [
+      "def _parse_strings(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/query_parquet_duckdb_wrapper.py": [
+      "def _int(value, default)",
+      "def _to_jsonable(value)",
+      "def _validate_sql(sql_query, allow_write)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/read_excel_pandas_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_excel_path(raw_path)",
+      "def _sheet_name(value, default)",
+      "def _optional_int(value)",
+      "def _header_row(value, default)",
+      "def _preview_rows(value, default)",
+      "def _usecols(value)",
+      "def _to_jsonable(value)",
+      "def _safe_records(dataframe, preview_rows)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/read_excel_polars_openpyxl_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_excel_path(raw_path)",
+      "def _sheet_name(value, default)",
+      "def _bool(value, default)",
+      "def _preview_rows(value, default)",
+      "def _use_columns(value)",
+      "def _normalize_headers(header_values)",
+      "def _to_jsonable(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/setup_medallion_structure_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_root_path(raw)",
+      "def _normalize_layers(raw)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/ui_advisor_wrapper.py": [
+      "def _parse_strings(value)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/xml_explorer_wrapper.py": [
+      "def _local_name(tag)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/yaml_explorer_wrapper.py": [
+      "def _type_name(value)",
+      "def _schema_preview(value, depth, max_depth, max_items)",
+      "def run(args)"
+    ],
+    "agent_tools/wrappers/_explorer_common.py": [
+      "def project_root()",
+      "def resolve_repo_path(raw_path)",
+      "def parse_encoding(value, default)",
+      "def parse_bool(value)",
+      "def parse_int(value)",
+      "def to_jsonable(value)",
+      "def file_stats(path)",
+      "def preview_text(raw)"
     ]
   },
   "schemas": {
@@ -461,41 +735,9 @@
       ]
     }
   },
-  "agent_definitions": {
-    "senior": {
-      "context": {
-        "path": "agent\\agent_senior\\context\\context.md",
-        "exists": true
-      },
-      "workflow": {
-        "path": "agent\\agent_senior\\workflow\\workflow.md",
-        "exists": true
-      }
-    },
-    "executor": {
-      "context": {
-        "path": "agent\\agent_executor\\context\\context.md",
-        "exists": true
-      },
-      "workflow": {
-        "path": "agent\\agent_executor\\workflow\\workflow.md",
-        "exists": true
-      }
-    },
-    "inspector": {
-      "context": {
-        "path": "agent\\agent_inspector\\context\\context.md",
-        "exists": true
-      },
-      "workflow": {
-        "path": "agent\\agent_inspector\\workflow\\workflow.md",
-        "exists": true
-      }
-    }
-  },
   "_context_budget": {
-    "max_lines": 1000,
-    "final_lines": 502,
+    "max_lines": 1200,
+    "final_lines": 744,
     "truncation_applied": false,
     "truncation_actions": []
   }
