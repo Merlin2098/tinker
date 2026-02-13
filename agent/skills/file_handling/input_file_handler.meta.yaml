@@ -1,0 +1,20 @@
+name: input_file_handler
+version: "1.0.0"
+category: File Handling
+tier: core
+cluster: file_handling
+priority: 74
+purpose: "File input: validation, encoding detection, error handling"
+triggers:
+  keywords: [file input, open file, file validation, encoding detection, read file, file dialog]
+  match_extensions: []
+  match_phases: [ingest]
+  match_errors: [FileNotFoundError, UnicodeDecodeError]
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: []
+body_file: "input_file_handler.md"
+token_estimate: 600

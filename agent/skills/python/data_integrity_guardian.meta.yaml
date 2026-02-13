@@ -1,0 +1,20 @@
+name: data_integrity_guardian
+version: "1.0.0"
+category: Python
+tier: core
+cluster: python_quality
+priority: 71
+purpose: "Data consistency: validation, constraints, transactions, corruption prevention"
+triggers:
+  keywords: [data integrity, data validation, constraint, transaction, data corruption, consistency check]
+  match_extensions: [".py"]
+  match_phases: [transform, validate]
+  match_errors: [ValueError, DataError]
+requires: []
+exclusive_with: []
+modes: [ANALYZE_AND_IMPLEMENT, IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: [agent_inspector]
+body_file: "data_integrity_guardian.md"
+token_estimate: 900

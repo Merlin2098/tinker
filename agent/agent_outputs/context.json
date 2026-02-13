@@ -1,0 +1,502 @@
+{
+  "_context_profile": {
+    "name": "default",
+    "source": "default",
+    "reason": "none"
+  },
+  "skills_registry": {
+    "metadata": {
+      "version": "2.1.0",
+      "total_skills": 78,
+      "total_categories": 17,
+      "last_updated": "2026-02-12",
+      "framework": "Invoker Agent Framework",
+      "tiers": {
+        "core": 26,
+        "lazy": 52,
+        "dormant": 0
+      }
+    },
+    "_note": "Skill index is loaded separately via _index.yaml. Use grep/jq for full registry.",
+    "_index_path": "agent/skills/_index.yaml",
+    "_registry_path": "agent/skills/skills_registry.yaml",
+    "_trigger_engine_path": "agent/skills/_trigger_engine.yaml"
+  },
+  "agent_rules": {
+    "path": "agent\\rules\\agent_rules.md",
+    "exists": true,
+    "size_bytes": 6876,
+    "line_count": 263,
+    "sections": [
+      "# Agent Governance Rules",
+      "## Version",
+      "## Scope",
+      "## 1. Purpose",
+      "## 2. Governance Model",
+      "### 2.1 Authority Layers",
+      "## 3. Repository Mental Model",
+      "### 3.1 `agent/` Directory",
+      "### 3.2 Application Source Code",
+      "## 4. Security and Protection Policy"
+    ]
+  },
+  "on_demand_files": {
+    "treemap": {
+      "path": "agent\\analysis\\treemap.md",
+      "loader": "context_loader.load_on_demand('treemap')",
+      "_note": "Gitignored. Load on demand for structural analysis."
+    },
+    "dependencies_report": {
+      "path": "agent\\analysis\\dependencies_report.md",
+      "loader": "context_loader.load_on_demand('dependencies_report')",
+      "_note": "Gitignored. Load on demand for dependency analysis."
+    }
+  },
+  "file_tree": {
+    "max_depth": 2,
+    "tree": [
+      "\u251c\u2500\u2500 .agent/",
+      "\u2502   \u2514\u2500\u2500 workflows/",
+      "\u2502       \u2514\u2500\u2500 update_context.md",
+      "\u251c\u2500\u2500 .clinerules",
+      "\u251c\u2500\u2500 .gitignore",
+      "\u251c\u2500\u2500 .pre-commit-config.yaml",
+      "\u251c\u2500\u2500 AGENTS.md",
+      "\u251c\u2500\u2500 README.md",
+      "\u251c\u2500\u2500 __init__.py",
+      "\u251c\u2500\u2500 agent/",
+      "\u2502   \u251c\u2500\u2500 agent_executor/",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_executor.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 context/",
+      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
+      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
+      "\u2502   \u251c\u2500\u2500 agent_inspector/",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_inspector.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 context/",
+      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
+      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
+      "\u2502   \u251c\u2500\u2500 agent_junior/",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_junior.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 context/",
+      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
+      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
+      "\u2502   \u251c\u2500\u2500 agent_protocol/",
+      "\u2502   \u2502   \u251c\u2500\u2500 README.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 message_queue/",
+      "\u2502   \u2502   \u2514\u2500\u2500 schemas/",
+      "\u2502   \u251c\u2500\u2500 agent_senior/",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_senior.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 context/",
+      "\u2502   \u2502   \u251c\u2500\u2500 prompt/",
+      "\u2502   \u2502   \u2514\u2500\u2500 workflow/",
+      "\u2502   \u251c\u2500\u2500 kernel/",
+      "\u2502   \u2502   \u251c\u2500\u2500 kernel.yaml",
+      "\u2502   \u2502   \u2514\u2500\u2500 kernel_rules.md",
+      "\u2502   \u251c\u2500\u2500 profiles/",
+      "\u2502   \u2502   \u251c\u2500\u2500 full.yaml",
+      "\u2502   \u2502   \u251c\u2500\u2500 lite.yaml",
+      "\u2502   \u2502   \u2514\u2500\u2500 standard.yaml",
+      "\u2502   \u251c\u2500\u2500 rules/",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_rules.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_structural_alignment_guidelines.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 claude_md_clarification.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 debugging_limits.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 phase0_preflight.md",
+      "\u2502   \u2502   \u251c\u2500\u2500 regulatory_principles_v1.md",
+      "\u2502   \u2502   \u2514\u2500\u2500 user_fault_heuristic.md",
+      "\u2502   \u251c\u2500\u2500 skills_wrappers/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ambiguity_escalation/",
+      "\u2502   \u2502   \u251c\u2500\u2500 api_client_generator/",
+      "\u2502   \u2502   \u251c\u2500\u2500 artifact_persistence_discipline/",
+      "\u2502   \u2502   \u251c\u2500\u2500 async_concurrency_expert/",
+      "\u2502   \u2502   \u251c\u2500\u2500 brainstorming_design_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 code_analysis_qa_gate/",
+      "\u2502   \u2502   \u251c\u2500\u2500 code_structuring_pythonic/",
+      "\u2502   \u2502   \u251c\u2500\u2500 config_env_manager/",
+      "\u2502   \u2502   \u251c\u2500\u2500 connect_duckdb/",
+      "\u2502   \u2502   \u251c\u2500\u2500 context_loading_protocol/",
+      "\u2502   \u2502   \u251c\u2500\u2500 csv_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 data_integrity_guardian/",
+      "\u2502   \u2502   \u251c\u2500\u2500 db_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 debugger_orchestrator/",
+      "\u2502   \u2502   \u251c\u2500\u2500 decision_process_flow/",
+      "\u2502   \u2502   \u251c\u2500\u2500 dependency_audit/",
+      "\u2502   \u2502   \u251c\u2500\u2500 devops_packaging/",
+      "\u2502   \u2502   \u251c\u2500\u2500 docx_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 excel_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 excel_to_parquet/",
+      "\u2502   \u2502   \u251c\u2500\u2500 execution_flow_orchestration/",
+      "\u2502   \u2502   \u251c\u2500\u2500 execution_timer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 externalized_logic_handler/",
+      "\u2502   \u2502   \u251c\u2500\u2500 file_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 generate_exe_pyinstaller_onedir/",
+      "\u2502   \u2502   \u251c\u2500\u2500 git_rollback_strategy/",
+      "\u2502   \u2502   \u251c\u2500\u2500 html_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 immutable_resource_respect/",
+      "\u2502   \u2502   \u251c\u2500\u2500 input_file_handler/",
+      "\u2502   \u2502   \u251c\u2500\u2500 input_validation_sanitizer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 json_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 library_manager/",
+      "\u2502   \u2502   \u251c\u2500\u2500 linter_formatter_guru/",
+      "\u2502   \u2502   \u251c\u2500\u2500 llm_inference_optimization/",
+      "\u2502   \u2502   \u251c\u2500\u2500 load_json_files/",
+      "\u2502   \u2502   \u251c\u2500\u2500 load_sql_queries/",
+      "\u2502   \u2502   \u251c\u2500\u2500 load_yaml_files/",
+      "\u2502   \u2502   \u251c\u2500\u2500 log_bundle_folder_management/",
+      "\u2502   \u2502   \u251c\u2500\u2500 log_overwrite_policy/",
+      "\u2502   \u2502   \u251c\u2500\u2500 markdown_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 microservices_api_architect/",
+      "\u2502   \u2502   \u251c\u2500\u2500 minimal_documentation_policy/",
+      "\u2502   \u2502   \u251c\u2500\u2500 naming_control_flow/",
+      "\u2502   \u2502   \u251c\u2500\u2500 output_validation_checklist/",
+      "\u2502   \u2502   \u251c\u2500\u2500 parquet_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 parquet_to_excel_polars_xlsxwriter/",
+      "\u2502   \u2502   \u251c\u2500\u2500 path_traversal_prevention/",
+      "\u2502   \u2502   \u251c\u2500\u2500 pdf_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 performance_profiler/",
+      "\u2502   \u2502   \u251c\u2500\u2500 plan_archive_protocol/",
+      "\u2502   \u2502   \u251c\u2500\u2500 powerbi_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 pptx_explorer/",
+      "\u2502   \u2502   \u251c\u2500\u2500 protected_file_validation/",
+      "\u2502   \u2502   \u251c\u2500\u2500 python_venv_executor/",
+      "\u2502   \u2502   \u251c\u2500\u2500 query_parquet_duckdb/",
+      "\u2502   \u2502   \u251c\u2500\u2500 read_excel_pandas/",
+      "\u2502   \u2502   \u251c\u2500\u2500 read_excel_polars_openpyxl/",
+      "\u2502   \u2502   \u251c\u2500\u2500 refactoring_assistant/",
+      "\u2502   \u2502   \u251c\u2500\u2500 regression_test_automation/",
+      "\u2502   \u2502   \u251c\u2500\u2500 risk_scoring_matrix/",
+      "\u2502   \u2502   \u251c\u2500\u2500 root_cause_tracing/",
+      "\u2502   \u2502   \u251c\u2500\u2500 scope_control_discipline/",
+      "\u2502   \u2502   \u251c\u2500\u2500 secure_python_practices/",
+      "\u2502   \u2502   \u251c\u2500\u2500 serialization_persistence/",
+      "\u2502   \u2502   \u251c\u2500\u2500 setup_medallion_structure/",
+      "\u2502   \u2502   \u251c\u2500\u2500 skill_authority_first/",
+      "\u2502   \u2502   \u251c\u2500\u2500 systematic_debugging/",
+      "\u2502   \u2502   \u251c\u2500\u2500 testing_qa_mentor/",
+      "\u2502   \u2502   \u251c\u2500\u2500 type_master/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_application_assets/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_framework_selection/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_identity_policy/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_layout_proportionality/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_splash_and_lazy_loading/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_theme_binding/",
+      "\u2502   \u2502   \u251c\u2500\u2500 ui_widget_modularity/",
+      "\u2502   \u2502   \u251c\u2500\u2500 verification_before_completion/",
+      "\u2502   \u2502   \u251c\u2500\u2500 workspace_model_awareness/",
+      "\u2502   \u2502   \u251c\u2500\u2500 xml_explorer/",
+      "\u2502   \u2502   \u2514\u2500\u2500 yaml_explorer/",
+      "\u2502   \u251c\u2500\u2500 task_templates/",
+      "\u2502   \u2502   \u251c\u2500\u2500 execute_plan.yaml",
+      "\u2502   \u2502   \u251c\u2500\u2500 exploratory_analysis.yaml",
+      "\u2502   \u2502   \u251c\u2500\u2500 feature_refactor.yaml",
+      "\u2502   \u2502   \u251c\u2500\u2500 fix_bugs.yaml",
+      "\u2502   \u2502   \u251c\u2500\u2500 junior_task.yaml",
+      "\u2502   \u2502   \u251c\u2500\u2500 phase0_preflight.yaml",
+      "\u2502   \u2502   \u2514\u2500\u2500 user_task_dummies_es.yaml",
+      "\u2502   \u2514\u2500\u2500 user_task.yaml",
+      "\u251c\u2500\u2500 agent.md",
+      "\u251c\u2500\u2500 agent_framework_config.yaml",
+      "\u251c\u2500\u2500 agent_tools/",
+      "\u2502   \u251c\u2500\u2500 __init__.py",
+      "\u2502   \u251c\u2500\u2500 activate_kernel.py",
+      "\u2502   \u251c\u2500\u2500 analyze_dependencies.py",
+      "\u2502   \u251c\u2500\u2500 audit_logger.py",
+      "\u2502   \u251c\u2500\u2500 config_validator.py",
+      "\u2502   \u251c\u2500\u2500 context_loader.py",
+      "\u2502   \u251c\u2500\u2500 generate_skill_wrappers.py",
+      "\u2502   \u251c\u2500\u2500 load_full_context.py",
+      "\u2502   \u251c\u2500\u2500 load_static_context.py",
+      "\u2502   \u251c\u2500\u2500 mode_selector.py",
+      "\u2502   \u251c\u2500\u2500 schema_validator.py",
+      "\u2502   \u251c\u2500\u2500 simulate_execution.py",
+      "\u2502   \u251c\u2500\u2500 treemap.py",
+      "\u2502   \u251c\u2500\u2500 validate_message.py",
+      "\u2502   \u2514\u2500\u2500 validate_skill_metadata.py",
+      "\u251c\u2500\u2500 instructions/",
+      "\u2502   \u251c\u2500\u2500 .gitignore.host",
+      "\u2502   \u251c\u2500\u2500 PORTABLE_DEPLOYMENT.md",
+      "\u2502   \u251c\u2500\u2500 activate_kernel.cmd",
+      "\u2502   \u251c\u2500\u2500 activate_kernel.sh",
+      "\u2502   \u251c\u2500\u2500 instructions_dummies.md",
+      "\u2502   \u251c\u2500\u2500 kernel_profiles.md",
+      "\u2502   \u251c\u2500\u2500 trigger_antigravity.md",
+      "\u2502   \u251c\u2500\u2500 trigger_generic.md",
+      "\u2502   \u2514\u2500\u2500 trigger_vscode.md",
+      "\u2514\u2500\u2500 requirements.txt"
+    ]
+  },
+  "python_signatures": {
+    "agent_tools/activate_kernel.py": [
+      "def project_root()",
+      "def profile_path(profile)",
+      "def state_path(agent_id, explicit)",
+      "def load_state(path)",
+      "def main()"
+    ],
+    "agent_tools/analyze_dependencies.py": [
+      "def cargar_gitignore(directorio)",
+      "def obtener_archivos_python(raiz, gitignore_spec)",
+      "def analizar_imports(archivo, raiz_proyecto)",
+      "def analizar_archivos_configuracion(archivo)",
+      "def construir_grafo_dependencias(raiz_proyecto, gitignore_spec)",
+      "def generar_arbol_ascii(grafo, modulo, nivel, visitados, prefijo, mostrar_externos)",
+      "def generar_reporte_markdown(grafo, raiz_proyecto, archivo_salida)",
+      "def main()"
+    ],
+    "agent_tools/audit_logger.py": [
+      "class AuditEntry",
+      "def get_project_root()",
+      "def get_log_dir()",
+      "def get_current_log_file()",
+      "def calculate_hash(data)",
+      "def get_last_hash(log_file)",
+      "def create_entry(event_type, data, agent)",
+      "def append_entry(entry)",
+      "def log_event(event_type, data, agent)",
+      "def load_entries(from_date, to_date, event_type, agent, limit)",
+      "def verify_chain(entries)",
+      "def export_entries(entries, output_format, output_file)",
+      "def cmd_log(args)",
+      "def cmd_query(args)",
+      "def cmd_export(args)",
+      "def main()"
+    ],
+    "agent_tools/config_validator.py": [
+      "def validate_config_files()"
+    ],
+    "agent_tools/context_loader.py": [
+      "def get_project_root()",
+      "def _load_registry()",
+      "def _get_registry()",
+      "def list_available()",
+      "def load_on_demand(name)",
+      "def enrich_context(base_context, file_names)"
+    ],
+    "agent_tools/generate_skill_wrappers.py": [
+      "class SkillRef",
+      "def load_yaml(path)",
+      "def load_index(index_path)",
+      "def find_body_file(skills_dir, skill_name)",
+      "def find_meta_file(skills_dir, skill_name)",
+      "def to_repo_rel(path)",
+      "def build_skill_refs(skills_dir, entries)",
+      "def render_wrapper(skill)",
+      "def write_wrappers(skills, output_dir, dry_run)",
+      "def clean_stale_dirs(output_dir, keep_skill_names, dry_run)",
+      "def main()"
+    ],
+    "agent_tools/load_full_context.py": [
+      "def _project_root()",
+      "def _resolve_path(path)",
+      "def _is_under_project_root(path)",
+      "def _resolve_and_validate(path)",
+      "def load_yaml_file(path)",
+      "def load_json_file(path)",
+      "def load_full_context(task_plan_path, system_config_path, summary_path, on_demand)",
+      "def save_context_as_json(full_context, output_path)"
+    ],
+    "agent_tools/load_static_context.py": [
+      "def _load_framework_config()",
+      "def _deep_merge_dicts(base, override)",
+      "def _resolve_static_context_config(requested_profile)",
+      "def _is_non_empty_str(value)",
+      "def _rule_matches(rule, env)",
+      "def _auto_detect_profile(full_cfg, profiles)",
+      "def _get_excluded_from_signatures(static_cfg)",
+      "def _get_excluded_dirs_from_tree(static_cfg)",
+      "def _get_static_context_limits(static_cfg)",
+      "def _get_truncation_policy(static_cfg)",
+      "def _load_gitignore_spec(root)",
+      "def load_yaml_file(path)",
+      "def _file_metadata(path)",
+      "def _file_ref(path)",
+      "def _compact_skills_index(full_registry)",
+      "def _schema_summary(path)",
+      "def _generate_file_tree(root, max_depth, spec)",
+      "def _extract_python_signatures(root, max_depth, spec)",
+      "def _serialized_line_count(data)",
+      "def _trim_python_signatures_once(context, trim_fraction_percent)",
+      "def _trim_file_tree_once(context, trim_fraction_percent)",
+      "def _trim_schema_summaries_once(context, minimum_schema_top_level_keys)",
+      "def _trim_agent_rules_sections_once(context, minimum_agent_rules_sections)",
+      "def _drop_python_signatures(context)",
+      "def _drop_schema_summaries(context)",
+      "def _drop_agent_rules_sections(context)",
+      "def _drop_file_tree_to_minimum(context, minimum)",
+      "def _enforce_context_line_budget(context, max_lines, policy)",
+      "def load_static_context(profile)",
+      "def save_static_context_as_json(context, output_path, max_lines)"
+    ],
+    "agent_tools/mode_selector.py": [
+      "def project_root()",
+      "def load_yaml(path)",
+      "def deep_merge(base, override)",
+      "def resolve_state_path(agent_id)",
+      "def load_state(path)",
+      "def profile_file(profile)",
+      "def main()"
+    ],
+    "agent_tools/schema_validator.py": [
+      "def get_project_root()",
+      "def load_json(file_path)",
+      "def load_yaml(file_path)",
+      "def load_file(file_path)",
+      "def get_builtin_schema_path(schema_type)",
+      "def format_error(error, include_context)",
+      "def get_suggested_fix(error)",
+      "def validate_file(file_path, schema_path, verbose)",
+      "def validate_syntax_only(file_path)",
+      "def print_report(file_path, schema_path, is_valid, errors, warnings)",
+      "def main()"
+    ],
+    "agent_tools/simulate_execution.py": [
+      "class SimulationResult",
+      "class SimulationReport",
+      "def get_project_root()",
+      "def load_task_plan(plan_path)",
+      "def check_file_exists(file_path)",
+      "def check_file_writable(file_path)",
+      "def check_protected_file(file_path, project_root)",
+      "def simulate_file_create(action, project_root)",
+      "def simulate_file_modify(action, project_root)",
+      "def simulate_file_delete(action, project_root)",
+      "def simulate_file_rename(action, project_root)",
+      "def simulate_action(action, project_root)",
+      "def check_dependencies(actions)",
+      "def simulate_plan(plan, project_root)",
+      "def print_report(report, verbose)",
+      "def main()"
+    ],
+    "agent_tools/treemap.py": [
+      "def load_gitignore(directory)",
+      "def generate_tree(directory, prefix, excluded, ignored_dirs, gitignore_spec, project_root)",
+      "def main()"
+    ],
+    "agent_tools/validate_message.py": [
+      "def get_project_root()",
+      "def load_json_file(file_path)",
+      "def load_yaml_file(file_path)",
+      "def load_file(file_path)",
+      "def get_schema_path(schema_type)",
+      "def calculate_checksum(payload)",
+      "def validate_checksum(message)",
+      "def validate_references(message)",
+      "def check_dependency_cycles(message)",
+      "def format_validation_error(error)",
+      "def validate_message(message_path, schema_path, schema_type)",
+      "def print_report(report, verbose)",
+      "def main()"
+    ],
+    "agent_tools/validate_skill_metadata.py": [
+      "def load_yaml(path)",
+      "def collect_skills_from_index(index_path)",
+      "def find_meta_file(skill_name)",
+      "def find_body_file(skill_name)",
+      "def validate_meta_fields(meta_data, skill_name)",
+      "def main()"
+    ]
+  },
+  "schemas": {
+    "execution_report.schema.json": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties",
+        "$defs"
+      ]
+    },
+    "system_config.schema.yaml": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties"
+      ]
+    },
+    "task_envelope.schema.json": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties"
+      ]
+    },
+    "task_plan.schema.json": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties",
+        "$defs"
+      ]
+    },
+    "user_task.schema.yaml": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "additionalProperties",
+        "required",
+        "properties",
+        "allOf"
+      ]
+    }
+  },
+  "agent_definitions": {
+    "senior": {
+      "context": {
+        "path": "agent\\agent_senior\\context\\context.md",
+        "exists": true
+      },
+      "workflow": {
+        "path": "agent\\agent_senior\\workflow\\workflow.md",
+        "exists": true
+      }
+    },
+    "executor": {
+      "context": {
+        "path": "agent\\agent_executor\\context\\context.md",
+        "exists": true
+      },
+      "workflow": {
+        "path": "agent\\agent_executor\\workflow\\workflow.md",
+        "exists": true
+      }
+    },
+    "inspector": {
+      "context": {
+        "path": "agent\\agent_inspector\\context\\context.md",
+        "exists": true
+      },
+      "workflow": {
+        "path": "agent\\agent_inspector\\workflow\\workflow.md",
+        "exists": true
+      }
+    }
+  },
+  "_context_budget": {
+    "max_lines": 1000,
+    "final_lines": 502,
+    "truncation_applied": false,
+    "truncation_actions": []
+  }
+}

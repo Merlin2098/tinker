@@ -1,0 +1,28 @@
+role: senior
+mode: ANALYZE_ONLY
+
+objective: |
+  Analyze architecture and risks without implementing changes.
+
+files:
+  - src/pipeline/
+  - src/domain/
+
+config:
+  sources:
+    - id: analysis_scope
+      path: docs/analysis_scope.md
+      purpose: Scope boundaries for analysis
+
+constraints: |
+  Read-only analysis. No implementation.
+  Explicitly report unknowns; do not infer missing inputs.
+
+risk_tolerance: LOW
+phase: B_EXECUTION
+
+validation:
+  status: PASSED
+  validated_by: agent_inspector
+  validated_at: "2026-02-12T00:00:00Z"
+  notes: "Exploratory analysis contract validated."

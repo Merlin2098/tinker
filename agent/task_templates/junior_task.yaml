@@ -1,0 +1,27 @@
+role: junior
+mode: IMPLEMENT_ONLY
+
+objective: |
+  Apply the explicitly requested change only.
+
+files:
+  - src/module/target_file.py
+
+config:
+  sources:
+    - id: implementation_instructions
+      path: agent/agent_outputs/plans/example/task_plan.json
+      purpose: Explicit execution instructions
+
+constraints: |
+  Maximum 3 files. Maximum 50 lines changed per file.
+  Do not perform analysis. Do not expand scope.
+
+risk_tolerance: LOW
+phase: B_EXECUTION
+
+validation:
+  status: PASSED
+  validated_by: agent_inspector
+  validated_at: "2026-02-12T00:00:00Z"
+  notes: "Contract validated. Approved for junior execution."

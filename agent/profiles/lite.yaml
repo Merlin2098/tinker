@@ -1,0 +1,31 @@
+version: "1.0.0"
+profile: "LITE"
+default: true
+
+governance:
+  mode: "minimal_strict"
+  include_kernel_baseline: true
+  extra_rules: []
+
+skills:
+  preload:
+    - library_manager
+    - file_explorer
+    - input_file_handler
+    - code_structuring_pythonic
+    - secure_python_practices
+    - systematic_debugging
+  lazy_loading:
+    enabled: false
+  max_skill_budget: 15
+
+trigger_engine:
+  enabled: false
+  mode: "off"
+
+multi_agent:
+  enabled: false
+
+contracts:
+  allowed_roles: [senior, junior]
+  enforce_no_auto_upgrade: true

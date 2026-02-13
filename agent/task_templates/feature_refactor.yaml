@@ -1,0 +1,27 @@
+role: inspector
+mode: ANALYZE_ONLY
+
+objective: |
+  Produce a structural refactor plan without execution.
+
+files:
+  - src/
+
+config:
+  sources:
+    - id: architecture_constraints
+      path: docs/architecture_constraints.md
+      purpose: Planning boundaries
+
+constraints: |
+  Planning only. No direct code execution.
+  Preserve existing behavior in proposed plan.
+
+risk_tolerance: MEDIUM
+phase: B_EXECUTION
+
+validation:
+  status: PASSED
+  validated_by: agent_senior
+  validated_at: "2026-02-12T00:00:00Z"
+  notes: "Inspector planning contract validated."

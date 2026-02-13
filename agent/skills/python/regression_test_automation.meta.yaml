@@ -1,0 +1,23 @@
+# Layer 2 Header - regression_test_automation
+name: regression_test_automation
+version: "1.0.0"
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 63
+purpose: "Automated regression testing workflow with baseline capture, targeted suites, and stability checks"
+triggers:
+  keywords: [regression test, automatic regression, prevent regressions, flaky tests, smoke suite, test matrix]
+  match_extensions: [".py", ".yaml", ".json"]
+  match_phases: [test, validate]
+  match_errors: [AssertionError, "test failed", flaky]
+requires: [testing_qa_mentor]
+exclusive_with: []
+modes: [ANALYZE_AND_IMPLEMENT, IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_senior, agent_executor]
+  optional: [agent_inspector]
+  # NOT agent_junior - requires strategy and selective prioritization
+max_phase: 1
+body_file: "regression_test_automation.md"
+token_estimate: 1400

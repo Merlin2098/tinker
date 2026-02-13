@@ -1,0 +1,21 @@
+# Layer 2 Header — verification_before_completion
+name: verification_before_completion
+version: "1.0.0"
+category: Governance
+tier: core
+cluster: governance
+priority: 91
+purpose: "Fresh evidence required before any completion claims"
+triggers:
+  keywords: [verify completion, prove it works, evidence required, completion claim, verify fix]
+  match_extensions: []
+  match_phases: []
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [ANALYZE_AND_IMPLEMENT]
+agent_binding:
+  mandatory: [agent_inspector, agent_executor, agent_senior]
+  optional: []
+body_file: "verification_before_completion.md"
+token_estimate: 500

@@ -1,0 +1,22 @@
+name: plan_archive_protocol
+version: "1.0.0"
+category: Execution
+tier: core
+cluster: execution_pipeline
+priority: 83
+purpose: "Archives active plans before new execution preserving history"
+triggers:
+  keywords: [archive plan, plan history, preserve plan, plan lifecycle, plan versioning]
+  match_extensions: []
+  match_phases: [pre-execute]
+  match_errors: []
+requires: []
+exclusive_with: []
+pipeline: execution
+pipeline_order: 0
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor]
+  optional: []
+body_file: "plan_archive_protocol.md"
+token_estimate: 500

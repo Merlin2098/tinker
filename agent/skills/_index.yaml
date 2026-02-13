@@ -1,0 +1,133 @@
+# =============================================================================
+# SKILLS INDEX v2.0.0 — Layer 1 (Compact Loader)
+# =============================================================================
+#
+# Purpose: Lightweight index for prompt-based runtimes (VS Code, Claude Code, etc.)
+# Token cost: ~5K tokens (vs ~76K for full skill bodies)
+# Usage: Inject this file at session start. Load full .md bodies on demand.
+#
+# Format per skill: name | tier | cluster | priority | one-line purpose
+# Tiers: core (always loaded), lazy (on-demand), dormant (registry-only)
+# =============================================================================
+
+version: "2.0.0"
+generated_from: "skills_registry.yaml"
+last_updated: "2026-02-12"
+
+# Layer loading protocol:
+#   Layer 1: This file (_index.yaml) — inject at session start (~5K tokens)
+#   Layer 2: .meta.yaml headers — load when cluster is activated (~200 tokens each)
+#   Layer 3: Full .md bodies — load when skill is invoked (~500-2000 tokens each)
+
+index:
+
+  # ─── GOVERNANCE (10 skills, all core) ───────────────────────────────────────
+  - { name: skill_authority_first,          tier: core,    cluster: governance,        pri: 100, purpose: "Skills are authoritative units invoked BEFORE any agent action" }
+  - { name: workspace_model_awareness,      tier: core,    cluster: governance,        pri: 99,  purpose: "Agents respect workspace model — agent/ writable, source protected" }
+  - { name: scope_control_discipline,       tier: core,    cluster: governance,        pri: 98,  purpose: "Strict scope boundaries preventing scope creep" }
+  - { name: immutable_resource_respect,     tier: core,    cluster: governance,        pri: 97,  purpose: "Prevents modification of immutable resources" }
+  - { name: artifact_persistence_discipline, tier: core,   cluster: governance,        pri: 96,  purpose: "Agent outputs persisted to disk, never deleted" }
+  - { name: minimal_documentation_policy,   tier: core,    cluster: governance,        pri: 95,  purpose: "Documentation only when explicitly requested" }
+  - { name: ambiguity_escalation,           tier: core,    cluster: governance,        pri: 94,  purpose: "Escalates unclear requirements instead of guessing" }
+  - { name: protected_file_validation,      tier: core,    cluster: governance,        pri: 93,  purpose: "Validates protected files are not modified" }
+  - { name: path_traversal_prevention,      tier: core,    cluster: governance,        pri: 92,  purpose: "Prevents path traversal and sandbox escapes" }
+  - { name: verification_before_completion, tier: core,    cluster: governance,        pri: 91,  purpose: "Fresh evidence required before completion claims" }
+
+  # ─── PLANNING (6 skills, all core) ─────────────────────────────────────────
+  - { name: context_loading_protocol,       tier: core,    cluster: planning_pipeline, pri: 90,  purpose: "Loads context: treemap → dependencies → task-specific" }
+  - { name: decision_process_flow,          tier: core,    cluster: planning_pipeline, pri: 89,  purpose: "Structured decision-making through scoring and plan generation" }
+  - { name: risk_scoring_matrix,            tier: core,    cluster: planning_pipeline, pri: 88,  purpose: "3x4 probability/impact risk matrix with approval thresholds" }
+  - { name: output_validation_checklist,    tier: core,    cluster: planning_pipeline, pri: 87,  purpose: "Validates outputs before emission — IDs, versions, DAG" }
+  - { name: brainstorming_design_explorer,  tier: core,    cluster: planning_pipeline, pri: 80,  purpose: "Pre-planning design exploration with 2-3 approaches" }
+  - { name: llm_inference_optimization,     tier: core,    cluster: meta,              pri: 85,  purpose: "Token budget, context pruning at 60%, temperature selection" }
+
+  # ─── EXECUTION (3 skills, all core) ────────────────────────────────────────
+  - { name: execution_flow_orchestration,   tier: core,    cluster: execution_pipeline, pri: 86, purpose: "Structured execution with atomic actions and failure handling" }
+  - { name: git_rollback_strategy,          tier: core,    cluster: execution_pipeline, pri: 84, purpose: "Git revert for rollback maintaining commit history" }
+  - { name: plan_archive_protocol,          tier: core,    cluster: execution_pipeline, pri: 83, purpose: "Archives active plans before new execution" }
+
+  # ─── RUNTIME (1 skill, core) ───────────────────────────────────────────────
+  - { name: python_venv_executor,           tier: core,    cluster: runtime,            pri: 82, purpose: "Execute Python via venv only — never global Python" }
+
+  # ─── PYTHON (17 skills: 3 core, 14 lazy) ──────────────────────────────────
+  - { name: code_structuring_pythonic,      tier: core,    cluster: python_quality,     pri: 70, purpose: "Idiomatic Python, PEP 8, clean architecture" }
+  - { name: data_integrity_guardian,        tier: core,    cluster: python_quality,     pri: 71, purpose: "Data consistency: validation, constraints, transactions" }
+  - { name: secure_python_practices,        tier: core,    cluster: python_quality,     pri: 72, purpose: "Security: input validation, injection prevention, secrets" }
+  - { name: type_master,                    tier: lazy,    cluster: python_quality,     pri: 60, purpose: "Type hints, Mypy/Pyright, Pydantic runtime validation" }
+  - { name: async_concurrency_expert,       tier: lazy,    cluster: python_quality,     pri: 55, purpose: "Async/await, event loops, concurrent task handling" }
+  - { name: microservices_api_architect,    tier: lazy,    cluster: python_quality,     pri: 50, purpose: "FastAPI/Flask APIs with DDD and OpenAPI" }
+  - { name: code_analysis_qa_gate,          tier: lazy,    cluster: python_quality,     pri: 64, purpose: "Static analysis and deterministic QA gates before merge/release" }
+  - { name: testing_qa_mentor,              tier: lazy,    cluster: python_quality,     pri: 58, purpose: "Pytest, fixtures, parametrization, Hypothesis, mocking" }
+  - { name: regression_test_automation,     tier: lazy,    cluster: python_quality,     pri: 63, purpose: "Automated regression suites with baseline and flaky-test control" }
+  - { name: naming_control_flow,            tier: lazy,    cluster: python_quality,     pri: 45, purpose: "Naming conventions and readable control flow patterns" }
+  - { name: performance_profiler,           tier: lazy,    cluster: python_quality,     pri: 50, purpose: "cProfile, line_profiler, memory_profiler optimization" }
+  - { name: dependency_audit,               tier: lazy,    cluster: python_quality,     pri: 50, purpose: "Security vulns, compatibility, licensing audit" }
+  - { name: linter_formatter_guru,          tier: lazy,    cluster: python_quality,     pri: 48, purpose: "Pylint, Flake8, Black, Autopep8 with pre-commit hooks" }
+  - { name: refactoring_assistant,          tier: lazy,    cluster: python_quality,     pri: 50, purpose: "Systematic refactoring: readability, dedup, simplification" }
+  - { name: api_client_generator,           tier: lazy,    cluster: python_quality,     pri: 45, purpose: "Type-safe API clients for REST/GraphQL" }
+  - { name: config_env_manager,             tier: lazy,    cluster: python_quality,     pri: 50, purpose: "Config and env vars with dotenv, multi-environment" }
+  - { name: externalized_logic_handler,     tier: lazy,    cluster: python_quality,     pri: 45, purpose: "Externalize logic into rules, DSLs, config-driven templates" }
+  - { name: serialization_persistence,      tier: lazy,    cluster: python_quality,     pri: 45, purpose: "Pickle/JSON/YAML serialization, caching, data versioning" }
+  - { name: devops_packaging,               tier: lazy,    cluster: python_quality,     pri: 45, purpose: "Python packaging via setup.py/pyproject.toml" }
+
+  # ─── FILE EXPLORATION (14 skills: 1 core facade, 12 lazy, 1 dormant) ──────
+  - { name: file_explorer,                  tier: core,    cluster: file_exploration,   pri: 75, purpose: "Facade: detects file type, delegates to format explorer" }
+  - { name: csv_explorer,                   tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "CSV analysis: encoding, delimiter, schema inspection" }
+  - { name: excel_explorer,                 tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "Excel workbook: sheets, cell data, metadata" }
+  - { name: json_explorer,                  tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "JSON: structure, validation, nested navigation" }
+  - { name: yaml_explorer,                  tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "YAML: syntax validation, hierarchy extraction" }
+  - { name: xml_explorer,                   tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "XML: element hierarchy, attributes" }
+  - { name: html_explorer,                  tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "HTML: text, tables, links, metadata extraction" }
+  - { name: pdf_explorer,                   tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "PDF: text and metadata, multi-page" }
+  - { name: docx_explorer,                  tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "Word: text, tables, images, formatting" }
+  - { name: pptx_explorer,                  tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "PowerPoint: slides, text, speaker notes" }
+  - { name: parquet_explorer,               tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "Parquet: columnar schema, stats, previews" }
+  - { name: db_explorer,                    tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "Database: tables, schemas, data preview" }
+  - { name: powerbi_explorer,               tier: lazy,    cluster: file_exploration,   pri: 50, purpose: "Power BI: data models, DAX, relationships" }
+  - { name: markdown_explorer,              tier: dormant, cluster: file_exploration,   pri: 50, purpose: "Markdown: headings, links, code blocks" }
+
+  # ─── UI (7 skills, all lazy) ───────────────────────────────────────────────
+  - { name: ui_framework_selection,         tier: lazy,    cluster: ui,                 pri: 55, purpose: "Tkinter for MVP, PySide6 for production" }
+  - { name: ui_widget_modularity,           tier: lazy,    cluster: ui,                 pri: 50, purpose: "Self-contained, reusable, decoupled widgets" }
+  - { name: ui_theme_binding,               tier: lazy,    cluster: ui,                 pri: 50, purpose: "Reactive theme system with light/dark mode" }
+  - { name: ui_layout_proportionality,      tier: lazy,    cluster: ui,                 pri: 50, purpose: "Adaptive layouts across screen resolutions" }
+  - { name: ui_identity_policy,             tier: lazy,    cluster: ui,                 pri: 45, purpose: "App identity (name, version) without redundancy" }
+  - { name: ui_splash_and_lazy_loading,     tier: lazy,    cluster: ui,                 pri: 45, purpose: "Splash screens during resource loading" }
+  - { name: ui_application_assets,          tier: lazy,    cluster: ui,                 pri: 45, purpose: "Centralized asset management (icons, images)" }
+
+  # ─── IO (4 skills, all lazy) ───────────────────────────────────────────────
+  - { name: read_excel_pandas,              tier: lazy,    cluster: data_pipeline,      pri: 50, purpose: "Pandas Excel for exploratory (<50MB)" }
+  - { name: read_excel_polars_openpyxl,     tier: lazy,    cluster: data_pipeline,      pri: 55, purpose: "Polars+Openpyxl: 2-5x faster, 70% less memory" }
+  - { name: excel_to_parquet,               tier: lazy,    cluster: data_pipeline,      pri: 55, purpose: "Excel→Parquet: 60-80% compression for bronze layer" }
+  - { name: parquet_to_excel_polars_xlsxwriter, tier: lazy, cluster: data_pipeline,     pri: 55, purpose: "Parquet→Excel export for business users" }
+
+  # ─── FORMATS (3 skills, all lazy) ──────────────────────────────────────────
+  - { name: load_json_files,                tier: lazy,    cluster: format_loaders,     pri: 50, purpose: "JSON loading with validation and schema enforcement" }
+  - { name: load_yaml_files,                tier: lazy,    cluster: format_loaders,     pri: 50, purpose: "YAML config loading with multi-environment support" }
+  - { name: load_sql_queries,               tier: lazy,    cluster: format_loaders,     pri: 50, purpose: "SQL query loading from versioned templates" }
+
+  # ─── DATABASE (2 skills, all lazy) ─────────────────────────────────────────
+  - { name: connect_duckdb,                 tier: lazy,    cluster: data_pipeline,      pri: 55, purpose: "DuckDB connections for OLAP workloads" }
+  - { name: query_parquet_duckdb,           tier: lazy,    cluster: data_pipeline,      pri: 55, purpose: "SQL on Parquet via DuckDB, zero-copy reads" }
+
+  # ─── DEBUGGING (2 skills, all lazy) ────────────────────────────────────────
+  - { name: debugger_orchestrator,          tier: lazy,    cluster: debugging,          pri: 67, purpose: "End-to-end debugger workflow with verification and regression-proofing" }
+  - { name: systematic_debugging,           tier: lazy,    cluster: debugging,          pri: 65, purpose: "4-phase: Root Cause, Pattern, Hypothesis, Implementation" }
+  - { name: root_cause_tracing,             tier: lazy,    cluster: debugging,          pri: 60, purpose: "5-step backward call stack tracing" }
+
+  # ─── ARCHITECTURE (1 skill, lazy) ──────────────────────────────────────────
+  - { name: setup_medallion_structure,      tier: lazy,    cluster: data_pipeline,      pri: 50, purpose: "Bronze/Silver/Gold data lake directory structure" }
+
+  # ─── DEVOPS + BUILD (2 skills: 1 core, 1 lazy) ────────────────────────────
+  - { name: library_manager,                tier: core,    cluster: devops,             pri: 73, purpose: "Python package dependencies, versioning, environment" }
+  - { name: generate_exe_pyinstaller_onedir, tier: lazy,   cluster: devops,             pri: 45, purpose: "PyInstaller --onedir Windows executables" }
+
+  # ─── FILE HANDLING (2 skills: 1 core, 1 dormant) ──────────────────────────
+  - { name: input_file_handler,             tier: core,    cluster: file_handling,       pri: 74, purpose: "File input: validation, encoding detection, errors" }
+  - { name: input_validation_sanitizer,     tier: dormant, cluster: file_handling,       pri: 50, purpose: "Input validation and sanitization" }
+
+  # ─── OBSERVABILITY (3 skills, all lazy) ────────────────────────────────────
+  - { name: execution_timer,                tier: lazy,    cluster: observability,       pri: 50, purpose: "Execution time measurement (hh:mm:ss / ms)" }
+  - { name: log_overwrite_policy,           tier: lazy,    cluster: observability,       pri: 45, purpose: "Fresh logs per execution, no accumulation" }
+  - { name: log_bundle_folder_management,   tier: lazy,    cluster: observability,       pri: 45, purpose: "Log folders outside PyInstaller bundles" }
+

@@ -1,0 +1,61 @@
+metadata:
+  version: 1.0.0
+  created: '2026-02-12'
+  total_archived_skills: 2
+  source_registry_version: 2.0.0
+archived_skills:
+- name: markdown_explorer
+  category: File Exploration
+  tier: dormant
+  has_implementation: false
+  priority: 50
+  purpose: Parses Markdown files extracting headings, links, code blocks, and structure
+  triggers:
+    keywords:
+    - markdown
+    - explore markdown
+    - md structure
+    - markdown headings
+    - read markdown
+    match_extensions:
+    - .md
+    match_phases: []
+    match_errors: []
+  requires:
+  - file_explorer
+  exclusive_with: []
+  cluster: file_exploration
+  facade: file_explorer
+  files_required:
+  - '*.md'
+  modes:
+  - ANALYZE_AND_IMPLEMENT
+- name: input_validation_sanitizer
+  category: File Handling
+  tier: dormant
+  has_implementation: false
+  priority: 50
+  purpose: Validates and sanitizes incoming file data ensuring correct types, ranges,
+    and formats
+  triggers:
+    keywords:
+    - validate input
+    - sanitize data
+    - input check
+    - data cleaning
+    - format validation
+    match_extensions: []
+    match_phases:
+    - validate
+    match_errors:
+    - ValueError
+    - ValidationError
+  requires:
+  - input_file_handler
+  exclusive_with: []
+  cluster: file_handling
+  files_required:
+  - '*'
+  modes:
+  - ANALYZE_AND_IMPLEMENT
+  - IMPLEMENT_ONLY

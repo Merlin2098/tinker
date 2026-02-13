@@ -1,0 +1,20 @@
+name: python_venv_executor
+version: "1.0.0"
+category: Runtime
+tier: core
+cluster: runtime
+priority: 82
+purpose: "Execute Python via virtual environment only — global Python is never used"
+triggers:
+  keywords: [venv, virtual environment, run script, execute python, isolated execution]
+  match_extensions: [".py"]
+  match_phases: [execute]
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [IMPLEMENT_ONLY]
+agent_binding:
+  mandatory: [agent_executor, agent_senior]
+  optional: []
+body_file: "python_venv_executor.md"
+token_estimate: 500

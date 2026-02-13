@@ -1,0 +1,21 @@
+# Layer 2 Header — minimal_documentation_policy
+name: minimal_documentation_policy
+version: "1.0.0"
+category: Governance
+tier: core
+cluster: governance
+priority: 95
+purpose: "Documentation only when explicitly requested"
+triggers:
+  keywords: [documentation policy, no unnecessary docs, minimal docs, avoid duplication]
+  match_extensions: []
+  match_phases: []
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [ANALYZE_AND_IMPLEMENT]
+agent_binding:
+  mandatory: [agent_inspector, agent_executor, agent_senior]
+  optional: []
+body_file: "minimal_documentation_policy.md"
+token_estimate: 500

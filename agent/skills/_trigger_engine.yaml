@@ -1,0 +1,563 @@
+# =============================================================================
+# TRIGGER ENGINE v2.0.0 — Deterministic Skill Selection Rules
+# =============================================================================
+#
+# Purpose: External orchestrators (VS Code extension, CLI tool) can evaluate
+# these rules WITHOUT an LLM to narrow down skill candidates before any
+# prompt is sent. This reduces token cost and improves selection accuracy.
+#
+# Rule types:
+#   extension_match — triggered by file extension in the working context
+#   phase_match     — triggered by pipeline phase (init, plan, execute, etc.)
+#   error_match     — triggered by error class or pattern in output
+#   cluster_auto    — always activate entire cluster when any member triggers
+#
+# Evaluation order:
+#   1. Extension rules (highest specificity)
+#   2. Error rules (context-dependent)
+#   3. Phase rules (pipeline-dependent)
+#   4. Cluster auto-activation (fan-out)
+#   5. Governance overlay (always injected, never filtered)
+#
+# After deterministic filtering, remaining ambiguity is resolved by LLM.
+# =============================================================================
+
+version: "2.0.0"
+last_updated: "2026-02-12"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PROFILE POLICIES — Kernel profile boundaries
+# ─────────────────────────────────────────────────────────────────────────────
+profile_policies:
+  LITE:
+    description: "No auto-triggering. Only explicit skills."
+    extension_rules: disabled
+    phase_rules: disabled
+    error_rules: disabled
+    cluster_rules: disabled
+  STANDARD:
+    description: "Suggestions only. No auto-activation beyond governance overlay."
+    activate_to_suggest: true
+    cluster_rules: suggest_only
+  FULL:
+    description: "Deterministic activation and cluster fan-out enabled."
+    activate_to_suggest: false
+    cluster_rules: enabled
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GOVERNANCE OVERLAY — Always active, never filtered
+# ─────────────────────────────────────────────────────────────────────────────
+governance_always_active:
+  description: "These skills are injected at every session start regardless of triggers"
+  skills:
+    - skill_authority_first
+    - workspace_model_awareness
+    - scope_control_discipline
+    - immutable_resource_respect
+    - artifact_persistence_discipline
+    - minimal_documentation_policy
+    - ambiguity_escalation
+    - protected_file_validation
+    - path_traversal_prevention
+    - verification_before_completion
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EXTENSION-BASED TRIGGERS — No LLM required
+# ─────────────────────────────────────────────────────────────────────────────
+extension_rules:
+
+  ".py":
+    activate_skills:
+      - code_structuring_pythonic
+      - data_integrity_guardian
+      - secure_python_practices
+      - python_venv_executor
+    suggest_skills:
+      - type_master
+      - async_concurrency_expert
+      - code_analysis_qa_gate
+      - testing_qa_mentor
+      - regression_test_automation
+      - performance_profiler
+      - systematic_debugging
+      - debugger_orchestrator
+
+  ".csv":
+    activate_skills:
+      - csv_explorer
+      - file_explorer
+    suggest_skills:
+      - input_file_handler
+
+  ".tsv":
+    activate_skills:
+      - csv_explorer
+      - file_explorer
+    suggest_skills:
+      - input_file_handler
+
+  ".xlsx":
+    activate_skills:
+      - excel_explorer
+      - file_explorer
+    suggest_skills:
+      - read_excel_pandas
+      - read_excel_polars_openpyxl
+      - input_file_handler
+    exclusive_choice:
+      group: excel_reader
+      options: [read_excel_pandas, read_excel_polars_openpyxl]
+      default: read_excel_polars_openpyxl
+      criteria: "Use pandas for exploratory (<50MB), polars for production/large files"
+
+  ".xls":
+    activate_skills:
+      - excel_explorer
+      - file_explorer
+    suggest_skills:
+      - read_excel_pandas
+      - read_excel_polars_openpyxl
+      - input_file_handler
+    exclusive_choice:
+      group: excel_reader
+      options: [read_excel_pandas, read_excel_polars_openpyxl]
+      default: read_excel_polars_openpyxl
+
+  ".json":
+    activate_skills:
+      - json_explorer
+      - file_explorer
+    suggest_skills:
+      - load_json_files
+
+  ".yaml":
+    activate_skills:
+      - yaml_explorer
+      - file_explorer
+    suggest_skills:
+      - load_yaml_files
+
+  ".yml":
+    activate_skills:
+      - yaml_explorer
+      - file_explorer
+    suggest_skills:
+      - load_yaml_files
+
+  ".xml":
+    activate_skills:
+      - xml_explorer
+      - file_explorer
+
+  ".html":
+    activate_skills:
+      - html_explorer
+      - file_explorer
+
+  ".htm":
+    activate_skills:
+      - html_explorer
+      - file_explorer
+
+  ".pdf":
+    activate_skills:
+      - pdf_explorer
+      - file_explorer
+
+  ".docx":
+    activate_skills:
+      - docx_explorer
+      - file_explorer
+
+  ".pptx":
+    activate_skills:
+      - pptx_explorer
+      - file_explorer
+
+  ".parquet":
+    activate_skills:
+      - parquet_explorer
+      - file_explorer
+    suggest_skills:
+      - query_parquet_duckdb
+      - excel_to_parquet
+
+  ".db":
+    activate_skills:
+      - db_explorer
+      - file_explorer
+    suggest_skills:
+      - connect_duckdb
+
+  ".sqlite":
+    activate_skills:
+      - db_explorer
+      - file_explorer
+
+  ".duckdb":
+    activate_skills:
+      - db_explorer
+      - file_explorer
+      - connect_duckdb
+
+  ".pbix":
+    activate_skills:
+      - powerbi_explorer
+      - file_explorer
+
+  ".pbit":
+    activate_skills:
+      - powerbi_explorer
+      - file_explorer
+
+  ".sql":
+    activate_skills:
+      - load_sql_queries
+    suggest_skills:
+      - connect_duckdb
+      - query_parquet_duckdb
+
+  ".log":
+    suggest_skills:
+      - systematic_debugging
+      - root_cause_tracing
+
+  ".env":
+    activate_skills:
+      - config_env_manager
+      - secure_python_practices
+
+  ".toml":
+    suggest_skills:
+      - devops_packaging
+      - linter_formatter_guru
+
+  ".spec":
+    activate_skills:
+      - generate_exe_pyinstaller_onedir
+
+  ".md":
+    suggest_skills:
+      - markdown_explorer
+
+  ".png":
+    suggest_skills:
+      - ui_application_assets
+
+  ".ico":
+    suggest_skills:
+      - ui_application_assets
+
+  ".svg":
+    suggest_skills:
+      - ui_application_assets
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PHASE-BASED TRIGGERS — Pipeline lifecycle phases
+# ─────────────────────────────────────────────────────────────────────────────
+phase_rules:
+
+  init:
+    activate_skills:
+      - context_loading_protocol
+    suggest_skills:
+      - setup_medallion_structure
+      - library_manager
+
+  bootstrap:
+    activate_skills:
+      - context_loading_protocol
+
+  config:
+    suggest_skills:
+      - config_env_manager
+      - load_yaml_files
+      - load_json_files
+      - library_manager
+
+  design:
+    activate_skills:
+      - brainstorming_design_explorer
+    suggest_skills:
+      - ui_framework_selection
+
+  plan:
+    activate_skills:
+      - decision_process_flow
+      - risk_scoring_matrix
+
+  validate:
+    activate_skills:
+      - output_validation_checklist
+    suggest_skills:
+      - input_validation_sanitizer
+      - code_analysis_qa_gate
+
+  pre-execute:
+    activate_skills:
+      - plan_archive_protocol
+
+  execute:
+    activate_skills:
+      - execution_flow_orchestration
+      - python_venv_executor
+    suggest_skills:
+      - execution_timer
+
+  test:
+    activate_skills:
+      - regression_test_automation
+    suggest_skills:
+      - code_analysis_qa_gate
+      - testing_qa_mentor
+
+  rollback:
+    activate_skills:
+      - git_rollback_strategy
+
+  ingest:
+    suggest_skills:
+      - input_file_handler
+      - read_excel_pandas
+      - read_excel_polars_openpyxl
+      - load_json_files
+      - load_yaml_files
+      - load_sql_queries
+      - connect_duckdb
+
+  transform:
+    suggest_skills:
+      - excel_to_parquet
+      - connect_duckdb
+      - query_parquet_duckdb
+
+  export:
+    suggest_skills:
+      - parquet_to_excel_polars_xlsxwriter
+
+  build:
+    suggest_skills:
+      - generate_exe_pyinstaller_onedir
+      - devops_packaging
+      - log_bundle_folder_management
+
+  release:
+    suggest_skills:
+      - generate_exe_pyinstaller_onedir
+      - devops_packaging
+
+  audit:
+    suggest_skills:
+      - dependency_audit
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ERROR-BASED TRIGGERS — Activated by error patterns in output
+# ─────────────────────────────────────────────────────────────────────────────
+error_rules:
+
+  "ImportError":
+    activate_skills:
+      - library_manager
+    suggest_skills:
+      - dependency_audit
+
+  "ModuleNotFoundError":
+    activate_skills:
+      - library_manager
+    suggest_skills:
+      - dependency_audit
+
+  "FileNotFoundError":
+    activate_skills:
+      - input_file_handler
+
+  "UnicodeDecodeError":
+    activate_skills:
+      - input_file_handler
+
+  "MemoryError":
+    suggest_skills:
+      - performance_profiler
+      - read_excel_polars_openpyxl
+
+  "TimeoutError":
+    suggest_skills:
+      - performance_profiler
+
+  "ValueError":
+    suggest_skills:
+      - data_integrity_guardian
+      - input_validation_sanitizer
+
+  "TypeError":
+    suggest_skills:
+      - type_master
+
+  "ValidationError":
+    suggest_skills:
+      - type_master
+      - data_integrity_guardian
+      - input_validation_sanitizer
+
+  "SecurityError":
+    activate_skills:
+      - secure_python_practices
+
+  "JSONDecodeError":
+    activate_skills:
+      - load_json_files
+    suggest_skills:
+      - json_explorer
+
+  "YAMLError":
+    activate_skills:
+      - load_yaml_files
+    suggest_skills:
+      - yaml_explorer
+
+  "duckdb.Error":
+    activate_skills:
+      - connect_duckdb
+
+  "RuntimeError: event loop":
+    activate_skills:
+      - async_concurrency_expert
+
+  "deadlock":
+    activate_skills:
+      - async_concurrency_expert
+
+  "Traceback":
+    suggest_skills:
+      - systematic_debugging
+      - root_cause_tracing
+
+  "Error":
+    suggest_skills:
+      - systematic_debugging
+
+  "Exception":
+    suggest_skills:
+      - systematic_debugging
+
+  "rollback_required":
+    activate_skills:
+      - git_rollback_strategy
+
+  "AssertionError":
+    suggest_skills:
+      - testing_qa_mentor
+      - regression_test_automation
+
+  "test failed":
+    suggest_skills:
+      - testing_qa_mentor
+      - regression_test_automation
+
+  "flaky":
+    suggest_skills:
+      - regression_test_automation
+
+  "LintError":
+    activate_skills:
+      - code_analysis_qa_gate
+
+  "mypy":
+    suggest_skills:
+      - code_analysis_qa_gate
+
+  "DataError":
+    suggest_skills:
+      - data_integrity_guardian
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CLUSTER AUTO-ACTIVATION — When one skill triggers, suggest related skills
+# ─────────────────────────────────────────────────────────────────────────────
+cluster_rules:
+
+  data_pipeline:
+    description: "Data ingestion through export pipeline"
+    when_any_active: [read_excel_pandas, read_excel_polars_openpyxl, excel_to_parquet, connect_duckdb, query_parquet_duckdb]
+    suggest_full_cluster: true
+    pipeline_order: [input_file_handler, read_excel_pandas, excel_to_parquet, connect_duckdb, query_parquet_duckdb, parquet_to_excel_polars_xlsxwriter]
+
+  planning_pipeline:
+    description: "Planning phase pipeline"
+    when_any_active: [context_loading_protocol, decision_process_flow]
+    suggest_full_cluster: true
+    pipeline_order: [context_loading_protocol, decision_process_flow, risk_scoring_matrix, output_validation_checklist]
+
+  execution_pipeline:
+    description: "Execution phase pipeline"
+    when_any_active: [execution_flow_orchestration]
+    suggest_full_cluster: true
+    pipeline_order: [plan_archive_protocol, execution_flow_orchestration, git_rollback_strategy]
+
+  file_exploration:
+    description: "File exploration fan-out (facade delegates to specific)"
+    when_any_active: [file_explorer]
+    suggest_full_cluster: false
+    note: "Specific explorer is selected by extension, not cluster fan-out"
+
+
+  ui:
+    description: "Desktop UI development"
+    when_any_active: [ui_framework_selection, ui_widget_modularity]
+    suggest_full_cluster: true
+
+  debugging:
+    description: "Bug investigation"
+    when_any_active: [debugger_orchestrator, systematic_debugging]
+    suggest_full_cluster: true
+
+  quality_pipeline:
+    description: "Code analysis, QA gates, and regression control"
+    when_any_active: [code_analysis_qa_gate, regression_test_automation]
+    suggest_full_cluster: true
+    pipeline_order: [code_analysis_qa_gate, testing_qa_mentor, regression_test_automation, debugger_orchestrator]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# IMPLICIT DEFAULTS — Applied to skills WITHOUT .meta.yaml
+# ─────────────────────────────────────────────────────────────────────────────
+# When a skill lacks a .meta.yaml file, these defaults govern its behavior.
+# This protects Phase 0, the junior agent, and token budgets from uncontrolled
+# skill activation. Skills with .meta.yaml override these entirely.
+#
+# To opt out of these defaults, create a .meta.yaml for the skill.
+implicit_defaults:
+
+  # Only senior and inspector may load skills without explicit agent_binding.
+  # Junior and executor are blocked by default — they require explicit opt-in.
+  agent_binding:
+    mandatory: [agent_senior, agent_inspector]
+    optional: []
+
+  # Skills without metadata are allowed only in ANALYZE_AND_IMPLEMENT mode.
+  # IMPLEMENT_ONLY and ANALYZE_ONLY require explicit .meta.yaml opt-in.
+  modes: [ANALYZE_AND_IMPLEMENT]
+
+  # Conservative token estimate for budget calculations.
+  # Most lazy skill bodies are 500-2000 tokens; 1500 avoids underestimation.
+  token_estimate: 1500
+
+  # Skills without metadata cannot load during Phase 0.
+  # Phase 0 is reserved for pre-flight validation with minimal context.
+  max_phase: 1
+
+  # Skills without metadata have no dependencies or exclusions.
+  requires: []
+  exclusive_with: []
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EXCLUSIVE GROUPS — Mutually exclusive skills (pick one)
+# ─────────────────────────────────────────────────────────────────────────────
+exclusive_groups:
+
+  excel_reader:
+    description: "Only one Excel reading strategy at a time"
+    skills: [read_excel_pandas, read_excel_polars_openpyxl]
+    default: read_excel_polars_openpyxl
+    decision_criteria:
+      read_excel_pandas: "exploratory analysis, files < 50MB, quick inspection"
+      read_excel_polars_openpyxl: "production ETL, any file size, performance-critical"

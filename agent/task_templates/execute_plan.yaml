@@ -1,0 +1,31 @@
+role: executor
+mode: IMPLEMENT_ONLY
+
+objective: |
+  Execute the approved plan exactly as validated.
+
+files:
+  - src/service/processor.py
+  - src/service/config.yaml
+
+config:
+  sources:
+    - id: task_plan
+      path: agent/agent_outputs/plans/example/task_plan.json
+      purpose: Approved action plan
+    - id: system_config
+      path: agent/agent_outputs/plans/example/system_config.yaml
+      purpose: Approved execution constraints
+
+constraints: |
+  Execute only approved actions.
+  No refactors, no inferred instructions, no extra artifacts.
+
+risk_tolerance: LOW
+phase: B_EXECUTION
+
+validation:
+  status: PASSED
+  validated_by: agent_inspector
+  validated_at: "2026-02-12T00:00:00Z"
+  notes: "Execution contract validated."

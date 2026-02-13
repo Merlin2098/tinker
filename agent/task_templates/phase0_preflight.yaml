@@ -1,0 +1,28 @@
+role: senior
+mode: ANALYZE_ONLY
+
+objective: |
+  Perform contract validation only.
+  Confirm the task is complete, explicit, and executable.
+
+files:
+  - path/to/input_artifact.yaml
+
+config:
+  sources:
+    - id: candidate_config
+      path: path/to/config.yaml
+      purpose: Contract validation target
+
+constraints: |
+  Validation only. No execution and no side effects.
+  Reject missing required fields. Do not infer values.
+
+risk_tolerance: LOW
+phase: A_CONTRACT_VALIDATION
+
+validation:
+  status: PENDING
+  validated_by: null
+  validated_at: null
+  notes: "Contract submitted for validation."

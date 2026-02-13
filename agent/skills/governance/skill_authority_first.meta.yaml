@@ -1,0 +1,21 @@
+# Layer 2 Header — skill_authority_first
+name: skill_authority_first
+version: "1.0.0"
+category: Governance
+tier: core
+cluster: governance
+priority: 100
+purpose: "Skills are authoritative units invoked BEFORE any agent action"
+triggers:
+  keywords: [skill invocation, skill priority, invoke skill, skill authority, before action]
+  match_extensions: []
+  match_phases: []
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [ANALYZE_AND_IMPLEMENT]
+agent_binding:
+  mandatory: [agent_inspector, agent_executor, agent_senior]
+  optional: []
+body_file: "skill_authority_first.md"
+token_estimate: 500

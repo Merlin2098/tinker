@@ -1,0 +1,32 @@
+role: senior
+mode: ANALYZE_AND_IMPLEMENT
+
+objective: |
+  Fix the reported defect using explicit, bounded changes.
+
+files:
+  - src/pipeline/step2.py
+  - src/utils/validators.py
+  - logs/error.log
+
+config:
+  sources:
+    - id: bug_context
+      path: logs/error.log
+      purpose: Failure evidence
+    - id: execution_plan
+      path: agent/agent_outputs/plans/example/task_plan.json
+      purpose: Approved implementation plan
+
+constraints: |
+  No speculative edits. Do not modify unrelated files.
+  No execution without PASSED validation.
+
+risk_tolerance: MEDIUM
+phase: B_EXECUTION
+
+validation:
+  status: PASSED
+  validated_by: agent_inspector
+  validated_at: "2026-02-12T00:00:00Z"
+  notes: "Bug-fix contract validated and approved."

@@ -1,0 +1,127 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "user_task.schema.yaml"
+title: "Invoker User Task Contract"
+description: "Mandatory user task contract for deterministic Phase A/B execution."
+type: object
+additionalProperties: false
+required:
+  - role
+  - mode
+  - objective
+  - files
+  - config
+  - constraints
+  - risk_tolerance
+  - phase
+  - validation
+
+properties:
+  role:
+    type: string
+    enum: [senior, executor, inspector, junior]
+    description: "Execution role selected by user."
+
+  mode:
+    type: string
+    enum: [ANALYZE_ONLY, ANALYZE_AND_IMPLEMENT, IMPLEMENT_ONLY]
+    description: "Execution mode selected by user."
+
+  mode_profile:
+    type: string
+    enum: [LITE, STANDARD, FULL]
+    description: "Kernel profile selector (optional)."
+
+  objective:
+    type: string
+    minLength: 1
+    description: "Primary objective for this task."
+
+  files:
+    type: array
+    minItems: 1
+    items:
+      type: string
+      minLength: 1
+    description: "Explicit target files or directories."
+
+  config:
+    type: object
+    additionalProperties: false
+    required: [sources]
+    properties:
+      sources:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          additionalProperties: false
+          required: [id, path, purpose]
+          properties:
+            id:
+              type: string
+              minLength: 1
+            path:
+              type: string
+              minLength: 1
+            purpose:
+              type: string
+              minLength: 1
+    description: "Explicit configuration references. No implicit defaults."
+
+  constraints:
+    type: string
+    minLength: 1
+    description: "Hard boundaries that must be enforced."
+
+  risk_tolerance:
+    type: string
+    enum: [LOW, MEDIUM, HIGH]
+    description: "Accepted risk envelope for planning and execution."
+
+  phase:
+    type: string
+    enum: [A_CONTRACT_VALIDATION, B_EXECUTION]
+    description: "Lifecycle phase gate."
+
+  validation:
+    type: object
+    additionalProperties: false
+    required: [status, validated_by, validated_at, notes]
+    properties:
+      status:
+        type: string
+        enum: [PENDING, PASSED, FAILED]
+      validated_by:
+        type: [string, "null"]
+      validated_at:
+        type: [string, "null"]
+        format: date-time
+      notes:
+        type: string
+
+allOf:
+  - if:
+      properties:
+        phase:
+          const: B_EXECUTION
+    then:
+      properties:
+        validation:
+          properties:
+            status:
+              const: PASSED
+            validated_by:
+              type: string
+              minLength: 1
+            validated_at:
+              type: string
+              format: date-time
+          required: [status, validated_by, validated_at, notes]
+  - if:
+      properties:
+        role:
+          enum: [executor, junior]
+    then:
+      properties:
+        phase:
+          const: B_EXECUTION

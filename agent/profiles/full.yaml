@@ -1,0 +1,39 @@
+version: "1.0.0"
+profile: "FULL"
+
+governance:
+  mode: "strict_audit"
+  include_kernel_baseline: true
+  extra_rules:
+    - workspace_model_awareness
+    - immutable_resource_respect
+    - minimal_documentation_policy
+
+skills:
+  preload:
+    - plan_archive_protocol
+    - git_rollback_strategy
+    - debugger_orchestrator
+    - type_master
+    - dependency_audit
+    - performance_profiler
+    - linter_formatter_guru
+    - read_excel_polars_openpyxl
+    - excel_to_parquet
+    - parquet_to_excel_polars_xlsxwriter
+    - connect_duckdb
+    - query_parquet_duckdb
+    - execution_timer
+  lazy_loading:
+    enabled: true
+    policy: "full_allowlist"
+  max_skill_budget: 65
+
+trigger_engine:
+  enabled: true
+  mode: "deterministic_auto"
+  cluster_auto_activation: true
+
+multi_agent:
+  enabled: true
+  explicit_opt_in_required: true

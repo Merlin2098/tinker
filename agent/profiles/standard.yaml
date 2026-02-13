@@ -1,0 +1,39 @@
+version: "1.0.0"
+profile: "STANDARD"
+
+governance:
+  mode: "full"
+  include_kernel_baseline: true
+  extra_rules:
+    - workspace_model_awareness
+    - immutable_resource_respect
+    - minimal_documentation_policy
+
+skills:
+  preload:
+    - context_loading_protocol
+    - decision_process_flow
+    - risk_scoring_matrix
+    - output_validation_checklist
+    - execution_flow_orchestration
+    - data_integrity_guardian
+    - testing_qa_mentor
+    - code_analysis_qa_gate
+    - config_env_manager
+    - load_json_files
+    - load_yaml_files
+    - excel_explorer
+    - csv_explorer
+  lazy_loading:
+    enabled: true
+    policy: "allowlisted_only"
+  max_skill_budget: 40
+
+trigger_engine:
+  enabled: true
+  mode: "suggest_only"
+  cluster_auto_activation: false
+
+multi_agent:
+  enabled: false
+  inspector_executor_pair_opt_in: true
