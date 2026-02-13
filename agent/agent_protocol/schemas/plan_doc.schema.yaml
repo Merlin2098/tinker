@@ -1,0 +1,101 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "Tinker Plan Document"
+description: "Optional plan artifact for review/handoff. Not required for execution."
+type: object
+required:
+  - id
+  - title
+  - owner
+  - created_at
+  - status
+  - context
+  - steps
+  - handoff
+  - approvals
+properties:
+  id:
+    type: string
+    minLength: 1
+  title:
+    type: string
+    minLength: 1
+  owner:
+    type: string
+    minLength: 1
+  created_at:
+    type: string
+    minLength: 1
+  status:
+    type: string
+    enum: [draft, in_review, approved, in_progress, completed, archived]
+  context:
+    type: object
+    required: [objective, scope, constraints]
+    properties:
+      objective:
+        type: string
+      scope:
+        type: string
+      constraints:
+        type: array
+        items:
+          type: string
+  steps:
+    type: array
+    items:
+      type: object
+      required: [id, description, status, acceptance_criteria]
+      properties:
+        id:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        status:
+          type: string
+          enum: [pending, in_progress, completed, blocked, dropped]
+        acceptance_criteria:
+          type: array
+          items:
+            type: string
+  handoff:
+    type: object
+    required: [to, notes, updated_at]
+    properties:
+      to:
+        type: string
+      notes:
+        type: string
+      updated_at:
+        anyOf:
+          - type: "null"
+          - type: string
+  approvals:
+    type: object
+    required: [required, received, approved_by, approved_at]
+    properties:
+      required:
+        type: boolean
+      received:
+        type: array
+        items:
+          type: object
+          required: [by, at, note]
+          properties:
+            by:
+              type: string
+              minLength: 1
+            at:
+              type: string
+              minLength: 1
+            note:
+              type: string
+      approved_by:
+        anyOf:
+          - type: "null"
+          - type: string
+      approved_at:
+        anyOf:
+          - type: "null"
+          - type: string

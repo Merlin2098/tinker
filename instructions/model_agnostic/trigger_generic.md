@@ -19,7 +19,10 @@ If you are in chat, prefer `instructions/chat/trigger_chat.md`.
 4. Edit `agent/user_task.yaml`:
    - Required: `mode`, `objective`, `files`, `constraints`
    - Optional: `mode_profile`, `config`, `risk_tolerance`, `phase`, `validation`
-5. Trigger:
+5. Optional review/handoff plan doc:
+   - `.venv/Scripts/python.exe agent_tools/plan_doc.py init --id <id> --title <title> --objective <text>`
+   - `.venv/Scripts/python.exe agent_tools/plan_doc.py validate --file agent/agent_outputs/plans/plan_active/<id>.yaml`
+6. Trigger:
    - `Run task from agent/user_task.yaml`
 
 ## Skill loading protocol
@@ -28,3 +31,5 @@ If you are in chat, prefer `instructions/chat/trigger_chat.md`.
 3. `.md` for invoked skills
 
 Do not bulk-load skill bodies.
+
+Plan docs in `agent/agent_outputs/plans/` are optional collaboration artifacts, not hard workflow gates.

@@ -24,7 +24,8 @@ Operate with a wrapper-first, deterministic execution model.
   - Windows: `.venv/Scripts/python.exe`
   - Unix/macOS: `.venv/bin/python`
 - Set `PYTHONIOENCODING=utf-8` for Python terminal execution.
-- Persist plans/artifacts under `agent/agent_outputs/`.
+- Persist artifacts under `agent/agent_outputs/` when generated.
+- Plan docs under `agent/agent_outputs/plans/` are optional helpers for review/handoff.
 
 ## Context Hygiene
 - Use `agent/agent_outputs/context.json` as a compact index.

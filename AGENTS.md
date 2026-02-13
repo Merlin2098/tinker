@@ -24,6 +24,17 @@ This repository uses a thin-skill + canonical-wrapper model.
    - `python agent_tools/load_static_context.py`
 4. Use `agent/agent_outputs/context.json` as compact index; load heavy files on demand.
 
+## Optional Plan Docs (Review/Handoff)
+- Plan docs are optional helper artifacts for human review or cross-agent handoff.
+- They are not required for normal wrapper-first execution.
+- Canonical locations:
+  - Active: `agent/agent_outputs/plans/plan_active/`
+  - Archive: `agent/agent_outputs/plans/archive/`
+- Utility:
+  - `python agent_tools/plan_doc.py init --id <id> --title <title> --objective <text>`
+  - `python agent_tools/plan_doc.py validate --file agent/agent_outputs/plans/plan_active/<id>.yaml`
+  - `python agent_tools/plan_doc.py handoff --file <path> --to <target> --notes <text>`
+
 ## Context Hygiene
 - Keep context minimal and task-scoped.
 - Prefer on-demand analysis files:

@@ -25,8 +25,12 @@ Purpose: explicit setup for chat-based agents.
    - `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/load_static_context.py`
 4. Prepare `agent/user_task.yaml` when requested:
    - `./.venv/Scripts/python.exe agent_tools/user_task_builder.py ...`
-5. Trigger with one of the trigger phrases.
+5. Optional review/handoff plan doc (if requested):
+   - `./.venv/Scripts/python.exe agent_tools/plan_doc.py init --id <id> --title <title> --objective <text>`
+   - `./.venv/Scripts/python.exe agent_tools/plan_doc.py validate --file agent/agent_outputs/plans/plan_active/<id>.yaml`
+6. Trigger with one of the trigger phrases.
 
 ## Notes
 - `mode_profile` in `agent/user_task.yaml` is optional; leave empty unless explicitly needed.
 - Optional compatibility fields (`phase`, `validation`) are supported but not required.
+- Plan docs under `agent/agent_outputs/plans/` are optional collaboration artifacts, not execution prerequisites.
