@@ -1,7 +1,7 @@
-"""
+﻿"""
 load_static_context.py
 
-Lazy-loading context generator for the Invoker framework.
+Lazy-loading context generator for the Tinker framework.
 
 Produces a SKELETON context.json optimized for LLM consumption:
 - File tree (max depth 2) instead of full treemap dump
@@ -133,7 +133,7 @@ def _resolve_static_context_config(
 
     Priority:
     1) requested_profile (CLI/API arg)
-    2) INVOKER_CONTEXT_PROFILE env var
+    2) TINKER_CONTEXT_PROFILE env var
     3) active_profile in root config
     4) auto-detected profile
     5) default (no profile)
@@ -147,7 +147,7 @@ def _resolve_static_context_config(
     if not isinstance(profiles, dict):
         profiles = {}
 
-    env_profile = os.getenv("INVOKER_CONTEXT_PROFILE")
+    env_profile = os.getenv("TINKER_CONTEXT_PROFILE")
     config_profile = full_cfg.get("active_profile")
     selected_profile = requested_profile or env_profile or config_profile
 
@@ -827,7 +827,7 @@ def save_static_context_as_json(
 # Ejecución de prueba
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Generate compact static context for Invoker.",
+        description="Generate compact static context for Tinker.",
     )
     parser.add_argument(
         "--profile",
@@ -859,3 +859,4 @@ if __name__ == "__main__":
             f"  Context budget: {budget.get('final_lines', '?')}/{budget.get('max_lines', '?')} lines"
             f" (truncated={budget.get('truncation_applied', False)})"
         )
+

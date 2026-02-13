@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Generate compatibility SKILL.md wrappers from agent/skills/_index.yaml.
 
@@ -16,6 +16,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import re
 import shutil
 import sys
 from dataclasses import dataclass
@@ -30,6 +31,17 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 SKILLS_DIR = PROJECT_ROOT / "agent" / "skills"
 INDEX_PATH = SKILLS_DIR / "_index.yaml"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "agent" / "skills_wrappers"
+RUN_WRAPPER_PATH = PROJECT_ROOT / "agent_tools" / "run_wrapper.py"
+
+EXECUTION_EXEMPT_CLUSTERS = {"runtime"}
+BUSINESS_LOGIC_PATTERNS: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"^\s*def\s+\w+\s*\(", re.MULTILINE), "python function definition"),
+    (re.compile(r"^\s*class\s+\w+", re.MULTILINE), "python class definition"),
+    (re.compile(r"^\s*import\s+[A-Za-z_]", re.MULTILINE), "python import statement"),
+    (re.compile(r"^\s*from\s+[A-Za-z_][\w.]*\s+import\s+", re.MULTILINE), "python from-import statement"),
+    (re.compile(r"if\s+__name__\s*==\s*['\"]__main__['\"]"), "python __main__ block"),
+    (re.compile(r"subprocess\."), "subprocess invocation"),
+]
 
 
 @dataclass
@@ -107,7 +119,7 @@ def render_wrapper(skill: SkillRef) -> str:
     return f"""# SKILL.md - {skill.name}
 
 This is an auto-generated compatibility wrapper.
-Source of truth remains in the Invoker framework paths listed below.
+Source of truth remains in the Tinker framework paths listed below.
 
 ## Skill Identity
 - Name: `{skill.name}`
@@ -133,6 +145,57 @@ Source of truth remains in the Invoker framework paths listed below.
 - Generated deterministically from: `agent/skills/_index.yaml`
 - Do not edit manually. Regenerate instead.
 """
+
+
+def _scan_business_logic(body_path: Path, skill_name: str) -> list[str]:
+    content = body_path.read_text(encoding="utf-8")
+    issues: list[str] = []
+    for pattern, label in BUSINESS_LOGIC_PATTERNS:
+        if pattern.search(content):
+            issues.append(
+                f"{skill_name}: thin-skill violation ({label}) in {body_path.relative_to(PROJECT_ROOT).as_posix()}"
+            )
+    return issues
+
+
+def load_wrapper_skill_names() -> set[str]:
+    if not RUN_WRAPPER_PATH.exists():
+        return set()
+    content = RUN_WRAPPER_PATH.read_text(encoding="utf-8")
+    return set(re.findall(r'^\s*"([^"]+)":\s*_bind_skill', content, re.MULTILINE))
+
+
+def evaluate_skill_contracts(skills: list[SkillRef], wrapper_skills: set[str]) -> list[str]:
+    issues: list[str] = []
+    for skill in skills:
+        if skill.body_path is None:
+            issues.append(f"{skill.name}: missing .md body")
+        if skill.meta_path is None:
+            issues.append(f"{skill.name}: missing .meta.yaml")
+            continue
+
+        meta = load_yaml(skill.meta_path)
+        if not isinstance(meta, dict):
+            issues.append(f"{skill.name}: metadata root must be a mapping")
+            continue
+
+        cluster = str(meta.get("cluster", skill.cluster)).strip().lower()
+        execution = meta.get("execution")
+        needs_execution_contract = skill.name in wrapper_skills and cluster not in EXECUTION_EXEMPT_CLUSTERS
+        if needs_execution_contract:
+            if not isinstance(execution, dict):
+                issues.append(f"{skill.name}: missing execution contract mapping")
+            else:
+                entrypoint = execution.get("entrypoint")
+                command = execution.get("command")
+                if not isinstance(entrypoint, str) or not entrypoint.strip():
+                    issues.append(f"{skill.name}: execution missing required field 'entrypoint'")
+                if not isinstance(command, str) or not command.strip():
+                    issues.append(f"{skill.name}: execution missing required field 'command'")
+
+                if skill.body_path is not None:
+                    issues.extend(_scan_business_logic(skill.body_path, skill.name))
+    return issues
 
 
 def write_wrappers(skills: list[SkillRef], output_dir: Path, dry_run: bool) -> tuple[int, int]:
@@ -193,6 +256,18 @@ def main() -> int:
     )
     parser.add_argument("--dry-run", action="store_true", help="Show actions without writing files")
     parser.add_argument("--clean", action="store_true", help="Remove stale wrapper directories")
+    parser.add_argument(
+        "--strict-contracts",
+        action="store_true",
+        default=True,
+        help="Fail on missing metadata/body, missing execution contracts, or business logic in wrapper-backed skills (default)",
+    )
+    parser.add_argument(
+        "--no-strict-contracts",
+        action="store_false",
+        dest="strict_contracts",
+        help="Disable strict contract checks",
+    )
     args = parser.parse_args()
 
     index_path = args.index_path.resolve()
@@ -213,6 +288,21 @@ def main() -> int:
 
     skills = build_skill_refs(skills_dir, entries)
     keep_names = {s.name for s in skills}
+    wrapper_skills = load_wrapper_skill_names()
+    contract_issues = evaluate_skill_contracts(skills, wrapper_skills)
+
+    if contract_issues:
+        print("=" * 60)
+        print("SKILL CONTRACT CHECKS")
+        print("=" * 60)
+        print(f"Issues found:          {len(contract_issues)}")
+        for issue in contract_issues[:100]:
+            print(f"[FAIL] {issue}")
+        if len(contract_issues) > 100:
+            print("[FAIL] ...")
+        print("=" * 60)
+        if args.strict_contracts:
+            return 2
 
     if not args.dry_run:
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -241,3 +331,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

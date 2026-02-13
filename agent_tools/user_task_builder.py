@@ -3,7 +3,7 @@
 User task builder.
 
 Creates or overwrites agent/user_task.yaml from explicit CLI inputs.
-No inference is performed; all required fields must be provided.
+No inference is performed; required fields must be provided explicitly.
 """
 
 from __future__ import annotations
@@ -56,26 +56,23 @@ def parse_config_sources(raw: List[str]) -> List[dict]:
 
 
 def validate_inputs(
-    role: str,
     mode: str,
     objective: str,
     files: List[str],
     constraints: str,
-    risk_tolerance: str,
     phase: str,
     validation_status: str,
     validated_by: Optional[str],
     validated_at: Optional[str],
-    config_sources: List[dict],
 ) -> None:
+    if not mode.strip():
+        raise SystemExit("Mode cannot be empty.")
     if not objective.strip():
         raise SystemExit("Objective cannot be empty.")
     if not constraints.strip():
         raise SystemExit("Constraints cannot be empty.")
     if not files:
         raise SystemExit("At least one --file is required.")
-    if not config_sources:
-        raise SystemExit("At least one --config-source is required.")
     if phase == "B_EXECUTION":
         if validation_status != "PASSED":
             raise SystemExit("phase=B_EXECUTION requires validation.status=PASSED.")
@@ -83,19 +80,13 @@ def validate_inputs(
             raise SystemExit("phase=B_EXECUTION requires --validated-by.")
         if not validated_at or not validated_at.strip():
             raise SystemExit("phase=B_EXECUTION requires --validated-at.")
-    if role in {"executor", "junior"} and phase != "B_EXECUTION":
-        raise SystemExit("role=executor/junior requires phase=B_EXECUTION.")
 
 
 def validate_payload(payload: dict) -> None:
-    role = str(payload.get("role", "")).strip()
     mode = str(payload.get("mode", "")).strip()
     objective = str(payload.get("objective", "")).strip()
     files = payload.get("files") if isinstance(payload.get("files"), list) else []
-    config = payload.get("config") if isinstance(payload.get("config"), dict) else {}
-    sources = config.get("sources") if isinstance(config.get("sources"), list) else []
     constraints = str(payload.get("constraints", "")).strip()
-    risk_tolerance = str(payload.get("risk_tolerance", "")).strip()
     phase = str(payload.get("phase", "")).strip()
     validation = (
         payload.get("validation") if isinstance(payload.get("validation"), dict) else {}
@@ -105,17 +96,14 @@ def validate_payload(payload: dict) -> None:
     validated_at = validation.get("validated_at")
 
     validate_inputs(
-        role=role,
         mode=mode,
         objective=objective,
         files=files,
         constraints=constraints,
-        risk_tolerance=risk_tolerance,
         phase=phase,
         validation_status=status,
         validated_by=validated_by,
         validated_at=validated_at,
-        config_sources=sources,
     )
 
 
@@ -173,12 +161,19 @@ def main() -> int:
 
     explicit_fields_provided = any(
         [
+            args.role,
             args.objective,
             args.objective_file,
             args.constraints,
             args.constraints_file,
             args.files,
             args.config_source,
+            args.risk_tolerance,
+            args.phase,
+            args.validation_status,
+            args.validated_by,
+            args.validated_at,
+            args.validation_notes,
             args.mode_profile,
         ]
     )
@@ -190,12 +185,7 @@ def main() -> int:
         validate_payload(payload)
     else:
         required_flags = {
-            "role": args.role,
             "mode": args.mode,
-            "risk_tolerance": args.risk_tolerance,
-            "phase": args.phase,
-            "validation_status": args.validation_status,
-            "validation_notes": args.validation_notes,
         }
         missing = [k for k, v in required_flags.items() if not v]
         if missing:
@@ -224,43 +214,46 @@ def main() -> int:
             if not template:
                 raise SystemExit("Template must be a valid YAML mapping.")
             payload = template
-            payload.update(
-                {
-                    "role": args.role,
-                    "mode": args.mode,
-                    "objective": objective,
-                    "files": args.files,
-                    "config": {"sources": config_sources},
-                    "constraints": constraints,
-                    "risk_tolerance": args.risk_tolerance,
-                    "phase": args.phase,
-                    "validation": {
-                        "status": args.validation_status,
-                        "validated_by": args.validated_by,
-                        "validated_at": args.validated_at,
-                        "notes": args.validation_notes,
-                    },
+            payload.update({"mode": args.mode, "objective": objective, "files": args.files, "constraints": constraints})
+            if args.role:
+                payload["role"] = args.role
+            if config_sources:
+                payload["config"] = {"sources": config_sources}
+            if args.risk_tolerance:
+                payload["risk_tolerance"] = args.risk_tolerance
+            if args.phase:
+                payload["phase"] = args.phase
+            if any([args.validation_status, args.validated_by, args.validated_at, args.validation_notes, args.phase]):
+                payload["validation"] = {
+                    "status": args.validation_status or "PENDING",
+                    "validated_by": args.validated_by,
+                    "validated_at": args.validated_at,
+                    "notes": args.validation_notes or "Pending validation.",
                 }
-            )
             if args.mode_profile:
                 payload["mode_profile"] = args.mode_profile
         else:
             payload = {
-                "role": args.role,
                 "mode": args.mode,
                 "objective": objective,
                 "files": args.files,
-                "config": {"sources": config_sources},
                 "constraints": constraints,
-                "risk_tolerance": args.risk_tolerance,
-                "phase": args.phase,
-                "validation": {
-                    "status": args.validation_status,
+            }
+            if args.role:
+                payload["role"] = args.role
+            if config_sources:
+                payload["config"] = {"sources": config_sources}
+            if args.risk_tolerance:
+                payload["risk_tolerance"] = args.risk_tolerance
+            if args.phase:
+                payload["phase"] = args.phase
+            if any([args.validation_status, args.validated_by, args.validated_at, args.validation_notes, args.phase]):
+                payload["validation"] = {
+                    "status": args.validation_status or "PENDING",
                     "validated_by": args.validated_by,
                     "validated_at": args.validated_at,
-                    "notes": args.validation_notes,
-                },
-            }
+                    "notes": args.validation_notes or "Pending validation.",
+                }
 
             if args.mode_profile:
                 payload["mode_profile"] = args.mode_profile

@@ -1,9 +1,9 @@
-metadata:
+﻿metadata:
   version: 2.1.0
   total_skills: 78
   total_categories: 17
   last_updated: '2026-02-12'
-  framework: Invoker Agent Framework
+  framework: Tinker Agent Framework
   tiers:
     core: 26
     lazy: 52
@@ -2251,3 +2251,4 @@ skills:
   - '*.log'
   modes:
   - IMPLEMENT_ONLY
+

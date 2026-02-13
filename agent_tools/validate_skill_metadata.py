@@ -1,129 +1,193 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-Skill Metadata Validator (Advisory Linter)
+Skill metadata validator.
 
-Checks which skills have .meta.yaml files and which rely on implicit defaults.
-Reports metadata coverage, missing fields, and potential issues.
-
-This is an ADVISORY tool — it does not block execution.
+Validates metadata/body coverage for indexed skills and enforces thin-skill
+rules for wrapper-backed skills.
 
 Usage:
     python validate_skill_metadata.py
     python validate_skill_metadata.py --verbose
     python validate_skill_metadata.py --tier lazy
-    python validate_skill_metadata.py --check-fields
+    python validate_skill_metadata.py --advisory
 """
 
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 from typing import Any
 
-# Resolve paths relative to this script's parent (project root)
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 SKILLS_DIR = PROJECT_ROOT / "agent" / "skills"
 INDEX_FILE = SKILLS_DIR / "_index.yaml"
+RUN_WRAPPER_PATH = PROJECT_ROOT / "agent_tools" / "run_wrapper.py"
 
-# Minimal required fields for a .meta.yaml to be considered complete
-REQUIRED_FIELDS = {"name", "tier", "cluster", "agent_binding", "modes", "max_phase", "token_estimate"}
-
-# Fields that are recommended but not strictly required
-RECOMMENDED_FIELDS = {"requires", "exclusive_with", "triggers", "body_file", "priority", "purpose"}
-
-# Implicit defaults (must match _trigger_engine.yaml implicit_defaults section)
-IMPLICIT_DEFAULTS = {
-    "agent_binding": {"mandatory": ["agent_senior", "agent_inspector"], "optional": []},
-    "modes": ["ANALYZE_AND_IMPLEMENT"],
-    "token_estimate": 1500,
-    "max_phase": 1,
-    "requires": [],
-    "exclusive_with": [],
+REQUIRED_FIELDS = {
+    "name",
+    "tier",
+    "cluster",
+    "agent_binding",
+    "modes",
+    "token_estimate",
 }
+RECOMMENDED_FIELDS = {"requires", "exclusive_with", "triggers", "body_file", "priority", "purpose"}
+EXECUTION_REQUIRED_FIELDS = {"entrypoint", "command"}
+EXECUTION_EXEMPT_CLUSTERS = {"runtime"}
+
+# Pattern -> diagnostic label
+BUSINESS_LOGIC_PATTERNS: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"^\s*def\s+\w+\s*\(", re.MULTILINE), "python function definition"),
+    (re.compile(r"^\s*class\s+\w+", re.MULTILINE), "python class definition"),
+    (re.compile(r"^\s*import\s+[A-Za-z_]", re.MULTILINE), "python import statement"),
+    (re.compile(r"^\s*from\s+[A-Za-z_][\w.]*\s+import\s+", re.MULTILINE), "python from-import statement"),
+    (re.compile(r"if\s+__name__\s*==\s*[\"']__main__[\"']"), "python __main__ block"),
+    (re.compile(r"subprocess\."), "subprocess invocation"),
+]
 
 
 def load_yaml(path: Path) -> Any:
-    """Load a YAML file. Falls back to basic parsing if PyYAML is not available."""
     try:
         import yaml
-        with open(path, encoding="utf-8") as f:
-            return yaml.safe_load(f)
-    except ImportError:
-        print("[WARN] PyYAML not installed. Install with: pip install pyyaml")
-        print("       Falling back to file-existence checks only.")
-        return None
+    except ImportError as exc:  # pragma: no cover
+        raise SystemExit(f"PyYAML required: {exc}")
+    with path.open("r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
 
 
-def collect_skills_from_index(index_path: Path) -> list[dict]:
-    """Parse _index.yaml and return list of skill entries."""
+def collect_skills_from_index(index_path: Path) -> list[dict[str, Any]]:
     data = load_yaml(index_path)
-    if data is None:
+    if not isinstance(data, dict):
         return []
-    return data.get("index", [])
+    index = data.get("index", [])
+    return index if isinstance(index, list) else []
 
 
 def find_meta_file(skill_name: str) -> Path | None:
-    """Search for a .meta.yaml file matching the skill name."""
     matches = list(SKILLS_DIR.rglob(f"{skill_name}.meta.yaml"))
     return matches[0] if matches else None
 
 
 def find_body_file(skill_name: str) -> Path | None:
-    """Search for a .md body file matching the skill name."""
-    matches = list(SKILLS_DIR.rglob(f"{skill_name}.md"))
-    # Filter out README.md files
-    matches = [m for m in matches if m.name != "README.md"]
+    matches = [p for p in SKILLS_DIR.rglob(f"{skill_name}.md") if p.name != "README.md"]
     return matches[0] if matches else None
 
 
-def validate_meta_fields(meta_data: dict, skill_name: str) -> list[str]:
-    """Check a .meta.yaml for missing required/recommended fields."""
-    issues = []
-    if meta_data is None:
-        return [f"{skill_name}: could not parse .meta.yaml"]
+def load_wrapper_skill_names() -> set[str]:
+    if not RUN_WRAPPER_PATH.exists():
+        return set()
+    content = RUN_WRAPPER_PATH.read_text(encoding="utf-8")
+    return set(re.findall(r'^\s*"([^"]+)":\s*_bind_skill', content, re.MULTILINE))
+
+
+def validate_meta_fields(meta_data: dict[str, Any], skill_name: str) -> tuple[list[str], list[str]]:
+    missing_required: list[str] = []
+    missing_recommended: list[str] = []
 
     for field in REQUIRED_FIELDS:
         if field not in meta_data:
-            issues.append(f"{skill_name}: missing required field '{field}'")
+            missing_required.append(f"{skill_name}: missing required field '{field}'")
 
     for field in RECOMMENDED_FIELDS:
         if field not in meta_data:
-            issues.append(f"{skill_name}: missing recommended field '{field}' (not critical)")
+            missing_recommended.append(f"{skill_name}: missing recommended field '{field}'")
 
+    return missing_required, missing_recommended
+
+
+def validate_execution_contract(
+    meta_data: dict[str, Any],
+    skill_name: str,
+    wrapper_skills: set[str],
+) -> list[str]:
+    cluster = str(meta_data.get("cluster", "")).strip().lower()
+    needs_execution_contract = skill_name in wrapper_skills and cluster not in EXECUTION_EXEMPT_CLUSTERS
+    if not needs_execution_contract:
+        return []
+
+    execution = meta_data.get("execution")
+    if not isinstance(execution, dict):
+        return [f"{skill_name}: missing required execution contract mapping"]
+
+    issues = []
+    for field in EXECUTION_REQUIRED_FIELDS:
+        value = execution.get(field)
+        if not isinstance(value, str) or not value.strip():
+            issues.append(f"{skill_name}: execution missing required field '{field}'")
     return issues
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Validate skill metadata coverage")
+def scan_business_logic(body_path: Path, skill_name: str) -> list[str]:
+    content = body_path.read_text(encoding="utf-8")
+    issues: list[str] = []
+    for pattern, label in BUSINESS_LOGIC_PATTERNS:
+        if pattern.search(content):
+            issues.append(f"{skill_name}: thin-skill violation detected ({label}) in {body_path.as_posix()}")
+    return issues
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Validate skill metadata and thin-skill contracts")
     parser.add_argument("--verbose", "-v", action="store_true", help="Show details for each skill")
     parser.add_argument("--tier", choices=["core", "lazy", "dormant"], help="Filter by tier")
-    parser.add_argument("--check-fields", action="store_true", help="Validate fields inside .meta.yaml files")
+    parser.add_argument(
+        "--strict",
+        dest="strict",
+        action="store_true",
+        default=True,
+        help="Fail with non-zero exit on critical issues (default)",
+    )
+    parser.add_argument(
+        "--advisory",
+        dest="strict",
+        action="store_false",
+        help="Report issues without failing",
+    )
+    parser.add_argument(
+        "--check-business-logic",
+        dest="check_business_logic",
+        action="store_true",
+        default=True,
+        help="Scan wrapper-backed skill markdown for business-logic patterns (default)",
+    )
+    parser.add_argument(
+        "--no-check-business-logic",
+        dest="check_business_logic",
+        action="store_false",
+        help="Disable business-logic scanning",
+    )
     args = parser.parse_args()
 
     if not INDEX_FILE.exists():
         print(f"[ERROR] Skill index not found: {INDEX_FILE}")
-        sys.exit(1)
+        return 1
 
     skills = collect_skills_from_index(INDEX_FILE)
     if not skills:
-        print("[ERROR] No skills found in index (PyYAML may be missing)")
-        sys.exit(1)
+        print("[ERROR] No skills found in index.")
+        return 1
 
-    # Filter by tier if requested
     if args.tier:
         skills = [s for s in skills if s.get("tier") == args.tier]
+    wrapper_skills = load_wrapper_skill_names()
 
-    # Classify skills
     with_meta = []
     without_meta = []
     with_body = []
     without_body = []
 
+    strict_issues: list[str] = []
+    advisory_notes: list[str] = []
+
     for skill in skills:
-        name = skill.get("name", "unknown")
-        tier = skill.get("tier", "unknown")
+        name = str(skill.get("name", "")).strip()
+        tier = str(skill.get("tier", "unknown"))
+        if not name:
+            continue
 
         meta_path = find_meta_file(name)
         body_path = find_body_file(name)
@@ -132,82 +196,89 @@ def main():
             with_meta.append({"name": name, "tier": tier, "meta_path": meta_path})
         else:
             without_meta.append({"name": name, "tier": tier})
+            strict_issues.append(f"{name}: missing .meta.yaml")
 
         if body_path:
-            with_body.append(name)
+            with_body.append({"name": name, "body_path": body_path})
         else:
             without_body.append({"name": name, "tier": tier})
+            strict_issues.append(f"{name}: missing .md body")
 
-    # Report
+        if not meta_path:
+            continue
+
+        try:
+            meta_data = load_yaml(meta_path)
+        except Exception as exc:
+            strict_issues.append(f"{name}: failed to parse metadata: {exc}")
+            continue
+
+        if not isinstance(meta_data, dict):
+            strict_issues.append(f"{name}: metadata root must be a mapping")
+            continue
+
+        missing_required, missing_recommended = validate_meta_fields(meta_data, name)
+        strict_issues.extend(missing_required)
+        advisory_notes.extend(missing_recommended)
+
+        strict_issues.extend(validate_execution_contract(meta_data, name, wrapper_skills))
+
+        cluster = str(meta_data.get("cluster", "")).strip().lower()
+        needs_execution_contract = name in wrapper_skills and cluster not in EXECUTION_EXEMPT_CLUSTERS
+        if args.check_business_logic and body_path and needs_execution_contract:
+            strict_issues.extend(scan_business_logic(body_path, name))
+
     total = len(skills)
     tier_label = f" (tier: {args.tier})" if args.tier else ""
-    print(f"{'=' * 60}")
-    print(f"SKILL METADATA AUDIT{tier_label}")
-    print(f"{'=' * 60}")
+    print("=" * 60)
+    print(f"SKILL METADATA VALIDATION{tier_label}")
+    print("=" * 60)
     print(f"Total skills scanned: {total}")
-    print(f"With .meta.yaml:      {len(with_meta)} ({len(with_meta) * 100 // total}%)")
-    print(f"Without .meta.yaml:   {len(without_meta)} ({len(without_meta) * 100 // total}%)")
+    print(f"With .meta.yaml:      {len(with_meta)}")
+    print(f"Without .meta.yaml:   {len(without_meta)}")
     print(f"With .md body:        {len(with_body)}")
-    print(f"Without .md body:     {len(without_body)} (dormant stubs or missing)")
-    print()
+    print(f"Without .md body:     {len(without_body)}")
 
-    # Skills with metadata
     if args.verbose and with_meta:
-        print(f"--- Skills WITH .meta.yaml ({len(with_meta)}) ---")
-        for s in with_meta:
-            print(f"  [OK] {s['name']} ({s['tier']})")
-        print()
+        print(f"\n--- Skills WITH .meta.yaml ({len(with_meta)}) ---")
+        for item in with_meta:
+            print(f"  [OK] {item['name']} ({item['tier']})")
 
-    # Skills without metadata
     if without_meta:
-        print(f"--- Skills WITHOUT .meta.yaml ({len(without_meta)}) ---")
-        print(f"    These use implicit defaults from _trigger_engine.yaml:")
-        print(f"    agent_binding: {IMPLICIT_DEFAULTS['agent_binding']['mandatory']}")
-        print(f"    modes:         {IMPLICIT_DEFAULTS['modes']}")
-        print(f"    max_phase:     {IMPLICIT_DEFAULTS['max_phase']}")
-        print(f"    token_estimate: {IMPLICIT_DEFAULTS['token_estimate']}")
-        print()
-        if args.verbose:
-            for s in without_meta:
-                print(f"  [DEFAULT] {s['name']} ({s['tier']})")
-            print()
+        print(f"\n--- Skills WITHOUT .meta.yaml ({len(without_meta)}) ---")
+        for item in without_meta:
+            print(f"  [FAIL] {item['name']} ({item['tier']})")
 
-    # Skills without body files
     if without_body:
-        print(f"--- Skills WITHOUT .md body ({len(without_body)}) ---")
-        for s in without_body:
-            print(f"  [STUB] {s['name']} ({s['tier']})")
-        print()
+        print(f"\n--- Skills WITHOUT .md body ({len(without_body)}) ---")
+        for item in without_body:
+            print(f"  [FAIL] {item['name']} ({item['tier']})")
 
-    # Field validation
-    if args.check_fields and with_meta:
-        print(f"--- Field Validation ---")
-        all_issues = []
-        for s in with_meta:
-            meta_data = load_yaml(s["meta_path"])
-            issues = validate_meta_fields(meta_data, s["name"])
-            all_issues.extend(issues)
+    if advisory_notes:
+        print(f"\n--- Advisory Notes ({len(advisory_notes)}) ---")
+        for note in advisory_notes[:50]:
+            print(f"  [INFO] {note}")
+        if len(advisory_notes) > 50:
+            print("  [INFO] ...")
 
-        if all_issues:
-            for issue in all_issues:
-                required = "required" in issue
-                prefix = "[WARN]" if required else "[INFO]"
-                print(f"  {prefix} {issue}")
-        else:
-            print("  All .meta.yaml files have complete required fields.")
-        print()
+    if strict_issues:
+        print(f"\n--- Critical Issues ({len(strict_issues)}) ---")
+        for issue in strict_issues[:100]:
+            print(f"  [FAIL] {issue}")
+        if len(strict_issues) > 100:
+            print("  [FAIL] ...")
 
-    # Summary
-    print(f"{'=' * 60}")
-    coverage = len(with_meta) * 100 // total if total > 0 else 0
-    if coverage == 100:
-        print("STATUS: Full metadata coverage.")
-    elif coverage >= 50:
-        print(f"STATUS: Partial coverage ({coverage}%). Non-compliant skills use safe defaults.")
+    print("=" * 60)
+    if strict_issues:
+        print("STATUS: FAILED")
     else:
-        print(f"STATUS: Low coverage ({coverage}%). Most skills use implicit defaults.")
-    print(f"{'=' * 60}")
+        print("STATUS: PASSED")
+    print("=" * 60)
+
+    if strict_issues and args.strict:
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

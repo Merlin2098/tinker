@@ -1,4 +1,4 @@
-# Invoker Framework - Antigravity Bootstrap (Model-Agnostic)
+﻿# Tinker Framework - Antigravity Bootstrap (Model-Agnostic)
 
 Purpose: Provide explicit, repeatable setup steps in Antigravity without vendor lock-in.
 
@@ -6,7 +6,7 @@ Purpose: Provide explicit, repeatable setup steps in Antigravity without vendor 
 1. Validate `agent/user_task.yaml` against `agent/agent_protocol/schemas/user_task.schema.yaml`.
 2. No field inference and no data invention.
 3. No execution without explicit validation pass.
-4. Governance is internal to Invoker; do not depend on external IDE state.
+4. Governance is internal to Tinker; do not depend on external IDE state.
 
 ## Explicit bootstrap steps
 1. Read governance (chat command):
@@ -47,3 +47,4 @@ Do not bulk-load skill bodies.
 ## Chat-based agents
 If you are running in a chat-only environment (no external command hooks),
 use `instructions/chat/trigger_chat.md`.
+

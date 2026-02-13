@@ -1,7 +1,7 @@
 # SKILL.md - minimal_documentation_policy
 
 This is an auto-generated compatibility wrapper.
-Source of truth remains in the Invoker framework paths listed below.
+Source of truth remains in the Tinker framework paths listed below.
 
 ## Skill Identity
 - Name: `minimal_documentation_policy`

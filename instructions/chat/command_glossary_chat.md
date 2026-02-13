@@ -1,4 +1,4 @@
-# Invoker Chat Command Glossary
+﻿# Tinker Chat Command Glossary
 
 Purpose: single-page reference for chat commands and when to use them.
 
@@ -11,12 +11,12 @@ Purpose: single-page reference for chat commands and when to use them.
   - Use for high-risk changes or when you want maximum governance checks.
 
 ## Task triggers (chat)
-- `Invoker: validate`
+- `Tinker: validate`
   - Use after preparing `agent/user_task.yaml` to run Phase A validation only.
-- `Invoker: run`
+- `Tinker: run`
   - Use only after validation passes to run Phase B execution.
 - `Run task from agent/user_task.yaml`
-  - Full explicit trigger. Equivalent to `Invoker: run` or `Invoker: validate` depending on `phase`.
+  - Full explicit trigger. Equivalent to `Tinker: run` or `Tinker: validate` depending on `phase`.
 
 ## Build user_task.yaml
 - `user_task_builder.py --input <yaml>`
@@ -28,15 +28,15 @@ Purpose: single-page reference for chat commands and when to use them.
 - `load_static_context.py`
   - Use after large project changes or when you want a fresh project snapshot for the agent.
 
-## Install Invoker (portable deploy)
-- `install_invoker.py <dest1> [dest2 ...]`
-  - Use to copy the Invoker footprint into other project roots and merge `requirements.txt` and `.gitignore` (differences only).
-- `install_invoker.py --pick-dest`
+## Install Tinker (portable deploy)
+- `install_tinker.py <dest1> [dest2 ...]`
+  - Use to copy the Tinker footprint into other project roots and merge `requirements.txt` and `.gitignore` (differences only).
+- `install_tinker.py --pick-dest`
   - Use to select the destination project root via a folder picker (GUI). If unavailable, it prompts for a path.
-- `install_invoker.py --dry-run <dest>`
+- `install_tinker.py --dry-run <dest>`
   - Use to preview changes.
-- `install_invoker.py --overwrite-framework --backup <dest>`
-  - Use when the destination already has Invoker/legacy files and you want a clean overwrite with backups.
+- `install_tinker.py --overwrite-framework --backup <dest>`
+  - Use when the destination already has Tinker/legacy files and you want a clean overwrite with backups.
 
 ## Kernel mismatch guard
 - `kernel_guard.py`
@@ -47,3 +47,4 @@ Purpose: single-page reference for chat commands and when to use them.
 ## Notes
 - In chat flow, `mode_profile` in `agent/user_task.yaml` should be empty unless you explicitly want to override the kernel state.
 - For Claude Code or IDE hooks, use their respective trigger docs instead of these chat commands.
+

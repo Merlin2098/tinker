@@ -255,7 +255,7 @@ Schema Types:
   task_plan     - Inspector task plans
   report        - Executor execution reports
   system_config - System configuration files
-  user_task     - User task contract (Phase A/B gate)
+  user_task     - User task contract (minimal + compatibility fields)
 
 Examples:
   %(prog)s task.json --type task_plan

@@ -1,57 +1,18 @@
-# Debugging Fan-Out Limits
+# Debugging Limits (Operational)
 
-## Version
+This file defines bounded debugging depth.
+It is operational guidance, not canonical governance.
 
-2.0.0
+## Canonical References
+- Governance authority: `agent/rules/agent_rules.md`
+- Diagnostic classifier: `agent/rules/user_fault_heuristic.md`
 
-## Scope
+## Gates
+- Gate 1 (default): classify immediate failure and provide one bounded fix path.
+- Gate 2 (opt-in): targeted investigation only on declared scope.
+- Gate 3 (explicit confirmation): deep tracing when evidence justifies it.
 
-Applies to all agents during `B_EXECUTION`.
-
----
-
-## 1. Policy
-
-- Debugging cluster activation is never automatic.
-- Debugging depth must be explicit and bounded.
-- No debugging is allowed during `A_CONTRACT_VALIDATION`.
-
----
-
-## 2. Gates
-
-### Gate 1 - Initial response (default)
-
-- Inspect the immediate failure signal.
-- Apply `user_fault_heuristic.md`.
-- Return one bounded fix proposal.
-
-### Gate 2 - Targeted investigation
-
-Requires explicit user request for deeper debugging.
-
-- Load `systematic_debugging`.
-- Limit scope to declared files and direct dependencies.
-
-### Gate 3 - Deep investigation
-
-Requires explicit user confirmation after Gate 2.
-
-- Load `root_cause_tracing` (after `systematic_debugging`).
-- Expand only when evidence justifies scope extension.
-
----
-
-## 3. Hard limits
-
-- Maximum debug iterations before reconfirmation: 2.
-- Junior agent remains Gate 1 only.
-- No deep debugging for contracts with `risk_tolerance: LOW` unless user overrides explicitly.
-
----
-
-## 4. Enforcement
-
-- Respect skill metadata dependencies and bindings.
-- Respect phase gate (`A` blocks debugging execution paths).
-- Stop and escalate when limits are reached.
+## Hard Bounds
+- No deep debugging in validation-only phase.
+- Junior remains Gate 1 only.
+- Reconfirm with user after bounded iterations before expanding scope.

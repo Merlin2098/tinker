@@ -1,4 +1,4 @@
-# Invoker Framework - VS Code Bootstrap (Model-Agnostic)
+﻿# Tinker Framework - VS Code Bootstrap (Model-Agnostic)
 
 Purpose: Provide explicit, repeatable setup steps in VS Code without vendor lock-in.
 
@@ -48,3 +48,4 @@ Never bulk-load all skill bodies.
 ## Chat-based agents
 If you are running in a chat-only environment (no external command hooks),
 use `instructions/chat/trigger_chat.md`.
+

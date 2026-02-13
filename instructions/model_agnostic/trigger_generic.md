@@ -1,4 +1,4 @@
-# Invoker Framework - Generic Bootstrap (Model-Agnostic)
+﻿# Tinker Framework - Generic Bootstrap (Model-Agnostic)
 
 Purpose: Provide explicit, repeatable setup steps without IDE assumptions.
 
@@ -45,3 +45,4 @@ Do not bulk-load skill bodies.
 - Exit code 127 in bash: use `.venv/Scripts/python.exe` (forward slashes), not Windows backslashes.
 - No state file: verify `.venv/Scripts/python.exe` exists and the profile file is present in `agent/profiles/`.
 - Silent success: `activate_kernel.py` now prints profile + state path on success.
+

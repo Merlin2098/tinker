@@ -1,4 +1,4 @@
-# Portable Deployment Guide - Invoker Framework
+﻿# Portable Deployment Guide - Tinker Framework
 
 This guide explains how to deploy the framework into a host Python project.
 Status reflects framework state as of 2026-02-12.
@@ -19,7 +19,7 @@ Status reflects framework state as of 2026-02-12.
 
 ## 2. Target Layout
 
-Invoker must live at host project root.
+Tinker must live at host project root.
 
 ```text
 host-project/
@@ -59,11 +59,11 @@ Copy these assets:
 - `instructions/`
 - `AGENTS.md` and `agent.md` if your runner uses them.
 
-Optional: use the installer (recommended when applying Invoker to multiple projects):
+Optional: use the installer (recommended when applying Tinker to multiple projects):
 
 ```powershell
 $env:PYTHONIOENCODING='utf-8'
-.\.venv\Scripts\python.exe install_invoker.py C:\path\to\host-project
+.\.venv\Scripts\python.exe install_tinker.py C:\path\to\host-project
 ```
 
 ## 4. Update Host .gitignore
@@ -110,7 +110,7 @@ Activate a profile before running tasks:
 
 `load_static_context.py` resolves profile in this priority:
 1. CLI argument: `--profile <name>`
-2. Env var: `INVOKER_CONTEXT_PROFILE`
+2. Env var: `TINKER_CONTEXT_PROFILE`
 3. Config: `active_profile` in `agent_framework_config.yaml`
 4. `profile_detection` rules
 5. Default `static_context`
@@ -161,3 +161,4 @@ After deployment verify:
 3. `agent/agent_outputs/context.json` is generated.
 4. Host `.gitignore` includes template entries.
 5. Running `agent_tools/generate_skill_wrappers.py` twice yields `Wrappers updated: 0` on second run.
+

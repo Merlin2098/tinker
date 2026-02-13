@@ -1,25 +1,20 @@
-$schema: "https://json-schema.org/draft/2020-12/schema"
+﻿$schema: "https://json-schema.org/draft/2020-12/schema"
 $id: "user_task.schema.yaml"
-title: "Invoker User Task Contract"
-description: "Mandatory user task contract for deterministic Phase A/B execution."
+title: "Tinker User Task Contract"
+description: "Minimal user task contract with optional compatibility fields."
 type: object
 additionalProperties: false
 required:
-  - role
   - mode
   - objective
   - files
-  - config
   - constraints
-  - risk_tolerance
-  - phase
-  - validation
 
 properties:
   role:
     type: string
     enum: [senior, executor, inspector, junior]
-    description: "Execution role selected by user."
+    description: "Optional compatibility role selector."
 
   mode:
     type: string
@@ -76,12 +71,12 @@ properties:
   risk_tolerance:
     type: string
     enum: [LOW, MEDIUM, HIGH]
-    description: "Accepted risk envelope for planning and execution."
+    description: "Optional risk envelope for planning and execution."
 
   phase:
     type: string
     enum: [A_CONTRACT_VALIDATION, B_EXECUTION]
-    description: "Lifecycle phase gate."
+    description: "Optional lifecycle phase gate for compatibility."
 
   validation:
     type: object
@@ -101,10 +96,12 @@ properties:
 
 allOf:
   - if:
+      required: [phase]
       properties:
         phase:
           const: B_EXECUTION
     then:
+      required: [validation]
       properties:
         validation:
           properties:
@@ -117,11 +114,4 @@ allOf:
               type: string
               format: date-time
           required: [status, validated_by, validated_at, notes]
-  - if:
-      properties:
-        role:
-          enum: [executor, junior]
-    then:
-      properties:
-        phase:
-          const: B_EXECUTION
+

@@ -1,7 +1,7 @@
 # SKILL.md - devops_packaging
 
 This is an auto-generated compatibility wrapper.
-Source of truth remains in the Invoker framework paths listed below.
+Source of truth remains in the Tinker framework paths listed below.
 
 ## Skill Identity
 - Name: `devops_packaging`

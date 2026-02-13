@@ -1,5 +1,5 @@
-# ============================================================================
-# Invoker Framework Repository — .gitignore
+﻿# ============================================================================
+# Tinker Framework Repository — .gitignore
 # ============================================================================
 # This gitignore is for the framework DEVELOPMENT repository.
 # When deploying to a HOST project, the host should add the framework itself
@@ -85,3 +85,4 @@ data/
 #   PORTABLE_DEPLOYMENT.md
 #
 # See PORTABLE_DEPLOYMENT.md for deployment instructions.
+

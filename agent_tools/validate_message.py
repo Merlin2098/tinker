@@ -6,7 +6,7 @@ Validates inter-agent messages against defined JSON schemas.
 
 Usage:
     python validate_message.py <message_file> [--schema <schema_file>]
-    python validate_message.py <message_file> --type <envelope|plan|report|config>
+    python validate_message.py <message_file> --type <envelope|plan|report|config|user_task>
 
 Examples:
     python validate_message.py task_envelope.json --type envelope
@@ -49,6 +49,7 @@ SCHEMA_TYPES = {
     "plan": "task_plan.schema.json",
     "report": "execution_report.schema.json",
     "config": "system_config.schema.yaml",
+    "user_task": "user_task.schema.yaml",
 }
 
 
@@ -234,6 +235,8 @@ def validate_message(
             schema_type = "report"
         elif "system_definitions" in message and "workflow_configuration" in message:
             schema_type = "config"
+        elif "mode" in message and "objective" in message and "files" in message:
+            schema_type = "user_task"
         else:
             report["errors"].append("Cannot auto-detect schema type. Please specify --type or --schema")
             return False, report

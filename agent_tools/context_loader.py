@@ -1,7 +1,7 @@
-"""
+﻿"""
 context_loader.py
 
-On-demand context loader for the Invoker agent framework.
+On-demand context loader for the Tinker agent framework.
 
 This module complements load_static_context.py by providing a mechanism
 to load specific gitignored files (treemap, dependencies_report) into
@@ -229,3 +229,4 @@ if __name__ == "__main__":
             print(f"  Preview:\n{preview}\n")
         else:
             print(f"  {result.get('error', 'Not found')}\n")
+

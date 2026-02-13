@@ -1,4 +1,4 @@
-# Invoker Architecture
+﻿# Tinker Architecture
 
 ## LLM-Friendly Specification
 
@@ -6,7 +6,7 @@
 
 ## System Overview
 
-Invoker is a deterministic orchestration layer governing AI agent
+Tinker is a deterministic orchestration layer governing AI agent
 execution through:
 
 -   Explicit task contracts
@@ -48,3 +48,4 @@ Kernel must be explicit and inspectable.
 ------------------------------------------------------------------------
 
 **Architecture version generated:** 2026-02-12
+

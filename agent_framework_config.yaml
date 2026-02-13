@@ -1,6 +1,6 @@
-# agent_framework_config.yaml
+﻿# agent_framework_config.yaml
 #
-# Central configuration for the Invoker agent framework.
+# Central configuration for the Tinker agent framework.
 # This file governs how the framework integrates with any HOST PROJECT
 # it is deployed into.
 #
@@ -32,7 +32,7 @@ deployment:
   # Recommended lines to add to the HOST project's .gitignore.
   # A ready-to-copy template is available in .gitignore.host
   host_gitignore_entries:
-    - "# Invoker agent framework (portable — not part of host project)"
+    - "# Tinker agent framework (portable — not part of host project)"
     - "agent/"
     - "agent_tools/"
     - ".clinerules"
@@ -49,7 +49,7 @@ deployment:
 # Optional default static context profile.
 # Resolution order at runtime:
 #   1) CLI arg --profile
-#   2) INVOKER_CONTEXT_PROFILE env var
+#   2) TINKER_CONTEXT_PROFILE env var
 #   3) active_profile (this field)
 #   4) profile_detection rules
 #   5) default static_context
@@ -57,7 +57,7 @@ active_profile: null
 
 # Optional automatic environment detection for profile activation.
 # If enabled, this is used when no explicit profile is provided via
-# --profile, INVOKER_CONTEXT_PROFILE, or active_profile.
+# --profile, TINKER_CONTEXT_PROFILE, or active_profile.
 profile_detection:
   enabled: true
   fallback_profile: default
@@ -233,3 +233,4 @@ data_governance:
   # Output format is use-case dependent. Do not enforce parquet globally.
   # Plans/pipelines must declare format per output artifact.
   required_output_format_policy: per_use_case_declared
+

@@ -1,4 +1,4 @@
-# Invoker Framework - Chat Bootstrap (Model-Agnostic)
+ï»¿# Tinker Framework - Chat Bootstrap (Model-Agnostic)
 
 Purpose: Provide explicit, repeatable setup steps for chat-based agents (Codex/ChatGPT/etc.).
 
@@ -8,13 +8,13 @@ See `instructions/chat/command_glossary_chat.md` for a compact command reference
 1. Validate `agent/user_task.yaml` against `agent/agent_protocol/schemas/user_task.schema.yaml`.
 2. No field inference and no data invention.
 3. No execution without explicit validation pass.
-4. Governance is internal to Invoker; do not depend on external IDE state.
+4. Governance is internal to Tinker; do not depend on external IDE state.
 
 ## Chat trigger phrases (explicit)
 Any of the following phrases should be treated as a trigger:
 - `Run task from agent/user_task.yaml`
-- `Invoker: run`
-- `Invoker: validate`
+- `Tinker: run`
+- `Tinker: validate`
 
 ## Kernel commands (chat-only)
 These commands change the active kernel profile without editing `agent/user_task.yaml`:
@@ -46,7 +46,7 @@ If the user explicitly asks to â€œrun/execute the task in agent/user_task.yamlâ€
       - `agent/task_templates/chat/user_task_template.yaml`
 5. Trigger the agent using chat:
    - `Run task from agent/user_task.yaml`
-   - or `Invoker: run` / `Invoker: validate`
+   - or `Tinker: run` / `Tinker: validate`
 
 ## Skill loading protocol
 1. `_index.yaml`
@@ -54,3 +54,4 @@ If the user explicitly asks to â€œrun/execute the task in agent/user_task.yamlâ€
 3. `.md` for invoked skills
 
 Do not bulk-load skill bodies.
+

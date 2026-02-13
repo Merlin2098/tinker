@@ -1,7 +1,7 @@
+﻿# ============================================================================
+# Host Project Gitignore Template - Tinker Framework
 # ============================================================================
-# Host Project Gitignore Template - Invoker Framework
-# ============================================================================
-# Add these entries to the HOST project's .gitignore when deploying Invoker.
+# Add these entries to the HOST project's .gitignore when deploying Tinker.
 
 # Core framework footprint
 agent/
@@ -25,3 +25,4 @@ agent/agent_outputs/runtime/
 # Optional framework metadata files at host root
 AGENTS.md
 agent.md
+
