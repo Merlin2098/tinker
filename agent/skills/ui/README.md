@@ -1,4 +1,4 @@
-# UI Skills
+﻿# UI Skills
 
 Reusable UI behavior patterns for building professional, responsive desktop applications.
 
@@ -27,3 +27,4 @@ These skills enforce:
 ## Usage
 
 Each skill is independent and can be applied as needed. Skills are purely operational and contain no agent role logic.
+

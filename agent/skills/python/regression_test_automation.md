@@ -1,53 +1,27 @@
-# Skill: Regression Test Automation
+﻿# Skill: regression_test_automation (Thin Interface)
 
 ## Purpose
-Build and maintain automated regression checks so fixes and feature changes do not reintroduce known failures.
+Automated regression testing workflow with baseline capture, targeted suites, and stability checks
 
-## Use This Skill When
-- A bug fix is being delivered.
-- A high-risk module was modified.
-- You need confidence for repeated releases.
-- Flaky or unstable tests are impacting trust.
+Business logic lives in:
+- `agent_tools/wrappers/python_quality_advisor_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
 ## Inputs
-- Change scope (files and behavior affected).
-- Existing test suite and execution command.
-- Known historical failures or edge cases.
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/modules/components to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
 
-## Workflow
-1. Scope Mapping
-- Map modified files to impacted behaviors.
-- Select minimal critical regression scenarios first.
+## Execution
 
-2. Baseline Definition
-- Define expected outputs and invariants.
-- Reuse production-like fixtures where possible.
-
-3. Suite Construction
-- Add targeted regression tests for fixed defects.
-- Add smoke subset for fast validation gates.
-- Keep naming explicit: test_<component>_<regression_id>.
-
-4. Execution Strategy
-- Run fast subset first, then broader suite.
-- Record deterministic command(s) and environment.
-- Capture pass/fail counts and failure signatures.
-
-5. Flakiness Control
-- Detect non-deterministic tests.
-- Isolate flaky cases and require stabilization before gate promotion.
-
-6. Gate Integration
-- Wire regression suite into validation phase.
-- Fail the gate when critical regression cases fail.
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill regression_test_automation --args-json "{\"objective\":\"<goal>\"}"
+```
 
 ## Output Contract
-- Regression test inventory (new/updated tests).
-- Execution command list.
-- Pass/fail report with failing test identifiers.
-- Promotion decision: pass, block, or stabilize-first.
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`, `supporting_artifacts`
 
-## Guardrails
-- Do not add broad low-value tests; prioritize defect-linked coverage.
-- Every bug fix must have at least one regression guard.
-- Do not hide flaky tests; classify and track them explicitly.

@@ -20,9 +20,23 @@ max_phase: 2
 body_file: "ui_widget_modularity.md"
 token_estimate: 220
 execution:
-  entrypoint: "agent_tools/wrappers/ui_widget_modularity_wrapper.py::run"
+  entrypoint: "agent_tools/wrappers/ui_advisor_wrapper.py::run"
   command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill ui_widget_modularity --args-json '<json-object>'"
   args_schema:
     type: object
     required: []
-    properties: {}
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer

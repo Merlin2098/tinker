@@ -1,54 +1,27 @@
-# Skill: data_integrity_guardian
+﻿# Skill: data_integrity_guardian (Thin Interface)
 
-The agent validates all inputs and outputs to ensure data integrity and prevent errors.
+## Purpose
+Data consistency: validation, constraints, transactions, corruption prevention
 
-## Responsibility
-Implement comprehensive validation using schemas, type checking, and custom validators.
+Business logic lives in:
+- `agent_tools/wrappers/python_quality_advisor_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Rules
-- Validate all external inputs (user input, API requests, file data)
-- Validate outputs before sending to external systems
-- Use Pydantic for schema-based validation
-- Define custom validators for business rules
-- Provide clear error messages for validation failures
-- Fail fast: validate early in the processing pipeline
+## Inputs
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/modules/components to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
 
-## Behavior
+## Execution
 
-### Step 1: Define Data Schemas
-- Create Pydantic models with types and constraints
-- Add field validators for custom rules
-
-### Step 2: Validate Input Data
-- Parse and validate incoming data against schemas
-- Catch validation errors and return meaningful messages
-
-### Step 3: Validate Business Rules
-- Implement custom validators for domain-specific rules
-- Check relationships between fields
-
-### Step 4: Validate Outputs
-- Verify data before sending to external systems
-
-## Example Usage
-
-```python
-from pydantic import BaseModel, Field, EmailStr, validator
-
-class UserCreate(BaseModel):
-    username: str = Field(..., min_length=3, max_length=20)
-    email: EmailStr
-    age: int = Field(..., ge=0, le=150)
-    password: str = Field(..., min_length=8)
-    
-    @validator('password')
-    def validate_password(cls, v):
-        if not any(c.isupper() for c in v):
-            raise ValueError('Password must contain uppercase letter')
-        return v
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill data_integrity_guardian --args-json "{\"objective\":\"<goal>\"}"
 ```
 
-## Notes
-- Validation should be defensive but not paranoid
-- Provide helpful error messages for users
-- Use type hints combined with Pydantic for maximum safety
+## Output Contract
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`, `supporting_artifacts`
+

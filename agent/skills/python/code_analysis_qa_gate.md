@@ -1,54 +1,27 @@
-# Skill: Code Analysis and QA Gate
+﻿# Skill: code_analysis_qa_gate (Thin Interface)
 
 ## Purpose
-Define and run a deterministic code-quality gate before merge or release, combining static analysis signals with clear pass/fail thresholds.
+Static code analysis and QA gate definition for pre-merge quality enforcement
 
-## Use This Skill When
-- You need objective QA criteria for changed code.
-- A PR/release requires quality evidence.
-- Teams need consistent quality checks across agents.
+Business logic lives in:
+- `agent_tools/wrappers/python_quality_advisor_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
 ## Inputs
-- Target file set or module scope.
-- Required quality checks (lint, typing, tests, complexity, security).
-- Threshold policy (blockers vs warnings).
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/modules/components to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
 
-## QA Gate Model
-1. Structural Checks
-- Syntax validity.
-- Import and dependency health.
-- Basic project conventions.
+## Execution
 
-2. Static Quality Checks
-- Lint violations (style and correctness).
-- Type consistency checks.
-- Complexity and maintainability hotspots.
-
-3. Behavioral Checks
-- Critical tests.
-- Regression subset.
-
-4. Decision
-- PASS: no blocking findings.
-- CONDITIONAL: warnings only, with explicit acceptance.
-- FAIL: one or more blocking findings.
-
-## Workflow
-1. Define gate criteria and severity mapping.
-2. Run checks in deterministic order.
-3. Normalize findings into a single report.
-4. Fail fast on blockers; continue collecting warnings.
-5. Emit final gate verdict with remediation list.
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill code_analysis_qa_gate --args-json "{\"objective\":\"<goal>\"}"
+```
 
 ## Output Contract
-- QA gate report containing:
-  - check set executed
-  - blockers and warnings
-  - affected files
-  - final verdict
-- Actionable remediation steps for each blocker.
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`, `supporting_artifacts`
 
-## Guardrails
-- Do not merge style and defect severity into one bucket.
-- Never pass a gate with unresolved blockers.
-- Keep threshold policy explicit and versioned per project.

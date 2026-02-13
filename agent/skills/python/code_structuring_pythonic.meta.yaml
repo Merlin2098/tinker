@@ -19,3 +19,24 @@ agent_binding:
   optional: [agent_inspector]
 body_file: "code_structuring_pythonic.md"
 token_estimate: 800
+execution:
+  entrypoint: "agent_tools/wrappers/python_quality_advisor_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill code_structuring_pythonic --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer

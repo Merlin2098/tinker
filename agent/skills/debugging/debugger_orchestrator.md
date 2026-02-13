@@ -1,58 +1,27 @@
-# Skill: Debugger Orchestrator
+﻿# Skill: debugger_orchestrator (Thin Interface)
 
 ## Purpose
-Provide a deterministic debugging workflow that avoids random fixes and ensures every bug investigation ends with verifiable evidence.
+End-to-end debugger workflow: triage, reproduce, isolate, verify, and regression-proof
 
-## Use This Skill When
-- A failure has unclear origin.
-- Multiple symptoms may share the same root cause.
-- A fix is needed with regression protection.
-- You need to structure debugging work for another agent.
+Business logic lives in:
+- `agent_tools/wrappers/policy_guidance_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Do Not Use This Skill When
-- The issue is purely cosmetic and already understood.
-- A validated fix is already specified in an approved task plan.
+## Inputs
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/areas to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
 
-## Required Inputs
-- Failing symptom (error, traceback, incorrect output, unstable behavior).
-- Relevant files, logs, and execution context.
-- Expected behavior (acceptance criteria).
+## Execution
 
-## Workflow
-1. Triage
-- Classify severity and blast radius.
-- Identify whether this is a data issue, code issue, config issue, or environment issue.
-
-2. Reproduce
-- Create a minimal reproducible scenario.
-- Lock inputs and execution path to remove noise.
-- Record exact command and observed output.
-
-3. Isolate
-- Trace call path and state transitions around the failure.
-- Identify first bad state, not just final crash location.
-- Build 1-2 hypotheses and test each with evidence.
-
-4. Fix
-- Apply the smallest change that resolves the proven root cause.
-- Avoid unrelated refactors during incident resolution.
-
-5. Verify
-- Re-run the reproduction case.
-- Run targeted checks for neighboring behavior.
-- Confirm no protected files or out-of-scope components were changed.
-
-6. Regression-proof
-- Add or update tests to prevent recurrence.
-- Document failure signature and guard condition.
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill debugger_orchestrator --args-json "{\"objective\":\"<goal>\"}"
+```
 
 ## Output Contract
-- Root cause statement with evidence.
-- Change summary linked to files touched.
-- Verification results (before/after).
-- Regression test list added or updated.
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`
 
-## Guardrails
-- Never claim success without re-running verification.
-- Never mark a hypothesis as root cause without direct evidence.
-- Prefer deterministic checks over manual confidence.

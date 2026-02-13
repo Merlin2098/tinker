@@ -1,12 +1,27 @@
-# Skill: output_validation_checklist
+﻿# Skill: output_validation_checklist (Thin Interface)
 
-The agent validates all outputs before emission.
+## Purpose
+Validates outputs before emission â€” plan IDs, versions, DAG dependencies
 
-Rules:
-- Validates plan ID is unique UUID v4
-- Validates version matches schema version
-- Validates timestamps are ISO-8601
-- Validates all decisions have rationale
-- Validates dependencies form valid DAG
-- Validates plan is persisted before responding
-- Validates protected files are not in targets
+Business logic lives in:
+- `agent_tools/wrappers/policy_guidance_wrapper.py`
+- `agent_tools/run_wrapper.py`
+
+## Inputs
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/areas to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
+
+## Execution
+
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill output_validation_checklist --args-json "{\"objective\":\"<goal>\"}"
+```
+
+## Output Contract
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`
+

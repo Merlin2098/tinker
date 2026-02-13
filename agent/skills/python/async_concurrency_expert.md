@@ -1,57 +1,27 @@
-# Skill: async_concurrency_expert
+﻿# Skill: async_concurrency_expert (Thin Interface)
 
-The agent determines when to use asyncio, threading, or multiprocessing, and implements concurrent solutions efficiently.
+## Purpose
+Async/await, event loops, concurrent task handling
 
-## Responsibility
-Choose appropriate concurrency model and implement non-blocking I/O, parallel processing, and thread-safe operations.
+Business logic lives in:
+- `agent_tools/wrappers/python_quality_advisor_wrapper.py`
+- `agent_tools/run_wrapper.py`
 
-## Rules
-- Use **asyncio** for I/O-bound operations (network, disk, databases)
-- Use **threading** for I/O-bound operations with blocking libraries
-- Use **multiprocessing** for CPU-bound operations
-- Avoid mixing paradigms unnecessarily
-- Ensure thread safety with locks, queues, or asyncio primitives
-- Handle exceptions in concurrent tasks properly
-- Use connection pools for database/API connections
+## Inputs
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/modules/components to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
 
-## Behavior
+## Execution
 
-### Step 1: Identify Workload Type
-- **I/O-bound**: Network requests, file operations, database queries → Use asyncio or threading
-- **CPU-bound**: Data processing, computations, encryption → Use multiprocessing
-
-### Step 2: Implement Asyncio for I/O
-- Use `async`/`await` syntax
-- Use `asyncio.gather()` for concurrent tasks
-- Implement proper error handling with try/except
-
-### Step 3: Implement Threading for Blocking I/O
-- Use `concurrent.futures.ThreadPoolExecutor`
-- Ensure thread safety with locks or queues
-
-### Step 4: Implement Multiprocessing for CPU Work
-- Use `multiprocessing.Pool` or `ProcessPoolExecutor`
-- Serialize data properly (pickle-compatible)
-
-## Example Usage
-
-```python
-import asyncio
-import aiohttp
-
-async def fetch_url(session, url):
-    async with session.get(url) as response:
-        return await response.text()
-
-async def main():
-    urls = ["https://example.com", "https://example.org"]
-    async with aiohttp.ClientSession() as session:
-        tasks = [fetch_url(session, url) for url in urls]
-        results = await asyncio.gather(*tasks)
-    return results
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill async_concurrency_expert --args-json "{\"objective\":\"<goal>\"}"
 ```
 
-## Notes
-- Python's GIL prevents true parallelism in threading
-- Use asyncio for scalability with many concurrent I/O operations
-- Use multiprocessing to fully utilize multiple CPU cores
+## Output Contract
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`, `supporting_artifacts`
+

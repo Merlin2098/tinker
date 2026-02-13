@@ -1,9 +1,27 @@
-# Skill: plan_archive_protocol
+﻿# Skill: plan_archive_protocol (Thin Interface)
 
-The agent archives active plans before loading new ones.
+## Purpose
+Archives active plans before new execution preserving history
 
-Rules:
-- Checks plan_active folder before new plan loading
-- Moves existing plans to timestamped archive folder
-- Clears plan_active for new execution
-- Logs all archive operations
+Business logic lives in:
+- `agent_tools/wrappers/policy_guidance_wrapper.py`
+- `agent_tools/run_wrapper.py`
+
+## Inputs
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/areas to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
+
+## Execution
+
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill plan_archive_protocol --args-json "{\"objective\":\"<goal>\"}"
+```
+
+## Output Contract
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`
+

@@ -22,3 +22,24 @@ agent_binding:
 max_phase: 1  # Blocked from Phase 0
 body_file: "refactoring_assistant.md"
 token_estimate: 1900
+execution:
+  entrypoint: "agent_tools/wrappers/python_quality_advisor_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill refactoring_assistant --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer

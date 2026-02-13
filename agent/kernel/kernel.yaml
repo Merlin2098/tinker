@@ -1,59 +1,15 @@
-version: "1.0.0"
-name: "INVOKER_KERNEL"
+version: "2.0.0"
+name: "TINKER_KERNEL"
+kind: "capability_profile_selector"
 always_loaded: true
 
-authority:
-  order: [governance, contract, runtime_constraints]
-  deterministic: true
-
-contracts:
-  manifest_path: "agent/user_task.yaml"
-  manifest_schema: "agent/agent_protocol/schemas/user_task.schema.yaml"
-  required_fields:
-    - role
-    - mode
-    - objective
-    - files
-    - config
-    - constraints
-    - risk_tolerance
-    - phase
-    - validation
-  optional_fields:
-    - mode_profile
-
-skill_loader:
-  layer1_index: "agent/skills/_index.yaml"
-  layer2_meta_glob: "agent/skills/**/*.meta.yaml"
-  layer3_body_on_demand: true
-  bulk_body_load_forbidden: true
-
-governance_baseline_skills:
-  - skill_authority_first
-  - scope_control_discipline
-  - protected_file_validation
-  - path_traversal_prevention
-  - ambiguity_escalation
-  - verification_before_completion
-  - artifact_persistence_discipline
-  - python_venv_executor
-
-stop_conditions:
-  - code: unauthorized_action
-    when: "action not allowed by profile or contract"
-    action: "stop_and_escalate"
-  - code: protected_file_violation
-    when: "target in protected blacklist"
-    action: "stop_and_escalate"
-  - code: phase_gate_violation
-    when: "B_EXECUTION without validation.status=PASSED"
-    action: "stop_and_escalate"
-  - code: profile_constraint_violation
-    when: "attempted behavior exceeds mode_profile"
-    action: "stop_and_escalate"
-  - code: ambiguity_without_clearance
-    when: "objective or scope ambiguous and no clarification"
-    action: "stop_and_escalate"
+profiles:
+  directory: "agent/profiles"
+  default: "LITE"
+  allowed: [LITE, STANDARD, FULL]
+  semantics: "allowlist_only"
+  deny_by_default: true
+  merge_strategy: "kernel_base_plus_profile_allowlist"
 
 runtime_outputs:
   active_profile_state: "agent/agent_outputs/runtime/active_profile.json"

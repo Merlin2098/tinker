@@ -19,3 +19,24 @@ agent_binding:
   optional: []
 body_file: "scope_control_discipline.md"
 token_estimate: 500
+execution:
+  entrypoint: "agent_tools/wrappers/policy_guidance_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill scope_control_discipline --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer

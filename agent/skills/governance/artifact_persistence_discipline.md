@@ -1,9 +1,27 @@
-# Skill: artifact_persistence_discipline
+﻿# Skill: artifact_persistence_discipline (Thin Interface)
 
-The agent enforces workspace persistence guarantees.
+## Purpose
+Agent outputs persisted to disk, never deleted
 
-Rules:
-- Persists plans, reports, and execution artifacts to disk
-- Never deletes historical outputs
-- Stores results under `agent/agent_outputs/`
-- Cleans temporary files only when safe and appropriate
+Business logic lives in:
+- `agent_tools/wrappers/policy_guidance_wrapper.py`
+- `agent_tools/run_wrapper.py`
+
+## Inputs
+- `objective` (string, optional): Main goal for this advisory skill invocation.
+- `target_paths` (array[string], optional): Files/areas to focus on.
+- `constraints` (array[string], optional): Guardrails or non-goals to enforce.
+- `output_mode` (string, optional, default `checklist`): `checklist|plan|actions`
+- `max_items` (integer, optional, default `6`)
+
+## Execution
+
+```bash
+.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill artifact_persistence_discipline --args-json "{\"objective\":\"<goal>\"}"
+```
+
+## Output Contract
+- `status`, `skill`, `cluster`, `focus`
+- `objective`, `target_paths`, `constraints`, `output_mode`
+- `primary_output`
+

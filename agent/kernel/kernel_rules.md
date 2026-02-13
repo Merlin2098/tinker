@@ -1,10 +1,16 @@
-# Kernel Rules (Invoker)
+# Kernel Rules (Tinker)
 
-The kernel is the always-loaded, minimal governance and bootstrap layer.
-It is the single source of truth for:
-- authority order (governance > contract > runtime constraints)
-- manifest schema location
-- minimum skill loader rules
-- stop conditions
+The kernel is profile-selection metadata only.
 
-Kernel rules are static and shared across all agents.
+Kernel responsibilities:
+- define which profiles are valid (`LITE`, `STANDARD`, `FULL`)
+- define default profile
+- enforce allowlist-only profile semantics
+
+Kernel non-responsibilities:
+- no role routing
+- no workflow orchestration
+- no trigger-engine policy
+- no governance duplication
+
+Capability authorization must come from profile allowlists under `agent/profiles/`.

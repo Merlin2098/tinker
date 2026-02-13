@@ -22,3 +22,24 @@ agent_binding:
 max_phase: 1
 body_file: "debugger_orchestrator.md"
 token_estimate: 1500
+execution:
+  entrypoint: "agent_tools/wrappers/policy_guidance_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill debugger_orchestrator --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
