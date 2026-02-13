@@ -11,11 +11,6 @@ required:
   - constraints
 
 properties:
-  role:
-    type: string
-    enum: [senior, executor, inspector, junior]
-    description: "Optional compatibility role selector."
-
   mode:
     type: string
     enum: [ANALYZE_ONLY, ANALYZE_AND_IMPLEMENT, IMPLEMENT_ONLY]
@@ -114,4 +109,5 @@ allOf:
               type: string
               format: date-time
           required: [status, validated_by, validated_at, notes]
+
 

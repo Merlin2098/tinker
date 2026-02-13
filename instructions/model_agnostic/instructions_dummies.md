@@ -1,4 +1,4 @@
-# Instrucciones Dummies (para ninos de 10 anos)
+﻿# Instrucciones Dummies (para ninos de 10 anos)
 
 Esta guia te ensena a usar el framework sin complicarte.
 
@@ -6,7 +6,7 @@ Esta guia te ensena a usar el framework sin complicarte.
 
 Escribe este comando en el chat del agente:
 
-`Read .clinerules and agent/rules/agent_rules.md and agent/rules/regulatory_principles_v1.md`
+`Read .clinerules and agent/rules/agent_rules.md`
 
 ## 1. Activar el Kernel (obligatorio)
 
@@ -98,7 +98,7 @@ Siempre haz esto:
 2. Si el veredicto es PASSED, edita `agent/user_task.yaml` y cambia:
    - `phase: B_EXECUTION`
    - `validation.status: PASSED`
-   - `validation.validated_by: <quien valido>` (ejemplo: `agent_inspector` o tu nombre)
+   - `validation.validated_by: <quien valido>` (ejemplo: tu nombre)
    - `validation.validated_at: <fecha ISO-8601>` (ejemplo: `2026-02-12T00:00:00Z`)
 3. Vuelve a ejecutar el trigger para que el sistema lea el YAML actualizado.
 
@@ -126,3 +126,4 @@ Instrucciones malas:
 - `debugger_orchestrator`: para investigar errores.
 - `regression_test_automation`: para evitar que el error vuelva.
 - `code_analysis_qa_gate`: para revisar calidad antes de cerrar.
+

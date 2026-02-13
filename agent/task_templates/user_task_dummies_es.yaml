@@ -1,7 +1,6 @@
-# Plantilla minima (compatibilidad)
+﻿# Plantilla minima (compatibilidad)
 # El rol se conserva solo por compatibilidad de esquema.
 
-role: senior
 mode: ANALYZE_AND_IMPLEMENT
 objective: |
   Reemplaza con el objetivo exacto.

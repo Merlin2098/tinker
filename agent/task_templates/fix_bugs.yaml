@@ -1,5 +1,4 @@
-# Minimal user_task template (compatibility-first)
-role: senior
+﻿# Minimal user_task template (compatibility-first)
 mode: ANALYZE_AND_IMPLEMENT
 objective: |
   Replace with exact objective.

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 User task builder.
 
@@ -116,7 +116,6 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Build agent/user_task.yaml from explicit inputs"
     )
-    parser.add_argument("--role", choices=["senior", "executor", "inspector", "junior"])
     parser.add_argument(
         "--mode",
         choices=["ANALYZE_ONLY", "ANALYZE_AND_IMPLEMENT", "IMPLEMENT_ONLY"],
@@ -161,7 +160,6 @@ def main() -> int:
 
     explicit_fields_provided = any(
         [
-            args.role,
             args.objective,
             args.objective_file,
             args.constraints,
@@ -215,8 +213,6 @@ def main() -> int:
                 raise SystemExit("Template must be a valid YAML mapping.")
             payload = template
             payload.update({"mode": args.mode, "objective": objective, "files": args.files, "constraints": constraints})
-            if args.role:
-                payload["role"] = args.role
             if config_sources:
                 payload["config"] = {"sources": config_sources}
             if args.risk_tolerance:
@@ -239,8 +235,6 @@ def main() -> int:
                 "files": args.files,
                 "constraints": constraints,
             }
-            if args.role:
-                payload["role"] = args.role
             if config_sources:
                 payload["config"] = {"sources": config_sources}
             if args.risk_tolerance:
@@ -273,3 +267,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

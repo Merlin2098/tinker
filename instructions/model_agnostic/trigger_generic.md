@@ -12,7 +12,7 @@ If you are running in chat, prefer `instructions/chat/trigger_chat.md` and
 
 ## Explicit bootstrap steps
 1. Read governance (chat command):
-   - `Read .clinerules and agent/rules/agent_rules.md and agent/rules/regulatory_principles_v1.md`
+   - `Read .clinerules and agent/rules/agent_rules.md`
 2. Activate kernel profile (choose one, OS-specific):
    - PowerShell/CMD:
      - `.\.venv\Scripts\python.exe agent_tools\activate_kernel.py --profile LITE`
@@ -30,7 +30,7 @@ If you are running in chat, prefer `instructions/chat/trigger_chat.md` and
    - Bash: `PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe agent_tools/load_static_context.py`
 4. Edit `agent/user_task.yaml`:
    - Set `mode_profile` to LITE, STANDARD, or FULL
-   - Fill role, mode, objective, files, config, constraints, risk_tolerance, phase, validation
+   - Fill mode, objective, files, config, constraints, optional compatibility fields
 5. Trigger the agent:
    - `Run task from agent/user_task.yaml`
 
@@ -45,4 +45,5 @@ Do not bulk-load skill bodies.
 - Exit code 127 in bash: use `.venv/Scripts/python.exe` (forward slashes), not Windows backslashes.
 - No state file: verify `.venv/Scripts/python.exe` exists and the profile file is present in `agent/profiles/`.
 - Silent success: `activate_kernel.py` now prints profile + state path on success.
+
 

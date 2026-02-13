@@ -29,7 +29,7 @@ If the user explicitly asks to â€œrun/execute the task in agent/user_task.yamlâ€
 
 ## Explicit bootstrap steps
 1. Read governance (chat command):
-   - `Read .clinerules and agent/rules/agent_rules.md and agent/rules/regulatory_principles_v1.md`
+   - `Read .clinerules and agent/rules/agent_rules.md`
 2. Activate kernel profile (chat kernel commands):
    - `Kernel LITE` | `Kernel STANDARD` | `Kernel FULL`
 3. Load static context (venv only):
@@ -54,4 +54,5 @@ If the user explicitly asks to â€œrun/execute the task in agent/user_task.yamlâ€
 3. `.md` for invoked skills
 
 Do not bulk-load skill bodies.
+
 

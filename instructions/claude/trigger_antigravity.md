@@ -10,7 +10,7 @@ Purpose: Provide explicit, repeatable setup steps in Antigravity without vendor 
 
 ## Explicit bootstrap steps
 1. Read governance (chat command):
-   - `Read .clinerules and agent/rules/agent_rules.md and agent/rules/regulatory_principles_v1.md`
+   - `Read .clinerules and agent/rules/agent_rules.md`
 2. Activate kernel profile (choose one, OS-specific):
    - PowerShell/CMD:
      - `.\.venv\Scripts\python.exe agent_tools\activate_kernel.py --profile LITE`
@@ -28,7 +28,7 @@ Purpose: Provide explicit, repeatable setup steps in Antigravity without vendor 
    - Bash: `PYTHONIOENCODING=utf-8 .venv/Scripts/python.exe agent_tools/load_static_context.py`
 4. Edit `agent/user_task.yaml`:
    - Set `mode_profile` to LITE, STANDARD, or FULL
-   - Fill role, mode, objective, files, config, constraints, risk_tolerance, phase, validation
+   - Fill mode, objective, files, config, constraints, optional compatibility fields
 5. Trigger the agent using your Antigravity command hook:
    - `Run task from agent/user_task.yaml`
 
@@ -47,4 +47,5 @@ Do not bulk-load skill bodies.
 ## Chat-based agents
 If you are running in a chat-only environment (no external command hooks),
 use `instructions/chat/trigger_chat.md`.
+
 

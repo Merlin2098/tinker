@@ -41,13 +41,7 @@ SCHEMAS_PATH = os.path.join("agent", "agent_protocol", "schemas")
 DEPENDENCIES_REPORT_PATH = os.path.join("agent", "analysis", "dependencies_report.md")
 TREEMAP_PATH = os.path.join("agent", "analysis", "treemap.md")
 
-# Agent definition paths
-AGENT_SENIOR_CONTEXT = os.path.join("agent", "agent_senior", "context", "context.md")
-AGENT_SENIOR_WORKFLOW = os.path.join("agent", "agent_senior", "workflow", "workflow.md")
-AGENT_EXECUTOR_CONTEXT = os.path.join("agent", "agent_executor", "context", "context.md")
-AGENT_EXECUTOR_WORKFLOW = os.path.join("agent", "agent_executor", "workflow", "workflow.md")
-AGENT_INSPECTOR_CONTEXT = os.path.join("agent", "agent_inspector", "context", "context.md")
-AGENT_INSPECTOR_WORKFLOW = os.path.join("agent", "agent_inspector", "workflow", "workflow.md")
+# Runtime model has no role-specific agent definitions.
 
 
 # ---------------------------------------------------------------------------
@@ -770,25 +764,7 @@ def load_static_context(profile: Optional[str] = None) -> Dict[str, Any]:
     if os.path.exists(SCHEMAS_PATH):
         for fname in os.listdir(SCHEMAS_PATH):
             fpath = os.path.join(SCHEMAS_PATH, fname)
-            context["schemas"][fname] = _schema_summary(fpath)
-
-    # 7. Agent definitions — minimal path references only
-    context["agent_definitions"] = {
-        "senior": {
-            "context": _file_ref(AGENT_SENIOR_CONTEXT),
-            "workflow": _file_ref(AGENT_SENIOR_WORKFLOW),
-        },
-        "executor": {
-            "context": _file_ref(AGENT_EXECUTOR_CONTEXT),
-            "workflow": _file_ref(AGENT_EXECUTOR_WORKFLOW),
-        },
-        "inspector": {
-            "context": _file_ref(AGENT_INSPECTOR_CONTEXT),
-            "workflow": _file_ref(AGENT_INSPECTOR_WORKFLOW),
-        },
-    }
-
-    context = _enforce_context_line_budget(
+            context["schemas"][fname] = _schema_summary(fpath)    context = _enforce_context_line_budget(
         context,
         max_lines=max_lines,
         policy=truncation_policy,
@@ -859,4 +835,6 @@ if __name__ == "__main__":
             f"  Context budget: {budget.get('final_lines', '?')}/{budget.get('max_lines', '?')} lines"
             f" (truncated={budget.get('truncation_applied', False)})"
         )
+
+
 
