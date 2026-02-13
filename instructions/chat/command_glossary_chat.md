@@ -50,6 +50,11 @@ Purpose: command-specific reference for chat operation.
 - `./.venv/Scripts/python.exe install_tinker.py --dry-run <dest>`
 - `./.venv/Scripts/python.exe install_tinker.py --overwrite-framework --backup <dest>`
 
+## Git checkpoints
+- `./.venv/Scripts/python.exe agent_tools/git_checkpoint.py commit --message "<checkpoint message>"`
+- `./.venv/Scripts/python.exe agent_tools/git_checkpoint.py sync`
+- `./.venv/Scripts/python.exe agent_tools/git_checkpoint.py commit-sync --message "<checkpoint message>"`
+
 ## Notes
 - `mode_profile` is optional.
 - `phase` and `validation` are optional compatibility fields, not hard requirements.
