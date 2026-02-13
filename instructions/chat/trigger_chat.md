@@ -1,34 +1,38 @@
 # Tinker Framework - Chat Bootstrap (Model-Agnostic)
 
-Purpose: explicit setup for chat-based agents.
+Purpose: explicit command-driven setup for chat-based agents.
 
 ## Hard constraints
 1. Validate `agent/user_task.yaml` against `agent/agent_protocol/schemas/user_task.schema.yaml`.
 2. No field inference and no fabricated data.
 3. Wrapper-first execution model.
 
-## Trigger phrases
-- `Run task from agent/user_task.yaml`
-- `Tinker: run`
+## Chat Commands
+Use these exact phrases in chat:
 - `Tinker: validate`
+- `Tinker: run`
+- `Run task from agent/user_task.yaml`
 
 ## Kernel commands (chat)
 - `Kernel LITE`
 - `Kernel STANDARD`
 - `Kernel FULL`
 
-## Bootstrap steps
-1. Read governance:
+## Command Runbook
+1. Governance load command:
    - `Read .clinerules and agent/rules/agent_rules.md`
-2. Activate profile via kernel commands.
-3. Load context:
+2. Kernel selection command:
+   - `Kernel LITE|STANDARD|FULL`
+3. Context refresh command:
    - `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/load_static_context.py`
-4. Prepare `agent/user_task.yaml` when requested:
-   - `./.venv/Scripts/python.exe agent_tools/user_task_builder.py ...`
-5. Optional review/handoff plan doc (if requested):
-   - `./.venv/Scripts/python.exe agent_tools/plan_doc.py init --id <id> --title <title> --objective <text>`
-   - `./.venv/Scripts/python.exe agent_tools/plan_doc.py validate --file agent/agent_outputs/plans/plan_active/<id>.yaml`
-6. Trigger with one of the trigger phrases.
+4. Task contract build command (optional):
+   - `./.venv/Scripts/python.exe agent_tools/user_task_builder.py --help`
+5. Task validation command:
+   - `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/schema_validator.py agent/user_task.yaml --type user_task`
+6. Optional plan-doc command set:
+   - `./.venv/Scripts/python.exe agent_tools/plan_doc.py --help`
+7. Execution trigger command:
+   - `Tinker: run` or `Run task from agent/user_task.yaml`
 
 ## Notes
 - `mode_profile` in `agent/user_task.yaml` is optional; leave empty unless explicitly needed.

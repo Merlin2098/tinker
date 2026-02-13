@@ -49,3 +49,29 @@ Plan docs are optional review/handoff artifacts:
 - Active: `agent/agent_outputs/plans/plan_active/`
 - Archive: `agent/agent_outputs/plans/archive/`
 - Utility: `./.venv/Scripts/python.exe agent_tools/plan_doc.py --help`
+
+## Current Status (2026-02-13)
+
+Phase 2 rework is active and has delivered these checkpoints:
+- Thin-skill + canonical-wrapper migration for completed clusters (`formats/*`, `io/*`, `file_exploration/*`).
+- Reduced template surface to:
+  - `agent/task_templates/chat/user_task_template.yaml`
+  - `agent/task_templates/user_task_dummies_es.yaml`
+- Optional plan-doc tooling:
+  - `agent_tools/plan_doc.py`
+  - `agent/agent_protocol/schemas/plan_doc.schema.yaml`
+- `agent_tools` simplification and consolidation:
+  - Shared schema helpers: `agent_tools/_schema_utils.py`
+  - Shared profile state helpers: `agent_tools/_profile_state.py`
+  - Shared context/path helpers: `agent_tools/_context_common.py`
+  - Shared repo-root helper: `agent_tools/_repo_root.py`
+  - Modernized CLIs:
+    - `agent_tools/load_full_context.py`
+    - `agent_tools/config_validator.py`
+    - `agent_tools/analyze_dependencies.py`
+    - `agent_tools/treemap.py`
+  - Simplified wrapper registry wiring in `agent_tools/run_wrapper.py`
+
+Validation status:
+- Core updated tools compile and run via `.venv` Python.
+- Wrapper generation and skill metadata checks pass in dry-run/advisory mode.

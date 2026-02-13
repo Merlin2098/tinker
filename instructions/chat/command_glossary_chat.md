@@ -1,6 +1,6 @@
 # Tinker Chat Command Glossary
 
-Purpose: compact reference for chat commands.
+Purpose: command-specific reference for chat operation.
 
 ## Kernel selection
 - `Kernel LITE`
@@ -8,39 +8,47 @@ Purpose: compact reference for chat commands.
 - `Kernel FULL`
 
 ## Task triggers
-- `Tinker: validate`
-  - Validate task contract and readiness.
-- `Tinker: run`
-  - Execute task using wrapper-first flow.
-- `Run task from agent/user_task.yaml`
-  - Explicit trigger for task execution flow.
+- `Tinker: validate` -> validate task contract/readiness.
+- `Tinker: run` -> execute wrapper-first flow.
+- `Run task from agent/user_task.yaml` -> explicit task execution trigger.
 
-## Build `user_task.yaml`
-- `user_task_builder.py --input <yaml>`
-- `user_task_builder.py --from-template <yaml> ...`
+## Contract commands
+- `./.venv/Scripts/python.exe agent_tools/user_task_builder.py --input <yaml>`
+- `./.venv/Scripts/python.exe agent_tools/user_task_builder.py --from-template <yaml> ...`
+- `./.venv/Scripts/python.exe agent_tools/schema_validator.py agent/user_task.yaml --type user_task`
 
 ## Context refresh
-- `load_static_context.py`
-- `load_full_context.py --task-plan <path> --system-config <path> --summary <path> [--on-demand treemap]`
+- `./.venv/Scripts/python.exe agent_tools/load_static_context.py`
+- `./.venv/Scripts/python.exe agent_tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path>`
+- `./.venv/Scripts/python.exe agent_tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path> --on-demand treemap`
 
 ## Validation
-- `schema_validator.py <file> --type user_task|task_plan|system_config|envelope|report|plan_doc`
-- Alias types supported: `plan` (task_plan), `config` (system_config)
-- `validate_message.py <file> --type plan|config|...` (compatibility validator)
+- `./.venv/Scripts/python.exe agent_tools/schema_validator.py <file> --type user_task|task_plan|system_config|envelope|report|plan_doc`
+- `./.venv/Scripts/python.exe agent_tools/schema_validator.py <file> --type plan|config` (alias types)
+- `./.venv/Scripts/python.exe agent_tools/validate_message.py <file> --type plan|config|...` (compatibility validator)
 
 ## Optional plan docs
-- `plan_doc.py init --id <id> --title <title> --objective <text>`
-- `plan_doc.py add-step --file <plan.yaml> --step-id <id> --description <text>`
-- `plan_doc.py approve --file <plan.yaml> --by <name> [--note <text>]`
-- `plan_doc.py handoff --file <plan.yaml> --to <target> --notes <text>`
-- `plan_doc.py validate --file <plan.yaml>`
-- `plan_doc.py archive --file <plan.yaml>`
+- `./.venv/Scripts/python.exe agent_tools/plan_doc.py init --id <id> --title <title> --objective <text>`
+- `./.venv/Scripts/python.exe agent_tools/plan_doc.py add-step --file <plan.yaml> --step-id <id> --description <text>`
+- `./.venv/Scripts/python.exe agent_tools/plan_doc.py approve --file <plan.yaml> --by <name> [--note <text>]`
+- `./.venv/Scripts/python.exe agent_tools/plan_doc.py handoff --file <plan.yaml> --to <target> --notes <text>`
+- `./.venv/Scripts/python.exe agent_tools/plan_doc.py validate --file <plan.yaml>`
+- `./.venv/Scripts/python.exe agent_tools/plan_doc.py archive --file <plan.yaml>`
 
-## Install Tinker
-- `install_tinker.py <dest1> [dest2 ...]`
-- `install_tinker.py --pick-dest`
-- `install_tinker.py --dry-run <dest>`
-- `install_tinker.py --overwrite-framework --backup <dest>`
+## Wrapper execution
+- `./.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill <skill> --args-file <args.json>`
+- `./.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill <skill> --args-json '{\"key\":\"value\"}'`
+
+## Kernel/profile utilities
+- `./.venv/Scripts/python.exe agent_tools/activate_kernel.py --profile LITE|STANDARD|FULL`
+- `./.venv/Scripts/python.exe agent_tools/mode_selector.py --write-state`
+- `./.venv/Scripts/python.exe agent_tools/kernel_guard.py --prefer active|task`
+
+## Install/upgrade Tinker
+- `./.venv/Scripts/python.exe install_tinker.py <dest1> [dest2 ...]`
+- `./.venv/Scripts/python.exe install_tinker.py --pick-dest`
+- `./.venv/Scripts/python.exe install_tinker.py --dry-run <dest>`
+- `./.venv/Scripts/python.exe install_tinker.py --overwrite-framework --backup <dest>`
 
 ## Notes
 - `mode_profile` is optional.
