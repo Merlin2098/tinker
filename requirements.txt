@@ -19,6 +19,8 @@ pyside6
 jsonschema
 pydantic
 pyyaml
+hypothesis
+pytest
 
 # Packaging and tooling
 pathspec
