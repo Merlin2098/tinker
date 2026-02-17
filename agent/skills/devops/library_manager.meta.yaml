@@ -1,21 +1,39 @@
 name: library_manager
-version: "1.0.0"
+version: 1.0.0
 category: DevOps
 tier: core
 cluster: devops
 priority: 73
-purpose: "Python package dependencies, versioning, environment configuration"
+purpose: Python package dependencies, versioning, environment configuration
 triggers:
-  keywords: [manage dependencies, install package, pip install, dependency resolution, requirements]
-  match_extensions: [".txt", ".toml", ".cfg"]
-  match_phases: [init, config]
-  match_errors: [ImportError, ModuleNotFoundError]
+  keywords:
+  - manage dependencies
+  - install package
+  - pip install
+  - dependency resolution
+  - requirements
+  match_extensions:
+  - .txt
+  - .toml
+  - .cfg
+  match_phases:
+  - init
+  - config
+  match_errors:
+  - ImportError
+  - ModuleNotFoundError
 requires: []
 exclusive_with: []
-enhances: [dependency_audit]
-modes: [ANALYZE_AND_IMPLEMENT, IMPLEMENT_ONLY]
+enhances:
+- dependency_audit
+modes:
+- ANALYZE_AND_IMPLEMENT
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_executor, agent_senior]
-  optional: [agent_inspector]
-body_file: "library_manager.md"
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
+body_file: library_manager.md
 token_estimate: 700

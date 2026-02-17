@@ -1,30 +1,47 @@
 name: excel_to_parquet
-version: "1.0.0"
+version: 1.0.0
 category: IO
 tier: lazy
 cluster: data_pipeline
 priority: 55
-purpose: "Convert Excel sheets to Parquet through canonical wrapper execution"
+purpose: Convert Excel sheets to Parquet through canonical wrapper execution
 triggers:
-  keywords: [excel to parquet, xlsx to parquet, convert spreadsheet, parquet ingest, bronze conversion]
-  match_extensions: [".xlsx", ".xls", ".xlsm", ".parquet"]
-  match_phases: [ingest, transform]
-  match_errors: ["FileNotFoundError", "ValueError"]
-requires: [read_excel_pandas]
+  keywords:
+  - excel to parquet
+  - xlsx to parquet
+  - convert spreadsheet
+  - parquet ingest
+  - bronze conversion
+  match_extensions:
+  - .parquet
+  match_phases:
+  - transform
+  match_errors:
+  - FileNotFoundError
+  - ValueError
+requires:
+- read_excel_pandas
 exclusive_with: []
-modes: [IMPLEMENT_ONLY]
+modes:
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_executor, agent_senior]
-  optional: [agent_inspector]
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
 max_phase: 2
-body_file: "excel_to_parquet.md"
+body_file: excel_to_parquet.md
 token_estimate: 260
 execution:
-  entrypoint: "agent_tools/wrappers/excel_to_parquet_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill excel_to_parquet --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/excel_to_parquet_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill excel_to_parquet
+    --args-json '<json-object>'
   args_schema:
     type: object
-    required: [source_excel_path, target_parquet_path]
+    required:
+    - source_excel_path
+    - target_parquet_path
     properties:
       source_excel_path:
         type: string
@@ -32,12 +49,11 @@ execution:
         type: string
       sheet_name:
         anyOf:
-          - type: string
-          - type: integer
+        - type: string
+        - type: integer
       compression:
         type: string
       use_polars:
         type: boolean
       overwrite:
         type: boolean
-

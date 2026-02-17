@@ -31,6 +31,9 @@ INTENT_ALIASES = {
     "commit & sync": "commit-sync",
     "checkpoint and sync": "commit-sync",
     "commit-sync": "commit-sync",
+    "init": "init",
+    "start": "init",
+    "bootstrap": "init",
 }
 
 
@@ -61,6 +64,11 @@ def main() -> int:
     )
     parser.add_argument("--remote", default="origin", help="Git remote for sync operations")
     parser.add_argument("--branch", help="Git branch for sync operations (default: current branch)")
+    parser.add_argument(
+        "--profile",
+        default="FULL",
+        help="Kernel profile for init (LITE/STANDARD/FULL) [default: FULL]",
+    )
     args = parser.parse_args()
 
     resolved = normalize_intent(args.intent)
@@ -82,6 +90,36 @@ def main() -> int:
             cmd += ["--branch", args.branch]
         return run_cmd(cmd, root)
 
+    if resolved == "init":
+        profile = args.profile.upper()
+        print(f"🚀 Initializing Tinker Session [Kernel: {profile}]...")
+        
+        # 1. Activate Kernel
+        print(f"  [1/4] Activating Kernel ({profile})...")
+        kernel_script = root / "agent_tools" / "activate_kernel.py"
+        if run_cmd([str(py), str(kernel_script), "--profile", profile], root) != 0:
+            return 1
+            
+        # 2. Compile Registry (SSOT)
+        print("  [2/4] Compiling Skill Registry...")
+        compiler_script = root / "agent_tools" / "compile_registry.py"
+        if run_cmd([str(py), str(compiler_script)], root) != 0:
+            return 1
+
+        # 3. Load Context
+        print("  [3/4] Loading Static Context...")
+        context_script = root / "agent_tools" / "load_static_context.py"
+        if run_cmd([str(py), str(context_script)], root) != 0:
+            return 1
+            
+        # 4. Verify Mode
+        print("  [4/4] Verifying Mode State...")
+        mode_script = root / "agent_tools" / "mode_selector.py"
+        run_cmd([str(py), str(mode_script), "--read-state"], root)
+        
+        print("\n✅ Session Initialized. Ready for task execution.")
+        return 0
+
     # commit-sync
     message = args.message or now_checkpoint_message()
     cmd = [
@@ -99,4 +137,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        sys.exit(130)

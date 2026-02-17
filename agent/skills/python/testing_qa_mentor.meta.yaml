@@ -1,29 +1,45 @@
-# Layer 2 Header — testing_qa_mentor
 name: testing_qa_mentor
-version: "1.0.0"
+version: 1.0.0
 category: Python
 tier: lazy
 cluster: python_quality
 priority: 58
-purpose: "Pytest, fixtures, parametrization, Hypothesis, mocking"
+purpose: Pytest, fixtures, parametrization, Hypothesis, mocking
 triggers:
-  keywords: [test, pytest, unittest, coverage, fixture, mock, assertion, TDD]
-  match_extensions: [".py"]
-  match_phases: [test]
-  match_errors: [AssertionError, "test failed"]
+  keywords:
+  - test
+  - pytest
+  - unittest
+  - coverage
+  - fixture
+  - mock
+  - assertion
+  - TDD
+  match_extensions:
+  - .py
+  match_phases:
+  - test
+  match_errors:
+  - AssertionError
+  - test failed
 requires: []
 exclusive_with: []
-modes: [ANALYZE_AND_IMPLEMENT, IMPLEMENT_ONLY]
+modes:
+- ANALYZE_AND_IMPLEMENT
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_senior, agent_executor]
-  optional: [agent_inspector]
-  # NOT agent_junior — test design requires analysis
-max_phase: 1  # Blocked from Phase 0
-body_file: "testing_qa_mentor.md"
+  mandatory:
+  - agent_senior
+  - agent_executor
+  optional:
+  - agent_inspector
+max_phase: 1
+body_file: testing_qa_mentor.md
 token_estimate: 1400
 execution:
-  entrypoint: "agent_tools/wrappers/python_quality_advisor_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill testing_qa_mentor --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/python_quality_advisor_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill testing_qa_mentor
+    --args-json '<json-object>'
   args_schema:
     type: object
     required: []

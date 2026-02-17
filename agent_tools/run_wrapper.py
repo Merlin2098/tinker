@@ -58,6 +58,8 @@ DIRECT_WRAPPERS: dict[str, str] = {
     "read_excel_pandas": "read_excel_pandas",
     "read_excel_polars_openpyxl": "read_excel_polars_openpyxl",
     "setup_medallion_structure": "setup_medallion_structure",
+    "skill_builder": "skill_builder",
+    "skill_merger": "skill_merger",
     "xml_explorer": "xml_explorer",
     "yaml_explorer": "yaml_explorer",
 }

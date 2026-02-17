@@ -1,30 +1,48 @@
 name: db_explorer
-version: "1.0.0"
+version: 1.0.0
 category: File Exploration
 tier: lazy
 cluster: file_exploration
 priority: 50
-purpose: "Explore local SQLite/DuckDB schema through canonical wrapper execution"
+purpose: Explore local SQLite/DuckDB schema through canonical wrapper execution
 triggers:
-  keywords: [database, db file, inspect database, list tables, explore duckdb]
-  match_extensions: [".db", ".sqlite", ".sqlite3", ".duckdb"]
-  match_phases: [analyze]
-  match_errors: ["sqlite3.Error", "duckdb.Error"]
-requires: [file_explorer]
+  keywords:
+  - database
+  - db file
+  - inspect database
+  - list tables
+  - explore duckdb
+  match_extensions:
+  - .db
+  - .sqlite
+  - .duckdb
+  match_phases:
+  - analyze
+  match_errors:
+  - sqlite3.Error
+  - duckdb.Error
+requires:
+- file_explorer
 exclusive_with: []
-modes: [IMPLEMENT_ONLY]
+modes:
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_inspector, agent_senior]
-  optional: [agent_executor]
+  mandatory:
+  - agent_inspector
+  - agent_senior
+  optional:
+  - agent_executor
 max_phase: 2
-body_file: "db_explorer.md"
+body_file: db_explorer.md
 token_estimate: 240
 execution:
-  entrypoint: "agent_tools/wrappers/db_explorer_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill db_explorer --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/db_explorer_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill db_explorer
+    --args-json '<json-object>'
   args_schema:
     type: object
-    required: [path]
+    required:
+    - path
     properties:
       path:
         type: string
@@ -34,4 +52,3 @@ execution:
         type: string
       preview_rows:
         type: integer
-

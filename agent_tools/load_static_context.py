@@ -31,15 +31,43 @@ import json
 import argparse
 from typing import Dict, Any, List, Optional
 
+
+def _load_framework_config() -> Dict[str, Any]:
+    """Load agent_framework_config.yaml from the project root. Returns {} on failure."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    config_path = os.path.join(root, "agent_framework_config.yaml")
+    if not os.path.exists(config_path):
+        return {}
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f) or {}
+    except Exception:
+        return {}
+
+
 # Paths relativos dentro del proyecto
-SKILLS_PATH = os.path.join("agent", "skills", "skills_registry.yaml")
+SKILLS_PATH = os.path.join("agent", "skills", "_index.yaml")
 AGENT_RULES_PATH = os.path.join("agent", "rules", "agent_rules.md")
 SCHEMAS_PATH = os.path.join("agent", "agent_protocol", "schemas")
 
 # Gitignored analysis files — NOT loaded in static context.
 # Available on-demand via context_loader.load_on_demand().
-DEPENDENCIES_REPORT_PATH = os.path.join("agent", "analysis", "dependencies_report.md")
-TREEMAP_PATH = os.path.join("agent", "analysis", "treemap.md")
+# We'll resolve these dynamically from config now.
+DEFAULT_DEPENDENCIES_REPORT_PATH = os.path.join("agent", "analysis", "dependencies_report.md")
+DEFAULT_TREEMAP_PATH = os.path.join("agent", "analysis", "treemap.md")
+
+def _get_on_demand_path(file_key: str, default_path: str) -> str:
+    """Resolve path from agent_framework_config.yaml or fallback to default."""
+    cfg = _load_framework_config()
+    on_demand = cfg.get("on_demand_files", {})
+    if isinstance(on_demand, dict):
+        entry = on_demand.get(file_key)
+        if isinstance(entry, dict):
+            return entry.get("path", default_path)
+    return default_path
+
+DEPENDENCIES_REPORT_PATH = _get_on_demand_path("dependencies_report", DEFAULT_DEPENDENCIES_REPORT_PATH)
+TREEMAP_PATH = _get_on_demand_path("treemap", DEFAULT_TREEMAP_PATH)
 
 # Runtime model has no role-specific agent definitions.
 
@@ -96,17 +124,7 @@ _DEFAULT_PROFILE_DETECTION: Dict[str, Any] = {
 }
 
 
-def _load_framework_config() -> Dict[str, Any]:
-    """Load agent_framework_config.yaml from the project root. Returns {} on failure."""
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    config_path = os.path.join(root, "agent_framework_config.yaml")
-    if not os.path.exists(config_path):
-        return {}
-    try:
-        with open(config_path, "r", encoding="utf-8") as f:
-            return yaml.safe_load(f) or {}
-    except Exception:
-        return {}
+
 
 
 def _deep_merge_dicts(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any]:
@@ -709,15 +727,31 @@ def load_static_context(profile: Optional[str] = None) -> Dict[str, Any]:
         "reason": profile_reason,
     }
 
-    # 1. Skills registry — metadata only (skill index loaded separately via _index.yaml)
+    # 1. Skills registry — loaded from generated SSOT (_index.yaml)
     if os.path.exists(SKILLS_PATH):
         full_registry = load_yaml_file(SKILLS_PATH)
-        metadata = full_registry.get("metadata", {})
+        
+        # Adaptation for new _index.yaml structure
+        skills_list = full_registry.get("index", [])
+        
+        # Create a compact summary for the context window
+        compact_skills = []
+        for s in skills_list:
+            compact_skills.append({
+                "name": s.get("name"),
+                "cluster": s.get("cluster", "misc"),
+                "purpose": s.get("purpose", "")
+            })
+
         context["skills_registry"] = {
-            "metadata": metadata,
-            "_note": "Skill index is loaded separately via _index.yaml. Use grep/jq for full registry.",
+            "metadata": {
+                "version": full_registry.get("version"),
+                "last_updated": full_registry.get("last_updated"),
+                "generated_from": full_registry.get("generated_from")
+            },
+            "skills": compact_skills,
+            "_note": "Live registry from _index.yaml. Full details in agent/skills/.",
             "_index_path": "agent/skills/_index.yaml",
-            "_registry_path": "agent/skills/skills_registry.yaml",
             "_trigger_engine_path": "agent/skills/_trigger_engine.yaml",
         }
     else:
@@ -764,7 +798,8 @@ def load_static_context(profile: Optional[str] = None) -> Dict[str, Any]:
     if os.path.exists(SCHEMAS_PATH):
         for fname in os.listdir(SCHEMAS_PATH):
             fpath = os.path.join(SCHEMAS_PATH, fname)
-            context["schemas"][fname] = _schema_summary(fpath)    context = _enforce_context_line_budget(
+            context["schemas"][fname] = _schema_summary(fpath)
+    context = _enforce_context_line_budget(
         context,
         max_lines=max_lines,
         policy=truncation_policy,

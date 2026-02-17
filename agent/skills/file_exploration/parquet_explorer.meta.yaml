@@ -1,30 +1,44 @@
 name: parquet_explorer
-version: "1.0.0"
+version: 1.0.0
 category: File Exploration
 tier: lazy
 cluster: file_exploration
 priority: 50
-purpose: "Explore Parquet schema and preview through canonical wrapper execution"
+purpose: Explore Parquet schema and preview through canonical wrapper execution
 triggers:
-  keywords: [parquet, inspect parquet, parquet schema, explore parquet]
-  match_extensions: [".parquet"]
-  match_phases: [analyze, ingest]
+  keywords:
+  - parquet
+  - inspect parquet
+  - parquet schema
+  - explore parquet
+  match_extensions:
+  - .parquet
+  match_phases:
+  - analyze
+  - ingest
   match_errors: []
-requires: [file_explorer]
+requires:
+- file_explorer
 exclusive_with: []
-modes: [IMPLEMENT_ONLY]
+modes:
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_inspector, agent_senior]
-  optional: [agent_executor]
+  mandatory:
+  - agent_inspector
+  - agent_senior
+  optional:
+  - agent_executor
 max_phase: 2
-body_file: "parquet_explorer.md"
+body_file: parquet_explorer.md
 token_estimate: 220
 execution:
-  entrypoint: "agent_tools/wrappers/parquet_explorer_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill parquet_explorer --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/parquet_explorer_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill parquet_explorer
+    --args-json '<json-object>'
   args_schema:
     type: object
-    required: [path]
+    required:
+    - path
     properties:
       path:
         type: string
@@ -32,4 +46,3 @@ execution:
         type: array
       preview_rows:
         type: integer
-

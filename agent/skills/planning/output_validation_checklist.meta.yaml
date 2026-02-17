@@ -1,28 +1,40 @@
 name: output_validation_checklist
-version: "1.0.0"
+version: 1.0.0
 category: Planning
 tier: core
 cluster: planning_pipeline
 priority: 87
-purpose: "Validates outputs before emission — plan IDs, versions, DAG dependencies"
+purpose: Validates outputs before emission — plan IDs, versions, DAG dependencies
 triggers:
-  keywords: [validate output, output checklist, plan validation, schema check, pre-emission check]
+  keywords:
+  - validate output
+  - output checklist
+  - plan validation
+  - schema check
+  - pre-emission check
   match_extensions: []
-  match_phases: [validate]
+  match_phases:
+  - validate
   match_errors: []
-requires: [risk_scoring_matrix]
+requires:
+- risk_scoring_matrix
 exclusive_with: []
 pipeline: planning
 pipeline_order: 4
-modes: [ANALYZE_AND_IMPLEMENT]
+modes:
+- ANALYZE_AND_IMPLEMENT
 agent_binding:
-  mandatory: [agent_inspector]
-  optional: [agent_executor, agent_senior]
-body_file: "output_validation_checklist.md"
+  mandatory:
+  - agent_inspector
+  optional:
+  - agent_executor
+  - agent_senior
+body_file: output_validation_checklist.md
 token_estimate: 700
 execution:
-  entrypoint: "agent_tools/wrappers/policy_guidance_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill output_validation_checklist --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/policy_guidance_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill output_validation_checklist
+    --args-json '<json-object>'
   args_schema:
     type: object
     required: []

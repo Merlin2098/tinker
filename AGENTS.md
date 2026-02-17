@@ -4,16 +4,16 @@ This repository uses a thin-skill + canonical-wrapper model.
 
 ## Core Model
 - Skills source of truth:
-  - Layer 1: `agent/skills/_index.yaml`
-  - Layer 2: `agent/skills/<category>/<skill>.meta.yaml`
-  - Layer 3: `agent/skills/<category>/<skill>.md`
+  - **Source**: `agent/skills/**/*.meta.yaml`
+  - **Compiled Index**: `agent/skills/_index.yaml`
+  - **Interface**: `agent/skills/**/*.md`
 - Execution source of truth:
   - `agent_tools/run_wrapper.py`
   - `agent_tools/wrappers/*.py`
 
 ## Skill Loading Protocol
-1. Load `agent/skills/_index.yaml` to shortlist.
-2. Load only relevant `.meta.yaml` files.
+1. **Compile**: `python agent_tools/compile_registry.py` (if needed).
+2. Load `agent/skills/_index.yaml` to shortlist.
 3. Load `.md` bodies only for invoked skills.
 4. Never bulk-load all skill bodies.
 
@@ -25,6 +25,8 @@ This repository uses a thin-skill + canonical-wrapper model.
 4. Use `agent/agent_outputs/context.json` as compact index; load heavy files on demand.
 
 ## Canonical Tooling
+- Registry Compilation (SSOT):
+  - `python agent_tools/compile_registry.py`
 - Wrapper execution:
   - `python agent_tools/run_wrapper.py --skill <skill> --args-file <json>`
 - Schema validation:

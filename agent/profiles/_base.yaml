@@ -1,0 +1,24 @@
+version: "2.0.0"
+profile: "_BASE"
+description: "Base capabilities common to all profiles."
+
+capabilities:
+  allowlist:
+    skills:
+      # Governance (Always Active)
+      - skill_authority_first
+      - workspace_model_awareness
+      - scope_control_discipline
+      - immutable_resource_respect
+      - artifact_persistence_discipline
+      - minimal_documentation_policy
+      - ambiguity_escalation
+      - protected_file_validation
+      - path_traversal_prevention
+      - verification_before_completion
+
+      # Core Planning
+      - context_loading_protocol
+
+    clusters:
+      - governance

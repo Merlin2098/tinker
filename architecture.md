@@ -10,7 +10,9 @@ Tinker is a deterministic orchestration layer governing AI agent
 execution through:
 
 -   Explicit task contracts
--   Kernel operational modes
+-   Kernel operational modes (Inheritance-based)
+-   **Self-Organizing Registry** (Auto-compiled)
+-   **Self-Improvement Capabilities** (Builder/Merger)
 -   Deterministic trigger evaluation
 -   Lazy-loaded skills
 -   Model-family instruction overrides
@@ -47,5 +49,5 @@ Kernel must be explicit and inspectable.
 
 ------------------------------------------------------------------------
 
-**Architecture version generated:** 2026-02-12
+**Architecture version generated:** 2026-02-16
 

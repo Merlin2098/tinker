@@ -12,23 +12,28 @@ Core principles:
 
 ## Quick Start
 
-1. Activate profile
+1. Initialize Registry (SSOT)
+- `./.venv/Scripts/python.exe agent_tools/compile_registry.py`
+
+2. Activate profile
 - `./.venv/Scripts/python.exe agent_tools/activate_kernel.py --profile LITE`
 
-2. Refresh static context
+3. Refresh static context
 - `./.venv/Scripts/python.exe agent_tools/load_static_context.py`
 
-3. Prepare task contract
+4. Prepare task contract
 - Edit `agent/user_task.yaml`
 - Optional helper: `./.venv/Scripts/python.exe agent_tools/user_task_builder.py --help`
 
-4. Execute via wrapper-first flow
+5. Execute via wrapper-first flow
 - `./.venv/Scripts/python.exe agent_tools/run_wrapper.py --skill <skill> --args-file <args.json>`
 
 ## Key Paths
 
-- Skills index: `agent/skills/_index.yaml`
-- Trigger engine: `agent/skills/_trigger_engine.yaml`
+- **Source of Truth**: `agent/skills/**/*.meta.yaml`
+- **Compiled Index**: `agent/skills/_index.yaml` (DO NOT EDIT)
+- **Compiled Triggers**: `agent/skills/_trigger_engine.yaml` (DO NOT EDIT)
+- Registry Compiler: `agent_tools/compile_registry.py`
 - Canonical wrappers: `agent_tools/wrappers/*.py`
 - Wrapper runner: `agent_tools/run_wrapper.py`
 - User task schema: `agent/agent_protocol/schemas/user_task.schema.yaml`
@@ -50,28 +55,21 @@ Plan docs are optional review/handoff artifacts:
 - Archive: `agent/agent_outputs/plans/archive/`
 - Utility: `./.venv/Scripts/python.exe agent_tools/plan_doc.py --help`
 
-## Current Status (2026-02-13)
+## Current Status (2026-02-16)
 
-Phase 2 rework is active and has delivered these checkpoints:
-- Thin-skill + canonical-wrapper migration for completed clusters (`formats/*`, `io/*`, `file_exploration/*`).
-- Reduced template surface to:
-  - `agent/task_templates/chat/user_task_template.yaml`
-  - `agent/task_templates/user_task_dummies_es.yaml`
-- Optional plan-doc tooling:
-  - `agent_tools/plan_doc.py`
-  - `agent/agent_protocol/schemas/plan_doc.schema.yaml`
-- `agent_tools` simplification and consolidation:
-  - Shared schema helpers: `agent_tools/_schema_utils.py`
-  - Shared profile state helpers: `agent_tools/_profile_state.py`
-  - Shared context/path helpers: `agent_tools/_context_common.py`
-  - Shared repo-root helper: `agent_tools/_repo_root.py`
-  - Modernized CLIs:
-    - `agent_tools/load_full_context.py`
-    - `agent_tools/config_validator.py`
-    - `agent_tools/analyze_dependencies.py`
-    - `agent_tools/treemap.py`
-  - Simplified wrapper registry wiring in `agent_tools/run_wrapper.py`
+**Phase 1, 2, 3 Complete: Self-Improving Architecture**
+
+1.  **Single Source of Truth (SSOT)**:
+    -   Skills defined in `.meta.yaml` (self-contained triggers).
+    -   `compile_registry.py` automates index generation.
+2.  **Profile Inheritance**:
+    -   `_base.yaml` + recursive inheritance (`inherits: ...`).
+    -   `FULL` -> `STANDARD` -> `LITE`.
+3.  **Self-Improvement**:
+    -   `skill_builder`: Agent can specify and generate new skills.
+    -   `skill_merger`: Agent can consolidate and clean up skills (Garbage Collection).
 
 Validation status:
-- Core updated tools compile and run via `.venv` Python.
-- Wrapper generation and skill metadata checks pass in dry-run/advisory mode.
+- Core architecture operational.
+- Auto-discovery and compilation active.
+- Self-modification safeguards in place (Core skills protected).

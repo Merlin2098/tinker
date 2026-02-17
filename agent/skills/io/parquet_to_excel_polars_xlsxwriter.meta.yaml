@@ -1,30 +1,47 @@
 name: parquet_to_excel_polars_xlsxwriter
-version: "1.0.0"
+version: 1.0.0
 category: IO
 tier: lazy
 cluster: data_pipeline
 priority: 55
-purpose: "Convert Parquet to Excel through canonical wrapper execution"
+purpose: Convert Parquet to Excel through canonical wrapper execution
 triggers:
-  keywords: [parquet to excel, export xlsx, business report export, deliver spreadsheet, parquet export]
-  match_extensions: [".parquet", ".xlsx"]
-  match_phases: [transform]
-  match_errors: ["FileNotFoundError", "ValueError"]
+  keywords:
+  - parquet to excel
+  - export xlsx
+  - business report export
+  - deliver spreadsheet
+  - parquet export
+  match_extensions:
+  - .parquet
+  - .xlsx
+  match_phases:
+  - export
+  match_errors:
+  - FileNotFoundError
+  - ValueError
 requires: []
 exclusive_with: []
-modes: [IMPLEMENT_ONLY]
+modes:
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_executor, agent_senior]
-  optional: [agent_inspector]
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
 max_phase: 2
-body_file: "parquet_to_excel_polars_xlsxwriter.md"
+body_file: parquet_to_excel_polars_xlsxwriter.md
 token_estimate: 260
 execution:
-  entrypoint: "agent_tools/wrappers/parquet_to_excel_polars_xlsxwriter_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill parquet_to_excel_polars_xlsxwriter --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/parquet_to_excel_polars_xlsxwriter_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill parquet_to_excel_polars_xlsxwriter
+    --args-json '<json-object>'
   args_schema:
     type: object
-    required: [source_parquet_path, target_excel_path]
+    required:
+    - source_parquet_path
+    - target_excel_path
     properties:
       source_parquet_path:
         type: string
@@ -38,4 +55,3 @@ execution:
         type: integer
       overwrite:
         type: boolean
-

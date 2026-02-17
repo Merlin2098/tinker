@@ -160,6 +160,14 @@ def copy_file(
     report.copied.append(str(dest))
 
 
+def should_skip_file(path: Path) -> bool:
+    """Check if a file should be skipped during export (generated artifacts)."""
+    # Skip generated registry files - they should be recompiled on target
+    if path.name in ("_index.yaml", "_trigger_engine.yaml", "context.json"):
+        return True
+    return False
+
+
 def copy_tree(
     src_dir: Path,
     dest_dir: Path,
@@ -174,6 +182,9 @@ def copy_tree(
         root_path = Path(root)
         for fname in files:
             src = root_path / fname
+            if should_skip_file(src):
+                continue
+            
             rel = src.relative_to(src_dir)
             dest = dest_dir / rel
             copy_file(
@@ -314,6 +325,7 @@ def framework_items() -> list[Path]:
         root / "AGENTS.md",
         root / "agent.md",
     ]
+    # Filter out candidates that don't exist
     return [p for p in candidates if p.exists()]
 
 

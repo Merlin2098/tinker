@@ -1,30 +1,63 @@
 name: file_explorer
-version: "1.0.0"
+version: 1.0.0
 category: File Exploration
 tier: core
 cluster: file_exploration
 priority: 75
-purpose: "Facade explorer: routes file inspection to canonical format-specific wrappers"
+purpose: 'Facade explorer: routes file inspection to canonical format-specific wrappers'
 triggers:
-  keywords: [explore file, inspect file, file info, file metadata, analyze file, what is this file]
-  match_extensions: [".csv", ".xlsx", ".json", ".yaml", ".xml", ".html", ".pdf", ".docx", ".pptx", ".parquet", ".db", ".duckdb", ".pbix", ".md"]
-  match_phases: [analyze, ingest]
+  keywords:
+  - explore file
+  - inspect file
+  - file info
+  - file metadata
+  - analyze file
+  - what is this file
+  match_extensions:
+  - .csv
+  - .tsv
+  - .xlsx
+  - .xls
+  - .json
+  - .yaml
+  - .yml
+  - .xml
+  - .html
+  - .htm
+  - .pdf
+  - .docx
+  - .pptx
+  - .parquet
+  - .db
+  - .sqlite
+  - .duckdb
+  - .pbix
+  - .pbit
+  match_phases:
+  - analyze
+  - ingest
   match_errors: []
 requires: []
 exclusive_with: []
-modes: [IMPLEMENT_ONLY]
+modes:
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_inspector, agent_senior]
-  optional: [agent_executor]
+  mandatory:
+  - agent_inspector
+  - agent_senior
+  optional:
+  - agent_executor
 max_phase: 2
-body_file: "file_explorer.md"
+body_file: file_explorer.md
 token_estimate: 280
 execution:
-  entrypoint: "agent_tools/wrappers/file_explorer_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill file_explorer --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/file_explorer_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill file_explorer
+    --args-json '<json-object>'
   args_schema:
     type: object
-    required: [path]
+    required:
+    - path
     properties:
       path:
         type: string

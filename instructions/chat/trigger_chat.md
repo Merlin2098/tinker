@@ -21,23 +21,46 @@ Use these exact phrases in chat:
 - `Kernel STANDARD`
 - `Kernel FULL`
 
-## Command Runbook
-1. Governance load command:
-   - `Read .clinerules and agent/rules/agent_rules.md`
-2. Kernel selection command:
-   - `Kernel LITE|STANDARD|FULL`
-3. Context refresh command:
-   - `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/load_static_context.py`
-4. Task contract build command (optional):
-   - `./.venv/Scripts/python.exe agent_tools/user_task_builder.py --help`
-5. Task validation command:
-   - `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/schema_validator.py agent/user_task.yaml --type user_task`
-6. Optional plan-doc command set:
-   - `./.venv/Scripts/python.exe agent_tools/plan_doc.py --help`
-7. Execution trigger command:
-   - `Tinker: run` or `Run task from agent/user_task.yaml`
+## 🚀 Session Startup (Copy & Paste)
+Copy and paste ONE of these natural language phrases. The Agent will execute the setup for you.
+
+To start with FULL Kernel (Recommended):
+```text
+Initiate Tinker. Kernel FULL
+```
+
+To start with other profiles:
+```text
+Initiate Tinker. Kernel LITE
+```
+```text
+Initiate Tinker. Kernel STANDARD
+```
+
+## 🔄 Typical Workflow (Day in the Life)
+
+After initialization, follow this cycle:
+
+### 1. Define Task (Contract)
+- Edit `agent/user_task.yaml` to define **Objective** and **Constraints**.
+- *Tip: Keep scope small and verifiable.*
+
+### 2. Execute
+- Chat: `Tinker: run`
+- The agent will read the task, plan actions, and execute them via wrappers.
+
+### 3. Validate & Iterate
+- Check the output files or code changes.
+- If changes are needed, update `user_task.yaml` and run `Tinker: run` again.
+- *Tip: Don't just chat new instructions; update the contract.*
+
+### 4. Save State
+- Chat: `commit` (saves a local git checkpoint)
+- Chat: `sync` (pushes to remote)
 
 ## Shortcut intent routing
+- If the user says `init` or `start`, run:
+  - `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "init"`
 - If the user says `commit`, run:
   - `./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py "commit"`
 - If the user says `sync`, run:

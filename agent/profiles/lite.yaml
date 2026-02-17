@@ -1,5 +1,6 @@
 version: "2.0.0"
 profile: "LITE"
+inherits: "_BASE"
 default: true
 description: "Minimal day-to-day capability surface."
 
@@ -13,12 +14,8 @@ capabilities:
       - code_structuring_pythonic
       - secure_python_practices
       - systematic_debugging
-      - skill_authority_first
-      - protected_file_validation
-      - path_traversal_prevention
     clusters:
       - file_exploration
       - format_loaders
       - python_quality
       - debugging
-      - governance

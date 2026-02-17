@@ -111,6 +111,8 @@ protected_files:
     - agent/agent_executor/agent_executor.md
     - agent/agent_protocol/README.md
     - README.md
+    - agent/skills/_index.yaml
+    - agent/skills/_trigger_engine.yaml
 
   configuration:
     - .git/**
@@ -248,7 +250,18 @@ Resolution order is:
 - **Skills** define how it is done
 - **Constraints** define what is allowed right now
 
-## 10. Status
+## 10. Semantic Triggers (Agent Mandates)
+
+If the user provides the following natural language triggers, the Agent MUST execute the corresponding command:
+
+| User Says (Approximate) | Agent Action (Run Command) |
+| :--- | :--- |
+| `Initiate Tinker` | `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py init` |
+| `Initiate Tinker. Kernel LITE` | `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py init --profile LITE` |
+| `Initiate Tinker. Kernel STANDARD` | `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py init --profile STANDARD` |
+| `Initiate Tinker. Kernel FULL` | `$env:PYTHONIOENCODING='utf-8'; ./.venv/Scripts/python.exe agent_tools/chat_shortcuts.py init --profile FULL` |
+
+## 11. Status
 
 This document is:
 

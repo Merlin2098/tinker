@@ -1,16 +1,11 @@
 version: "2.0.0"
 profile: "FULL"
+inherits: "STANDARD"
 description: "Maximum capability surface, still enforced by allowlists."
 
 capabilities:
   allowlist:
     skills:
-      - file_explorer
-      - csv_explorer
-      - excel_explorer
-      - json_explorer
-      - yaml_explorer
-      - xml_explorer
       - html_explorer
       - pdf_explorer
       - docx_explorer
@@ -18,9 +13,6 @@ capabilities:
       - parquet_explorer
       - db_explorer
       - markdown_explorer
-      - load_json_files
-      - load_yaml_files
-      - load_sql_queries
       - read_excel_pandas
       - read_excel_polars_openpyxl
       - excel_to_parquet
@@ -28,20 +20,14 @@ capabilities:
       - connect_duckdb
       - query_parquet_duckdb
       - setup_medallion_structure
-      - input_file_handler
       - input_validation_sanitizer
       - execution_timer
       - log_overwrite_policy
       - log_bundle_folder_management
       - generate_exe_pyinstaller_onedir
-      - code_structuring_pythonic
-      - data_integrity_guardian
-      - secure_python_practices
       - type_master
       - async_concurrency_expert
       - microservices_api_architect
-      - code_analysis_qa_gate
-      - testing_qa_mentor
       - regression_test_automation
       - naming_control_flow
       - performance_profiler
@@ -49,10 +35,11 @@ capabilities:
       - linter_formatter_guru
       - refactoring_assistant
       - api_client_generator
-      - config_env_manager
       - externalized_logic_handler
       - serialization_persistence
       - devops_packaging
+      - skill_builder
+      - skill_merger
       - ui_framework_selection
       - ui_widget_modularity
       - ui_theme_binding
@@ -60,40 +47,16 @@ capabilities:
       - ui_identity_policy
       - ui_splash_and_lazy_loading
       - ui_application_assets
-      - context_loading_protocol
-      - decision_process_flow
-      - risk_scoring_matrix
-      - output_validation_checklist
       - brainstorming_design_explorer
-      - execution_flow_orchestration
       - git_rollback_strategy
       - plan_archive_protocol
-      - debugger_orchestrator
       - root_cause_tracing
-      - systematic_debugging
-      - skill_authority_first
-      - workspace_model_awareness
-      - scope_control_discipline
-      - immutable_resource_respect
-      - artifact_persistence_discipline
-      - minimal_documentation_policy
-      - ambiguity_escalation
-      - protected_file_validation
-      - path_traversal_prevention
-      - verification_before_completion
       - python_venv_executor
     clusters:
-      - file_exploration
-      - format_loaders
       - data_pipeline
       - file_handling
       - observability
       - devops
       - architecture
-      - python_quality
       - ui
-      - planning_pipeline
-      - execution_pipeline
-      - debugging
-      - governance
       - runtime

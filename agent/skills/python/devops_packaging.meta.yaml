@@ -1,27 +1,38 @@
 name: devops_packaging
-version: "1.0.0"
+version: 1.0.0
 category: Python
 tier: lazy
 cluster: python_quality
 priority: 45
-purpose: "Python packaging via setup.py/pyproject.toml"
+purpose: Python packaging via setup.py/pyproject.toml
 triggers:
-  keywords: ["devops_packaging", "devops packaging", "devops"]
-  match_extensions: []
-  match_phases: [implement]
+  keywords:
+  - devops_packaging
+  - devops packaging
+  - devops
+  match_extensions:
+  - .toml
+  match_phases:
+  - build
+  - release
   match_errors: []
 requires: []
 exclusive_with: []
-modes: [IMPLEMENT_ONLY]
+modes:
+- IMPLEMENT_ONLY
 agent_binding:
-  mandatory: [agent_executor, agent_senior]
-  optional: [agent_inspector]
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
 max_phase: 2
-body_file: "devops_packaging.md"
+body_file: devops_packaging.md
 token_estimate: 220
 execution:
-  entrypoint: "agent_tools/wrappers/python_quality_advisor_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill devops_packaging --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/python_quality_advisor_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill devops_packaging
+    --args-json '<json-object>'
   args_schema:
     type: object
     required: []

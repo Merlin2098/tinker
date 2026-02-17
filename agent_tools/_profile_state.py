@@ -73,3 +73,72 @@ def write_state(path: Path, profile: str, *, agent_id: str | None, source: str) 
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     return payload
+
+
+
+def _deep_merge_profiles(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
+    """
+    Merges two profile dicts.
+    - Lists (allowlists) are concatenated and deduped.
+    - Dicts are merged recursively.
+    - Scalars in override overwrite base.
+    """
+    merged = base.copy()
+    
+    for key, value in override.items():
+        if key == "inherits":
+            continue
+            
+        if key == "capabilities" and "allowlist" in value:
+            # Specialized merging for capabilities.allowlist
+            base_caps = base.get("capabilities", {}).get("allowlist", {})
+            ovr_caps = value.get("allowlist", {})
+            
+            merged_allowlist = {}
+            for field in ["skills", "clusters"]:
+                base_list = base_caps.get(field, [])
+                ovr_list = ovr_caps.get(field, [])
+                # Union and sort
+                merged_allowlist[field] = sorted(list(set(base_list + ovr_list)))
+            
+            # Ensure structure exists
+            if "capabilities" not in merged:
+                merged["capabilities"] = {}
+            merged["capabilities"]["allowlist"] = merged_allowlist
+            
+        elif isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge_profiles(merged[key], value)
+        else:
+            merged[key] = value
+            
+    return merged
+
+
+def load_profile_definition(profile: str) -> dict[str, Any]:
+    """
+    Loads profile definition with recursive inheritance.
+    Checks for 'inherits' key in YAML.
+    """
+    profile = normalize_profile(profile)
+    p_path = profile_path(profile)
+    
+    # Handle _BASE (or any profile that doesn't exist as a separate file logic if needed)
+    # But _base.yaml should exist.
+    
+    if not p_path.exists():
+        # Fallback for _BASE if requested safely
+        if profile == "_BASE": 
+             return {} # Should allow clean slate if base missing? Or error?
+        raise FileNotFoundError(f"Profile {profile} not found at {p_path}")
+
+    data = load_yaml(p_path)
+    
+    # Recursion
+    parent_name = data.get("inherits")
+    if parent_name:
+        parent_data = load_profile_definition(parent_name)
+        return _deep_merge_profiles(parent_data, data)
+        
+    return data
+
+

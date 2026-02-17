@@ -1,29 +1,39 @@
-# Layer 2 Header — root_cause_tracing
 name: root_cause_tracing
-version: "1.0.0"
+version: 1.0.0
 category: Debugging
 tier: lazy
 cluster: debugging
 priority: 60
-purpose: "5-step backward call stack tracing to find original trigger"
+purpose: 5-step backward call stack tracing to find original trigger
 triggers:
-  keywords: [root cause, call stack, traceback, deep bug, propagation, origin]
-  match_extensions: []
+  keywords:
+  - root cause
+  - call stack
+  - traceback
+  - deep bug
+  - propagation
+  - origin
+  match_extensions:
+  - .log
   match_phases: []
-  match_errors: [Traceback]
-requires: [systematic_debugging]  # Should load after systematic_debugging
+  match_errors:
+  - Traceback
+requires:
+- systematic_debugging
 exclusive_with: []
-modes: [ANALYZE_AND_IMPLEMENT]
+modes:
+- ANALYZE_AND_IMPLEMENT
 agent_binding:
-  mandatory: [agent_senior]
+  mandatory:
+  - agent_senior
   optional: []
-  # NOT agent_junior, NOT agent_executor, NOT agent_inspector (deep debugging is senior-only)
-max_phase: 1  # Blocked from Phase 0
-body_file: "root_cause_tracing.md"
+max_phase: 1
+body_file: root_cause_tracing.md
 token_estimate: 1300
 execution:
-  entrypoint: "agent_tools/wrappers/policy_guidance_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill root_cause_tracing --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/policy_guidance_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill root_cause_tracing
+    --args-json '<json-object>'
   args_schema:
     type: object
     required: []

@@ -1,26 +1,40 @@
 name: secure_python_practices
-version: "1.0.0"
+version: 1.0.0
 category: Python
 tier: core
 cluster: python_quality
 priority: 72
-purpose: "Security: input validation, injection prevention, secrets management"
+purpose: 'Security: input validation, injection prevention, secrets management'
 triggers:
-  keywords: [security, sql injection, xss prevention, input sanitization, secrets management, vulnerability]
-  match_extensions: [".py", ".env"]
+  keywords:
+  - security
+  - sql injection
+  - xss prevention
+  - input sanitization
+  - secrets management
+  - vulnerability
+  match_extensions:
+  - .py
+  - .env
   match_phases: []
-  match_errors: [SecurityError]
+  match_errors:
+  - SecurityError
 requires: []
 exclusive_with: []
-modes: [ANALYZE_AND_IMPLEMENT]
+modes:
+- ANALYZE_AND_IMPLEMENT
 agent_binding:
-  mandatory: [agent_executor, agent_senior]
-  optional: [agent_inspector]
-body_file: "secure_python_practices.md"
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
+body_file: secure_python_practices.md
 token_estimate: 800
 execution:
-  entrypoint: "agent_tools/wrappers/python_quality_advisor_wrapper.py::run"
-  command: ".venv/Scripts/python.exe agent_tools/run_wrapper.py --skill secure_python_practices --args-json '<json-object>'"
+  entrypoint: agent_tools/wrappers/python_quality_advisor_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill secure_python_practices
+    --args-json '<json-object>'
   args_schema:
     type: object
     required: []

@@ -1,0 +1,17 @@
+name: skill_merger
+tier: core
+cluster: meta
+priority: 90
+purpose: "Consolidates multiple skills into one and deletes redundancy."
+triggers:
+  match_phases:
+    - improvement
+    - maintenance
+  match_keywords:
+    - "merge skills"
+    - "consolidate tools"
+    - "cleanup registry"
+    - "remove redundancy"
+
+# The implementation wrapper
+wrapper_path: agent_tools/wrappers/skill_merger_wrapper.py
