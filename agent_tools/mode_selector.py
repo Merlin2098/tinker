@@ -53,7 +53,18 @@ def main() -> int:
     parser.add_argument("--user-task", default="agent/user_task.yaml")
     parser.add_argument("--agent-id", help="Optional agent identifier")
     parser.add_argument("--write-state", action="store_true", help="Write active profile state")
+    parser.add_argument("--read-state", action="store_true", help="Print active profile state and exit")
     args = parser.parse_args()
+
+    if args.read_state:
+        state_path = resolve_state_path(args.agent_id)
+        state = load_state(state_path)
+        if not state:
+            print(json.dumps({"state_path": str(state_path), "status": "missing"}, indent=2))
+            return 0
+        state.setdefault("_state_path", str(state_path))
+        print(json.dumps(state, indent=2))
+        return 0
 
     user_task = load_yaml(project_root() / args.user_task)
     requested = str(user_task.get("mode_profile", "")).strip().upper()

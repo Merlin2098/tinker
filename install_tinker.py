@@ -163,7 +163,9 @@ def copy_file(
 def should_skip_file(path: Path) -> bool:
     """Check if a file should be skipped during export (generated artifacts)."""
     # Skip generated registry files - they should be recompiled on target
-    if path.name in ("_index.yaml", "_trigger_engine.yaml", "context.json"):
+    # _trigger_engine.yaml is required for compile_registry.py to preserve
+    # static sections, so it must be copied during install.
+    if path.name in ("_index.yaml", "context.json"):
         return True
     return False
 
@@ -289,6 +291,15 @@ def detect_legacy(dest_root: Path, report: ChangeReport) -> None:
     for p in legacy_paths:
         if p.exists():
             report.legacy_found.append(str(p))
+
+
+def validate_trigger_engine(dest_root: Path, report: ChangeReport) -> None:
+    trigger_path = dest_root / "agent" / "skills" / "_trigger_engine.yaml"
+    if not trigger_path.exists():
+        report.warnings.append(
+            "Missing agent/skills/_trigger_engine.yaml after install; "
+            "Tinker init will fail at compile_registry. Reinstall or seed the file."
+        )
 
 
 def migrate_legacy(
@@ -465,6 +476,9 @@ def main() -> int:
                         dry_run=args.dry_run,
                         report=report,
                     )
+
+            if not args.dry_run:
+                validate_trigger_engine(dest_root, report)
 
         if not args.skip_requirements:
             merge_requirements(inv_reqs, dest_root / "requirements.txt", dry_run=args.dry_run, report=report)
