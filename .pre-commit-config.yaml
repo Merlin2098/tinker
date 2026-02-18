@@ -1,6 +1,14 @@
 repos:
   - repo: local
     hooks:
+      # New hook - requirements change detection
+      - id: sync-requirements
+        name: Sync virtual environment dependencies
+        entry: .venv/Scripts/python.exe agent_tools/update_requirements.py
+        language: system
+        files: ^requirements\.txt$
+        pass_filenames: false
+        always_run: false  # Solo corre si cambia requirements.txt
       # Existing hooks - context generation
       - id: update-treemap
         name: Update project structure map
