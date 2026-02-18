@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `file_exploration`
 - Priority: `50`
-- Purpose: Parquet: columnar schema, stats, previews
+- Purpose: Explore Parquet schema and preview through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_exploration/parquet_explorer.md`

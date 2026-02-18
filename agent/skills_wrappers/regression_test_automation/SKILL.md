@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `python_quality`
 - Priority: `63`
-- Purpose: Automated regression suites with baseline and flaky-test control
+- Purpose: Automated regression testing workflow with baseline capture, targeted suites, and stability checks
 
 ## Source Files
 - Body (Layer 3): `agent/skills/python/regression_test_automation.md`

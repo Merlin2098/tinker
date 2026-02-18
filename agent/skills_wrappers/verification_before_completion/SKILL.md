@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `governance`
 - Priority: `91`
-- Purpose: Fresh evidence required before completion claims
+- Purpose: Fresh evidence required before any completion claims
 
 ## Source Files
 - Body (Layer 3): `agent/skills/governance/verification_before_completion.md`

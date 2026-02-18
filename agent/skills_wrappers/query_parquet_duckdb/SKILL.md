@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `data_pipeline`
 - Priority: `55`
-- Purpose: SQL on Parquet via DuckDB, zero-copy reads
+- Purpose: Execute SQL queries on Parquet-oriented workloads through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/database/query_parquet_duckdb.md`

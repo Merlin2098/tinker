@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `python_quality`
 - Priority: `50`
-- Purpose: Systematic refactoring: readability, dedup, simplification
+- Purpose: Systematic refactoring: readability, deduplication, simplification
 
 ## Source Files
 - Body (Layer 3): `agent/skills/python/refactoring_assistant.md`

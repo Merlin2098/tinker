@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `execution_pipeline`
 - Priority: `86`
-- Purpose: Structured execution with atomic actions and failure handling
+- Purpose: Structured execution with atomic actions, progress monitoring, failure handling
 
 ## Source Files
 - Body (Layer 3): `agent/skills/execution/execution_flow_orchestration.md`

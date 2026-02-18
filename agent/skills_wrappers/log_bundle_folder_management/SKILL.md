@@ -11,8 +11,8 @@ Source of truth remains in the Tinker framework paths listed below.
 - Purpose: Log folders outside PyInstaller bundles
 
 ## Source Files
-- Body (Layer 3): `agent/skills/logs/log_bundle_folder_management.md`
-- Metadata (Layer 2): `agent/skills/logs/log_bundle_folder_management.meta.yaml`
+- Body (Layer 3): `agent/skills/observability/log_bundle_folder_management.md`
+- Metadata (Layer 2): `agent/skills/observability/log_bundle_folder_management.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

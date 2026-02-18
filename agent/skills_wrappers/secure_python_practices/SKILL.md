@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `python_quality`
 - Priority: `72`
-- Purpose: Security: input validation, injection prevention, secrets
+- Purpose: Security: input validation, injection prevention, secrets management
 
 ## Source Files
 - Body (Layer 3): `agent/skills/python/secure_python_practices.md`

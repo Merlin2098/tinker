@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `governance`
 - Priority: `97`
-- Purpose: Prevents modification of immutable resources
+- Purpose: Prevents modification of immutable resources and protected infrastructure
 
 ## Source Files
 - Body (Layer 3): `agent/skills/governance/immutable_resource_respect.md`

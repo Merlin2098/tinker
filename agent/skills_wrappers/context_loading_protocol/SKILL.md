@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `planning_pipeline`
 - Priority: `90`
-- Purpose: Loads context: treemap → dependencies → task-specific
+- Purpose: Loads context: treemap first, then dependencies, then task-specific
 
 ## Source Files
 - Body (Layer 3): `agent/skills/planning/context_loading_protocol.md`

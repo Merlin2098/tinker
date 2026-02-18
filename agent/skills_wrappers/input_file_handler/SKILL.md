@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `file_handling`
 - Priority: `74`
-- Purpose: File input: validation, encoding detection, errors
+- Purpose: File input: validation, encoding detection, error handling
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_handling/input_file_handler.md`

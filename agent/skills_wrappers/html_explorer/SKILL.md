@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `file_exploration`
 - Priority: `50`
-- Purpose: HTML: text, tables, links, metadata extraction
+- Purpose: Explore HTML metadata and content preview through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_exploration/html_explorer.md`

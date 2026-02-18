@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `python_quality`
 - Priority: `64`
-- Purpose: Static analysis and deterministic QA gates before merge/release
+- Purpose: Static code analysis and QA gate definition for pre-merge quality enforcement
 
 ## Source Files
 - Body (Layer 3): `agent/skills/python/code_analysis_qa_gate.md`

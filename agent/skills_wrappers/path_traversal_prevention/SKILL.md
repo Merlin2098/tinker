@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `governance`
 - Priority: `92`
-- Purpose: Prevents path traversal and sandbox escapes
+- Purpose: Prevents path traversal attacks and sandbox escapes
 
 ## Source Files
 - Body (Layer 3): `agent/skills/governance/path_traversal_prevention.md`

@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `file_exploration`
 - Priority: `50`
-- Purpose: Power BI: data models, DAX, relationships
+- Purpose: Explore Power BI package structure through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_exploration/powerbi_explorer.md`

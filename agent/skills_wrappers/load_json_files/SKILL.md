@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `format_loaders`
 - Priority: `50`
-- Purpose: JSON loading with validation and schema enforcement
+- Purpose: Load and validate JSON files through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/formats/load_json_files.md`

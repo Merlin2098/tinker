@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `python_quality`
 - Priority: `71`
-- Purpose: Data consistency: validation, constraints, transactions
+- Purpose: Data consistency: validation, constraints, transactions, corruption prevention
 
 ## Source Files
 - Body (Layer 3): `agent/skills/python/data_integrity_guardian.md`

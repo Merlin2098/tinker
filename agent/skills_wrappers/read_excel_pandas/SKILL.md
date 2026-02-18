@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `data_pipeline`
 - Priority: `50`
-- Purpose: Pandas Excel for exploratory (<50MB)
+- Purpose: Load Excel files with pandas through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/io/read_excel_pandas.md`

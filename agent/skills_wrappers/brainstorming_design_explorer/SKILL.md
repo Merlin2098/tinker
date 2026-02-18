@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `planning_pipeline`
 - Priority: `80`
-- Purpose: Pre-planning design exploration with 2-3 approaches
+- Purpose: Pre-planning design exploration with 2-3 approaches and YAGNI enforcement
 
 ## Source Files
 - Body (Layer 3): `agent/skills/planning/brainstorming_design_explorer.md`

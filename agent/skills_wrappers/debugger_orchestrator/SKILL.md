@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `debugging`
 - Priority: `67`
-- Purpose: End-to-end debugger workflow with verification and regression-proofing
+- Purpose: End-to-end debugger workflow: triage, reproduce, isolate, verify, and regression-proof
 
 ## Source Files
 - Body (Layer 3): `agent/skills/debugging/debugger_orchestrator.md`

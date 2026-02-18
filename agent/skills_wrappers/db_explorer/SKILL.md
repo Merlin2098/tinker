@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `file_exploration`
 - Priority: `50`
-- Purpose: Database: tables, schemas, data preview
+- Purpose: Explore local SQLite/DuckDB schema through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_exploration/db_explorer.md`

@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `file_exploration`
 - Priority: `50`
-- Purpose: CSV analysis: encoding, delimiter, schema inspection
+- Purpose: Explore CSV files through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_exploration/csv_explorer.md`

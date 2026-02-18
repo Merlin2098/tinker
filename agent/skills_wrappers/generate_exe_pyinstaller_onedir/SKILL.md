@@ -11,8 +11,8 @@ Source of truth remains in the Tinker framework paths listed below.
 - Purpose: PyInstaller --onedir Windows executables
 
 ## Source Files
-- Body (Layer 3): `agent/skills/build/generate_exe_pyinstaller_onedir.md`
-- Metadata (Layer 2): `agent/skills/build/generate_exe_pyinstaller_onedir.meta.yaml`
+- Body (Layer 3): `agent/skills/devops/generate_exe_pyinstaller_onedir.md`
+- Metadata (Layer 2): `agent/skills/devops/generate_exe_pyinstaller_onedir.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

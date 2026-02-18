@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `planning_pipeline`
 - Priority: `89`
-- Purpose: Structured decision-making through scoring and plan generation
+- Purpose: Structured decision-making: validation, impact analysis, scoring, plan generation
 
 ## Source Files
 - Body (Layer 3): `agent/skills/planning/decision_process_flow.md`

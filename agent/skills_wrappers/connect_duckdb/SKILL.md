@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `data_pipeline`
 - Priority: `55`
-- Purpose: DuckDB connections for OLAP workloads
+- Purpose: Establish and validate DuckDB connections through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/database/connect_duckdb.md`

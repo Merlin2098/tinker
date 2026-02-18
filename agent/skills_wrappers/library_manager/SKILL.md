@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `devops`
 - Priority: `73`
-- Purpose: Python package dependencies, versioning, environment
+- Purpose: Python package dependencies, versioning, environment configuration
 
 ## Source Files
 - Body (Layer 3): `agent/skills/devops/library_manager.md`

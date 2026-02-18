@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `format_loaders`
 - Priority: `50`
-- Purpose: SQL query loading from versioned templates
+- Purpose: Load SQL query files through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/formats/load_sql_queries.md`

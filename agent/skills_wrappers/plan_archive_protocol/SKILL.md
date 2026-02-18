@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `execution_pipeline`
 - Priority: `83`
-- Purpose: Archives active plans before new execution
+- Purpose: Archives active plans before new execution preserving history
 
 ## Source Files
 - Body (Layer 3): `agent/skills/execution/plan_archive_protocol.md`

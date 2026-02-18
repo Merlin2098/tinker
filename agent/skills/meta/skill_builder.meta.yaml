@@ -18,3 +18,6 @@ triggers:
 
 # The implementation wrapper
 wrapper_path: agent_tools/wrappers/skill_builder_wrapper.py
+execution:
+  entrypoint: agent_tools/wrappers/skill_builder_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill skill_builder --args-json '<json-object>'

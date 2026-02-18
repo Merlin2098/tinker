@@ -11,8 +11,8 @@ Source of truth remains in the Tinker framework paths listed below.
 - Purpose: Fresh logs per execution, no accumulation
 
 ## Source Files
-- Body (Layer 3): `agent/skills/logs/log_overwrite_policy.md`
-- Metadata (Layer 2): `agent/skills/logs/log_overwrite_policy.meta.yaml`
+- Body (Layer 3): `agent/skills/observability/log_overwrite_policy.md`
+- Metadata (Layer 2): `agent/skills/observability/log_overwrite_policy.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

@@ -1,18 +1,18 @@
-# SKILL.md - pdf_explorer
+# SKILL.md - skill_merger
 
 This is an auto-generated compatibility wrapper.
 Source of truth remains in the Tinker framework paths listed below.
 
 ## Skill Identity
-- Name: `pdf_explorer`
-- Tier: `lazy`
-- Cluster: `file_exploration`
-- Priority: `50`
-- Purpose: Explore PDF metadata and page previews through canonical wrapper execution
+- Name: `skill_merger`
+- Tier: `core`
+- Cluster: `meta`
+- Priority: `90`
+- Purpose: Consolidates multiple skills into one and deletes redundancy.
 
 ## Source Files
-- Body (Layer 3): `agent/skills/file_exploration/pdf_explorer.md`
-- Metadata (Layer 2): `agent/skills/file_exploration/pdf_explorer.meta.yaml`
+- Body (Layer 3): `agent/skills/meta/skill_merger.md`
+- Metadata (Layer 2): `agent/skills/meta/skill_merger.meta.yaml`
 - Index (Layer 1): `agent/skills/_index.yaml`
 - Trigger rules: `agent/skills/_trigger_engine.yaml`
 

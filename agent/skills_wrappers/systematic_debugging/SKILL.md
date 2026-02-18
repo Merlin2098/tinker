@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `debugging`
 - Priority: `65`
-- Purpose: 4-phase: Root Cause, Pattern, Hypothesis, Implementation
+- Purpose: 4-phase structured debugging: root cause before any fix
 
 ## Source Files
 - Body (Layer 3): `agent/skills/debugging/systematic_debugging.md`

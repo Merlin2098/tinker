@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `governance`
 - Priority: `93`
-- Purpose: Validates protected files are not modified
+- Purpose: Validates protected files on blacklist are not modified
 
 ## Source Files
 - Body (Layer 3): `agent/skills/governance/protected_file_validation.md`

@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `file_exploration`
 - Priority: `75`
-- Purpose: Facade: detects file type, delegates to format explorer
+- Purpose: Facade explorer: routes file inspection to canonical format-specific wrappers
 
 ## Source Files
 - Body (Layer 3): `agent/skills/file_exploration/file_explorer.md`

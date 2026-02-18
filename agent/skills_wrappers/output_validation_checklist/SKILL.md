@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `planning_pipeline`
 - Priority: `87`
-- Purpose: Validates outputs before emission — IDs, versions, DAG
+- Purpose: Validates outputs before emission — plan IDs, versions, DAG dependencies
 
 ## Source Files
 - Body (Layer 3): `agent/skills/planning/output_validation_checklist.md`

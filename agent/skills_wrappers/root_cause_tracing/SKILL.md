@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `debugging`
 - Priority: `60`
-- Purpose: 5-step backward call stack tracing
+- Purpose: 5-step backward call stack tracing to find original trigger
 
 ## Source Files
 - Body (Layer 3): `agent/skills/debugging/root_cause_tracing.md`

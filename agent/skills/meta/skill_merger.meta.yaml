@@ -15,3 +15,6 @@ triggers:
 
 # The implementation wrapper
 wrapper_path: agent_tools/wrappers/skill_merger_wrapper.py
+execution:
+  entrypoint: agent_tools/wrappers/skill_merger_wrapper.py::run
+  command: .venv/Scripts/python.exe agent_tools/run_wrapper.py --skill skill_merger --args-json '<json-object>'

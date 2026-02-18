@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `lazy`
 - Cluster: `data_pipeline`
 - Priority: `55`
-- Purpose: Excel→Parquet: 60-80% compression for bronze layer
+- Purpose: Convert Excel sheets to Parquet through canonical wrapper execution
 
 ## Source Files
 - Body (Layer 3): `agent/skills/io/excel_to_parquet.md`

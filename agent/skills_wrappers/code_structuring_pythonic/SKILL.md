@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `python_quality`
 - Priority: `70`
-- Purpose: Idiomatic Python, PEP 8, clean architecture
+- Purpose: Idiomatic Python patterns, PEP 8 compliance, clean architecture
 
 ## Source Files
 - Body (Layer 3): `agent/skills/python/code_structuring_pythonic.md`

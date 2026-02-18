@@ -8,7 +8,7 @@ Source of truth remains in the Tinker framework paths listed below.
 - Tier: `core`
 - Cluster: `runtime`
 - Priority: `82`
-- Purpose: Execute Python via venv only — never global Python
+- Purpose: Execute Python via virtual environment only — global Python is never used
 
 ## Source Files
 - Body (Layer 3): `agent/skills/runtime/python_venv_executor.md`
