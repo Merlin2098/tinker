@@ -4,23 +4,26 @@ from tkinter import filedialog
 
 
 # ============================================================
-# Folder Skeleton fijo (arquitectura del producto)
+# Folder Skeleton (ETL Local - Generic)
 # ============================================================
 
 FOLDERS = [
+
+    # --- Config declarativa ---
     "src/config/json",
     "src/config/yaml",
     "src/config/sql",
     "src/config/ui/icon",
     "src/config/ui/themes",
 
-    "src/core/people_point",
-    "src/core/bd_yoly",
-    "src/core/contrast",
+    # --- Core ETL (vacío, depende del proyecto) ---
+    "src/core",
 
+    # --- UI Desktop ---
     "src/ui/widgets",
     "src/ui/workers",
 
+    # --- Utils transversales ---
     "src/utils/core",
     "src/utils/etl/converters",
     "src/utils/etl/database",
@@ -29,6 +32,7 @@ FOLDERS = [
     "src/utils/logs",
     "src/utils/ui",
 
+    # --- Extra ---
     "tests",
     "scripts",
     "docs",
