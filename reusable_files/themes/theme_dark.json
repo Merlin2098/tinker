@@ -1,0 +1,56 @@
+{
+  "name": "dark",
+  "description": "Versión oscura de alto contraste basada en la paleta Metso",
+  "colors": {
+    "background": "#121212",
+    "surface": "#1E1E1E",
+    "surface_lighter": "#2D2D2D",
+    "border": "#3F3F46",
+    "border_hover": "#EB2814",
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#71717A"
+    },
+    "primary": "#EB2814",
+    "primary_dark": "#9A180C",
+    "accent": "#4E2098",
+    "success": "#51D645",
+    "warning": "#DEEC29",
+    "error": "#E5097C",
+    "info": "#00E2B2"
+  },
+  "components": {
+    "button": {
+      "background": "#EB2814",
+      "text": "#FFFFFF",
+      "hover": "#C11E0F",
+      "disabled_bg": "#3F3F46",
+      "disabled_text": "#71717A"
+    },
+    "card": {
+      "background": "#1E1E1E",
+      "shadow": "rgba(0, 0, 0, 0.5)",
+      "border": "#2D2D2D"
+    },
+    "input": {
+      "background": "#2D2D2D",
+      "border": "#3F3F46",
+      "text": "#FFFFFF",
+      "focus_border": "#EB2814"
+    },
+    "progressbar": {
+      "background": "#2D2D2D",
+      "chunk": "#EB2814",
+      "text": "#FFFFFF"
+    },
+    "scrollbar": {
+      "background": "#1E1E1E",
+      "handle": "#3F3F46",
+      "handle_hover": "#EB2814"
+    }
+  },
+  "pyqt5": {
+    "stylesheet": "/* ========================== TEMA: Dark (Metso Industrial) ========================== */ QMainWindow { background-color: #121212; } QWidget { background-color: #121212; color: #FFFFFF; font-family: 'Inter', 'Segoe UI', sans-serif; font-size: 13px; } /* ========== TABS ========== */ QTabWidget::pane { border: 1px solid #3F3F46; border-radius: 8px; background-color: #1E1E1E; } QTabBar::tab { background-color: #2D2D2D; color: #A1A1AA; padding: 12px 20px; border: 1px solid #3F3F46; border-bottom: none; border-top-left-radius: 4px; border-top-right-radius: 4px; } QTabBar::tab:selected { background-color: #1E1E1E; color: #EB2814; border-bottom: 3px solid #EB2814; } /* ========== GROUP BOX ========== */ QGroupBox { background-color: #1E1E1E; border: 1px solid #2D2D2D; border-radius: 8px; margin-top: 10px; padding: 15px; } QGroupBox::title { color: #EB2814; subcontrol-origin: margin; subcontrol-position: top left; } /* ========== BUTTONS ========== */ QPushButton { background-color: #EB2814; color: #FFFFFF; border-radius: 4px; padding: 8px 20px; font-weight: 600; } QPushButton:hover { background-color: #C11E0F; } QPushButton:pressed { background-color: #9A180C; } QPushButton[buttonStyle=\"secondary\"] { background-color: transparent; color: #EB2814; border: 2px solid #EB2814; } /* ========== LINE EDIT ========== */ QLineEdit { background-color: #2D2D2D; border: 2px solid #3F3F46; border-radius: 4px; padding: 8px 12px; color: #FFFFFF; selection-background-color: #EB2814; } QLineEdit:focus { border-color: #EB2814; } /* ========== PROGRESS BAR ========== */ QProgressBar { background-color: #2D2D2D; border: 1px solid #3F3F46; border-radius: 4px; text-align: center; color: #FFFFFF; } QProgressBar::chunk { background-color: #EB2814; } /* ========== SCROLL BAR ========== */ QScrollBar:vertical { background-color: #1E1E1E; width: 10px; } QScrollBar::handle:vertical { background-color: #3F3F46; border-radius: 5px; } QScrollBar::handle:vertical:hover { background-color: #EB2814; } /* ========== TEXT EDIT (Log Console) ========== */ QTextEdit { background-color: #1E1E1E; color: #FFFFFF; border: 1px solid #3F3F46; border-radius: 4px; font-family: 'Consolas', 'Courier New', monospace; font-size: 12px; } /* ========== MENU BAR ========== */ QMenuBar { background-color: #1E1E1E; color: #FFFFFF; border-bottom: 1px solid #2D2D2D; } QMenuBar::item:selected { background-color: #EB2814; }"
+  }
+}
