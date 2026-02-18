@@ -1,6 +1,7 @@
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog
+import shutil
 
 
 # ============================================================
@@ -75,11 +76,29 @@ def load_template(templates_dir: Path, template_name: str) -> str:
     return template_path.read_text(encoding="utf-8")
 
 
-def create_project(project_root: Path, templates_dir: Path):
-    """Genera carpetas + archivos base desde templates."""
+def copy_reusable_files(templates_dir: Path, project_root: Path):
+    """
+    Copia templates/reusable_files → scripts/reusable_files
+    """
+    source = templates_dir / "reusable_files"
+    destination = project_root / "scripts/reusable_files"
+
+    if not source.exists():
+        print("⚠️ No existe templates/reusable_files. Saltando copia.")
+        return
+
+    shutil.copytree(source, destination, dirs_exist_ok=True)
+    print("📦 Copied reusable_files into scripts/reusable_files")
+
+
+def create_project(project_root: Path, templates_dir: Path, include_reusable: bool):
+    """
+    Genera carpetas + archivos base desde templates.
+    Opcionalmente copia reusable_files.
+    """
     print(f"\n📦 Creando skeleton en:\n   {project_root}\n")
 
-    # --- Crear carpetas ---
+    # --- Crear carpetas base ---
     for folder in FOLDERS:
         path = project_root / folder
         path.mkdir(parents=True, exist_ok=True)
@@ -102,6 +121,10 @@ def create_project(project_root: Path, templates_dir: Path):
         filepath.write_text(content, encoding="utf-8")
 
         print(f"📄 Created: {target}")
+
+    # --- Opción reusable_files ---
+    if include_reusable:
+        copy_reusable_files(templates_dir, project_root)
 
     print("\n🚀 Proyecto generado correctamente.\n")
 
@@ -131,6 +154,13 @@ if __name__ == "__main__":
     if not templates_dir.exists():
         raise SystemExit("❌ La ruta de templates no existe.")
 
+    # Opción reusable_files
+    reusable_choice = input(
+        "📌 ¿Copiar reusable_files starter kit? (y/n): "
+    ).strip().lower()
+
+    include_reusable = reusable_choice == "y"
+
     # Carpeta destino seleccionada por explorador
     destination = select_destination_folder()
 
@@ -143,4 +173,4 @@ if __name__ == "__main__":
     project_root.mkdir()
 
     # Crear proyecto
-    create_project(project_root, templates_dir)
+    create_project(project_root, templates_dir, include_reusable)
