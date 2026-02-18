@@ -1,0 +1,15 @@
+project_root/
+│
+├── main.py
+├── requirements.txt
+├── .gitignore
+│
+├── src/
+│ ├── config/
+│ ├── core/
+│ ├── ui/
+│ └── utils/
+│
+├── tests/
+├── scripts/
+└── docs/

@@ -4,12 +4,10 @@ from tkinter import filedialog
 
 
 # ============================================================
-# Skeleton oficial del proyecto (basado en tu arquitectura real)
+# Folder Skeleton fijo (arquitectura del producto)
 # ============================================================
 
 FOLDERS = [
-
-    # --- SRC base ---
     "src/config/json",
     "src/config/yaml",
     "src/config/sql",
@@ -31,20 +29,10 @@ FOLDERS = [
     "src/utils/logs",
     "src/utils/ui",
 
-    # --- Extra ---
     "tests",
     "scripts",
     "docs",
 ]
-
-FILES = {
-    "main.py": """\
-if __name__ == "__main__":
-    print("Booting ETL Desktop App...")
-""",
-    "docs/architecture.md": "# Arquitectura del Proyecto\n\n(Generado automáticamente)\n",
-    "instructions_dev.md": "# Developer Notes\n\nPendiente.\n",
-}
 
 
 # ============================================================
@@ -53,15 +41,11 @@ if __name__ == "__main__":
 
 def touch_init(folder: Path):
     """Crea __init__.py para módulos Python."""
-    init_file = folder / "__init__.py"
-    init_file.touch(exist_ok=True)
+    (folder / "__init__.py").touch(exist_ok=True)
 
 
 def select_destination_folder() -> Path:
-    """
-    Abre explorador para que el usuario seleccione
-    la carpeta donde se creará el proyecto.
-    """
+    """Explorador para seleccionar carpeta destino."""
     root = tk.Tk()
     root.withdraw()
 
@@ -77,30 +61,43 @@ def select_destination_folder() -> Path:
     return Path(selected)
 
 
-def create_project(project_root: Path):
-    """
-    Crea toda la estructura dentro de project_root.
-    """
+def load_template(templates_dir: Path, template_name: str) -> str:
+    """Carga template desde un directorio definido por el usuario."""
+    template_path = templates_dir / template_name
+
+    if not template_path.exists():
+        raise FileNotFoundError(f"❌ No existe el template: {template_path}")
+
+    return template_path.read_text(encoding="utf-8")
+
+
+def create_project(project_root: Path, templates_dir: Path):
+    """Genera carpetas + archivos base desde templates."""
     print(f"\n📦 Creando skeleton en:\n   {project_root}\n")
 
-    # Crear carpetas
+    # --- Crear carpetas ---
     for folder in FOLDERS:
         path = project_root / folder
         path.mkdir(parents=True, exist_ok=True)
-        print(f"✅ Folder: {folder}")
 
         if folder.startswith("src/"):
             touch_init(path)
 
-    # Crear archivos base
-    for file, content in FILES.items():
-        filepath = project_root / file
+    # --- Archivos desde templates ---
+    template_map = {
+        ".gitignore": "gitignore.template",
+        "requirements.txt": "requirements.template",
+        "docs/treemap.md": "etl_local.template",
+    }
 
-        if not filepath.exists():
-            filepath.write_text(content, encoding="utf-8")
-            print(f"📄 File created: {file}")
-        else:
-            print(f"⚠️ Already exists: {file}")
+    for target, template_file in template_map.items():
+        content = load_template(templates_dir, template_file)
+
+        filepath = project_root / target
+        filepath.parent.mkdir(parents=True, exist_ok=True)
+        filepath.write_text(content, encoding="utf-8")
+
+        print(f"📄 Created: {target}")
 
     print("\n🚀 Proyecto generado correctamente.\n")
 
@@ -112,27 +109,34 @@ def create_project(project_root: Path):
 if __name__ == "__main__":
 
     print("\n==============================")
-    print("   PROJECT SCAFFOLD GENERATOR ")
+    print("   ETL LOCAL PROJECT SCAFFOLD ")
     print("==============================\n")
 
-    # 1. Nombre del proyecto
-    project_name = input("📌 Ingresa el nombre del proyecto: ").strip()
-
+    # Nombre del proyecto
+    project_name = input("📌 Nombre del proyecto: ").strip()
     if not project_name:
-        raise SystemExit("❌ Nombre inválido. Cancelado.")
+        raise SystemExit("❌ Nombre inválido.")
 
-    # 2. Seleccionar carpeta destino (padre)
-    destination_folder = select_destination_folder()
+    # Ruta de templates
+    templates_path_str = input(
+        "📌 Ruta de templates (ej: C:/Dev/templates): "
+    ).strip()
 
-    # 3. Crear carpeta del proyecto dentro del destino
-    project_root = destination_folder / project_name
+    templates_dir = Path(templates_path_str)
+
+    if not templates_dir.exists():
+        raise SystemExit("❌ La ruta de templates no existe.")
+
+    # Carpeta destino seleccionada por explorador
+    destination = select_destination_folder()
+
+    # Root del proyecto
+    project_root = destination / project_name
 
     if project_root.exists():
-        raise SystemExit(
-            f"❌ Ya existe una carpeta llamada '{project_name}' en:\n   {destination_folder}"
-        )
+        raise SystemExit("❌ Ya existe un proyecto con ese nombre.")
 
     project_root.mkdir()
 
-    # 4. Generar estructura
-    create_project(project_root)
+    # Crear proyecto
+    create_project(project_root, templates_dir)
