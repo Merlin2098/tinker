@@ -1,117 +1,55 @@
-"""
-SQLQueryLoader - Parser de archivos SQL con queries nombradas
-"""
+from __future__ import annotations
+
 from pathlib import Path
-from typing import Dict, List, Optional
 
 
 class SQLQueryLoader:
     """
-    Carga y parsea archivos SQL con queries nombradas.
-
-    Formatos soportados:
-    - -- query_name: <name>
-    - -- @query: <name>
+    Parse SQL files containing named query sections:
+    - -- query_name: name
+    - -- @query: name
     """
-    
-    def __init__(self, sql_file: str):
-        """
-        Inicializa el loader
-        
-        Args:
-            sql_file: Ruta al archivo SQL
-        """
+
+    def __init__(self, sql_file: str | Path) -> None:
         self.sql_file = Path(sql_file)
-        self.queries: Dict[str, str] = {}
+        self.queries: dict[str, str] = {}
         self._parse()
-    
-    def _parse(self):
-        """Parsea el archivo SQL extrayendo queries nombradas"""
+
+    def _parse(self) -> None:
         if not self.sql_file.exists():
-            raise FileNotFoundError(f"Archivo SQL no encontrado: {self.sql_file}")
+            raise FileNotFoundError(f"SQL file not found: {self.sql_file}")
 
-        with open(self.sql_file, 'r', encoding='utf-8') as f:
-            sql_content = f.read()
+        current_name: str | None = None
+        current_lines: list[str] = []
 
-        current_query_name = None
-        current_query_lines = []
+        for line in self.sql_file.read_text(encoding="utf-8").splitlines():
+            marker = None
+            if "-- query_name:" in line:
+                marker = line.split("query_name:", 1)[1].strip()
+            elif "-- @query:" in line:
+                marker = line.split("@query:", 1)[1].strip()
 
-        for line in sql_content.split('\n'):
-            # Detectar inicio de nueva query - acepta ambos formatos:
-            # -- query_name: <name>
-            # -- @query: <name>
-            is_query_marker = False
-            query_name = None
+            if marker is not None:
+                if current_name and current_lines:
+                    self.queries[current_name] = "\n".join(current_lines).strip()
+                current_name = marker
+                current_lines = []
+                continue
 
-            if '-- query_name:' in line:
-                is_query_marker = True
-                query_name = line.split('query_name:')[1].strip()
-            elif '-- @query:' in line:
-                is_query_marker = True
-                query_name = line.split('@query:')[1].strip()
+            if current_name is not None and not line.strip().startswith("--"):
+                current_lines.append(line)
 
-            if is_query_marker:
-                # Guardar query anterior si existe
-                if current_query_name and current_query_lines:
-                    self.queries[current_query_name] = '\n'.join(current_query_lines).strip()
+        if current_name and current_lines:
+            self.queries[current_name] = "\n".join(current_lines).strip()
 
-                # Iniciar nueva query
-                current_query_name = query_name
-                current_query_lines = []
-
-            # Agregar línea a query actual (ignorar otros comentarios)
-            elif current_query_name is not None:
-                if not line.strip().startswith('--'):
-                    current_query_lines.append(line)
-
-        # Guardar última query
-        if current_query_name and current_query_lines:
-            self.queries[current_query_name] = '\n'.join(current_query_lines).strip()
-    
     def get_query(self, name: str) -> str:
-        """
-        Obtiene una query por nombre
-        
-        Args:
-            name: Nombre de la query
-        
-        Returns:
-            Query SQL
-        
-        Raises:
-            KeyError: Si la query no existe
-        """
         if name not in self.queries:
-            raise KeyError(f"Query '{name}' no encontrada. Disponibles: {self.list_queries()}")
-        
+            available = ", ".join(self.queries.keys())
+            raise KeyError(f"Query '{name}' not found. Available: {available}")
         return self.queries[name]
-    
-    def list_queries(self) -> List[str]:
-        """
-        Lista nombres de queries disponibles
-        
-        Returns:
-            Lista de nombres
-        """
+
+    def list_queries(self) -> list[str]:
         return list(self.queries.keys())
-    
+
     def has_query(self, name: str) -> bool:
-        """
-        Verifica si existe una query
-        
-        Args:
-            name: Nombre de la query
-        
-        Returns:
-            True si existe
-        """
         return name in self.queries
-    
-    def get_all_queries(self) -> Dict[str, str]:
-        """
-        Obtiene todas las queries
-        
-        Returns:
-            Diccionario con todas las queries
-        """
-        return self.queries.copy()

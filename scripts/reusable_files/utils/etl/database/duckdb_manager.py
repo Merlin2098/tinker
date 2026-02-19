@@ -1,209 +1,109 @@
-"""
-DuckDBManager - Gestión centralizada de DuckDB
-"""
+from __future__ import annotations
+
+import re
+from pathlib import Path
+from typing import Iterable, Iterator
+
 import duckdb
 import polars as pl
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+import pyarrow as pa
 
 
 class DuckDBManager:
-    """Gestiona conexiones y operaciones con DuckDB"""
-    
-    def __init__(self, database: str = ':memory:'):
-        """
-        Inicializa conexión a DuckDB
-        
-        Args:
-            database: Ruta a la base de datos o ':memory:' para en memoria
-        """
+    """Small helper around DuckDB for parquet-backed SQL transforms."""
+
+    IDENTIFIER_PATTERN = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+    def __init__(self, database: str = ":memory:") -> None:
         self.database = database
-        self.conn = duckdb.connect(database)
-    
-    def load_parquet(self, path: str, table_name: str = 'silver_data') -> int:
-        """
-        Carga archivo Parquet en una tabla
-        
-        Args:
-            path: Ruta al archivo Parquet
-            table_name: Nombre de la tabla a crear
-        
-        Returns:
-            Número de filas cargadas
-        """
-        if not Path(path).exists():
-            raise FileNotFoundError(f"Archivo Parquet no encontrado: {path}")
-        
-        # Crear tabla desde Parquet
-        self.conn.execute(f"""
-            CREATE TABLE {table_name} AS 
-            SELECT * FROM read_parquet('{path}')
-        """)
-        
-        # Obtener número de filas
-        result = self.conn.execute(f"SELECT COUNT(*) FROM {table_name}").fetchone()
-        return result[0]
-    
-    def load_excel(self, path: str, table_name: str = 'silver_data') -> int:
-        """
-        Carga archivo Excel en una tabla usando Polars
-        
-        Args:
-            path: Ruta al archivo Excel
-            table_name: Nombre de la tabla a crear
-        
-        Returns:
-            Número de filas cargadas
-        """
-        if not Path(path).exists():
-            raise FileNotFoundError(f"Archivo Excel no encontrado: {path}")
-        
-        # Leer con Polars
-        df = pl.read_excel(path)
-        
-        # Registrar en DuckDB
-        self.conn.register(table_name, df)
-        
-        # Obtener número de filas
-        result = self.conn.execute(f"SELECT COUNT(*) FROM {table_name}").fetchone()
-        return result[0]
-    
-    def create_table_from_dict(self, data: Dict[str, Any], table_name: str) -> None:
-        """
-        Crea tabla desde diccionario (útil para schemas como Likert)
-        
-        Args:
-            data: Diccionario con datos (key: valor)
-            table_name: Nombre de la tabla a crear
-        """
-        # Convertir diccionario a lista de tuplas
-        rows = [(key, value) for key, value in data.items()]
-        
-        # Eliminar tabla si existe
-        self.conn.execute(f"DROP TABLE IF EXISTS {table_name}")
-        
-        # Crear tabla
-        self.conn.execute(f"""
-            CREATE TABLE {table_name} (
-                valor_texto VARCHAR,
-                valor_numerico INTEGER
+        self.conn = duckdb.connect(database=database)
+
+    @staticmethod
+    def adapt_sql_for_duckdb(sql: str) -> str:
+        # MySQL-style quoted identifiers and types are common in legacy scripts.
+        rewritten = re.sub(r"`([^`]*)`", r'"\1"', sql)
+        rewritten = re.sub(r"\bSTRING\b", "VARCHAR", rewritten, flags=re.IGNORECASE)
+        rewritten = re.sub(
+            r"CAST\(([^)]+?)\s+AS\s+FLOAT\)",
+            r"TRY_CAST(\1 AS DOUBLE)",
+            rewritten,
+            flags=re.IGNORECASE,
+        )
+
+        def replace_date_cast(match: re.Match[str]) -> str:
+            expr = match.group(1).strip()
+            return (
+                "COALESCE("
+                f"TRY_CAST({expr} AS DATE), "
+                f"TRY_STRPTIME({expr}, '%d/%m/%Y')::DATE, "
+                f"TRY_STRPTIME({expr}, '%d/%m/%Y %H:%M:%S')::DATE, "
+                f"TRY_STRPTIME({expr}, '%Y-%m-%d %H:%M:%S')::DATE"
+                ")"
             )
-        """)
-        
-        # Insertar datos
-        self.conn.executemany(f"INSERT INTO {table_name} VALUES (?, ?)", rows)
-    
-    def execute_query(self, sql: str) -> Any:
-        """
-        Ejecuta query SQL y retorna result
-        
-        Args:
-            sql: Query SQL a ejecutar
-        
-        Returns:
-            Resultado de la query
-        """
-        return self.conn.execute(sql)
-    
-    def execute_query_to_df(self, sql: str) -> pl.DataFrame:
-        """
-        Ejecuta query y retorna DataFrame de Polars
-        
-        Args:
-            sql: Query SQL a ejecutar
-        
-        Returns:
-            DataFrame de Polars
-        """
-        return self.conn.execute(sql).pl()
-    
-    def fetch_one(self, sql: str) -> Optional[Tuple]:
-        """
-        Ejecuta query y retorna primera fila
-        
-        Args:
-            sql: Query SQL a ejecutar
-        
-        Returns:
-            Primera fila o None
-        """
-        result = self.conn.execute(sql).fetchone()
-        return result
-    
-    def fetch_all(self, sql: str) -> List[Tuple]:
-        """
-        Ejecuta query y retorna todas las filas
-        
-        Args:
-            sql: Query SQL a ejecutar
-        
-        Returns:
-            Lista de tuplas
-        """
-        return self.conn.execute(sql).fetchall()
-    
-    def table_exists(self, table_name: str) -> bool:
-        """
-        Verifica si una tabla existe
-        
-        Args:
-            table_name: Nombre de la tabla
-        
-        Returns:
-            True si existe
-        """
-        result = self.conn.execute(f"""
-            SELECT COUNT(*) 
-            FROM information_schema.tables 
-            WHERE table_name = '{table_name}'
-        """).fetchone()
-        
-        return result[0] > 0
-    
-    def drop_table(self, table_name: str) -> None:
-        """
-        Elimina una tabla
-        
-        Args:
-            table_name: Nombre de la tabla a eliminar
-        """
-        self.conn.execute(f"DROP TABLE IF EXISTS {table_name}")
-    
-    def get_row_count(self, table_name: str) -> int:
-        """
-        Obtiene número de filas de una tabla
-        
-        Args:
-            table_name: Nombre de la tabla
-        
-        Returns:
-            Número de filas
-        """
-        result = self.conn.execute(f"SELECT COUNT(*) FROM {table_name}").fetchone()
-        return result[0]
-    
-    def get_column_names(self, table_name: str) -> List[str]:
-        """
-        Obtiene nombres de columnas de una tabla
-        
-        Args:
-            table_name: Nombre de la tabla
-        
-        Returns:
-            Lista de nombres de columnas
-        """
-        result = self.conn.execute(f"DESCRIBE {table_name}").fetchall()
-        return [row[0] for row in result]
-    
+
+        rewritten = re.sub(
+            r"CAST\(([^)]+?)\s+AS\s+DATE\)",
+            replace_date_cast,
+            rewritten,
+            flags=re.IGNORECASE,
+        )
+        return rewritten
+
+    @classmethod
+    def _safe_identifier(cls, alias: str) -> str:
+        if not cls.IDENTIFIER_PATTERN.match(alias):
+            raise ValueError(f"Invalid SQL identifier: {alias}")
+        return alias
+
+    def register_parquet_view(self, alias: str, parquet_path: str | Path) -> None:
+        name = self._safe_identifier(alias)
+        path = Path(parquet_path)
+        if not path.exists():
+            raise FileNotFoundError(f"Parquet not found: {path}")
+        literal = str(path).replace("'", "''")
+        self.conn.execute(
+            f"CREATE OR REPLACE VIEW {name} AS SELECT * FROM read_parquet('{literal}')"
+        )
+
+    def register_parquet_views(self, aliases: Iterable[str], parquet_path: str | Path) -> None:
+        for alias in aliases:
+            self.register_parquet_view(alias, parquet_path)
+
+    def execute_to_arrow(self, sql: str) -> pa.Table:
+        return self.conn.execute(sql).fetch_arrow_table()
+
+    def execute_to_polars(self, sql: str) -> pl.DataFrame:
+        # For moderate datasets this is convenient; for very large outputs, prefer
+        # `execute_stream_arrow_batches` to process data incrementally.
+        arrow_table = self.execute_to_arrow(sql)
+        return pl.from_arrow(arrow_table)
+
+    def execute_stream_arrow_batches(
+        self,
+        sql: str,
+        *,
+        batch_size: int = 100_000,
+    ) -> Iterator[pa.RecordBatch]:
+        # Streaming option: yields Arrow RecordBatch chunks so callers can write or
+        # transform results without loading the full query output in memory.
+        if batch_size <= 0:
+            raise ValueError("batch_size must be greater than zero")
+
+        reader = self.conn.execute(sql).fetch_record_batch(batch_size)
+        while True:
+            try:
+                batch = reader.read_next_batch()
+            except StopIteration:
+                break
+            if batch.num_rows == 0:
+                continue
+            yield batch
+
     def close(self) -> None:
-        """Cierra la conexión a DuckDB"""
-        if self.conn:
-            self.conn.close()
-    
-    def __enter__(self):
-        """Context manager entry"""
+        self.conn.close()
+
+    def __enter__(self) -> "DuckDBManager":
         return self
-    
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        """Context manager exit"""
+
+    def __exit__(self, exc_type, exc_value, traceback) -> None:
         self.close()

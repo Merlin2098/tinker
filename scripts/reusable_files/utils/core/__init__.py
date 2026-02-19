@@ -1,4 +1,4 @@
-from .path_manager import PathManager
 from .config_loader import ConfigLoader
+from .path_manager import PathManager
 
-__all__ = ['PathManager', 'ConfigLoader']
+__all__ = ["ConfigLoader", "PathManager"]

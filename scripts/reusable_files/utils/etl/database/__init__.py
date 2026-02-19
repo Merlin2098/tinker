@@ -1,4 +1,4 @@
-from .sql_query_loader import SQLQueryLoader
 from .duckdb_manager import DuckDBManager
+from .sql_query_loader import SQLQueryLoader
 
-__all__ = ['SQLQueryLoader', 'DuckDBManager']
+__all__ = ["DuckDBManager", "SQLQueryLoader"]
