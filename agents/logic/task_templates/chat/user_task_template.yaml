@@ -1,0 +1,28 @@
+﻿# Tinker user_task template (minimal)
+# Required fields: mode, objective, files, constraints
+
+mode: ANALYZE_AND_IMPLEMENT
+objective: |
+  Replace with exact objective.
+
+files:
+  - path/to/target_file.py
+
+constraints: |
+  Replace with hard boundaries.
+
+# Optional compatibility fields:
+# mode_profile: STANDARD
+# config:
+#   sources:
+#     - id: primary_input
+#       path: agents/logic/agent_outputs/plans/example/task_plan.json
+#       purpose: Primary input artifact
+# risk_tolerance: MEDIUM
+# phase: A_CONTRACT_VALIDATION
+# validation:
+#   status: PENDING
+#   validated_by: null
+#   validated_at: null
+#   notes: Pending validation.
+

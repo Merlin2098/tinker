@@ -1,0 +1,46 @@
+﻿# Layer 2 Header — refactoring_assistant
+name: refactoring_assistant
+version: "1.0.0"
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 50
+purpose: "Systematic refactoring: readability, deduplication, simplification"
+triggers:
+  keywords: [refactor, code smell, duplication, extract method, simplify, clean up, technical debt]
+  match_extensions: [".py"]
+  match_phases: []
+  match_errors: []
+requires: []
+exclusive_with: []
+modes: [ANALYZE_AND_IMPLEMENT]
+agent_binding:
+  mandatory: [agent_senior]
+  optional: [agent_inspector]
+  # NOT agent_junior — refactoring requires architectural judgment
+  # NOT agent_executor — executor follows plans, does not decide what to refactor
+max_phase: 1  # Blocked from Phase 0
+body_file: "refactoring_assistant.md"
+token_estimate: 1900
+execution:
+  entrypoint: "agents/tools/wrappers/python_quality_advisor_wrapper.py::run"
+  command: ".venv/Scripts/python.exe agents/tools/run_wrapper.py --skill refactoring_assistant --args-json '<json-object>'"
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

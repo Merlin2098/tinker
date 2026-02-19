@@ -1,24 +1,24 @@
-# agent_framework_config.yaml
+﻿# agent_framework_config.yaml
 
 deployment:
   framework_footprint:
-    - agent/
-    - agent_tools/
+    - agents/logic/
+    - agents/tools/
     - .clinerules
     - agent_framework_config.yaml
-    - instructions/claude/
-    - instructions/chat/
-    - instructions/model_agnostic/
+    - agents/instructions/claude/
+    - agents/instructions/chat/
+    - agents/instructions/model_agnostic/
 
   host_gitignore_entries:
     - "# Tinker agent framework (portable - not part of host project)"
-    - "agent/"
-    - "agent_tools/"
+    - "agents/logic/"
+    - "agents/tools/"
     - ".clinerules"
     - "agent_framework_config.yaml"
-    - "instructions/claude/"
-    - "instructions/chat/"
-    - "instructions/model_agnostic/"
+    - "agents/instructions/claude/"
+    - "agents/instructions/chat/"
+    - "agents/instructions/model_agnostic/"
 
   project_root_strategy: parent_of_agent_tools
 
@@ -40,7 +40,7 @@ profile_detection:
         - GITHUB_ACTIONS
 
 static_context:
-  output_path: agent/agent_outputs/context.json
+  output_path: agents/logic/agent_outputs/context.json
   max_lines: 1000
   file_tree_max_depth: 2
   python_signatures_max_depth: 3
@@ -61,12 +61,12 @@ static_context:
     minimum_schema_top_level_keys: 3
 
   excluded_dirs_from_tree:
-    - agent/skills
-    - agent/agent_outputs
-    - agent/agent_logs
+    - agents/logic/skills
+    - agents/logic/agent_outputs
+    - agents/logic/agent_logs
 
   excluded_from_signatures:
-    - agent/skills
+    - agents/logic/skills
 
   always_excluded_dirs:
     - .git
@@ -92,18 +92,18 @@ static_context_profiles:
 
 on_demand_files:
   treemap:
-    path: agent/analysis/treemap.md
+    path: agents/logic/analysis/treemap.md
     description: >
       Full recursive file tree of the host project.
     format: markdown
-    generated_by: agent_tools/treemap.py
+    generated_by: agents/tools/treemap.py
 
   dependencies_report:
-    path: agent/analysis/dependencies_report.md
+    path: agents/logic/analysis/dependencies_report.md
     description: >
       Python module dependency graph of the host project.
     format: markdown
-    generated_by: agent_tools/analyze_dependencies.py
+    generated_by: agents/tools/analyze_dependencies.py
 
 gitignore:
   respect_gitignore: true
@@ -132,3 +132,4 @@ data_governance:
   require_source_output_separation: true
   require_final_layer_from_materialized_inputs: true
   required_output_format_policy: per_use_case_declared
+

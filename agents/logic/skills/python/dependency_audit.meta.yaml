@@ -1,0 +1,54 @@
+﻿name: dependency_audit
+version: 1.0.0
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 50
+purpose: Security vulns, compatibility, licensing audit
+triggers:
+  keywords:
+  - dependency_audit
+  - dependency audit
+  - dependency
+  match_extensions: []
+  match_phases:
+  - audit
+  match_errors:
+  - ImportError
+  - ModuleNotFoundError
+requires: []
+exclusive_with: []
+modes:
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
+max_phase: 2
+body_file: dependency_audit.md
+token_estimate: 220
+execution:
+  entrypoint: agents/tools/wrappers/python_quality_advisor_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill dependency_audit
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

@@ -44,25 +44,25 @@ dist/
 # Framework-specific runtime files
 # ============================================================================
 # These are GENERATED files that should never be committed to the framework repo.
-# When deployed to a host, these live inside the gitignored agent/ directory.
+# When deployed to a host, these live inside the gitignored agents/logic/ directory.
 
 # Auto-generated analysis files (regenerated on each context load)
-agent/analysis/treemap.md
-agent/analysis/dependencies_report.md
+agents/logic/analysis/treemap.md
+agents/logic/analysis/dependencies_report.md
 
 # Dynamic agent outputs (plans, reports, logs)
-agent/agent_outputs/plans/
-agent/agent_outputs/reports/
-agent/agent_outputs/archive/
-agent/agent_logs/
+agents/logic/agent_outputs/plans/
+agents/logic/agent_outputs/reports/
+agents/logic/agent_outputs/archive/
+agents/logic/agent_logs/
 
 # Message queue runtime files (keep .gitkeep files)
-agent/agent_protocol/message_queue/pending/*
-agent/agent_protocol/message_queue/in_progress/*
-agent/agent_protocol/message_queue/completed/*
-!agent/agent_protocol/message_queue/pending/.gitkeep
-!agent/agent_protocol/message_queue/in_progress/.gitkeep
-!agent/agent_protocol/message_queue/completed/.gitkeep
+agents/logic/agent_protocol/message_queue/pending/*
+agents/logic/agent_protocol/message_queue/in_progress/*
+agents/logic/agent_protocol/message_queue/completed/*
+!agents/logic/agent_protocol/message_queue/pending/.gitkeep
+!agents/logic/agent_protocol/message_queue/in_progress/.gitkeep
+!agents/logic/agent_protocol/message_queue/completed/.gitkeep
 
 # Application-specific runtime files
 config/json/path_cache.json
@@ -71,18 +71,19 @@ logs/
 data/
 
 # ============================================================================
-# NOTE: Framework core files (.clinerules, agent/, agent_tools/, etc.)
+# NOTE: Framework core files (.clinerules, agents/logic/, agents/tools/, etc.)
 # ============================================================================
 # These files are NOT gitignored in the framework repo because they ARE the
 # framework source code. However, when the framework is DEPLOYED to a host
 # project, the host should add these to THEIR .gitignore:
 #
-#   agent/
-#   agent_tools/
+#   agents/logic/
+#   agents/tools/
 #   .clinerules
 #   agent_framework_config.yaml
 #   trigger_vscode.md
 #   PORTABLE_DEPLOYMENT.md
 #
 # See PORTABLE_DEPLOYMENT.md for deployment instructions.
+
 

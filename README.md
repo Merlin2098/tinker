@@ -8,9 +8,9 @@ skill management, and controlled execution — without modifying your source cod
 
 ### Core Principles
 
-- **Wrappers are the execution source of truth** (`agent_tools/`).
-- **Skills are thin interfaces**, not business-logic containers (`agent/skills/`).
-- **Governance is centralized and minimal** (`.clinerules`, `agent/rules/agent_rules.md`).
+- **Wrappers are the execution source of truth** (`agents/tools/`).
+- **Skills are thin interfaces**, not business-logic containers (`agents/logic/skills/`).
+- **Governance is centralized and minimal** (`.clinerules`, `agents/logic/rules/agent_rules.md`).
 - **Kernel profiles are capability allowlists**, not role orchestration.
 - **Configuration drives structure** (`agent_framework_config.yaml`).
 
@@ -43,7 +43,7 @@ Initiate Tinker. Kernel LITE
 ### Typical Workflow
 
 1. **Initialize** — `Initiate Tinker. Kernel FULL`
-2. **Define Task** — Edit `agent/user_task.yaml` (your task contract)
+2. **Define Task** — Edit `agents/logic/user_task.yaml` (your task contract)
 3. **Execute** — Say `Tinker: run`
 4. **Validate** — Review output files and code changes
 5. **Save** — Say `commit` or `sync` or `commit and sync`
@@ -54,7 +54,7 @@ Initiate Tinker. Kernel LITE
 
 ```
 tinker/
-├── agent/                          # Agent workspace (autonomous, writable)
+├── agents/logic/                          # Agent workspace (autonomous, writable)
 │   ├── skills/                     # Skill definitions (*.meta.yaml + *.md)
 │   │   ├── _index.yaml             # Auto-compiled skill index (DO NOT EDIT)
 │   │   ├── _trigger_engine.yaml    # Auto-compiled trigger rules (DO NOT EDIT)
@@ -73,7 +73,7 @@ tinker/
 │   │   └── dependencies_report.md  # Dependency graph (on-demand)
 │   └── agent_outputs/              # Plans, reports, context.json
 │
-├── agent_tools/                    # Execution scripts (source of truth)
+├── agents/tools/                    # Execution scripts (source of truth)
 │   ├── chat_shortcuts.py           # Chat command router (init, commit, sync)
 │   ├── compile_registry.py         # SSOT registry compiler
 │   ├── load_static_context.py      # Context generator → context.json
@@ -82,7 +82,7 @@ tinker/
 │   ├── wrappers/                   # Canonical skill wrappers
 │   └── ...                         # Validators, analyzers, utilities
 │
-├── instructions/                   # Model-specific instruction layers
+├── agents/instructions/                   # Model-specific instruction layers
 │   ├── chat/                       # Chat bootstrap (trigger_chat.md)
 │   ├── claude/                     # Claude-specific overrides
 │   └── model_agnostic/             # Universal instructions
@@ -174,3 +174,4 @@ and skips generated artifacts (they are regenerated in the target project).
 **Version:** 3.1.0
 **Last Updated:** 2026-02-17
 **Status:** Phase 1-3 Complete — Self-Improving Architecture
+

@@ -78,10 +78,10 @@ user_task.yaml
   Skill Activation ────→ Lazy-load matched skills
         │
         ▼
-  Wrapper Execution ───→ agent_tools/wrappers/*.py
+  Wrapper Execution ───→ agents/tools/wrappers/*.py
         │
         ▼
-  Agent Output ────────→ agent/agent_outputs/
+  Agent Output ────────→ agents/logic/agent_outputs/
 ```
 
 ---
@@ -93,53 +93,53 @@ user_task.yaml
 | Component                    | Path                           | Role                              |
 | :--------------------------- | :----------------------------- | :-------------------------------- |
 | Global Rules                 | `.clinerules`                  | Top-level agent constraints       |
-| Agent Rules                  | `agent/rules/agent_rules.md`   | Governance, security, policies    |
+| Agent Rules                  | `agents/logic/rules/agent_rules.md`   | Governance, security, policies    |
 | Semantic Triggers            | `agent_rules.md` §10          | Natural language → command mapping|
 
 ### Registry Layer (SSOT)
 
 | Component                    | Path                                | Role                          |
 | :--------------------------- | :---------------------------------- | :---------------------------- |
-| Skill Definitions            | `agent/skills/**/*.meta.yaml`       | Source of truth (human-authored) |
-| Compiled Index               | `agent/skills/_index.yaml`          | Auto-generated skill directory |
-| Compiled Triggers            | `agent/skills/_trigger_engine.yaml` | Auto-generated trigger rules  |
-| Registry Compiler            | `agent_tools/compile_registry.py`   | SSOT compilation engine       |
+| Skill Definitions            | `agents/logic/skills/**/*.meta.yaml`       | Source of truth (human-authored) |
+| Compiled Index               | `agents/logic/skills/_index.yaml`          | Auto-generated skill directory |
+| Compiled Triggers            | `agents/logic/skills/_trigger_engine.yaml` | Auto-generated trigger rules  |
+| Registry Compiler            | `agents/tools/compile_registry.py`   | SSOT compilation engine       |
 
 ### Kernel Layer
 
 | Component                    | Path                           | Role                              |
 | :--------------------------- | :----------------------------- | :-------------------------------- |
-| Base Profile                 | `agent/profiles/_base.yaml`    | Shared defaults (inherited)       |
-| LITE Profile                 | `agent/profiles/lite.yaml`     | Minimal capabilities              |
-| STANDARD Profile             | `agent/profiles/standard.yaml` | Normal development                |
-| FULL Profile                 | `agent/profiles/full.yaml`     | Full access + self-modification   |
-| Profile Activator            | `agent_tools/activate_kernel.py` | Writes active profile state     |
+| Base Profile                 | `agents/logic/profiles/_base.yaml`    | Shared defaults (inherited)       |
+| LITE Profile                 | `agents/logic/profiles/lite.yaml`     | Minimal capabilities              |
+| STANDARD Profile             | `agents/logic/profiles/standard.yaml` | Normal development                |
+| FULL Profile                 | `agents/logic/profiles/full.yaml`     | Full access + self-modification   |
+| Profile Activator            | `agents/tools/activate_kernel.py` | Writes active profile state     |
 
 ### Execution Layer
 
 | Component                    | Path                              | Role                           |
 | :--------------------------- | :-------------------------------- | :----------------------------- |
-| Wrapper Runner               | `agent_tools/run_wrapper.py`      | Skill execution engine         |
-| Canonical Wrappers           | `agent_tools/wrappers/*.py`       | Deterministic skill implementations |
-| Chat Router                  | `agent_tools/chat_shortcuts.py`   | Intent routing (init/commit/sync) |
+| Wrapper Runner               | `agents/tools/run_wrapper.py`      | Skill execution engine         |
+| Canonical Wrappers           | `agents/tools/wrappers/*.py`       | Deterministic skill implementations |
+| Chat Router                  | `agents/tools/chat_shortcuts.py`   | Intent routing (init/commit/sync) |
 
 ### Context Layer
 
 | Component                    | Path                                    | Role                        |
 | :--------------------------- | :-------------------------------------- | :-------------------------- |
-| Static Context Generator     | `agent_tools/load_static_context.py`    | Produces context.json       |
-| On-Demand Context Loader     | `agent_tools/context_loader.py`         | Lazy-loads gitignored files |
+| Static Context Generator     | `agents/tools/load_static_context.py`    | Produces context.json       |
+| On-Demand Context Loader     | `agents/tools/context_loader.py`         | Lazy-loads gitignored files |
 | Central Config               | `agent_framework_config.yaml`           | Paths, limits, profiles     |
-| Generated Context            | `agent/agent_outputs/context.json`      | Agent's "working memory"    |
+| Generated Context            | `agents/logic/agent_outputs/context.json`      | Agent's "working memory"    |
 
 ### Self-Improvement Layer
 
 | Component                    | Path                                         | Role                       |
 | :--------------------------- | :------------------------------------------- | :------------------------- |
-| Skill Builder                | `agent/skills/meta/skill_builder.meta.yaml`  | Create new skills          |
-| Skill Merger                 | `agent/skills/meta/skill_merger.meta.yaml`   | Consolidate/clean skills   |
-| Builder Wrapper              | `agent_tools/wrappers/skill_builder_wrapper.py` | Builder execution       |
-| Merger Wrapper               | `agent_tools/wrappers/skill_merger_wrapper.py`  | Merger execution        |
+| Skill Builder                | `agents/logic/skills/meta/skill_builder.meta.yaml`  | Create new skills          |
+| Skill Merger                 | `agents/logic/skills/meta/skill_merger.meta.yaml`   | Consolidate/clean skills   |
+| Builder Wrapper              | `agents/tools/wrappers/skill_builder_wrapper.py` | Builder execution       |
+| Merger Wrapper               | `agents/tools/wrappers/skill_merger_wrapper.py`  | Merger execution        |
 
 ---
 
@@ -171,16 +171,16 @@ Each profile defines:
 
 ```yaml
 static_context:
-  output_path: agent/agent_outputs/context.json
+  output_path: agents/logic/agent_outputs/context.json
   max_lines: 1000                    # Context budget
   file_tree_max_depth: 2
   excluded_dirs_from_tree: [...]
 
 on_demand_files:
   treemap:
-    path: agent/analysis/treemap.md  # ← Change path here if structure changes
+    path: agents/logic/analysis/treemap.md  # ← Change path here if structure changes
   dependencies_report:
-    path: agent/analysis/dependencies_report.md
+    path: agents/logic/analysis/dependencies_report.md
 ```
 
 If the project structure changes, update `agent_framework_config.yaml`.
@@ -202,9 +202,9 @@ All scripts read paths from this config — no hardcoded paths.
 
 ### Protected Files (Global Blacklist)
 
-- `agent/rules/agent_rules.md`
-- `agent/skills/_index.yaml` (auto-generated)
-- `agent/skills/_trigger_engine.yaml` (auto-generated)
+- `agents/logic/rules/agent_rules.md`
+- `agents/logic/skills/_index.yaml` (auto-generated)
+- `agents/logic/skills/_trigger_engine.yaml` (auto-generated)
 - `.git/**`, `.env`, `credentials.json`, `secrets.*`
 - `requirements.txt`, `pyproject.toml`
 
@@ -218,3 +218,4 @@ All scripts read paths from this config — no hardcoded paths.
 
 **Architecture version:** 3.1.0
 **Last Updated:** 2026-02-17
+

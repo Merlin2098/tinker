@@ -1,0 +1,60 @@
+﻿name: systematic_debugging
+version: 1.0.0
+category: Debugging
+tier: lazy
+cluster: debugging
+priority: 65
+purpose: '4-phase structured debugging: root cause before any fix'
+triggers:
+  keywords:
+  - bug
+  - debug
+  - error
+  - failure
+  - traceback
+  - exception
+  - unexpected behavior
+  - test failure
+  match_extensions:
+  - .py
+  - .log
+  match_phases: []
+  match_errors:
+  - Traceback
+  - Error
+  - Exception
+requires: []
+exclusive_with: []
+modes:
+- ANALYZE_AND_IMPLEMENT
+agent_binding:
+  mandatory:
+  - agent_senior
+  optional:
+  - agent_inspector
+max_phase: 1
+body_file: systematic_debugging.md
+token_estimate: 2200
+execution:
+  entrypoint: agents/tools/wrappers/policy_guidance_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill systematic_debugging
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

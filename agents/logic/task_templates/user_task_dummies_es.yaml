@@ -1,0 +1,28 @@
+﻿# Plantilla user_task de Tinker (minima)
+# Campos requeridos: mode, objective, files, constraints
+
+mode: ANALYZE_AND_IMPLEMENT
+objective: |
+  Reemplaza con el objetivo exacto.
+
+files:
+  - path/to/target_file.py
+
+constraints: |
+  Escribe limites claros y verificables.
+
+# Campos opcionales de compatibilidad:
+# mode_profile: STANDARD
+# config:
+#   sources:
+#     - id: entrada_principal
+#       path: agents/logic/agent_outputs/plans/example/task_plan.json
+#       purpose: Artefacto de entrada
+# risk_tolerance: MEDIUM
+# phase: A_CONTRACT_VALIDATION
+# validation:
+#   status: PENDING
+#   validated_by: null
+#   validated_at: null
+#   notes: Pendiente de validacion.
+

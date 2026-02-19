@@ -1,0 +1,55 @@
+﻿name: root_cause_tracing
+version: 1.0.0
+category: Debugging
+tier: lazy
+cluster: debugging
+priority: 60
+purpose: 5-step backward call stack tracing to find original trigger
+triggers:
+  keywords:
+  - root cause
+  - call stack
+  - traceback
+  - deep bug
+  - propagation
+  - origin
+  match_extensions:
+  - .log
+  match_phases: []
+  match_errors:
+  - Traceback
+requires:
+- systematic_debugging
+exclusive_with: []
+modes:
+- ANALYZE_AND_IMPLEMENT
+agent_binding:
+  mandatory:
+  - agent_senior
+  optional: []
+max_phase: 1
+body_file: root_cause_tracing.md
+token_estimate: 1300
+execution:
+  entrypoint: agents/tools/wrappers/policy_guidance_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill root_cause_tracing
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

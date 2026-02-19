@@ -1,0 +1,53 @@
+﻿name: json_explorer
+version: 1.0.0
+category: File Exploration
+tier: lazy
+cluster: file_exploration
+priority: 50
+purpose: Explore JSON structure through canonical wrapper execution
+triggers:
+  keywords:
+  - json
+  - inspect json
+  - parse json
+  - json schema
+  - explore json
+  match_extensions:
+  - .json
+  match_phases:
+  - analyze
+  - ingest
+  match_errors:
+  - JSONDecodeError
+requires:
+- file_explorer
+exclusive_with: []
+modes:
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_inspector
+  - agent_senior
+  optional:
+  - agent_executor
+max_phase: 2
+body_file: json_explorer.md
+token_estimate: 220
+execution:
+  entrypoint: agents/tools/wrappers/json_explorer_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill json_explorer
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required:
+    - path
+    properties:
+      path:
+        type: string
+      encoding:
+        type: string
+      schema_depth:
+        type: integer
+      max_items:
+        type: integer
+

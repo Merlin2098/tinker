@@ -1,0 +1,55 @@
+﻿name: risk_scoring_matrix
+version: 1.0.0
+category: Planning
+tier: core
+cluster: planning_pipeline
+priority: 88
+purpose: 3x4 probability/impact risk matrix with approval thresholds
+triggers:
+  keywords:
+  - risk assessment
+  - risk score
+  - risk matrix
+  - probability impact
+  - risk level
+  match_extensions: []
+  match_phases:
+  - plan
+  match_errors: []
+requires:
+- decision_process_flow
+exclusive_with: []
+pipeline: planning
+pipeline_order: 3
+modes:
+- ANALYZE_AND_IMPLEMENT
+agent_binding:
+  mandatory:
+  - agent_inspector
+  optional:
+  - agent_senior
+body_file: risk_scoring_matrix.md
+token_estimate: 900
+execution:
+  entrypoint: agents/tools/wrappers/policy_guidance_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill risk_scoring_matrix
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

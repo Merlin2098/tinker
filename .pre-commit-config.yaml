@@ -1,4 +1,4 @@
-repos:
+﻿repos:
   - repo: local
     hooks:
       # New hook - requirements change detection
@@ -33,7 +33,7 @@ repos:
         args: ["-m", "agent_tools.generate_skill_wrappers"]
         language: system
         pass_filenames: false
-        files: ^agent/skills/|^agent_tools/generate_skill_wrappers\.py$
+        files: ^agents/logic/skills/|^agents/tools/generate_skill_wrappers\.py$
 
       # New hooks - agent protocol validation
       - id: validate-task-plans
@@ -41,7 +41,7 @@ repos:
         entry: .venv/Scripts/python.exe
         args: ["-m", "agent_tools.schema_validator", "--type", "task_plan"]
         language: system
-        files: ^agent/agent_outputs/plans/.*task_plan\.json$
+        files: ^agents/logic/agent_outputs/plans/.*task_plan\.json$
         pass_filenames: true
 
       - id: validate-system-configs
@@ -49,7 +49,7 @@ repos:
         entry: .venv/Scripts/python.exe
         args: ["-m", "agent_tools.schema_validator", "--type", "system_config"]
         language: system
-        files: ^agent/agent_outputs/plans/.*system_config\.yaml$
+        files: ^agents/logic/agent_outputs/plans/.*system_config\.yaml$
         pass_filenames: true
 
       - id: validate-execution-reports
@@ -57,5 +57,6 @@ repos:
         entry: .venv/Scripts/python.exe
         args: ["-m", "agent_tools.schema_validator", "--type", "report"]
         language: system
-        files: ^agent/agent_outputs/reports/.*execution_report\.json$
+        files: ^agents/logic/agent_outputs/reports/.*execution_report\.json$
         pass_filenames: true
+

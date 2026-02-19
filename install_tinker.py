@@ -1,11 +1,11 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Tinker installer (portable deployment helper).
 
 Copies the Tinker framework footprint into one or more destination projects and
 merges host-facing files:
 - requirements.txt: add missing deps (do not remove)
-- .gitignore: add missing lines from instructions/model_agnostic/.gitignore.host
+- .gitignore: add missing lines from agents/instructions/model_agnostic/.gitignore.host
 - .pre-commit-config.yaml: overwrite if present (when provided by framework)
 
 This tool is intentionally conservative:
@@ -297,7 +297,7 @@ def validate_trigger_engine(dest_root: Path, report: ChangeReport) -> None:
     trigger_path = dest_root / "agent" / "skills" / "_trigger_engine.yaml"
     if not trigger_path.exists():
         report.warnings.append(
-            "Missing agent/skills/_trigger_engine.yaml after install; "
+            "Missing agents/logic/skills/_trigger_engine.yaml after install; "
             "Tinker init will fail at compile_registry. Reinstall or seed the file."
         )
 
@@ -378,7 +378,7 @@ def main() -> int:
     parser.add_argument(
         "--overwrite-framework",
         action="store_true",
-        help="Overwrite existing framework files (agent/, agent_tools/, instructions/, .clinerules, agent_framework_config.yaml)",
+        help="Overwrite existing framework files (agents/logic/, agents/tools/, agents/instructions/, .clinerules, agent_framework_config.yaml)",
     )
     parser.add_argument(
         "--backup",
@@ -388,7 +388,7 @@ def main() -> int:
     parser.add_argument(
         "--migrate-legacy-instructions",
         action="store_true",
-        help="Move legacy instruction files (old paths) to instructions/legacy/ before copying",
+        help="Move legacy instruction files (old paths) to agents/instructions/legacy/ before copying",
     )
     parser.add_argument("--skip-framework", action="store_true", help="Skip copying framework footprint")
     parser.add_argument("--skip-requirements", action="store_true", help="Skip requirements.txt merge/copy")
@@ -504,4 +504,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
 

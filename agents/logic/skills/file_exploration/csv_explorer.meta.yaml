@@ -1,0 +1,53 @@
+﻿name: csv_explorer
+version: 1.0.0
+category: File Exploration
+tier: lazy
+cluster: file_exploration
+priority: 50
+purpose: Explore CSV files through canonical wrapper execution
+triggers:
+  keywords:
+  - csv
+  - delimiter
+  - explore csv
+  - inspect csv
+  - parse csv
+  match_extensions:
+  - .csv
+  - .tsv
+  match_phases:
+  - analyze
+  - ingest
+  match_errors:
+  - UnicodeDecodeError
+  - csv.Error
+requires:
+- file_explorer
+exclusive_with: []
+modes:
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_inspector
+  - agent_senior
+  optional:
+  - agent_executor
+max_phase: 2
+body_file: csv_explorer.md
+token_estimate: 220
+execution:
+  entrypoint: agents/tools/wrappers/csv_explorer_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill csv_explorer
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required:
+    - path
+    properties:
+      path:
+        type: string
+      encoding:
+        type: string
+      preview_rows:
+        type: integer
+

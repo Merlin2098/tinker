@@ -1,0 +1,46 @@
+﻿name: execution_timer
+version: 1.0.0
+category: Observability
+tier: lazy
+cluster: observability
+priority: 50
+purpose: Execution time measurement (hh:mm:ss / ms)
+triggers:
+  keywords:
+  - execution_timer
+  - execution timer
+  - execution
+  match_extensions: []
+  match_phases:
+  - execute
+  match_errors: []
+requires: []
+exclusive_with: []
+modes:
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional:
+  - agent_inspector
+max_phase: 2
+body_file: execution_timer.md
+token_estimate: 220
+execution:
+  entrypoint: agents/tools/wrappers/execution_timer_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill execution_timer
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      task_type:
+        type: string
+      elapsed_seconds:
+        type: number
+      started_at:
+        type: number
+      ended_at:
+        type: number
+

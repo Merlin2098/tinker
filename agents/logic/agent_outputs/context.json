@@ -1,0 +1,997 @@
+{
+  "_context_profile": {
+    "name": "default",
+    "source": "default",
+    "reason": "none"
+  },
+  "skills_registry": {
+    "metadata": {
+      "version": "2.0.0",
+      "last_updated": "2026-02-18",
+      "generated_from": "compile_registry.py"
+    },
+    "skills": [
+      {
+        "name": "skill_authority_first",
+        "cluster": "governance",
+        "purpose": "Skills are authoritative units invoked BEFORE any agent action"
+      },
+      {
+        "name": "workspace_model_awareness",
+        "cluster": "governance",
+        "purpose": "Agents respect workspace model \u2014 agents/logic/ writable, source protected"
+      },
+      {
+        "name": "scope_control_discipline",
+        "cluster": "governance",
+        "purpose": "Strict scope boundaries preventing scope creep"
+      },
+      {
+        "name": "immutable_resource_respect",
+        "cluster": "governance",
+        "purpose": "Prevents modification of immutable resources and protected infrastructure"
+      },
+      {
+        "name": "artifact_persistence_discipline",
+        "cluster": "governance",
+        "purpose": "Agent outputs persisted to disk, never deleted"
+      },
+      {
+        "name": "minimal_documentation_policy",
+        "cluster": "governance",
+        "purpose": "Documentation only when explicitly requested"
+      },
+      {
+        "name": "skill_builder",
+        "cluster": "meta",
+        "purpose": "Allows the agent to self-improve by creating and registering new skills."
+      },
+      {
+        "name": "ambiguity_escalation",
+        "cluster": "governance",
+        "purpose": "Escalates unclear requirements instead of guessing"
+      },
+      {
+        "name": "protected_file_validation",
+        "cluster": "governance",
+        "purpose": "Validates protected files on blacklist are not modified"
+      },
+      {
+        "name": "path_traversal_prevention",
+        "cluster": "governance",
+        "purpose": "Prevents path traversal attacks and sandbox escapes"
+      },
+      {
+        "name": "verification_before_completion",
+        "cluster": "governance",
+        "purpose": "Fresh evidence required before any completion claims"
+      },
+      {
+        "name": "skill_merger",
+        "cluster": "meta",
+        "purpose": "Consolidates multiple skills into one and deletes redundancy."
+      },
+      {
+        "name": "context_loading_protocol",
+        "cluster": "planning_pipeline",
+        "purpose": "Loads context: treemap first, then dependencies, then task-specific"
+      },
+      {
+        "name": "decision_process_flow",
+        "cluster": "planning_pipeline",
+        "purpose": "Structured decision-making: validation, impact analysis, scoring, plan generation"
+      },
+      {
+        "name": "risk_scoring_matrix",
+        "cluster": "planning_pipeline",
+        "purpose": "3x4 probability/impact risk matrix with approval thresholds"
+      },
+      {
+        "name": "output_validation_checklist",
+        "cluster": "planning_pipeline",
+        "purpose": "Validates outputs before emission \u2014 plan IDs, versions, DAG dependencies"
+      },
+      {
+        "name": "execution_flow_orchestration",
+        "cluster": "execution_pipeline",
+        "purpose": "Structured execution with atomic actions, progress monitoring, failure handling"
+      },
+      {
+        "name": "llm_inference_optimization",
+        "cluster": "meta",
+        "purpose": "Token budget, context pruning at 60%, temperature selection"
+      },
+      {
+        "name": "git_rollback_strategy",
+        "cluster": "execution_pipeline",
+        "purpose": "Git revert for rollback maintaining commit history"
+      },
+      {
+        "name": "plan_archive_protocol",
+        "cluster": "execution_pipeline",
+        "purpose": "Archives active plans before new execution preserving history"
+      },
+      {
+        "name": "python_venv_executor",
+        "cluster": "runtime",
+        "purpose": "Execute Python via virtual environment only \u2014 global Python is never used"
+      },
+      {
+        "name": "brainstorming_design_explorer",
+        "cluster": "planning_pipeline",
+        "purpose": "Pre-planning design exploration with 2-3 approaches and YAGNI enforcement"
+      },
+      {
+        "name": "file_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Facade explorer: routes file inspection to canonical format-specific wrappers"
+      },
+      {
+        "name": "input_file_handler",
+        "cluster": "file_handling",
+        "purpose": "File input: validation, encoding detection, error handling"
+      },
+      {
+        "name": "library_manager",
+        "cluster": "devops",
+        "purpose": "Python package dependencies, versioning, environment configuration"
+      },
+      {
+        "name": "secure_python_practices",
+        "cluster": "python_quality",
+        "purpose": "Security: input validation, injection prevention, secrets management"
+      },
+      {
+        "name": "data_integrity_guardian",
+        "cluster": "python_quality",
+        "purpose": "Data consistency: validation, constraints, transactions, corruption prevention"
+      },
+      {
+        "name": "code_structuring_pythonic",
+        "cluster": "python_quality",
+        "purpose": "Idiomatic Python patterns, PEP 8 compliance, clean architecture"
+      },
+      {
+        "name": "debugger_orchestrator",
+        "cluster": "debugging",
+        "purpose": "End-to-end debugger workflow: triage, reproduce, isolate, verify, and regression-proof"
+      },
+      {
+        "name": "systematic_debugging",
+        "cluster": "debugging",
+        "purpose": "4-phase structured debugging: root cause before any fix"
+      },
+      {
+        "name": "code_analysis_qa_gate",
+        "cluster": "python_quality",
+        "purpose": "Static code analysis and QA gate definition for pre-merge quality enforcement"
+      },
+      {
+        "name": "regression_test_automation",
+        "cluster": "python_quality",
+        "purpose": "Automated regression testing workflow with baseline capture, targeted suites, and stability checks"
+      },
+      {
+        "name": "root_cause_tracing",
+        "cluster": "debugging",
+        "purpose": "5-step backward call stack tracing to find original trigger"
+      },
+      {
+        "name": "type_master",
+        "cluster": "python_quality",
+        "purpose": "Type hints, Mypy/Pyright, Pydantic runtime validation"
+      },
+      {
+        "name": "testing_qa_mentor",
+        "cluster": "python_quality",
+        "purpose": "Pytest, fixtures, parametrization, Hypothesis, mocking"
+      },
+      {
+        "name": "connect_duckdb",
+        "cluster": "data_pipeline",
+        "purpose": "Establish and validate DuckDB connections through canonical wrapper execution"
+      },
+      {
+        "name": "query_parquet_duckdb",
+        "cluster": "data_pipeline",
+        "purpose": "Execute SQL queries on Parquet-oriented workloads through canonical wrapper execution"
+      },
+      {
+        "name": "excel_to_parquet",
+        "cluster": "data_pipeline",
+        "purpose": "Convert Excel sheets to Parquet through canonical wrapper execution"
+      },
+      {
+        "name": "parquet_to_excel_polars_xlsxwriter",
+        "cluster": "data_pipeline",
+        "purpose": "Convert Parquet to Excel through canonical wrapper execution"
+      },
+      {
+        "name": "read_excel_polars_openpyxl",
+        "cluster": "data_pipeline",
+        "purpose": "Load Excel files with openpyxl + polars through canonical wrapper execution"
+      },
+      {
+        "name": "async_concurrency_expert",
+        "cluster": "python_quality",
+        "purpose": "Async/await, event loops, concurrent task handling"
+      },
+      {
+        "name": "ui_framework_selection",
+        "cluster": "ui",
+        "purpose": "Tkinter for MVP, PySide6 for production"
+      },
+      {
+        "name": "setup_medallion_structure",
+        "cluster": "data_pipeline",
+        "purpose": "Bronze/Silver/Gold data lake directory structure"
+      },
+      {
+        "name": "csv_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore CSV files through canonical wrapper execution"
+      },
+      {
+        "name": "db_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore local SQLite/DuckDB schema through canonical wrapper execution"
+      },
+      {
+        "name": "docx_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore DOCX structure and paragraph previews through canonical wrapper execution"
+      },
+      {
+        "name": "excel_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore workbook sheets and previews through canonical wrapper execution"
+      },
+      {
+        "name": "html_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore HTML metadata and content preview through canonical wrapper execution"
+      },
+      {
+        "name": "json_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore JSON structure through canonical wrapper execution"
+      },
+      {
+        "name": "markdown_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore Markdown headings, links, and code blocks through canonical wrapper execution"
+      },
+      {
+        "name": "parquet_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore Parquet schema and preview through canonical wrapper execution"
+      },
+      {
+        "name": "pdf_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore PDF metadata and page previews through canonical wrapper execution"
+      },
+      {
+        "name": "powerbi_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore Power BI package structure through canonical wrapper execution"
+      },
+      {
+        "name": "pptx_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore PPTX slide content through canonical wrapper execution"
+      },
+      {
+        "name": "xml_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore XML hierarchy through canonical wrapper execution"
+      },
+      {
+        "name": "yaml_explorer",
+        "cluster": "file_exploration",
+        "purpose": "Explore YAML structure through canonical wrapper execution"
+      },
+      {
+        "name": "input_validation_sanitizer",
+        "cluster": "file_handling",
+        "purpose": "Input validation and sanitization"
+      },
+      {
+        "name": "load_json_files",
+        "cluster": "format_loaders",
+        "purpose": "Load and validate JSON files through canonical wrapper execution"
+      },
+      {
+        "name": "load_sql_queries",
+        "cluster": "format_loaders",
+        "purpose": "Load SQL query files through canonical wrapper execution"
+      },
+      {
+        "name": "load_yaml_files",
+        "cluster": "format_loaders",
+        "purpose": "Load and validate YAML files through canonical wrapper execution"
+      },
+      {
+        "name": "read_excel_pandas",
+        "cluster": "data_pipeline",
+        "purpose": "Load Excel files with pandas through canonical wrapper execution"
+      },
+      {
+        "name": "execution_timer",
+        "cluster": "observability",
+        "purpose": "Execution time measurement (hh:mm:ss / ms)"
+      },
+      {
+        "name": "config_env_manager",
+        "cluster": "python_quality",
+        "purpose": "Config and env vars with dotenv, multi-environment"
+      },
+      {
+        "name": "dependency_audit",
+        "cluster": "python_quality",
+        "purpose": "Security vulns, compatibility, licensing audit"
+      },
+      {
+        "name": "microservices_api_architect",
+        "cluster": "python_quality",
+        "purpose": "FastAPI/Flask APIs with DDD and OpenAPI"
+      },
+      {
+        "name": "performance_profiler",
+        "cluster": "python_quality",
+        "purpose": "cProfile, line_profiler, memory_profiler optimization"
+      },
+      {
+        "name": "refactoring_assistant",
+        "cluster": "python_quality",
+        "purpose": "Systematic refactoring: readability, deduplication, simplification"
+      },
+      {
+        "name": "ui_layout_proportionality",
+        "cluster": "ui",
+        "purpose": "Adaptive layouts across screen resolutions"
+      },
+      {
+        "name": "ui_theme_binding",
+        "cluster": "ui",
+        "purpose": "Reactive theme system with light/dark mode"
+      },
+      {
+        "name": "ui_widget_modularity",
+        "cluster": "ui",
+        "purpose": "Self-contained, reusable, decoupled widgets"
+      },
+      {
+        "name": "linter_formatter_guru",
+        "cluster": "python_quality",
+        "purpose": "Pylint, Flake8, Black, Autopep8 with pre-commit hooks"
+      },
+      {
+        "name": "generate_exe_pyinstaller_onedir",
+        "cluster": "devops",
+        "purpose": "PyInstaller --onedir Windows executables"
+      },
+      {
+        "name": "generate_exe_pyinstaller_onedir",
+        "cluster": "devops",
+        "purpose": "PyInstaller --onedir Windows executables"
+      },
+      {
+        "name": "log_bundle_folder_management",
+        "cluster": "observability",
+        "purpose": "Log folders outside PyInstaller bundles"
+      },
+      {
+        "name": "log_overwrite_policy",
+        "cluster": "observability",
+        "purpose": "Fresh logs per execution, no accumulation"
+      },
+      {
+        "name": "log_bundle_folder_management",
+        "cluster": "observability",
+        "purpose": "Log folders outside PyInstaller bundles"
+      },
+      {
+        "name": "log_overwrite_policy",
+        "cluster": "observability",
+        "purpose": "Fresh logs per execution, no accumulation"
+      },
+      {
+        "name": "api_client_generator",
+        "cluster": "python_quality",
+        "purpose": "Type-safe API clients for REST/GraphQL"
+      },
+      {
+        "name": "devops_packaging",
+        "cluster": "python_quality",
+        "purpose": "Python packaging via setup.py/pyproject.toml"
+      },
+      {
+        "name": "externalized_logic_handler",
+        "cluster": "python_quality",
+        "purpose": "Externalize logic into rules, DSLs, config-driven templates"
+      },
+      {
+        "name": "naming_control_flow",
+        "cluster": "python_quality",
+        "purpose": "Naming conventions and readable control flow patterns"
+      },
+      {
+        "name": "serialization_persistence",
+        "cluster": "python_quality",
+        "purpose": "Pickle/JSON/YAML serialization, caching, data versioning"
+      },
+      {
+        "name": "ui_application_assets",
+        "cluster": "ui",
+        "purpose": "Centralized asset management (icons, images)"
+      },
+      {
+        "name": "ui_identity_policy",
+        "cluster": "ui",
+        "purpose": "App identity (name, version) without redundancy"
+      },
+      {
+        "name": "ui_splash_and_lazy_loading",
+        "cluster": "ui",
+        "purpose": "Splash screens during resource loading"
+      }
+    ],
+    "_note": "Live registry from _index.yaml. Full details in agents/logic/skills/.",
+    "_index_path": "agents/logic/skills/_index.yaml",
+    "_trigger_engine_path": "agents/logic/skills/_trigger_engine.yaml"
+  },
+  "agent_rules": {
+    "path": "agents\\logic\\rules\\agent_rules.md",
+    "exists": true,
+    "size_bytes": 7879,
+    "line_count": 276,
+    "sections": [
+      "## Version",
+      "## Scope",
+      "## 1. Purpose",
+      "## 2. Governance Model",
+      "### 2.1 Authority Layers",
+      "## 3. Repository Mental Model",
+      "### 3.1 `agents/logic/` Directory",
+      "### 3.2 Application Source Code",
+      "## 4. Security and Protection Policy",
+      "### 4.1 Protected Files (GLOBAL BLACKLIST)"
+    ]
+  },
+  "on_demand_files": {
+    "treemap": {
+      "path": "agents/logic/analysis/treemap.md",
+      "loader": "context_loader.load_on_demand('treemap')",
+      "_note": "Gitignored. Load on demand for structural analysis."
+    },
+    "dependencies_report": {
+      "path": "agents/logic/analysis/dependencies_report.md",
+      "loader": "context_loader.load_on_demand('dependencies_report')",
+      "_note": "Gitignored. Load on demand for dependency analysis."
+    }
+  },
+  "file_tree": {
+    "max_depth": 2,
+    "tree": [
+      "\u251c\u2500\u2500 .clinerules",
+      "\u251c\u2500\u2500 .gitignore",
+      "\u251c\u2500\u2500 .migration/",
+      "\u2502   \u2514\u2500\u2500 move_manifest.json",
+      "\u251c\u2500\u2500 .pre-commit-config.yaml",
+      "\u251c\u2500\u2500 AGENTS.md",
+      "\u251c\u2500\u2500 AGENTS_MIGRATION_PLAN.md",
+      "\u251c\u2500\u2500 README.md",
+      "\u251c\u2500\u2500 __init__.py",
+      "\u251c\u2500\u2500 agent.md",
+      "\u251c\u2500\u2500 agent_framework_config.yaml",
+      "\u251c\u2500\u2500 agents/",
+      "\u2502   \u251c\u2500\u2500 __init__.py",
+      "\u2502   \u251c\u2500\u2500 instructions/",
+      "\u2502   \u2502   \u251c\u2500\u2500 chat/",
+      "\u2502   \u2502   \u251c\u2500\u2500 claude/",
+      "\u2502   \u2502   \u2514\u2500\u2500 model_agnostic/",
+      "\u2502   \u251c\u2500\u2500 logic/",
+      "\u2502   \u2502   \u251c\u2500\u2500 agent_protocol/",
+      "\u2502   \u2502   \u251c\u2500\u2500 analysis/",
+      "\u2502   \u2502   \u251c\u2500\u2500 kernel/",
+      "\u2502   \u2502   \u251c\u2500\u2500 profiles/",
+      "\u2502   \u2502   \u251c\u2500\u2500 rules/",
+      "\u2502   \u2502   \u251c\u2500\u2500 skills_wrappers/",
+      "\u2502   \u2502   \u251c\u2500\u2500 task_templates/",
+      "\u2502   \u2502   \u2514\u2500\u2500 user_task.yaml",
+      "\u2502   \u2514\u2500\u2500 tools/",
+      "\u2502       \u251c\u2500\u2500 __init__.py",
+      "\u2502       \u251c\u2500\u2500 _context_common.py",
+      "\u2502       \u251c\u2500\u2500 _profile_state.py",
+      "\u2502       \u251c\u2500\u2500 _repo_root.py",
+      "\u2502       \u251c\u2500\u2500 _schema_utils.py",
+      "\u2502       \u251c\u2500\u2500 activate_kernel.py",
+      "\u2502       \u251c\u2500\u2500 analyze_dependencies.py",
+      "\u2502       \u251c\u2500\u2500 audit_logger.py",
+      "\u2502       \u251c\u2500\u2500 audit_registry.py",
+      "\u2502       \u251c\u2500\u2500 chat_shortcuts.py",
+      "\u2502       \u251c\u2500\u2500 compile_registry.py",
+      "\u2502       \u251c\u2500\u2500 config_validator.py",
+      "\u2502       \u251c\u2500\u2500 context_loader.py",
+      "\u2502       \u251c\u2500\u2500 generate_skill_wrappers.py",
+      "\u2502       \u251c\u2500\u2500 git_checkpoint.py",
+      "\u2502       \u251c\u2500\u2500 kernel_guard.py",
+      "\u2502       \u251c\u2500\u2500 load_full_context.py",
+      "\u2502       \u251c\u2500\u2500 load_static_context.py",
+      "\u2502       \u251c\u2500\u2500 migrate_triggers.py",
+      "\u2502       \u251c\u2500\u2500 mode_selector.py",
+      "\u2502       \u251c\u2500\u2500 plan_doc.py",
+      "\u2502       \u251c\u2500\u2500 run_wrapper.py",
+      "\u2502       \u251c\u2500\u2500 schema_validator.py",
+      "\u2502       \u251c\u2500\u2500 simulate_execution.py",
+      "\u2502       \u251c\u2500\u2500 treemap.py",
+      "\u2502       \u251c\u2500\u2500 update_requirements.py",
+      "\u2502       \u251c\u2500\u2500 user_task_builder.py",
+      "\u2502       \u251c\u2500\u2500 validate_message.py",
+      "\u2502       \u251c\u2500\u2500 validate_skill_metadata.py",
+      "\u2502       \u251c\u2500\u2500 verify_profiles.py",
+      "\u2502       \u2514\u2500\u2500 wrappers/",
+      "\u251c\u2500\u2500 architecture.md",
+      "\u251c\u2500\u2500 install_tinker.py",
+      "\u251c\u2500\u2500 migrate_verify.py",
+      "\u251c\u2500\u2500 requirements.txt",
+      "\u2514\u2500\u2500 scripts/",
+      "    \u251c\u2500\u2500 reusable_files/",
+      "    \u2502   \u251c\u2500\u2500 themes/",
+      "    \u2502   \u251c\u2500\u2500 ui/",
+      "    \u2502   \u2514\u2500\u2500 utils/",
+      "    \u251c\u2500\u2500 scaffold_repo.py",
+      "    \u2514\u2500\u2500 templates/",
+      "        \u251c\u2500\u2500 etl_local.template",
+      "        \u251c\u2500\u2500 gitignore.template",
+      "        \u2514\u2500\u2500 requirements.template"
+    ]
+  },
+  "python_signatures": {
+    "agents/tools/activate_kernel.py": [
+      "def main()"
+    ],
+    "agents/tools/analyze_dependencies.py": [
+      "def cargar_gitignore(directorio)",
+      "def obtener_archivos_python(raiz, gitignore_spec)",
+      "def analizar_imports(archivo, raiz_proyecto)",
+      "def analizar_archivos_configuracion(archivo)",
+      "def construir_grafo_dependencias(raiz_proyecto, gitignore_spec)",
+      "def generar_arbol_ascii(grafo, modulo, nivel, visitados, prefijo, mostrar_externos)",
+      "def generar_reporte_markdown(grafo, raiz_proyecto, archivo_salida)",
+      "def main()"
+    ],
+    "agents/tools/audit_logger.py": [
+      "class AuditEntry",
+      "def get_project_root()",
+      "def get_log_dir()",
+      "def get_current_log_file()",
+      "def calculate_hash(data)",
+      "def get_last_hash(log_file)",
+      "def create_entry(event_type, data, agent)",
+      "def append_entry(entry)",
+      "def log_event(event_type, data, agent)",
+      "def load_entries(from_date, to_date, event_type, agent, limit)",
+      "def verify_chain(entries)",
+      "def export_entries(entries, output_format, output_file)",
+      "def cmd_log(args)",
+      "def cmd_query(args)",
+      "def cmd_export(args)",
+      "def main()"
+    ],
+    "agents/tools/audit_registry.py": [
+      "def load_yaml(path)",
+      "def audit_skills(repo_root)"
+    ],
+    "agents/tools/chat_shortcuts.py": [
+      "def now_checkpoint_message()",
+      "def normalize_intent(raw)",
+      "def run_cmd(args, cwd)",
+      "def main()"
+    ],
+    "agents/tools/compile_registry.py": [
+      "def load_yaml(path)",
+      "def save_yaml(path, data, header)",
+      "def compile_registry()"
+    ],
+    "agents/tools/config_validator.py": [
+      "def load_yaml(path)",
+      "def _resolve(root, raw)",
+      "def _extract_protected_files(markdown)",
+      "def validate_config_files(project_root)",
+      "def main()"
+    ],
+    "agents/tools/context_loader.py": [
+      "def get_project_root()",
+      "def _load_registry()",
+      "def _get_registry()",
+      "def list_available()",
+      "def load_on_demand(name)",
+      "def enrich_context(base_context, file_names)"
+    ],
+    "agents/tools/generate_skill_wrappers.py": [
+      "class SkillRef",
+      "def load_yaml(path)",
+      "def load_index(index_path)",
+      "def find_body_file(skills_dir, skill_name)",
+      "def find_meta_file(skills_dir, skill_name)",
+      "def to_repo_rel(path)",
+      "def build_skill_refs(skills_dir, entries)",
+      "def render_wrapper(skill)",
+      "def _scan_business_logic(body_path, skill_name)",
+      "def load_wrapper_skill_names()",
+      "def evaluate_skill_contracts(skills, wrapper_skills)",
+      "def write_wrappers(skills, output_dir, dry_run)",
+      "def clean_stale_dirs(output_dir, keep_skill_names, dry_run)",
+      "def main()"
+    ],
+    "agents/tools/git_checkpoint.py": [
+      "def run_git(args, cwd)",
+      "def current_branch(cwd)",
+      "def has_pending_changes(cwd)",
+      "def commit_changes(cwd, message)",
+      "def push_changes(cwd, remote, branch)",
+      "def main()"
+    ],
+    "agents/tools/kernel_guard.py": [
+      "def activate_kernel(profile, agent_id)",
+      "def main()"
+    ],
+    "agents/tools/load_full_context.py": [
+      "def load_full_context(task_plan_path, system_config_path, summary_path, on_demand)",
+      "def save_context_as_json(full_context, output_path)",
+      "def main()"
+    ],
+    "agents/tools/load_static_context.py": [
+      "def _load_framework_config()",
+      "def _get_on_demand_path(file_key, default_path)",
+      "def _deep_merge_dicts(base, override)",
+      "def _resolve_static_context_config(requested_profile)",
+      "def _is_non_empty_str(value)",
+      "def _rule_matches(rule, env)",
+      "def _auto_detect_profile(full_cfg, profiles)",
+      "def _get_excluded_from_signatures(static_cfg)",
+      "def _get_excluded_dirs_from_tree(static_cfg)",
+      "def _get_static_context_limits(static_cfg)",
+      "def _get_truncation_policy(static_cfg)",
+      "def _load_gitignore_spec(root)",
+      "def load_yaml_file(path)",
+      "def _file_metadata(path)",
+      "def _file_ref(path)",
+      "def _compact_skills_index(full_registry)",
+      "def _schema_summary(path)",
+      "def _generate_file_tree(root, max_depth, spec)",
+      "def _extract_python_signatures(root, max_depth, spec)",
+      "def _serialized_line_count(data)",
+      "def _trim_python_signatures_once(context, trim_fraction_percent)",
+      "def _trim_file_tree_once(context, trim_fraction_percent)",
+      "def _trim_schema_summaries_once(context, minimum_schema_top_level_keys)",
+      "def _trim_agent_rules_sections_once(context, minimum_agent_rules_sections)",
+      "def _drop_python_signatures(context)",
+      "def _drop_schema_summaries(context)",
+      "def _drop_agent_rules_sections(context)",
+      "def _drop_file_tree_to_minimum(context, minimum)",
+      "def _enforce_context_line_budget(context, max_lines, policy)",
+      "def load_static_context(profile)",
+      "def save_static_context_as_json(context, output_path, max_lines)"
+    ],
+    "agents/tools/migrate_triggers.py": [
+      "def load_yaml(path)",
+      "def save_yaml(path, data)",
+      "def migrate_triggers()"
+    ],
+    "agents/tools/mode_selector.py": [
+      "def deep_merge(base, override)",
+      "def main()"
+    ],
+    "agents/tools/plan_doc.py": [
+      "def utc_now_iso()",
+      "def read_yaml(path)",
+      "def write_yaml(path, payload)",
+      "def resolve_plan_path(path_arg, plan_id)",
+      "def cmd_init(args)",
+      "def find_step(payload, step_id)",
+      "def cmd_add_step(args)",
+      "def cmd_update_step(args)",
+      "def cmd_set_status(args)",
+      "def cmd_approve(args)",
+      "def cmd_handoff(args)",
+      "def cmd_validate(args)",
+      "def cmd_archive(args)",
+      "def cmd_list(args)",
+      "def build_parser()",
+      "def main()"
+    ],
+    "agents/tools/run_wrapper.py": [
+      "def _bind_skill(runner, skill_name)",
+      "def _load_wrapper_runner(wrapper_name)",
+      "def build_wrapper_registry()",
+      "def _load_args_json(raw)",
+      "def _load_args_file(path)",
+      "def _parse_args()",
+      "def main()"
+    ],
+    "agents/tools/schema_validator.py": [
+      "def format_error(error, include_context)",
+      "def get_suggested_fix(error)",
+      "def validate_file(file_path, schema_path, verbose)",
+      "def validate_syntax_only(file_path)",
+      "def print_report(file_path, schema_path, is_valid, errors, warnings)",
+      "def main()"
+    ],
+    "agents/tools/simulate_execution.py": [
+      "class SimulationResult",
+      "class SimulationReport",
+      "def get_project_root()",
+      "def load_task_plan(plan_path)",
+      "def check_file_exists(file_path)",
+      "def check_file_writable(file_path)",
+      "def check_protected_file(file_path, project_root)",
+      "def simulate_file_create(action, project_root)",
+      "def simulate_file_modify(action, project_root)",
+      "def simulate_file_delete(action, project_root)",
+      "def simulate_file_rename(action, project_root)",
+      "def simulate_action(action, project_root)",
+      "def check_dependencies(actions)",
+      "def simulate_plan(plan, project_root)",
+      "def print_report(report, verbose)",
+      "def main()"
+    ],
+    "agents/tools/treemap.py": [
+      "def load_gitignore(directory)",
+      "def generate_tree(directory)",
+      "def write_treemap(project_root, output_file)",
+      "def main()"
+    ],
+    "agents/tools/update_requirements.py": [
+      "def normalize_name(name)",
+      "def extract_req_name(line)",
+      "def parse_requirements(path)",
+      "def run_pip(args)",
+      "def list_installed()",
+      "def get_requires(name)",
+      "def resolve_dependency_closure(roots, installed)",
+      "def run_update()"
+    ],
+    "agents/tools/user_task_builder.py": [
+      "def project_root()",
+      "def read_text(path)",
+      "def load_yaml_file(path)",
+      "def resolve_path(path_str)",
+      "def parse_config_sources(raw)",
+      "def validate_inputs(mode, objective, files, constraints, phase, validation_status, validated_by, validated_at)",
+      "def validate_payload(payload)",
+      "def multiline_str_representer(dumper, data)",
+      "def main()"
+    ],
+    "agents/tools/validate_message.py": [
+      "def calculate_checksum(payload)",
+      "def validate_checksum(message)",
+      "def validate_references(message)",
+      "def check_dependency_cycles(message)",
+      "def format_validation_error(error)",
+      "def validate_message(message_path, schema_path, schema_type)",
+      "def print_report(report, verbose)",
+      "def main()"
+    ],
+    "agents/tools/validate_skill_metadata.py": [
+      "def load_yaml(path)",
+      "def collect_skills_from_index(index_path)",
+      "def find_meta_file(skill_name)",
+      "def find_body_file(skill_name)",
+      "def load_wrapper_skill_names()",
+      "def validate_meta_fields(meta_data, skill_name)",
+      "def validate_execution_contract(meta_data, skill_name, wrapper_skills)",
+      "def scan_business_logic(body_path, skill_name)",
+      "def main()"
+    ],
+    "agents/tools/verify_profiles.py": [
+      "def verify()"
+    ],
+    "agents/tools/_context_common.py": [
+      "def project_root()",
+      "def resolve_path(path)",
+      "def is_under_project_root(path)",
+      "def resolve_and_validate(path)",
+      "def load_yaml_file(path)",
+      "def load_json_file(path)"
+    ],
+    "agents/tools/_profile_state.py": [
+      "def project_root()",
+      "def load_yaml(path)",
+      "def load_state(path)",
+      "def resolve_state_path(agent_id, explicit)",
+      "def profile_path(profile)",
+      "def normalize_profile(value)",
+      "def now_iso()",
+      "def write_state(path, profile)",
+      "def _deep_merge_profiles(base, override)",
+      "def load_profile_definition(profile)"
+    ],
+    "agents/tools/_repo_root.py": [
+      "def find_project_root(start)"
+    ],
+    "agents/tools/_schema_utils.py": [
+      "def get_project_root()",
+      "def canonical_schema_type(schema_type)",
+      "def get_builtin_schema_path(schema_type)",
+      "def load_json_file(path)",
+      "def load_yaml_file(path)",
+      "def load_data_file(path)",
+      "def iter_validation_errors(data, schema)",
+      "def detect_schema_type(payload)"
+    ],
+    "agents/tools/wrappers/connect_duckdb_wrapper.py": [
+      "def _project_root()",
+      "def _bool(value, default)",
+      "def _normalize_config(raw)",
+      "def _resolve_database_path(raw_path, read_only)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/csv_explorer_wrapper.py": [
+      "def _normalize_headers(header_row)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/db_explorer_wrapper.py": [
+      "def _table_name(value)",
+      "def _duckdb_tables(conn)",
+      "def _duckdb_schema(conn, table)",
+      "def _sqlite_tables(conn)",
+      "def _sqlite_schema(conn, table)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/docx_explorer_wrapper.py": [
+      "def _core_props(zf)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/excel_explorer_wrapper.py": [
+      "def _sheet_name(value)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/excel_to_parquet_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_input_excel_path(raw_path)",
+      "def _resolve_output_parquet_path(raw_path)",
+      "def _sheet_name(value, default)",
+      "def _bool(value, default)",
+      "def _compression(value, default)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/execution_timer_wrapper.py": [
+      "def _parse_task_type(value)",
+      "def _parse_float(value, field)",
+      "def _format_general(elapsed_seconds)",
+      "def _resolve_elapsed(args)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/file_explorer_wrapper.py": [
+      "def _read_generic_text(path, encoding, preview_chars)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/generate_exe_pyinstaller_onedir_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_repo_dir(raw_path)",
+      "def _parse_string_list(raw)",
+      "def _tail(text, max_lines)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/html_explorer_wrapper.py": [
+      "class _HTMLSummaryParser",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/input_file_handler_wrapper.py": [
+      "def _normalize_extensions(raw)",
+      "def _is_text_like(path)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/input_validation_sanitizer_wrapper.py": [
+      "def _normalize_expected_type(value)",
+      "def _type_matches(expected_type, value)",
+      "def _type_name(value)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/json_explorer_wrapper.py": [
+      "def _type_name(value)",
+      "def _schema_preview(value, depth, max_depth, max_items)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/_explorer_common.py": [
+      "def project_root()",
+      "def resolve_repo_path(raw_path)",
+      "def parse_encoding(value, default)",
+      "def parse_bool(value)",
+      "def parse_int(value)",
+      "def to_jsonable(value)",
+      "def file_stats(path)",
+      "def preview_text(raw)"
+    ]
+  },
+  "schemas": {
+    "execution_report.schema.json": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties",
+        "$defs"
+      ]
+    },
+    "plan_doc.schema.yaml": {
+      "top_level_keys": [
+        "$schema",
+        "title",
+        "description",
+        "type",
+        "required",
+        "properties"
+      ]
+    },
+    "system_config.schema.yaml": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties"
+      ]
+    },
+    "task_envelope.schema.json": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties"
+      ]
+    },
+    "task_plan.schema.json": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "required",
+        "additionalProperties",
+        "properties",
+        "$defs"
+      ]
+    },
+    "user_task.schema.yaml": {
+      "top_level_keys": [
+        "$schema",
+        "$id",
+        "title",
+        "description",
+        "type",
+        "additionalProperties",
+        "required",
+        "properties",
+        "allOf"
+      ]
+    }
+  },
+  "_context_budget": {
+    "max_lines": 1000,
+    "final_lines": 997,
+    "truncation_applied": true,
+    "truncation_actions": [
+      "trim_python_signatures",
+      "trim_python_signatures",
+      "trim_python_signatures",
+      "trim_python_signatures",
+      "trim_python_signatures"
+    ]
+  }
+}

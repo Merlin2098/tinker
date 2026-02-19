@@ -1,0 +1,64 @@
+﻿name: input_file_handler
+version: 1.0.0
+category: File Handling
+tier: core
+cluster: file_handling
+priority: 74
+purpose: 'File input: validation, encoding detection, error handling'
+triggers:
+  keywords:
+  - file input
+  - open file
+  - file validation
+  - encoding detection
+  - read file
+  - file dialog
+  match_extensions:
+  - .csv
+  - .tsv
+  - .xlsx
+  - .xls
+  match_phases:
+  - ingest
+  match_errors:
+  - FileNotFoundError
+  - UnicodeDecodeError
+requires: []
+exclusive_with: []
+modes:
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_executor
+  - agent_senior
+  optional: []
+body_file: input_file_handler.md
+token_estimate: 220
+execution:
+  entrypoint: agents/tools/wrappers/input_file_handler_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill input_file_handler
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required:
+    - path
+    properties:
+      path:
+        type: string
+      must_exist:
+        type: boolean
+      allowed_extensions:
+        type: array
+        items:
+          type: string
+      encoding:
+        type: string
+      include_preview:
+        type: boolean
+      max_preview_lines:
+        type: integer
+      preview_chars:
+        type: integer
+      force_text_preview:
+        type: boolean
+

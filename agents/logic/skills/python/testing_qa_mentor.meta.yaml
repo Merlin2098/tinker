@@ -1,0 +1,61 @@
+﻿name: testing_qa_mentor
+version: 1.0.0
+category: Python
+tier: lazy
+cluster: python_quality
+priority: 58
+purpose: Pytest, fixtures, parametrization, Hypothesis, mocking
+triggers:
+  keywords:
+  - test
+  - pytest
+  - unittest
+  - coverage
+  - fixture
+  - mock
+  - assertion
+  - TDD
+  match_extensions:
+  - .py
+  match_phases:
+  - test
+  match_errors:
+  - AssertionError
+  - test failed
+requires: []
+exclusive_with: []
+modes:
+- ANALYZE_AND_IMPLEMENT
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_senior
+  - agent_executor
+  optional:
+  - agent_inspector
+max_phase: 1
+body_file: testing_qa_mentor.md
+token_estimate: 1400
+execution:
+  entrypoint: agents/tools/wrappers/python_quality_advisor_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill testing_qa_mentor
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

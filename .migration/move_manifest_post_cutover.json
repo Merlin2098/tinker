@@ -1,0 +1,8 @@
+{
+  "mapping": {
+    "agent": "agents/logic",
+    "agent_tools": "agents/tools",
+    "instructions": "agents/instructions"
+  },
+  "files": {}
+}

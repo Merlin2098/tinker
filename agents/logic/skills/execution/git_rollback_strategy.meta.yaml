@@ -1,0 +1,56 @@
+﻿name: git_rollback_strategy
+version: 1.0.0
+category: Execution
+tier: core
+cluster: execution_pipeline
+priority: 84
+purpose: Git revert for rollback maintaining commit history
+triggers:
+  keywords:
+  - rollback
+  - git revert
+  - undo commit
+  - revert changes
+  - restore previous
+  match_extensions: []
+  match_phases:
+  - rollback
+  match_errors:
+  - rollback_required
+requires:
+- execution_flow_orchestration
+exclusive_with: []
+pipeline: execution
+pipeline_order: 2
+modes:
+- IMPLEMENT_ONLY
+agent_binding:
+  mandatory:
+  - agent_executor
+  optional:
+  - agent_senior
+body_file: git_rollback_strategy.md
+token_estimate: 600
+execution:
+  entrypoint: agents/tools/wrappers/policy_guidance_wrapper.py::run
+  command: .venv/Scripts/python.exe agents/tools/run_wrapper.py --skill git_rollback_strategy
+    --args-json '<json-object>'
+  args_schema:
+    type: object
+    required: []
+    properties:
+      objective:
+        type: string
+      target_paths:
+        type: array
+        items:
+          type: string
+      constraints:
+        type: array
+        items:
+          type: string
+      output_mode:
+        type: string
+      max_items:
+        type: integer
+

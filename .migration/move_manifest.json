@@ -1,0 +1,2134 @@
+{
+  "mapping": {
+    "agent": "agents/logic",
+    "agent_tools": "agents/tools",
+    "instructions": "agents/instructions"
+  },
+  "files": {
+    "agent/user_task.yaml": {
+      "target": "agents/logic/user_task.yaml",
+      "sha256": "a92868db3f696043f14f7c2e43c1aa25b44ef424a07f751cf41e431211a49d37",
+      "size": 967
+    },
+    "agent/agent_outputs/context.json": {
+      "target": "agents/logic/agent_outputs/context.json",
+      "sha256": "3f7cb0be603879cfc88039844b1201a172872311b47e99771a0332a032403e6d",
+      "size": 33241
+    },
+    "agent/agent_protocol/README.md": {
+      "target": "agents/logic/agent_protocol/README.md",
+      "sha256": "fa745657a43997b78488e6ea0ff108a33dc2e041f9219c7bfda2c5b800f933af",
+      "size": 1629
+    },
+    "agent/analysis/dependencies_report.md": {
+      "target": "agents/logic/analysis/dependencies_report.md",
+      "sha256": "21c5b448f4c7339b4fc12104c868c9fb8c386f982e739c004ad84eeafc7421d3",
+      "size": 11520
+    },
+    "agent/analysis/treemap.md": {
+      "target": "agents/logic/analysis/treemap.md",
+      "sha256": "c67e2a1aaf50b6811cac85649bcd5a256a62ba01ca52efe2545bb1984cdc532e",
+      "size": 21240
+    },
+    "agent/kernel/kernel.yaml": {
+      "target": "agents/logic/kernel/kernel.yaml",
+      "sha256": "34d013098236d09463701ada4c4c606392e8e09befd88970c4e4a70599feacbe",
+      "size": 389
+    },
+    "agent/kernel/kernel_rules.md": {
+      "target": "agents/logic/kernel/kernel_rules.md",
+      "sha256": "533fc638b7ea873f58935bb40a49b4ffe1f7eb40e6d31ba6f28c47209cf0c9c4",
+      "size": 445
+    },
+    "agent/profiles/full.yaml": {
+      "target": "agents/logic/profiles/full.yaml",
+      "sha256": "0846b056c1da79fac25241338840e768e97e90d96846d75a79ce71fd630cb515",
+      "size": 1645
+    },
+    "agent/profiles/lite.yaml": {
+      "target": "agents/logic/profiles/lite.yaml",
+      "sha256": "5cc216fcfbb6e187c84eebdf7ad8b6b71660fc210f4587fc35c85b1a70e22fc7",
+      "size": 454
+    },
+    "agent/profiles/standard.yaml": {
+      "target": "agents/logic/profiles/standard.yaml",
+      "sha256": "2741b5f542d0ffbb24f146c7bb60db82a7adfbd21ddd9828a2002ffa11c032c6",
+      "size": 643
+    },
+    "agent/profiles/_base.yaml": {
+      "target": "agents/logic/profiles/_base.yaml",
+      "sha256": "5a1b045a76d75600376709a84bc9e3cde484ac3a617e3fa5bc733d1c78aacc02",
+      "size": 625
+    },
+    "agent/rules/agent_rules.md": {
+      "target": "agents/logic/rules/agent_rules.md",
+      "sha256": "e8846169c344d3100f4c12bf3d5b4ad64d0ced9430da05aa414572fc156eb202",
+      "size": 7758
+    },
+    "agent/rules/README.md": {
+      "target": "agents/logic/rules/README.md",
+      "sha256": "c5ce1a26c5f2bbee9858024ebd37932c4c16f2f9431c5315c856cd551bbbb897",
+      "size": 467
+    },
+    "agent/rules/user_fault_heuristic.md": {
+      "target": "agents/logic/rules/user_fault_heuristic.md",
+      "sha256": "86241b8c27e654aee697a1efc0c0b84bc30275604c5e1372c8860012bed0e368",
+      "size": 2316
+    },
+    "agent/skills/skills_archive.yaml": {
+      "target": "agents/logic/skills/skills_archive.yaml",
+      "sha256": "26a9d545fc1741b6aff1917e9cc2d5f24a5c05b197b09901773cc45f61f9815a",
+      "size": 1386
+    },
+    "agent/skills/skills_registry.yaml": {
+      "target": "agents/logic/skills/skills_registry.yaml",
+      "sha256": "6c99f227310e4ccbc42bdadcb834c1e2277e41f98f3fa7ae22afe4df83913f0e",
+      "size": 48591
+    },
+    "agent/skills/_index.yaml": {
+      "target": "agents/logic/skills/_index.yaml",
+      "sha256": "2f65a346ac941bf1806a5571199a0e2e1ffd32091b00caddac775767f39a77bb",
+      "size": 13239
+    },
+    "agent/skills/_trigger_engine.yaml": {
+      "target": "agents/logic/skills/_trigger_engine.yaml",
+      "sha256": "d44f398bb11ab6283065fb7aeb4cb16e2b59e8a3935c325c9ab2c62e2cf73056",
+      "size": 14236
+    },
+    "agent/task_templates/user_task_dummies_es.yaml": {
+      "target": "agents/logic/task_templates/user_task_dummies_es.yaml",
+      "sha256": "d96b325bdbbbc08a4047e036e13265aae9f8a708b0c5141db7d0020bde41f740",
+      "size": 686
+    },
+    "agent/task_templates/chat/user_task_template.yaml": {
+      "target": "agents/logic/task_templates/chat/user_task_template.yaml",
+      "sha256": "c0d76fe88c7fcb044ae4cdd7e44da591f44c4230f000925d5682e1e2d77ed8f6",
+      "size": 655
+    },
+    "agent/skills_wrappers/ambiguity_escalation/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ambiguity_escalation/SKILL.md",
+      "sha256": "d2d9f220ed278dc326807d1fd8e5c5309aa653926102896ab5d8a73f8aa8e030",
+      "size": 1084
+    },
+    "agent/skills_wrappers/api_client_generator/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/api_client_generator/SKILL.md",
+      "sha256": "ba1de8f364f55a5e2ca65d7085e152bbfefddc0a48cff3842f20240179ce4ac3",
+      "size": 1068
+    },
+    "agent/skills_wrappers/artifact_persistence_discipline/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/artifact_persistence_discipline/SKILL.md",
+      "sha256": "56f0b696393be0d5882288e00c6216a4bb59b97695f3ab2d304c0cbcd11c1687",
+      "size": 1124
+    },
+    "agent/skills_wrappers/async_concurrency_expert/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/async_concurrency_expert/SKILL.md",
+      "sha256": "fc91e58b08c05976fc392d89d28541b50852c57e9256fbf335302870e6ffa3c2",
+      "size": 1096
+    },
+    "agent/skills_wrappers/brainstorming_design_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/brainstorming_design_explorer/SKILL.md",
+      "sha256": "5f614c9bd9368a1f48e271ac27c213d82434a6d70278a9b6aa06f426af911091",
+      "size": 1146
+    },
+    "agent/skills_wrappers/code_analysis_qa_gate/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/code_analysis_qa_gate/SKILL.md",
+      "sha256": "1810fb707b868bd9e0af32d24f3674c9290d65850fe340ccc558a97accc98e48",
+      "size": 1111
+    },
+    "agent/skills_wrappers/code_structuring_pythonic/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/code_structuring_pythonic/SKILL.md",
+      "sha256": "3cc6f79abdb71d6d0143a2f294b71e08fbcdfad9aa0123293b307a40b81828b0",
+      "size": 1113
+    },
+    "agent/skills_wrappers/config_env_manager/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/config_env_manager/SKILL.md",
+      "sha256": "aa821760853281bd80493887879fbce9f54e6f6325f24c306c7ac56ba86a217b",
+      "size": 1072
+    },
+    "agent/skills_wrappers/connect_duckdb/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/connect_duckdb/SKILL.md",
+      "sha256": "0b25368cb5003230a095853cb47b943ae0e361330d42bf7e67280094edaa3443",
+      "size": 1086
+    },
+    "agent/skills_wrappers/context_loading_protocol/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/context_loading_protocol/SKILL.md",
+      "sha256": "f46a11a5946c8111fb929491620fc230069aeb77539d823549106365d78c62d0",
+      "size": 1120
+    },
+    "agent/skills_wrappers/csv_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/csv_explorer/SKILL.md",
+      "sha256": "d4a60c7cbe1237f3bea78327847202e485e95084de6615c8eee27f21816f0fde",
+      "size": 1073
+    },
+    "agent/skills_wrappers/data_integrity_guardian/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/data_integrity_guardian/SKILL.md",
+      "sha256": "3c4c41f62a6f4388b75e7ac4bcdb47b11de3d3cbc28668ce3531627a9c204f94",
+      "size": 1120
+    },
+    "agent/skills_wrappers/db_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/db_explorer/SKILL.md",
+      "sha256": "71e085424b49d5ce8a737268f37c88960413847e88401d4c351952f2562f4d4a",
+      "size": 1086
+    },
+    "agent/skills_wrappers/debugger_orchestrator/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/debugger_orchestrator/SKILL.md",
+      "sha256": "f8b04068457cb249f308a0e1142316d9e83f8d46ddbd98a2ec1fa261a67a9c30",
+      "size": 1121
+    },
+    "agent/skills_wrappers/decision_process_flow/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/decision_process_flow/SKILL.md",
+      "sha256": "fd75d04c9c0f4b54571534c999bd8f9718828a5fb5423076b4ab9889b88aa83d",
+      "size": 1122
+    },
+    "agent/skills_wrappers/dependency_audit/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/dependency_audit/SKILL.md",
+      "sha256": "cccee645bf69367f7c89c3e23a067458d23d36533d0189049fe4290774ae154a",
+      "size": 1060
+    },
+    "agent/skills_wrappers/devops_packaging/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/devops_packaging/SKILL.md",
+      "sha256": "8721abfcef12281edd340dff4566e1f496ea93de7872027e28a9d9f46e82581c",
+      "size": 1058
+    },
+    "agent/skills_wrappers/docx_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/docx_explorer/SKILL.md",
+      "sha256": "facb6eb92f1b4336cb236afaaa55592404e8e3efab73d5cc779c835cf2e6025b",
+      "size": 1105
+    },
+    "agent/skills_wrappers/excel_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/excel_explorer/SKILL.md",
+      "sha256": "9bb356c0cc85e20f682d326bc2a028bdf54c84e788ce5793604e363128036f91",
+      "size": 1100
+    },
+    "agent/skills_wrappers/excel_to_parquet/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/excel_to_parquet/SKILL.md",
+      "sha256": "a2a1c01152eae971a231cd36019f59f0253daeb5c9521ac38fbb7ab77efa46e2",
+      "size": 1072
+    },
+    "agent/skills_wrappers/execution_flow_orchestration/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/execution_flow_orchestration/SKILL.md",
+      "sha256": "e546f8bb969385fe8f7493efc7e74feebfece8d50b6db36603a7fa5ed4b468ca",
+      "size": 1151
+    },
+    "agent/skills_wrappers/execution_timer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/execution_timer/SKILL.md",
+      "sha256": "7f28c893109176c326498233477b0dd9de3ae8b4203259244b102c99bcf6ffd0",
+      "size": 1065
+    },
+    "agent/skills_wrappers/externalized_logic_handler/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/externalized_logic_handler/SKILL.md",
+      "sha256": "cd5f4db006fa6633fd51970f9619afd10f44f9664889834260445b2a69a24c41",
+      "size": 1113
+    },
+    "agent/skills_wrappers/file_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/file_explorer/SKILL.md",
+      "sha256": "087fc9c54a42f25f6bc085c6985bf2a43ca3b5472f40bfa94bc7ae7a66178984",
+      "size": 1101
+    },
+    "agent/skills_wrappers/generate_exe_pyinstaller_onedir/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/generate_exe_pyinstaller_onedir/SKILL.md",
+      "sha256": "142c896502641d7730f55fe75ea6f9495942aae39efdd1c382810af381e085ce",
+      "size": 1106
+    },
+    "agent/skills_wrappers/git_rollback_strategy/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/git_rollback_strategy/SKILL.md",
+      "sha256": "9919fc4fd9b667ff7c96bd75961e82f7b8422eb8db5a6e356439b88da49a9c50",
+      "size": 1094
+    },
+    "agent/skills_wrappers/html_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/html_explorer/SKILL.md",
+      "sha256": "515973c48e8672aa5e465882945830e8eb70fd82a3d21278198cbfc0e8ec4606",
+      "size": 1101
+    },
+    "agent/skills_wrappers/immutable_resource_respect/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/immutable_resource_respect/SKILL.md",
+      "sha256": "55d82b0ba4d4946a70027a855bdc6efcc62e62976332ae99df269fafecdb0c06",
+      "size": 1131
+    },
+    "agent/skills_wrappers/input_file_handler/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/input_file_handler/SKILL.md",
+      "sha256": "913bbcfae2a17dece6b272a0126a6ea0f9055d9e2575afaadaf090bc9dd1050e",
+      "size": 1093
+    },
+    "agent/skills_wrappers/input_validation_sanitizer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/input_validation_sanitizer/SKILL.md",
+      "sha256": "7de7d42318401a1af6ea7b983695366a8dc76b2367b2d545063be5c8066d783e",
+      "size": 1103
+    },
+    "agent/skills_wrappers/json_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/json_explorer/SKILL.md",
+      "sha256": "920c1bebc9a6c459ea8d50b98c4674f740cc39bc207c1a3420ddf0ca0112f1d4",
+      "size": 1082
+    },
+    "agent/skills_wrappers/library_manager/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/library_manager/SKILL.md",
+      "sha256": "d6064c2adf50f9a263e34ac1389d74357986729a3a1349eae5043b6f500da1b4",
+      "size": 1068
+    },
+    "agent/skills_wrappers/linter_formatter_guru/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/linter_formatter_guru/SKILL.md",
+      "sha256": "4f044432c7a85ceb2db9c284e7276694c93688021285b8d5c3da0cde0b433ff3",
+      "size": 1087
+    },
+    "agent/skills_wrappers/llm_inference_optimization/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/llm_inference_optimization/SKILL.md",
+      "sha256": "ba81b1524f689a536aa7c2fc09e74f59315d8721cd32d0f7ffb12683dcd9e210",
+      "size": 1107
+    },
+    "agent/skills_wrappers/load_json_files/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/load_json_files/SKILL.md",
+      "sha256": "49f77891e27eda5f5e14576d3260ca630a6588502169d1fd16a84f9cc736fc8b",
+      "size": 1076
+    },
+    "agent/skills_wrappers/load_sql_queries/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/load_sql_queries/SKILL.md",
+      "sha256": "56b206a4ce64b83f074d45258eaf03f8c46ad90fc19888131f97c0512a7d5e72",
+      "size": 1072
+    },
+    "agent/skills_wrappers/load_yaml_files/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/load_yaml_files/SKILL.md",
+      "sha256": "0698abcc416aee9c387565a7a46995af2e53b7d735606eb325408f57abeea483",
+      "size": 1076
+    },
+    "agent/skills_wrappers/log_bundle_folder_management/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/log_bundle_folder_management/SKILL.md",
+      "sha256": "66f724334e4e475ff90397af0c070be659f5accc3bffddfde9ece39afab748a7",
+      "size": 1114
+    },
+    "agent/skills_wrappers/log_overwrite_policy/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/log_overwrite_policy/SKILL.md",
+      "sha256": "da74d8b3d0e8d070642b6ca8c681744b8185dbf4f389547ef2ab131390844abe",
+      "size": 1084
+    },
+    "agent/skills_wrappers/markdown_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/markdown_explorer/SKILL.md",
+      "sha256": "417406cf2bb226185058d0c5ec1bf366b5260ebff0303380733a762170f54dc1",
+      "size": 1128
+    },
+    "agent/skills_wrappers/microservices_api_architect/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/microservices_api_architect/SKILL.md",
+      "sha256": "630246647cf8a4d37ff9f0f2ba0b637fee78ef8c951cb683198a337bec817570",
+      "size": 1097
+    },
+    "agent/skills_wrappers/minimal_documentation_policy/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/minimal_documentation_policy/SKILL.md",
+      "sha256": "ae0b58794975feec232a3890931ac0c72f5c6f7c77ffae3193e84a255efceee2",
+      "size": 1110
+    },
+    "agent/skills_wrappers/naming_control_flow/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/naming_control_flow/SKILL.md",
+      "sha256": "2ac4d7d3790b6d79d7a82d4fed65ba4d9eccb9650ce4c4c9e9a53500cd757830",
+      "size": 1079
+    },
+    "agent/skills_wrappers/output_validation_checklist/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/output_validation_checklist/SKILL.md",
+      "sha256": "3192378e04a00f3a5b382c40df180dd47eeab82997a490f1241646ca82cb89d4",
+      "size": 1139
+    },
+    "agent/skills_wrappers/parquet_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/parquet_explorer/SKILL.md",
+      "sha256": "fc4edb9a21a3e1a6196db37ff795ffa10a303aeece1486163a817cf7a5f15c3e",
+      "size": 1106
+    },
+    "agent/skills_wrappers/parquet_to_excel_polars_xlsxwriter/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/parquet_to_excel_polars_xlsxwriter/SKILL.md",
+      "sha256": "fa04b3ae1562baf8da743600cca85d72ff2305201cc9021dac640378a65fc559",
+      "size": 1137
+    },
+    "agent/skills_wrappers/path_traversal_prevention/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/path_traversal_prevention/SKILL.md",
+      "sha256": "23f6b0392b2d5841abcc10efe5498201f271054fbc4aaea355cfdc51d149f9de",
+      "size": 1105
+    },
+    "agent/skills_wrappers/pdf_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/pdf_explorer/SKILL.md",
+      "sha256": "3b87f24a458dd59aabfd6052cb6b7f95778c9cbdf10c31b9c6f4b06fe7311304",
+      "size": 1094
+    },
+    "agent/skills_wrappers/performance_profiler/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/performance_profiler/SKILL.md",
+      "sha256": "1038d4f5fca97a37a98e16dffd4f76608fe7399c2ae73e54a6ed895dffe7a0c0",
+      "size": 1083
+    },
+    "agent/skills_wrappers/plan_archive_protocol/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/plan_archive_protocol/SKILL.md",
+      "sha256": "e4b5c4c6b4a81256dda60e3d8f6d13f8563e3a689dd265ddfa56cf253048fc9c",
+      "size": 1105
+    },
+    "agent/skills_wrappers/powerbi_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/powerbi_explorer/SKILL.md",
+      "sha256": "93dd98a7d95cf55f493f7a8af5e241759377c566c5d2028c5562d2c81ff95c21",
+      "size": 1106
+    },
+    "agent/skills_wrappers/pptx_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/pptx_explorer/SKILL.md",
+      "sha256": "0b501d35cc26ecedc8d01bba924387d7105c8b4281873669e18676507e81ea5b",
+      "size": 1086
+    },
+    "agent/skills_wrappers/protected_file_validation/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/protected_file_validation/SKILL.md",
+      "sha256": "711cbd7fd187ca3dce973ea34f8e6e3d22f91369311f7c9f10a25ddb16056699",
+      "size": 1109
+    },
+    "agent/skills_wrappers/python_venv_executor/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/python_venv_executor/SKILL.md",
+      "sha256": "e011f548dd5e2312a99e6ca24899c085d81a468a99e2056e2da1d8dbce81800d",
+      "size": 1100
+    },
+    "agent/skills_wrappers/query_parquet_duckdb/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/query_parquet_duckdb/SKILL.md",
+      "sha256": "54380e0c5dc0dd6e5f614b9733f5a36ebf80d82742299ed57e8b6f0ab9df05c3",
+      "size": 1118
+    },
+    "agent/skills_wrappers/read_excel_pandas/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/read_excel_pandas/SKILL.md",
+      "sha256": "4bf2160d75dad065e48d313653d492974175544ce6553eb9266678bbde1679db",
+      "size": 1073
+    },
+    "agent/skills_wrappers/read_excel_polars_openpyxl/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/read_excel_polars_openpyxl/SKILL.md",
+      "sha256": "898963b899de50d55dbcf2e4bcc93a6ea6c92365f52f466d88707ca194ad3de7",
+      "size": 1120
+    },
+    "agent/skills_wrappers/refactoring_assistant/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/refactoring_assistant/SKILL.md",
+      "sha256": "5276290261b39daa48837977402d9ee6529e06c9ebf5c35feddb33e399b9619b",
+      "size": 1100
+    },
+    "agent/skills_wrappers/regression_test_automation/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/regression_test_automation/SKILL.md",
+      "sha256": "e10968e9d568ff7be606496496101de7cfe8eaa1af442ddd66739c0c2eae9385",
+      "size": 1152
+    },
+    "agent/skills_wrappers/risk_scoring_matrix/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/risk_scoring_matrix/SKILL.md",
+      "sha256": "30df2f45ea14651a4cd8a1f26f5bc5045e5c07f7eb522740c3a98d460c37d67f",
+      "size": 1092
+    },
+    "agent/skills_wrappers/root_cause_tracing/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/root_cause_tracing/SKILL.md",
+      "sha256": "7535013f1a94b0f8ac9efcf0f930ab7bfb68a78bf5112e59d629bd328cbe74a5",
+      "size": 1082
+    },
+    "agent/skills_wrappers/scope_control_discipline/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/scope_control_discipline/SKILL.md",
+      "sha256": "162cf4f19b1dd20585da84e20d691569e664f2192b2a877f96e666d2740d15dd",
+      "size": 1096
+    },
+    "agent/skills_wrappers/secure_python_practices/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/secure_python_practices/SKILL.md",
+      "sha256": "c258a9e2120336e98c9d235e225b3859304da7a63257ec9482f6444da47fab23",
+      "size": 1110
+    },
+    "agent/skills_wrappers/serialization_persistence/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/serialization_persistence/SKILL.md",
+      "sha256": "1440c789496572c040d72ec1b6bd991d3b9c5a6faa2469bb99e42ca1960e894b",
+      "size": 1106
+    },
+    "agent/skills_wrappers/setup_medallion_structure/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/setup_medallion_structure/SKILL.md",
+      "sha256": "93b7d22be2304240d3094d162fb2ba22772f5864ed4f9647eb3ac05788c313ac",
+      "size": 1109
+    },
+    "agent/skills_wrappers/skill_authority_first/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/skill_authority_first/SKILL.md",
+      "sha256": "a897f2ad344f7b00825e0adce90d721888d91baccd46f8715fdc5f5eefb91c2f",
+      "size": 1101
+    },
+    "agent/skills_wrappers/skill_builder/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/skill_builder/SKILL.md",
+      "sha256": "baf6bbb5478c54129d9a70fd447ab7d15e505f964e85c2e7bfb4b1529ddda94f",
+      "size": 1060
+    },
+    "agent/skills_wrappers/skill_merger/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/skill_merger/SKILL.md",
+      "sha256": "1a5cb419e2ead846c7b550302360306b008102fadc28a2c9f541c425dadd33c8",
+      "size": 1045
+    },
+    "agent/skills_wrappers/systematic_debugging/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/systematic_debugging/SKILL.md",
+      "sha256": "abc2d37a622212e6c86cf7656d160329c643b8ed4c14db711d3b47820076fd4e",
+      "size": 1086
+    },
+    "agent/skills_wrappers/testing_qa_mentor/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/testing_qa_mentor/SKILL.md",
+      "sha256": "5b63df083a17ebdd1d8cab1dca9f1f52a749b909d68e4dd9a52ce99be41c842a",
+      "size": 1072
+    },
+    "agent/skills_wrappers/type_master/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/type_master/SKILL.md",
+      "sha256": "1f76c07c2bf338728680fb6432a8f7a91240d32ae3e2c1e428144f15365ea4c4",
+      "size": 1047
+    },
+    "agent/skills_wrappers/ui_application_assets/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_application_assets/SKILL.md",
+      "sha256": "93c781d6b7c0227ca2a26e352d61a3bf6d9074a2eeb0a7bc0894bf9493c7acfd",
+      "size": 1058
+    },
+    "agent/skills_wrappers/ui_framework_selection/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_framework_selection/SKILL.md",
+      "sha256": "3335edd67589301f49eda0aa376cbab34d3254fcef20beb2d88b096efa6b9e75",
+      "size": 1057
+    },
+    "agent/skills_wrappers/ui_identity_policy/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_identity_policy/SKILL.md",
+      "sha256": "981caa0f0faed00f0514ed7c6f5fc8912c507cb325db93708e6837d78e682a2e",
+      "size": 1049
+    },
+    "agent/skills_wrappers/ui_layout_proportionality/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_layout_proportionality/SKILL.md",
+      "sha256": "8129b3b7046078bde73158596bdee8a24aebbc187a16bcce6196c8cf06c8040d",
+      "size": 1072
+    },
+    "agent/skills_wrappers/ui_splash_and_lazy_loading/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_splash_and_lazy_loading/SKILL.md",
+      "sha256": "35a26f21ff6b96f8ed411bc634356406cb58253a56da09ba7cabaf4c575c55a1",
+      "size": 1072
+    },
+    "agent/skills_wrappers/ui_theme_binding/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_theme_binding/SKILL.md",
+      "sha256": "830f79d7834830d973af23cf49733f6e3826198a9da3e2d66ccbe8476695b927",
+      "size": 1036
+    },
+    "agent/skills_wrappers/ui_widget_modularity/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/ui_widget_modularity/SKILL.md",
+      "sha256": "af00942a444ce473dc6af926ea8f9259b6a437ff81b1dea285b884c8f435e6e2",
+      "size": 1053
+    },
+    "agent/skills_wrappers/verification_before_completion/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/verification_before_completion/SKILL.md",
+      "sha256": "21b76042e52953283ad0ccbfd7677c6cd0a3127ff7038c9eab149ce430323585",
+      "size": 1126
+    },
+    "agent/skills_wrappers/workspace_model_awareness/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/workspace_model_awareness/SKILL.md",
+      "sha256": "d10a0a567d4063e2e0b7484ae9eef33f9f61668351784d6633cc9d19cdafc0fb",
+      "size": 1122
+    },
+    "agent/skills_wrappers/xml_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/xml_explorer/SKILL.md",
+      "sha256": "6d82a09582073b6f2072810b2f39854e858e30c53e72c0dc903f7bd7444d5db1",
+      "size": 1077
+    },
+    "agent/skills_wrappers/yaml_explorer/SKILL.md": {
+      "target": "agents/logic/skills_wrappers/yaml_explorer/SKILL.md",
+      "sha256": "18bd55e7689e346b7582ebc0515d656f591cda37621baa75d3d9085ebacb6f85",
+      "size": 1082
+    },
+    "agent/skills/architecture/setup_medallion_structure.md": {
+      "target": "agents/logic/skills/architecture/setup_medallion_structure.md",
+      "sha256": "e5aa74686d2a8810e60d91f807fb34dc7239f78c5b619d00061f04180365632e",
+      "size": 1014
+    },
+    "agent/skills/architecture/setup_medallion_structure.meta.yaml": {
+      "target": "agents/logic/skills/architecture/setup_medallion_structure.meta.yaml",
+      "sha256": "ebe133bc31b1e0b3bcd88e6c536a59596cb80655be197740bd7594da8517884d",
+      "size": 1102
+    },
+    "agent/skills/build/generate_exe_pyinstaller_onedir.md": {
+      "target": "agents/logic/skills/build/generate_exe_pyinstaller_onedir.md",
+      "sha256": "90ebc17178e8954e1e9f08cec5991d8f0e0f054e05eab8f88dfb10c36befeeaf",
+      "size": 1260
+    },
+    "agent/skills/build/generate_exe_pyinstaller_onedir.meta.yaml": {
+      "target": "agents/logic/skills/build/generate_exe_pyinstaller_onedir.meta.yaml",
+      "sha256": "16ca8d7d07c99fa97e994ba71803dbb65b4056f23d1eafce7679297b8b4151d0",
+      "size": 1373
+    },
+    "agent/skills/database/connect_duckdb.md": {
+      "target": "agents/logic/skills/database/connect_duckdb.md",
+      "sha256": "6f2eef82dc39bae8c36b758324bbae8e4d24c9f63702ebeebf9cfe3a2824de5e",
+      "size": 1532
+    },
+    "agent/skills/database/connect_duckdb.meta.yaml": {
+      "target": "agents/logic/skills/database/connect_duckdb.meta.yaml",
+      "sha256": "85cb9201dc3d685e49c502c921260b9874df1b1ed77ca977505633124b6e4836",
+      "size": 1079
+    },
+    "agent/skills/database/query_parquet_duckdb.md": {
+      "target": "agents/logic/skills/database/query_parquet_duckdb.md",
+      "sha256": "05bba59b66f40ce8584b9132c1f38d73807dee9959492ddc76d3fd5cf771e3fc",
+      "size": 1764
+    },
+    "agent/skills/database/query_parquet_duckdb.meta.yaml": {
+      "target": "agents/logic/skills/database/query_parquet_duckdb.meta.yaml",
+      "sha256": "1521bf671536395494accc38e99750f0cefb23ffcce6b2eedf6bcfb27e58c1a6",
+      "size": 1257
+    },
+    "agent/skills/debugging/debugger_orchestrator.md": {
+      "target": "agents/logic/skills/debugging/debugger_orchestrator.md",
+      "sha256": "d285196326ba366c64fc6e2516f132f1615086fed13363cb090cdee98cb5c3a0",
+      "size": 944
+    },
+    "agent/skills/debugging/debugger_orchestrator.meta.yaml": {
+      "target": "agents/logic/skills/debugging/debugger_orchestrator.meta.yaml",
+      "sha256": "17cb13bf116ca0986046c424267ed1cfe5bdb8057cd82cca975f053883fc4360",
+      "size": 1303
+    },
+    "agent/skills/debugging/root_cause_tracing.md": {
+      "target": "agents/logic/skills/debugging/root_cause_tracing.md",
+      "sha256": "c6315c744e8be59014fed0562bf601e73e9d1455db67d176a1da9c437f4186e1",
+      "size": 911
+    },
+    "agent/skills/debugging/root_cause_tracing.meta.yaml": {
+      "target": "agents/logic/skills/debugging/root_cause_tracing.meta.yaml",
+      "sha256": "8f76093a8efb5ea97f47ac0136bef50917c9fd0ec67290e9e29d49ad99403fa1",
+      "size": 1157
+    },
+    "agent/skills/debugging/systematic_debugging.md": {
+      "target": "agents/logic/skills/debugging/systematic_debugging.md",
+      "sha256": "baf4e81997da5982b052da10089fc07b8e098884b0263cd88483a7a87fe04e38",
+      "size": 911
+    },
+    "agent/skills/debugging/systematic_debugging.meta.yaml": {
+      "target": "agents/logic/skills/debugging/systematic_debugging.meta.yaml",
+      "sha256": "d650e6871edd0858bedcaf4e921caea8aee10419053854cecefa762c2953aeb9",
+      "size": 1220
+    },
+    "agent/skills/devops/generate_exe_pyinstaller_onedir.md": {
+      "target": "agents/logic/skills/devops/generate_exe_pyinstaller_onedir.md",
+      "sha256": "21ab01eaa73b4b6d56172bddca4b777e4bfdddffce17ebe4451ae371b02ce6e8",
+      "size": 1412
+    },
+    "agent/skills/devops/generate_exe_pyinstaller_onedir.meta.yaml": {
+      "target": "agents/logic/skills/devops/generate_exe_pyinstaller_onedir.meta.yaml",
+      "sha256": "79027ffb4e800290f2cb0aeba8fa582cb599c186602cd0ff192575664a5efc8b",
+      "size": 1347
+    },
+    "agent/skills/devops/library_manager.md": {
+      "target": "agents/logic/skills/devops/library_manager.md",
+      "sha256": "ac1b6d4e745aaa4153774b795a9d84ad517fc2c17fc67a817fee3a22868e30cb",
+      "size": 2510
+    },
+    "agent/skills/devops/library_manager.meta.yaml": {
+      "target": "agents/logic/skills/devops/library_manager.meta.yaml",
+      "sha256": "1f7added24c023df03c68f703716ef9ca3464d0e9609265fa8c105230b04a433",
+      "size": 729
+    },
+    "agent/skills/execution/execution_flow_orchestration.md": {
+      "target": "agents/logic/skills/execution/execution_flow_orchestration.md",
+      "sha256": "59abd28cf0682b4e637c1589797f361653fc75a9467e79c1cb135fb07ae6b482",
+      "size": 951
+    },
+    "agent/skills/execution/execution_flow_orchestration.meta.yaml": {
+      "target": "agents/logic/skills/execution/execution_flow_orchestration.meta.yaml",
+      "sha256": "f069ff7eb1151f38f79c80d4f33ff2623af13ea903eb3ef0f588418ce3801111",
+      "size": 1284
+    },
+    "agent/skills/execution/git_rollback_strategy.md": {
+      "target": "agents/logic/skills/execution/git_rollback_strategy.md",
+      "sha256": "5b95c37b4f13261b2c06183a8c86cbf8b0e75db13c4b641bfb666ec941f5ba2c",
+      "size": 908
+    },
+    "agent/skills/execution/git_rollback_strategy.meta.yaml": {
+      "target": "agents/logic/skills/execution/git_rollback_strategy.meta.yaml",
+      "sha256": "1bbd715b06e0fc9ad5757f8b64fb4026d8262d5e582e554bcdb4d976e1922b11",
+      "size": 1220
+    },
+    "agent/skills/execution/plan_archive_protocol.md": {
+      "target": "agents/logic/skills/execution/plan_archive_protocol.md",
+      "sha256": "1d14a66cd22414d054fb27f6e75c92a6cbb31a8103821d666a6ae49a02eb332e",
+      "size": 919
+    },
+    "agent/skills/execution/plan_archive_protocol.meta.yaml": {
+      "target": "agents/logic/skills/execution/plan_archive_protocol.meta.yaml",
+      "sha256": "c55c03827925c71e143247fefe1672edf8a1ced1090aba4864288a9d53442f70",
+      "size": 1177
+    },
+    "agent/skills/file_exploration/csv_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/csv_explorer.md",
+      "sha256": "93bc529166e0315a20f75f6fcc77a4aa775c98d637f3c31afdea0f7ae056d0b1",
+      "size": 737
+    },
+    "agent/skills/file_exploration/csv_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/csv_explorer.meta.yaml",
+      "sha256": "502a0a922d491b07ca35fb0247e58476eeae9ec420360c706e6ff67a2693c96d",
+      "size": 1047
+    },
+    "agent/skills/file_exploration/db_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/db_explorer.md",
+      "sha256": "3fdb6e9f7e5f2b4974d3165b2aed98d298c0406b492aff8972959e4f0508f446",
+      "size": 802
+    },
+    "agent/skills/file_exploration/db_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/db_explorer.meta.yaml",
+      "sha256": "373fa737d31e575b36d9c672a33bf5dbecebf8d2e1e9c02ba1f20f90db684a46",
+      "size": 1112
+    },
+    "agent/skills/file_exploration/docx_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/docx_explorer.md",
+      "sha256": "af7c8c1c8da9c2c31805b5024886773ad5450d9cc7ac87ebae3e93f5496ecbae",
+      "size": 731
+    },
+    "agent/skills/file_exploration/docx_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/docx_explorer.meta.yaml",
+      "sha256": "b5fd7a2c6c24e23b6cfffa7e25d8a4909b2fe2d7285a85e1c6b0e67c68178d50",
+      "size": 981
+    },
+    "agent/skills/file_exploration/excel_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/excel_explorer.md",
+      "sha256": "ebdd05f4653011f962b111fb6a6b42271d0e994815fde3a27f5dd50f5e54f9f0",
+      "size": 909
+    },
+    "agent/skills/file_exploration/excel_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/excel_explorer.meta.yaml",
+      "sha256": "5bfb7e4924be1538943969b03ea3089a3e2d965063d69ea3a6d4759fe2dab323",
+      "size": 1208
+    },
+    "agent/skills/file_exploration/file_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/file_explorer.md",
+      "sha256": "1b95ea87b5c1ee7de2b5ec06241160e88c82139824400d7c4666a7614ce8fa78",
+      "size": 1382
+    },
+    "agent/skills/file_exploration/file_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/file_explorer.meta.yaml",
+      "sha256": "b58c60a542e8541d17ec035d28d5f44f9e12e835bee54a8ca9c0cf83c692f7e1",
+      "size": 1339
+    },
+    "agent/skills/file_exploration/html_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/html_explorer.md",
+      "sha256": "e9bf9c489b1ea1fc5c9b1aada87078395fd7d68d491cc3bab47dfe165e849ff8",
+      "size": 778
+    },
+    "agent/skills/file_exploration/html_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/html_explorer.meta.yaml",
+      "sha256": "ba333307b74dabcd2fc6be7d44f754fdd5a12cf8dd5a14aaf9066ff8a4a26a72",
+      "size": 1033
+    },
+    "agent/skills/file_exploration/json_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/json_explorer.md",
+      "sha256": "d4f4a92de3e87025e5f6b08a411083f453d7246280d8c191dd8cfcac1673ef69",
+      "size": 799
+    },
+    "agent/skills/file_exploration/json_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/json_explorer.meta.yaml",
+      "sha256": "24c22bcb9780abff84d2dcb26fbd8492ffda237ee99c2a978d5c847dd99ab10b",
+      "size": 1076
+    },
+    "agent/skills/file_exploration/markdown_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/markdown_explorer.md",
+      "sha256": "983e7d1ae13e3ec81f12b179ea39642bcd12dd1c7910f31aab565c804ef13870",
+      "size": 790
+    },
+    "agent/skills/file_exploration/markdown_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/markdown_explorer.meta.yaml",
+      "sha256": "551c765856067a8abb196a9aa819ffb88f0d7772f0cf4c491307cfad599e86f2",
+      "size": 1051
+    },
+    "agent/skills/file_exploration/parquet_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/parquet_explorer.md",
+      "sha256": "29c845967b1d91a38c5ef02286e2307c33529b90c61c901d0d7a5049bb8588a8",
+      "size": 774
+    },
+    "agent/skills/file_exploration/parquet_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/parquet_explorer.meta.yaml",
+      "sha256": "bd37b9d626934381de984dec099888716f85823b060f2fe8982cfc315edb318a",
+      "size": 1038
+    },
+    "agent/skills/file_exploration/pdf_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/pdf_explorer.md",
+      "sha256": "0749d30e76b6f935238e8620b140559b10bf30845e8fd6296a0dfb45111b108b",
+      "size": 752
+    },
+    "agent/skills/file_exploration/pdf_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/pdf_explorer.meta.yaml",
+      "sha256": "f87dbf95be4f0239f15dd5c493b33c3782dc3b1ab273f2b0f80f9759c489a1b5",
+      "size": 1009
+    },
+    "agent/skills/file_exploration/powerbi_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/powerbi_explorer.md",
+      "sha256": "c3e35e0f9724d8bf07d2ff0f71be8a0fe8c45513ec9fc731541c9839a327c85e",
+      "size": 726
+    },
+    "agent/skills/file_exploration/powerbi_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/powerbi_explorer.meta.yaml",
+      "sha256": "16c5b9c16d222f39a3ad5988ca40f566c94c872f04ac1996d3f138349f5a2569",
+      "size": 1004
+    },
+    "agent/skills/file_exploration/pptx_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/pptx_explorer.md",
+      "sha256": "2855ca576c6eba0557d4a42ebb0fe8aa740aec1004e65cf7d0ed8dd19f796be6",
+      "size": 697
+    },
+    "agent/skills/file_exploration/pptx_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/pptx_explorer.meta.yaml",
+      "sha256": "3b3de034946fdba6af6dc235533651f907728bc02bde3f986ae9025d621c1f86",
+      "size": 965
+    },
+    "agent/skills/file_exploration/xml_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/xml_explorer.md",
+      "sha256": "0586dda7874d132e886ec86597fd66e85234c809fa946fda2decd3594597d305",
+      "size": 780
+    },
+    "agent/skills/file_exploration/xml_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/xml_explorer.meta.yaml",
+      "sha256": "88e26e4718cad1e73b287bda2e09a20f573c61a336561d0ec97a74476815527d",
+      "size": 1000
+    },
+    "agent/skills/file_exploration/yaml_explorer.md": {
+      "target": "agents/logic/skills/file_exploration/yaml_explorer.md",
+      "sha256": "89129c16c1413f79219e67b79c6b7ad3e63875a253119f1ffa6061d92bd94a64",
+      "size": 794
+    },
+    "agent/skills/file_exploration/yaml_explorer.meta.yaml": {
+      "target": "agents/logic/skills/file_exploration/yaml_explorer.meta.yaml",
+      "sha256": "18974bbe7eafd2a8d52988fbb9974ac0bf7c33b768c2cb5ccff22e5f60c5308b",
+      "size": 1072
+    },
+    "agent/skills/file_handling/input_file_handler.md": {
+      "target": "agents/logic/skills/file_handling/input_file_handler.md",
+      "sha256": "37570c5a870a01a424a28544469ae42e48bc8d1acb48e5edb4cce3ae826be594",
+      "size": 1142
+    },
+    "agent/skills/file_handling/input_file_handler.meta.yaml": {
+      "target": "agents/logic/skills/file_handling/input_file_handler.meta.yaml",
+      "sha256": "4c3dc8f212554a3c8e86e62897bdacb183919a8d17c489e60684beb13439a62a",
+      "size": 1354
+    },
+    "agent/skills/file_handling/input_validation_sanitizer.md": {
+      "target": "agents/logic/skills/file_handling/input_validation_sanitizer.md",
+      "sha256": "142c0631edd720e68e4eddd770737ca339953a8f575d0a9adebe083a50f1b641",
+      "size": 1182
+    },
+    "agent/skills/file_handling/input_validation_sanitizer.meta.yaml": {
+      "target": "agents/logic/skills/file_handling/input_validation_sanitizer.meta.yaml",
+      "sha256": "ad6e3dceae47b156391e2ea5e573b317ed1045e492bdd586cd7207c94659c8ce",
+      "size": 1316
+    },
+    "agent/skills/formats/load_json_files.md": {
+      "target": "agents/logic/skills/formats/load_json_files.md",
+      "sha256": "3a3c017a9e0e53ef9342f4abc479d631e5154268deededca4e4d43252f634349",
+      "size": 1332
+    },
+    "agent/skills/formats/load_json_files.meta.yaml": {
+      "target": "agents/logic/skills/formats/load_json_files.meta.yaml",
+      "sha256": "25fe5c8f866deed294b7840438b106c839ed177f0fd577f666bde06f1e52033f",
+      "size": 978
+    },
+    "agent/skills/formats/load_sql_queries.md": {
+      "target": "agents/logic/skills/formats/load_sql_queries.md",
+      "sha256": "e2f802a475a851a9bf1c5d175dac0b41cf5f37fe39c38a92cbfcffa8a1aa53f4",
+      "size": 1487
+    },
+    "agent/skills/formats/load_sql_queries.meta.yaml": {
+      "target": "agents/logic/skills/formats/load_sql_queries.meta.yaml",
+      "sha256": "b311b58851a5aed4e53e498a09e4a5f920e74ad3b33e174cbe0f7eb8f3eea901",
+      "size": 1040
+    },
+    "agent/skills/formats/load_yaml_files.md": {
+      "target": "agents/logic/skills/formats/load_yaml_files.md",
+      "sha256": "411fc1b95048a6b9dbec2231b3e2bdc569f5a7efc651eef5b35dce90112978b1",
+      "size": 1338
+    },
+    "agent/skills/formats/load_yaml_files.meta.yaml": {
+      "target": "agents/logic/skills/formats/load_yaml_files.meta.yaml",
+      "sha256": "ffa6d25068d0ae8ff797ed07c9355d2ec11344e2c6226910d492b6040a14376f",
+      "size": 982
+    },
+    "agent/skills/governance/ambiguity_escalation.md": {
+      "target": "agents/logic/skills/governance/ambiguity_escalation.md",
+      "sha256": "e910a4b1206ebdbeef81ca05f5da96bcc9fdd2b583f83f3f81a74d9a0b2318e5",
+      "size": 906
+    },
+    "agent/skills/governance/ambiguity_escalation.meta.yaml": {
+      "target": "agents/logic/skills/governance/ambiguity_escalation.meta.yaml",
+      "sha256": "dac8a61c6793f74f7088c178ed600ad54dc23024e8dd141294a7643f4aba3ec0",
+      "size": 1176
+    },
+    "agent/skills/governance/artifact_persistence_discipline.md": {
+      "target": "agents/logic/skills/governance/artifact_persistence_discipline.md",
+      "sha256": "c19cfca00a795fceb04a6aeba76df218115223da699b777b272576bff95b43c8",
+      "size": 924
+    },
+    "agent/skills/governance/artifact_persistence_discipline.meta.yaml": {
+      "target": "agents/logic/skills/governance/artifact_persistence_discipline.meta.yaml",
+      "sha256": "49d2874e698dbe8028bdd3079cbf8a7e58d0aa4ce888ca4df745c3ee801c56c2",
+      "size": 1206
+    },
+    "agent/skills/governance/immutable_resource_respect.md": {
+      "target": "agents/logic/skills/governance/immutable_resource_respect.md",
+      "sha256": "dd75cbe131bba2f87f604dc4dda57b391b0d656deb2bf13aae5f59809d641e88",
+      "size": 941
+    },
+    "agent/skills/governance/immutable_resource_respect.meta.yaml": {
+      "target": "agents/logic/skills/governance/immutable_resource_respect.meta.yaml",
+      "sha256": "6f455ab90b2d5ddbadb77cb329d41303373ace9e4db2190d8b2fbf2387059674",
+      "size": 1223
+    },
+    "agent/skills/governance/minimal_documentation_policy.md": {
+      "target": "agents/logic/skills/governance/minimal_documentation_policy.md",
+      "sha256": "64df3dc4f039589bbdfcfb7b3341fa61d3587a9eb4c16814998e90a166edc278",
+      "size": 916
+    },
+    "agent/skills/governance/minimal_documentation_policy.meta.yaml": {
+      "target": "agents/logic/skills/governance/minimal_documentation_policy.meta.yaml",
+      "sha256": "4c1ae28e2a8622f5d74675527b48fe8a34ee52c33c197bac5dcfeb14139b6e6e",
+      "size": 1191
+    },
+    "agent/skills/governance/path_traversal_prevention.md": {
+      "target": "agents/logic/skills/governance/path_traversal_prevention.md",
+      "sha256": "2c35e0592787f31650fbce8b4c2957e965634854d63f0c230929f3b51e997d18",
+      "size": 917
+    },
+    "agent/skills/governance/path_traversal_prevention.meta.yaml": {
+      "target": "agents/logic/skills/governance/path_traversal_prevention.meta.yaml",
+      "sha256": "61d1c211326f9ab0b75e517f999ca268116ad15fd46a71fffcf63f05615eecee",
+      "size": 1194
+    },
+    "agent/skills/governance/protected_file_validation.md": {
+      "target": "agents/logic/skills/governance/protected_file_validation.md",
+      "sha256": "d6b17615fac4958f243a0d690a5405a1ad7a17a43c2fff2d30a9721fee7af789",
+      "size": 921
+    },
+    "agent/skills/governance/protected_file_validation.meta.yaml": {
+      "target": "agents/logic/skills/governance/protected_file_validation.meta.yaml",
+      "sha256": "6f40be0d8b0f0dfdab3031e995b9d5de30a72ee3db44dc4874bee3b9abd97589",
+      "size": 1204
+    },
+    "agent/skills/governance/scope_control_discipline.md": {
+      "target": "agents/logic/skills/governance/scope_control_discipline.md",
+      "sha256": "7c700031621295d9ba3613e2b0fd8a0c2895cdfcd7e128ec2354fdab51b2f4c5",
+      "size": 910
+    },
+    "agent/skills/governance/scope_control_discipline.meta.yaml": {
+      "target": "agents/logic/skills/governance/scope_control_discipline.meta.yaml",
+      "sha256": "41332d5157454692609c4b1c0f49adf9beec0b1adfd6e3c76a67025dd868650c",
+      "size": 1185
+    },
+    "agent/skills/governance/skill_authority_first.md": {
+      "target": "agents/logic/skills/governance/skill_authority_first.md",
+      "sha256": "a627ef752677ab7c39bb43bfa3732324f1286ae79f562170dda1b7c2c9fc2cd9",
+      "size": 920
+    },
+    "agent/skills/governance/skill_authority_first.meta.yaml": {
+      "target": "agents/logic/skills/governance/skill_authority_first.meta.yaml",
+      "sha256": "3fa112d14a5ffe5c60a2d8508f1d32d48dd143f48436d1d87cffd9073b720c34",
+      "size": 1186
+    },
+    "agent/skills/governance/verification_before_completion.md": {
+      "target": "agents/logic/skills/governance/verification_before_completion.md",
+      "sha256": "cc9a03ab9fae0df8c4d31183d34d134962fe5b0ef97383955099750538074739",
+      "size": 928
+    },
+    "agent/skills/governance/verification_before_completion.meta.yaml": {
+      "target": "agents/logic/skills/governance/verification_before_completion.meta.yaml",
+      "sha256": "8f05f2aeeb437f6f3069060b55ffef4553692432dc3d672a4831fc0849576316",
+      "size": 1215
+    },
+    "agent/skills/governance/workspace_model_awareness.md": {
+      "target": "agents/logic/skills/governance/workspace_model_awareness.md",
+      "sha256": "3d424cda338844fb737b52e630ab75adf52779851d27d92cf15727d1d354b8bb",
+      "size": 939
+    },
+    "agent/skills/governance/workspace_model_awareness.meta.yaml": {
+      "target": "agents/logic/skills/governance/workspace_model_awareness.meta.yaml",
+      "sha256": "f17e523b47be35257e5e965b86e9c680d7b4175ee3474beb8e3a7e8a004a7f23",
+      "size": 1219
+    },
+    "agent/skills/io/excel_to_parquet.md": {
+      "target": "agents/logic/skills/io/excel_to_parquet.md",
+      "sha256": "b98a14dd4ee71dd04405054637caaac2b77611dfa3d0bc00e32bd8c206eda1f4",
+      "size": 1912
+    },
+    "agent/skills/io/excel_to_parquet.meta.yaml": {
+      "target": "agents/logic/skills/io/excel_to_parquet.meta.yaml",
+      "sha256": "923a30506290e570d2c1d1b0614288a5dddbc41cc280e3c108f3270f385a74c0",
+      "size": 1315
+    },
+    "agent/skills/io/parquet_to_excel_polars_xlsxwriter.md": {
+      "target": "agents/logic/skills/io/parquet_to_excel_polars_xlsxwriter.md",
+      "sha256": "be9b869aa5f94368f1394b6479d305d5175806cae413ac73bb4a6d5444f0c007",
+      "size": 2038
+    },
+    "agent/skills/io/parquet_to_excel_polars_xlsxwriter.meta.yaml": {
+      "target": "agents/logic/skills/io/parquet_to_excel_polars_xlsxwriter.meta.yaml",
+      "sha256": "2d995955f87a50eebf0255e763f64395f7530d52fa901dd40c53cc42132c585f",
+      "size": 1322
+    },
+    "agent/skills/io/read_excel_pandas.md": {
+      "target": "agents/logic/skills/io/read_excel_pandas.md",
+      "sha256": "1dad9984ac1764d4480e139acb3323f537ca75234ca1ea832736a5cbca2a51fe",
+      "size": 1611
+    },
+    "agent/skills/io/read_excel_pandas.meta.yaml": {
+      "target": "agents/logic/skills/io/read_excel_pandas.meta.yaml",
+      "sha256": "f633c535e0266d04a600fb8bded4e23327df9e57711fc53ad037679927d426b2",
+      "size": 1262
+    },
+    "agent/skills/io/read_excel_polars_openpyxl.md": {
+      "target": "agents/logic/skills/io/read_excel_polars_openpyxl.md",
+      "sha256": "421baa37a74664ffb2e5dd08fe35ffb75225aa733ed84e2bf1473ea13fd18ee6",
+      "size": 1723
+    },
+    "agent/skills/io/read_excel_polars_openpyxl.meta.yaml": {
+      "target": "agents/logic/skills/io/read_excel_polars_openpyxl.meta.yaml",
+      "sha256": "8632654eba23e5486eb2a34ced8e8d3856d247ff7ba9b561c8ac069ca93c8696",
+      "size": 1259
+    },
+    "agent/skills/logs/log_bundle_folder_management.md": {
+      "target": "agents/logic/skills/logs/log_bundle_folder_management.md",
+      "sha256": "f4f225506e941ffab2ae19b4f79d974e53e57456bdc172e45dc40c2486f393e9",
+      "size": 1076
+    },
+    "agent/skills/logs/log_bundle_folder_management.meta.yaml": {
+      "target": "agents/logic/skills/logs/log_bundle_folder_management.meta.yaml",
+      "sha256": "1e963f0a4b2ec34fafec99030ebe6d3d6df0f3c6acdb2eb35c427f868b16f658",
+      "size": 1243
+    },
+    "agent/skills/logs/log_overwrite_policy.md": {
+      "target": "agents/logic/skills/logs/log_overwrite_policy.md",
+      "sha256": "c965da4d69df234e8e0a32fb828cb0964802fedff19b24bdd4a2dcc9214787f0",
+      "size": 901
+    },
+    "agent/skills/logs/log_overwrite_policy.meta.yaml": {
+      "target": "agents/logic/skills/logs/log_overwrite_policy.meta.yaml",
+      "sha256": "aee687ce1714e3e2c80c111a099c7b250f6df35bd6a6e1f24acef667c3b16b33",
+      "size": 1061
+    },
+    "agent/skills/meta/skill_builder.md": {
+      "target": "agents/logic/skills/meta/skill_builder.md",
+      "sha256": "caf7292be90dcfbed975a8ab79e954d8fc8a85a5f1d90883930649ebbd7e48e0",
+      "size": 1813
+    },
+    "agent/skills/meta/skill_builder.meta.yaml": {
+      "target": "agents/logic/skills/meta/skill_builder.meta.yaml",
+      "sha256": "6240aaf27c55899284f480721532116224617ac41b292f4b036886b54be32297",
+      "size": 687
+    },
+    "agent/skills/meta/skill_merger.md": {
+      "target": "agents/logic/skills/meta/skill_merger.md",
+      "sha256": "85f7e2e2f4add8fd87e5a7ed31d1ce6fc4aec9c9d6413ee411af44413bd43432",
+      "size": 1874
+    },
+    "agent/skills/meta/skill_merger.meta.yaml": {
+      "target": "agents/logic/skills/meta/skill_merger.meta.yaml",
+      "sha256": "af73d1f0243f22c53c6a54665a5eeae8388e1c43a36fe49e93db2c13b362319f",
+      "size": 604
+    },
+    "agent/skills/observability/execution_timer.md": {
+      "target": "agents/logic/skills/observability/execution_timer.md",
+      "sha256": "0b678aa7ea7e1e391285246d319cda9bc7e08af0886f7a342c2a86ce9ea8dd9b",
+      "size": 1009
+    },
+    "agent/skills/observability/execution_timer.meta.yaml": {
+      "target": "agents/logic/skills/observability/execution_timer.meta.yaml",
+      "sha256": "8fd1d2eecd746fcb5e8d8eee8e17e3232342d4846d9ec31e9ff3d5cc161d07f9",
+      "size": 986
+    },
+    "agent/skills/observability/log_bundle_folder_management.md": {
+      "target": "agents/logic/skills/observability/log_bundle_folder_management.md",
+      "sha256": "de4b69ad492eece513b523ef0d4ea49e88db3165198b5210b765d568abc6f892",
+      "size": 1071
+    },
+    "agent/skills/observability/log_bundle_folder_management.meta.yaml": {
+      "target": "agents/logic/skills/observability/log_bundle_folder_management.meta.yaml",
+      "sha256": "a0059bc530beb094d092d648fa29d25b0c90a60273f0cdb74cae135f564a9b38",
+      "size": 1232
+    },
+    "agent/skills/observability/log_overwrite_policy.md": {
+      "target": "agents/logic/skills/observability/log_overwrite_policy.md",
+      "sha256": "1ea613909391e7e07e464a94cff50963caa2bbfa0f61b459e24f6a6881a775af",
+      "size": 855
+    },
+    "agent/skills/observability/log_overwrite_policy.meta.yaml": {
+      "target": "agents/logic/skills/observability/log_overwrite_policy.meta.yaml",
+      "sha256": "8f9d8a754c651052839f3c4b8eac41624ecf9e5a7544b796f68a7dd4d87f7394",
+      "size": 1079
+    },
+    "agent/skills/planning/brainstorming_design_explorer.md": {
+      "target": "agents/logic/skills/planning/brainstorming_design_explorer.md",
+      "sha256": "43315e54081441f4806e82eeb5fe182eb4e4fe3c74087e84225719e8b9e74d70",
+      "size": 947
+    },
+    "agent/skills/planning/brainstorming_design_explorer.meta.yaml": {
+      "target": "agents/logic/skills/planning/brainstorming_design_explorer.meta.yaml",
+      "sha256": "6828852010c86a4e22f07f8750919766678975bee2c840255c14b43f8498f48a",
+      "size": 1215
+    },
+    "agent/skills/planning/context_loading_protocol.md": {
+      "target": "agents/logic/skills/planning/context_loading_protocol.md",
+      "sha256": "75a22ebb03249291828b0b2533b87c32f5a6335a7b62ac611853dc4c73c9d6de",
+      "size": 931
+    },
+    "agent/skills/planning/context_loading_protocol.meta.yaml": {
+      "target": "agents/logic/skills/planning/context_loading_protocol.meta.yaml",
+      "sha256": "bbd6892e9d7563e7ccbbae2afc7f6336270ce72748d689c69bee2ec80b3a76d9",
+      "size": 1268
+    },
+    "agent/skills/planning/decision_process_flow.md": {
+      "target": "agents/logic/skills/planning/decision_process_flow.md",
+      "sha256": "dc9f157f76eaa0a2c84465826212ef6fcdb0e5d664fa3b68bcc9a7a469f2903d",
+      "size": 939
+    },
+    "agent/skills/planning/decision_process_flow.meta.yaml": {
+      "target": "agents/logic/skills/planning/decision_process_flow.meta.yaml",
+      "sha256": "084388376d63a513f4e6785b1598dfa931e0ac8960b3e1d121c1571b0a505cda",
+      "size": 1247
+    },
+    "agent/skills/planning/llm_inference_optimization.md": {
+      "target": "agents/logic/skills/planning/llm_inference_optimization.md",
+      "sha256": "5e66837ebb2ce5d4c4767d4094450c85f881ce84abd7714c730d025cd18cdb14",
+      "size": 927
+    },
+    "agent/skills/planning/llm_inference_optimization.meta.yaml": {
+      "target": "agents/logic/skills/planning/llm_inference_optimization.meta.yaml",
+      "sha256": "f8420478c429e8f39d9573af6e2a95d475a1a757a865e51093636ade6bf211ab",
+      "size": 1172
+    },
+    "agent/skills/planning/output_validation_checklist.md": {
+      "target": "agents/logic/skills/planning/output_validation_checklist.md",
+      "sha256": "a2dff9ced2a034907d4616f31a7c9b42aa534edc2500df6aba1d0d9584578490",
+      "size": 949
+    },
+    "agent/skills/planning/output_validation_checklist.meta.yaml": {
+      "target": "agents/logic/skills/planning/output_validation_checklist.meta.yaml",
+      "sha256": "fe01e113281a460aab5d2dc367cc3a8a26e94ee3d09fcacabcabfe6fd03a43f6",
+      "size": 1275
+    },
+    "agent/skills/planning/risk_scoring_matrix.md": {
+      "target": "agents/logic/skills/planning/risk_scoring_matrix.md",
+      "sha256": "5aad56639e8fe0932d2e59f4c64e1cbf2c273f1d91dcb0489c00b36584f8c3b7",
+      "size": 913
+    },
+    "agent/skills/planning/risk_scoring_matrix.meta.yaml": {
+      "target": "agents/logic/skills/planning/risk_scoring_matrix.meta.yaml",
+      "sha256": "79ab877fafaf8d5b1345f8fd992d55c3bc733426bb901c574321ca1ec09cf8e8",
+      "size": 1202
+    },
+    "agent/skills/python/api_client_generator.md": {
+      "target": "agents/logic/skills/python/api_client_generator.md",
+      "sha256": "311a5e40b380d0a638a8cf200779ad2bee83bf387c5e8af8ae77ff797c274aab",
+      "size": 938
+    },
+    "agent/skills/python/api_client_generator.meta.yaml": {
+      "target": "agents/logic/skills/python/api_client_generator.meta.yaml",
+      "sha256": "5cef4780f089b22af86bb9b16d542533cc1d06b861174243777bc8e31f596fcc",
+      "size": 1110
+    },
+    "agent/skills/python/async_concurrency_expert.md": {
+      "target": "agents/logic/skills/python/async_concurrency_expert.md",
+      "sha256": "ca5a295320c5f6c80c194630137b07d5b46d76611be957e13040355f327056b7",
+      "size": 958
+    },
+    "agent/skills/python/async_concurrency_expert.meta.yaml": {
+      "target": "agents/logic/skills/python/async_concurrency_expert.meta.yaml",
+      "sha256": "80b7b623f846a29c2ea879c00bc5967c707939d60092d9be9102f2091278deec",
+      "size": 1207
+    },
+    "agent/skills/python/code_analysis_qa_gate.md": {
+      "target": "agents/logic/skills/python/code_analysis_qa_gate.md",
+      "sha256": "572ed348781855872a6d724516a2c495c5d7a4d789907442665b224fdb7c0e9d",
+      "size": 979
+    },
+    "agent/skills/python/code_analysis_qa_gate.meta.yaml": {
+      "target": "agents/logic/skills/python/code_analysis_qa_gate.meta.yaml",
+      "sha256": "3888bc252ef69b8c6d1ed22f4711829dd6f21f00e968fa3cdbfa85c58c910b24",
+      "size": 1313
+    },
+    "agent/skills/python/code_structuring_pythonic.md": {
+      "target": "agents/logic/skills/python/code_structuring_pythonic.md",
+      "sha256": "120cc33c1347e0f6b703eec71fd6b722d1244ad45b028c1ce8f362c351eed670",
+      "size": 973
+    },
+    "agent/skills/python/code_structuring_pythonic.meta.yaml": {
+      "target": "agents/logic/skills/python/code_structuring_pythonic.meta.yaml",
+      "sha256": "2a2eb0dcb1f47cd8b6829a55940665445ecd57b9d69514944640da9d5c25aad7",
+      "size": 1222
+    },
+    "agent/skills/python/config_env_manager.md": {
+      "target": "agents/logic/skills/python/config_env_manager.md",
+      "sha256": "15bb46fd86e9952c388818e08c976cbb2e785319ce23d9fab8d287f420983d6f",
+      "size": 946
+    },
+    "agent/skills/python/config_env_manager.meta.yaml": {
+      "target": "agents/logic/skills/python/config_env_manager.meta.yaml",
+      "sha256": "ed9a93df61f1c94adcde840b2736eefb9f63347d6bf9d2994f20ea329ffc2ba2",
+      "size": 1133
+    },
+    "agent/skills/python/data_integrity_guardian.md": {
+      "target": "agents/logic/skills/python/data_integrity_guardian.md",
+      "sha256": "e56545cb7e5f47bc3a335c4ebcc337f3d5247d4015dc4f0573bffb9867eb4e2d",
+      "size": 984
+    },
+    "agent/skills/python/data_integrity_guardian.meta.yaml": {
+      "target": "agents/logic/skills/python/data_integrity_guardian.meta.yaml",
+      "sha256": "1327cf5a49559b6ad9e05464b1d67e36087dcf6619c94c3b22b0dc5ed39dfd76",
+      "size": 1312
+    },
+    "agent/skills/python/dependency_audit.md": {
+      "target": "agents/logic/skills/python/dependency_audit.md",
+      "sha256": "e4f930c305e891f5734e7a5533127a1980a7baf142ff0933cab05e65962176ad",
+      "size": 938
+    },
+    "agent/skills/python/dependency_audit.meta.yaml": {
+      "target": "agents/logic/skills/python/dependency_audit.meta.yaml",
+      "sha256": "5e569b4df48e0a5ecfd168837bd3711abe79de31243904b1d54f13fbc7a61e43",
+      "size": 1154
+    },
+    "agent/skills/python/devops_packaging.md": {
+      "target": "agents/logic/skills/python/devops_packaging.md",
+      "sha256": "d29ac41d2b75ac8665671c0a9d076f7de07d4da773aa87b7adc395496f330084",
+      "size": 936
+    },
+    "agent/skills/python/devops_packaging.meta.yaml": {
+      "target": "agents/logic/skills/python/devops_packaging.meta.yaml",
+      "sha256": "ce9cc895b670dcbd970214622d1d845f1bba87acc883f4152dd9b18f04d9cd4d",
+      "size": 1130
+    },
+    "agent/skills/python/externalized_logic_handler.md": {
+      "target": "agents/logic/skills/python/externalized_logic_handler.md",
+      "sha256": "68f9bd3edd38a64a0633818e6e92c77ea45072ea43c3061b07f7bce814dac064",
+      "size": 971
+    },
+    "agent/skills/python/externalized_logic_handler.meta.yaml": {
+      "target": "agents/logic/skills/python/externalized_logic_handler.meta.yaml",
+      "sha256": "14a922b776c1784599535632ffd0dfc6390155d2bc79cd557f0928d07355aaf1",
+      "size": 1170
+    },
+    "agent/skills/python/linter_formatter_guru.md": {
+      "target": "agents/logic/skills/python/linter_formatter_guru.md",
+      "sha256": "c7caa44ec365f93526852a703da2f7b70d1c865697ce55e6317e269ca6a8f054",
+      "size": 955
+    },
+    "agent/skills/python/linter_formatter_guru.meta.yaml": {
+      "target": "agents/logic/skills/python/linter_formatter_guru.meta.yaml",
+      "sha256": "3d9c23f460875a9a12c764631fb3bca3988b08cb3cfd21a45f2cbef0167b91f0",
+      "size": 1155
+    },
+    "agent/skills/python/microservices_api_architect.md": {
+      "target": "agents/logic/skills/python/microservices_api_architect.md",
+      "sha256": "135fe7c97f54cfdc395c1b3a95f0d76be116677baa6a87c3581e6b085ba86538",
+      "size": 953
+    },
+    "agent/skills/python/microservices_api_architect.meta.yaml": {
+      "target": "agents/logic/skills/python/microservices_api_architect.meta.yaml",
+      "sha256": "5b4fdca3bde964dfc34e5b4da8c3d1f19213763262f37123361db7b2ebbf48dc",
+      "size": 1156
+    },
+    "agent/skills/python/naming_control_flow.md": {
+      "target": "agents/logic/skills/python/naming_control_flow.md",
+      "sha256": "f2618ad134fc63e204401fed1b8e5daa297773899d58b9b1ccf3069c0634977e",
+      "size": 951
+    },
+    "agent/skills/python/naming_control_flow.meta.yaml": {
+      "target": "agents/logic/skills/python/naming_control_flow.meta.yaml",
+      "sha256": "4ff54ec5544fedc87ec198aa53e29bb61cc3c738cfb88991152e76b6dd1f4784",
+      "size": 1123
+    },
+    "agent/skills/python/performance_profiler.md": {
+      "target": "agents/logic/skills/python/performance_profiler.md",
+      "sha256": "ded3ca830e195ece7221c970ddd5a0bd1360541298f816beb5f6fc64bd86929c",
+      "size": 953
+    },
+    "agent/skills/python/performance_profiler.meta.yaml": {
+      "target": "agents/logic/skills/python/performance_profiler.meta.yaml",
+      "sha256": "e4919fa40fdb58cb860617e57328c18c84bc79bc2d18f17a00d52f948e9df12b",
+      "size": 1194
+    },
+    "agent/skills/python/refactoring_assistant.md": {
+      "target": "agents/logic/skills/python/refactoring_assistant.md",
+      "sha256": "8364ff86512e9e7cd23faed3c6a2ac3b5f3944d1fa38891d7265b8125641d403",
+      "size": 968
+    },
+    "agent/skills/python/refactoring_assistant.meta.yaml": {
+      "target": "agents/logic/skills/python/refactoring_assistant.meta.yaml",
+      "sha256": "d6cd7649edb010dfccf3d513112d75741ef7cad3a8e222b84e2003e7b005e30d",
+      "size": 1384
+    },
+    "agent/skills/python/regression_test_automation.md": {
+      "target": "agents/logic/skills/python/regression_test_automation.md",
+      "sha256": "405380bc74e07217ea6816409fecd5fc32f4d0798d2f0c8c7a84d2218e40bedf",
+      "size": 1010
+    },
+    "agent/skills/python/regression_test_automation.meta.yaml": {
+      "target": "agents/logic/skills/python/regression_test_automation.meta.yaml",
+      "sha256": "64a3361ad0f61e6070db0e3abf795aea0647141befad9be0b524f27b4d192455",
+      "size": 1357
+    },
+    "agent/skills/python/secure_python_practices.md": {
+      "target": "agents/logic/skills/python/secure_python_practices.md",
+      "sha256": "60e400e8fa6a40b7b8422e188a906d7c0aa41e0f7eb0fe4ad13724e77aa8dd1a",
+      "size": 974
+    },
+    "agent/skills/python/secure_python_practices.meta.yaml": {
+      "target": "agents/logic/skills/python/secure_python_practices.meta.yaml",
+      "sha256": "054cf9c3d3fb1608dcd23b8b8d2885edc40bebeae122d2a77a916fad4611af74",
+      "size": 1237
+    },
+    "agent/skills/python/serialization_persistence.md": {
+      "target": "agents/logic/skills/python/serialization_persistence.md",
+      "sha256": "8aebe81f78ed805b8a7364b064a2498b1d03bb6d47e35ceb10a17a64337dfd9b",
+      "size": 966
+    },
+    "agent/skills/python/serialization_persistence.meta.yaml": {
+      "target": "agents/logic/skills/python/serialization_persistence.meta.yaml",
+      "sha256": "bb664dad85c58456b7b9662ca09ee402d125d2b139c04b4e4f71330df6596d28",
+      "size": 1163
+    },
+    "agent/skills/python/testing_qa_mentor.md": {
+      "target": "agents/logic/skills/python/testing_qa_mentor.md",
+      "sha256": "87288eceb097d40a5e74d07405a11a86145de7476c8b14a52ef2b23816215b93",
+      "size": 948
+    },
+    "agent/skills/python/testing_qa_mentor.meta.yaml": {
+      "target": "agents/logic/skills/python/testing_qa_mentor.meta.yaml",
+      "sha256": "7c797d27f52d6d2f320b06f38e69147f64f80f8a0f6d5a1821608edd7269b0c5",
+      "size": 1228
+    },
+    "agent/skills/python/type_master.md": {
+      "target": "agents/logic/skills/python/type_master.md",
+      "sha256": "6c4700daf10c69302ac1f985273629f49e82ba4f57befa40050c1f8c561218e5",
+      "size": 935
+    },
+    "agent/skills/python/type_master.meta.yaml": {
+      "target": "agents/logic/skills/python/type_master.meta.yaml",
+      "sha256": "eb8bdddc0d0892cfb1a7a6804622bd713fcadb5396eb6d876b7e7ee906158bd7",
+      "size": 1205
+    },
+    "agent/skills/runtime/python_venv_executor.md": {
+      "target": "agents/logic/skills/runtime/python_venv_executor.md",
+      "sha256": "0b098a2311b839583bbce4dd9797b6afc2cfe3bbdd569bd3afbdcf13d298c8fb",
+      "size": 16827
+    },
+    "agent/skills/runtime/python_venv_executor.meta.yaml": {
+      "target": "agents/logic/skills/runtime/python_venv_executor.meta.yaml",
+      "sha256": "983eb33c2280a49bfc74c218ac1135801f6461cfaa25f4e62ede884ba4d604dd",
+      "size": 593
+    },
+    "agent/skills/ui/README.md": {
+      "target": "agents/logic/skills/ui/README.md",
+      "sha256": "20aebffeadc94420405247e50b962f22948f1097de436470fad101dab0f7869e",
+      "size": 1417
+    },
+    "agent/skills/ui/ui_application_assets.md": {
+      "target": "agents/logic/skills/ui/ui_application_assets.md",
+      "sha256": "13c268752d3a927cd46ab83a68818b4ce71c14b303602e568c87bda5e91ef45e",
+      "size": 934
+    },
+    "agent/skills/ui/ui_application_assets.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_application_assets.meta.yaml",
+      "sha256": "2bc2c1e12c67bc39a7b2388422ed18553a2cc21c11920d32375aeb9e179aa17f",
+      "size": 1133
+    },
+    "agent/skills/ui/ui_framework_selection.md": {
+      "target": "agents/logic/skills/ui/ui_framework_selection.md",
+      "sha256": "77e03bf5f0f858694c1b6c1bee910b3f483af1fbc7d37b557fec93d26b6c20eb",
+      "size": 931
+    },
+    "agent/skills/ui/ui_framework_selection.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_framework_selection.meta.yaml",
+      "sha256": "ae39c7b92ce5810eca672e0f715f767b6aa01d5ed1722a052d1051882740f3d7",
+      "size": 1103
+    },
+    "agent/skills/ui/ui_identity_policy.md": {
+      "target": "agents/logic/skills/ui/ui_identity_policy.md",
+      "sha256": "8657e018f679d264ae1e9d3fb4d4360e21a4bc9c6405ae19178e328672a03fd6",
+      "size": 931
+    },
+    "agent/skills/ui/ui_identity_policy.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_identity_policy.meta.yaml",
+      "sha256": "aef7b87d2a007eb2b382437f3d9f0407e1e1d1cab1372785ca74e763432942e6",
+      "size": 1080
+    },
+    "agent/skills/ui/ui_layout_proportionality.md": {
+      "target": "agents/logic/skills/ui/ui_layout_proportionality.md",
+      "sha256": "c6285730c06e034d05d616ee4e65341bdbbe6df783294e0fffcbddd993eb37fe",
+      "size": 940
+    },
+    "agent/skills/ui/ui_layout_proportionality.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_layout_proportionality.meta.yaml",
+      "sha256": "f55ce18ba25cae9055522d4ab07c1322b16ad9f0346b231fae424211c252bcc9",
+      "size": 1110
+    },
+    "agent/skills/ui/ui_splash_and_lazy_loading.md": {
+      "target": "agents/logic/skills/ui/ui_splash_and_lazy_loading.md",
+      "sha256": "437b68f4cfe12aab860dfab3d02192f6acd276a1571dca63912b40cc0ed1a821",
+      "size": 938
+    },
+    "agent/skills/ui/ui_splash_and_lazy_loading.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_splash_and_lazy_loading.meta.yaml",
+      "sha256": "e540b9b68c63c3c0cc5acc60d807f38990c34bc98a3127312a31e9e7720c2905",
+      "size": 1111
+    },
+    "agent/skills/ui/ui_theme_binding.md": {
+      "target": "agents/logic/skills/ui/ui_theme_binding.md",
+      "sha256": "cb46cd1641c6907bc26e35004f2f9b8b9da53dc562aa4b417c726c4e13306612",
+      "size": 922
+    },
+    "agent/skills/ui/ui_theme_binding.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_theme_binding.meta.yaml",
+      "sha256": "7b3831b8353fbd5f67a405be162d8ff0c47bdf9c34ffbed56dbb0aa90accad7e",
+      "size": 1065
+    },
+    "agent/skills/ui/ui_widget_modularity.md": {
+      "target": "agents/logic/skills/ui/ui_widget_modularity.md",
+      "sha256": "cdc9c0d9ec411f4daeb22d8b17379289216faa0208766f3cd92c5cde8ad2d062",
+      "size": 931
+    },
+    "agent/skills/ui/ui_widget_modularity.meta.yaml": {
+      "target": "agents/logic/skills/ui/ui_widget_modularity.meta.yaml",
+      "sha256": "2de2f67722de15902206a4c1d647e2493df41123cdacbcabcfdce9f10a643959",
+      "size": 1086
+    },
+    "agent/agent_protocol/schemas/execution_report.schema.json": {
+      "target": "agents/logic/agent_protocol/schemas/execution_report.schema.json",
+      "sha256": "8aad797898b921fa67501327984dcb5134662ab6d14404dadd001e3ba235f224",
+      "size": 8146
+    },
+    "agent/agent_protocol/schemas/plan_doc.schema.yaml": {
+      "target": "agents/logic/agent_protocol/schemas/plan_doc.schema.yaml",
+      "sha256": "813d2242f9e9d7de8b219f5f7a4c97e0bc6b46a5a1d7f640b0182eeb6268d864",
+      "size": 2141
+    },
+    "agent/agent_protocol/schemas/system_config.schema.yaml": {
+      "target": "agents/logic/agent_protocol/schemas/system_config.schema.yaml",
+      "sha256": "7365fa15acdae1ffa31cbfed6068d20453e18b495c32146594f71425d62cd80d",
+      "size": 10358
+    },
+    "agent/agent_protocol/schemas/task_envelope.schema.json": {
+      "target": "agents/logic/agent_protocol/schemas/task_envelope.schema.json",
+      "sha256": "720df34064e4c93d2e9785d67dfb9e0b9a9714ed4bc02dc3535facaadd016c31",
+      "size": 5898
+    },
+    "agent/agent_protocol/schemas/task_plan.schema.json": {
+      "target": "agents/logic/agent_protocol/schemas/task_plan.schema.json",
+      "sha256": "54a1f73528ffe5d76dccd216121f940150a07cd1f90880c59162fa5ff67d30f3",
+      "size": 9339
+    },
+    "agent/agent_protocol/schemas/user_task.schema.yaml": {
+      "target": "agents/logic/agent_protocol/schemas/user_task.schema.yaml",
+      "sha256": "075882ceabfb7bd1431bda487ca954f5f8caa6ac233875eaf661b1cad0bf8b57",
+      "size": 2726
+    },
+    "agent/agent_outputs/runtime/.gitkeep": {
+      "target": "agents/logic/agent_outputs/runtime/.gitkeep",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "size": 2
+    },
+    "agent/agent_outputs/runtime/active_profile.json": {
+      "target": "agents/logic/agent_outputs/runtime/active_profile.json",
+      "sha256": "1407198466d67f8b6b90602b7ecb65a038996dfa50a7a3c136c24dab8a6779de",
+      "size": 256
+    },
+    "agent/agent_outputs/plans/archive/tinker_phase2_remaining_steps.yaml": {
+      "target": "agents/logic/agent_outputs/plans/archive/tinker_phase2_remaining_steps.yaml",
+      "sha256": "ebcf73683a5137c8cec5fcc5f788f9adc8584932113ff87cbae617401cc0de3c",
+      "size": 13727
+    },
+    "agent_tools/activate_kernel.py": {
+      "target": "agents/tools/activate_kernel.py",
+      "sha256": "c34086da707df5f2034658e68f4e1ed66822c1b93ca7dd51c710ca816d1cc39e",
+      "size": 1858
+    },
+    "agent_tools/analyze_dependencies.py": {
+      "target": "agents/tools/analyze_dependencies.py",
+      "sha256": "8bd16c256c5194110799a4f9affeb42b57df1077db3149b68e911b270fa6874f",
+      "size": 15508
+    },
+    "agent_tools/audit_logger.py": {
+      "target": "agents/tools/audit_logger.py",
+      "sha256": "8fe96e75bcdb2fda31a7ee411d5caa0f927d842f13dcf3bfedb58677c52643b5",
+      "size": 13774
+    },
+    "agent_tools/audit_registry.py": {
+      "target": "agents/tools/audit_registry.py",
+      "sha256": "e882e39b3297bd0b356d03fa9b5b790304972b92b1e354ad7fd94703d7bb3972",
+      "size": 2721
+    },
+    "agent_tools/chat_shortcuts.py": {
+      "target": "agents/tools/chat_shortcuts.py",
+      "sha256": "174fc33fa92901466830fdf6e166f9524b1d9de5de4ad8738a3566fbb2727843",
+      "size": 4374
+    },
+    "agent_tools/compile_registry.py": {
+      "target": "agents/tools/compile_registry.py",
+      "sha256": "2bf9a3f4c271bd79b2a5b3baa2d268009daf015799b1fa6568b39ecf9b311d05",
+      "size": 5978
+    },
+    "agent_tools/config_validator.py": {
+      "target": "agents/tools/config_validator.py",
+      "sha256": "8bcc5497b1cc2c23a1c121d14200f2f3cd83cc89c124a1226b269446e17e0cfd",
+      "size": 5048
+    },
+    "agent_tools/context_loader.py": {
+      "target": "agents/tools/context_loader.py",
+      "sha256": "f471c2695aec68d41b789baf7f87e5d1d63c6f4310ef25d19daa0cd5094e2242",
+      "size": 8243
+    },
+    "agent_tools/generate_skill_wrappers.py": {
+      "target": "agents/tools/generate_skill_wrappers.py",
+      "sha256": "1044f47b9e0b8f5a093a99ae64d4aacd2f69a12da051769aab23f0cdedd26387",
+      "size": 11500
+    },
+    "agent_tools/git_checkpoint.py": {
+      "target": "agents/tools/git_checkpoint.py",
+      "sha256": "c04103e6d18b1af77806c7fdbe39c34b8eb3ec54907fc9b7c6eb976def69656b",
+      "size": 3876
+    },
+    "agent_tools/kernel_guard.py": {
+      "target": "agents/tools/kernel_guard.py",
+      "sha256": "bb63898078a6e28de075572ed1c39276455e4ae905ef40e582fbba9f2426ca77",
+      "size": 4688
+    },
+    "agent_tools/load_full_context.py": {
+      "target": "agents/tools/load_full_context.py",
+      "sha256": "fe10e2da87e3bc832e4c47e38cd835d91ec6e49602df0205be26f5d20004e93e",
+      "size": 3373
+    },
+    "agent_tools/load_static_context.py": {
+      "target": "agents/tools/load_static_context.py",
+      "sha256": "83492d696ad462898aa28d3ab5a114f2f702c482f7f416e571156fbd59242177",
+      "size": 33026
+    },
+    "agent_tools/migrate_triggers.py": {
+      "target": "agents/tools/migrate_triggers.py",
+      "sha256": "21c8650f5373f415a409ff01dbddc405333f2ecc4d982e8ab5285f861d2c3e92",
+      "size": 2801
+    },
+    "agent_tools/mode_selector.py": {
+      "target": "agents/tools/mode_selector.py",
+      "sha256": "73cfbfc4692b95a44abb90ceaad36073570bf1007e2c9abbd87861b8a6faa096",
+      "size": 3401
+    },
+    "agent_tools/plan_doc.py": {
+      "target": "agents/tools/plan_doc.py",
+      "sha256": "6b1b6859d1690d12ec117b1b91b2253f959c9104011e5cf86a312c70412a4bc0",
+      "size": 11883
+    },
+    "agent_tools/run_wrapper.py": {
+      "target": "agents/tools/run_wrapper.py",
+      "sha256": "7c59ef8c319dc8523f8c71366d713aa1913145d8e69d98979404d58d202e376f",
+      "size": 7751
+    },
+    "agent_tools/schema_validator.py": {
+      "target": "agents/tools/schema_validator.py",
+      "sha256": "2114d82f39cd97c75b9b6ee8fcf088e7a59d1ff5a60ceadca0f0cfa367e06570",
+      "size": 9040
+    },
+    "agent_tools/simulate_execution.py": {
+      "target": "agents/tools/simulate_execution.py",
+      "sha256": "58163103c682fcbb0c76a7a136f4d825704bf50bb948b8037c9fea359218cf78",
+      "size": 16741
+    },
+    "agent_tools/treemap.py": {
+      "target": "agents/tools/treemap.py",
+      "sha256": "c7b1c2aaa491d7f3c8ff4e1cbb9163fd17608de370c44633a33a91f489dc4e91",
+      "size": 4590
+    },
+    "agent_tools/update_requirements.py": {
+      "target": "agents/tools/update_requirements.py",
+      "sha256": "5b9588b7c4fb2c5a9af8c0effe07669df835efa4784ee47ce4b1186e47514c5d",
+      "size": 5583
+    },
+    "agent_tools/user_task_builder.py": {
+      "target": "agents/tools/user_task_builder.py",
+      "sha256": "4a0cec6bd4f1d03128aefd76f861f9ddb6c4bbf3cf0501625c832f5288e0343f",
+      "size": 9750
+    },
+    "agent_tools/validate_message.py": {
+      "target": "agents/tools/validate_message.py",
+      "sha256": "3d0be862be72ecf446bf09e5e4da861a6e81a2761072ce74d47c22d6c89ea86a",
+      "size": 10575
+    },
+    "agent_tools/validate_skill_metadata.py": {
+      "target": "agents/tools/validate_skill_metadata.py",
+      "sha256": "2763a05dcde3462c9ff14a321998bccc2a65c488298b1f52a9319f3968d28014",
+      "size": 9494
+    },
+    "agent_tools/verify_profiles.py": {
+      "target": "agents/tools/verify_profiles.py",
+      "sha256": "8a2ca5475db8bd2fff6766282c091789c7433936831fccf3aa844d0b36236ea9",
+      "size": 1138
+    },
+    "agent_tools/_context_common.py": {
+      "target": "agents/tools/_context_common.py",
+      "sha256": "49c8ea3c3d3440ab35b599ceea89284b57fa00f06780ee87dddb8b87e510e868",
+      "size": 1441
+    },
+    "agent_tools/_profile_state.py": {
+      "target": "agents/tools/_profile_state.py",
+      "sha256": "818c65ecd23606aba9aec7a4c948196b5577fa23d2beb9e627f56fc4951b3a12",
+      "size": 4300
+    },
+    "agent_tools/_repo_root.py": {
+      "target": "agents/tools/_repo_root.py",
+      "sha256": "48374b9e265da93c869ab08ba1a16cf110d1ac1406d317f07e0aef5a79e7d58f",
+      "size": 495
+    },
+    "agent_tools/_schema_utils.py": {
+      "target": "agents/tools/_schema_utils.py",
+      "sha256": "a7a1619850c6bd56a2004b893e49e39e90faf452cc2927eb4fa3b4bf03bea973",
+      "size": 3485
+    },
+    "agent_tools/__init__.py": {
+      "target": "agents/tools/__init__.py",
+      "sha256": "6768e4a38c0dbc4e6aa819954f3b791b59384a98ba5695763da682f81d019ce5",
+      "size": 23
+    },
+    "agent_tools/wrappers/connect_duckdb_wrapper.py": {
+      "target": "agents/tools/wrappers/connect_duckdb_wrapper.py",
+      "sha256": "14bca1f18c6c2299fced8c47dd86df628a660818688e31a00f8143950c44b07c",
+      "size": 3941
+    },
+    "agent_tools/wrappers/csv_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/csv_explorer_wrapper.py",
+      "sha256": "5ca81580330c876af15032bdbe940e1853f8e2e561396611f37f01b2dcc397c1",
+      "size": 3044
+    },
+    "agent_tools/wrappers/db_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/db_explorer_wrapper.py",
+      "sha256": "7f1ee1a110380e05044c53dd99b6255529bdc824bfa7d921d86eb322dddf2f00",
+      "size": 5850
+    },
+    "agent_tools/wrappers/docx_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/docx_explorer_wrapper.py",
+      "sha256": "73b0e555f8dacaf11e105d90a85094c5719fbf4fe8f19e9654da0354d744a603",
+      "size": 3040
+    },
+    "agent_tools/wrappers/excel_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/excel_explorer_wrapper.py",
+      "sha256": "8da0b912155161a8cf22dad580020aea04e9aec2420f96c5c2c1aed7f58ba878",
+      "size": 3727
+    },
+    "agent_tools/wrappers/excel_to_parquet_wrapper.py": {
+      "target": "agents/tools/wrappers/excel_to_parquet_wrapper.py",
+      "sha256": "77ad7a24487408243bbabcb8a6b0135457fd37e95a9345fde37d98eabff32c8e",
+      "size": 7230
+    },
+    "agent_tools/wrappers/execution_timer_wrapper.py": {
+      "target": "agents/tools/wrappers/execution_timer_wrapper.py",
+      "sha256": "d6ca25bf8c5c66295ebfc74c43d6739d1f4209002c5777cd1b9518aee4aa7caf",
+      "size": 2939
+    },
+    "agent_tools/wrappers/file_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/file_explorer_wrapper.py",
+      "sha256": "46114e60be1c96f96fa49136a8e1359a21c91ee246081a1d9b7ee2187c53a6fd",
+      "size": 6783
+    },
+    "agent_tools/wrappers/generate_exe_pyinstaller_onedir_wrapper.py": {
+      "target": "agents/tools/wrappers/generate_exe_pyinstaller_onedir_wrapper.py",
+      "sha256": "3e6028c93cc6fea340ea67c2aa087dcb06dffc72c0472ce7e21906abd58d7f92",
+      "size": 6798
+    },
+    "agent_tools/wrappers/html_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/html_explorer_wrapper.py",
+      "sha256": "149d47d729a27ed378789fc32c38afc8a9b9994b73700c7883cfee9395c0709d",
+      "size": 3196
+    },
+    "agent_tools/wrappers/input_file_handler_wrapper.py": {
+      "target": "agents/tools/wrappers/input_file_handler_wrapper.py",
+      "sha256": "0b65bb33a7cb790cb62c0b4bb43d513c9fd69ac92f1a4b556877cfdfd1251e55",
+      "size": 3888
+    },
+    "agent_tools/wrappers/input_validation_sanitizer_wrapper.py": {
+      "target": "agents/tools/wrappers/input_validation_sanitizer_wrapper.py",
+      "sha256": "217288fdb49d0279f3ea7e766fa40824e250525c0573deae91fd0677c9d92bc0",
+      "size": 5409
+    },
+    "agent_tools/wrappers/json_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/json_explorer_wrapper.py",
+      "sha256": "75a4a2e21bb37d46b07672da3206424004424662daead0e1849732b97e8082bf",
+      "size": 3061
+    },
+    "agent_tools/wrappers/load_json_files_wrapper.py": {
+      "target": "agents/tools/wrappers/load_json_files_wrapper.py",
+      "sha256": "a0c6f91500f51797462c27d6f1cac4efd2ba668a4a2bde91955023d8c8d587dc",
+      "size": 2872
+    },
+    "agent_tools/wrappers/load_sql_queries_wrapper.py": {
+      "target": "agents/tools/wrappers/load_sql_queries_wrapper.py",
+      "sha256": "c9df5ab00a1fecb09bdee6277f51c07413c86c0cfe555b3547a825d5aee75f16",
+      "size": 3896
+    },
+    "agent_tools/wrappers/load_yaml_files_wrapper.py": {
+      "target": "agents/tools/wrappers/load_yaml_files_wrapper.py",
+      "sha256": "f1d1f8126d664167e6e568ab2cc5ab8e8c0df13a9b8125267e6c33c4e8f235ae",
+      "size": 2899
+    },
+    "agent_tools/wrappers/log_bundle_folder_management_wrapper.py": {
+      "target": "agents/tools/wrappers/log_bundle_folder_management_wrapper.py",
+      "sha256": "c6b283c8fa915e6536e5c3f45b28da21933df8cf693b09d73462caf2ec205eca",
+      "size": 5104
+    },
+    "agent_tools/wrappers/log_overwrite_policy_wrapper.py": {
+      "target": "agents/tools/wrappers/log_overwrite_policy_wrapper.py",
+      "sha256": "bb229182ec6cd861a2495bfeef8790f6d962eb09b949696b75a50c09ebfd0a1b",
+      "size": 3565
+    },
+    "agent_tools/wrappers/markdown_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/markdown_explorer_wrapper.py",
+      "sha256": "3e67e4499ddd13c2fd98621acc05bbbd53b33a20acb6ef12e48d1bf3b89abfd4",
+      "size": 2134
+    },
+    "agent_tools/wrappers/parquet_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/parquet_explorer_wrapper.py",
+      "sha256": "56a6ae576520f92a3a767cc58cf9323ebbaabf92181ca97e76965f67cb830195",
+      "size": 2296
+    },
+    "agent_tools/wrappers/parquet_to_excel_polars_xlsxwriter_wrapper.py": {
+      "target": "agents/tools/wrappers/parquet_to_excel_polars_xlsxwriter_wrapper.py",
+      "sha256": "52188b93a5e05daa3152b3bb1342e0056e177a9340798a0a09edfbdc600bab56",
+      "size": 6856
+    },
+    "agent_tools/wrappers/pdf_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/pdf_explorer_wrapper.py",
+      "sha256": "d674b2752aa6bbd2cd7809b1faf41eb83fb44c604b816da314273039a98e0afd",
+      "size": 2181
+    },
+    "agent_tools/wrappers/policy_guidance_wrapper.py": {
+      "target": "agents/tools/wrappers/policy_guidance_wrapper.py",
+      "sha256": "7799f474410c1ca2facb6f4083a55dcada6b1d3e3ff72d4792720e342cd029bf",
+      "size": 11314
+    },
+    "agent_tools/wrappers/powerbi_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/powerbi_explorer_wrapper.py",
+      "sha256": "4406d3db8093d228cb64cd028f9b2387addb78788308a122319ca3b9b2b7f864",
+      "size": 2617
+    },
+    "agent_tools/wrappers/pptx_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/pptx_explorer_wrapper.py",
+      "sha256": "822083c70e1016822e410fbcd4db0824be0fc9c9359424c9cd0d3c7ed34f5236",
+      "size": 2994
+    },
+    "agent_tools/wrappers/python_quality_advisor_wrapper.py": {
+      "target": "agents/tools/wrappers/python_quality_advisor_wrapper.py",
+      "sha256": "9659c463d81602fbc577675790a3f84c183b8e029fc97c8207aebba688c5814f",
+      "size": 11030
+    },
+    "agent_tools/wrappers/query_parquet_duckdb_wrapper.py": {
+      "target": "agents/tools/wrappers/query_parquet_duckdb_wrapper.py",
+      "sha256": "043be74f6a03a75f070d3bed3bc9de7ddc0d3fa7781c4fabce81585301ae19e1",
+      "size": 3422
+    },
+    "agent_tools/wrappers/read_excel_pandas_wrapper.py": {
+      "target": "agents/tools/wrappers/read_excel_pandas_wrapper.py",
+      "sha256": "9be5145e54bc3d3e426f122e76d300c800b16f6d8d2d385ead304b5bb962afcd",
+      "size": 6268
+    },
+    "agent_tools/wrappers/read_excel_polars_openpyxl_wrapper.py": {
+      "target": "agents/tools/wrappers/read_excel_polars_openpyxl_wrapper.py",
+      "sha256": "d65fb0aaa296e967ad5cf637c3a75b38b208d02e525cd1240d2c9ca5b37bef89",
+      "size": 7206
+    },
+    "agent_tools/wrappers/setup_medallion_structure_wrapper.py": {
+      "target": "agents/tools/wrappers/setup_medallion_structure_wrapper.py",
+      "sha256": "ba1b1ef5b4dc8d4d8e797e69bb9305c3e6dc8b4284ae2f1f1bf98bb0f02d92ef",
+      "size": 3425
+    },
+    "agent_tools/wrappers/skill_builder_wrapper.py": {
+      "target": "agents/tools/wrappers/skill_builder_wrapper.py",
+      "sha256": "d9ff7edeb09d1adc784f689161946fee876beae9d9f29e633c6a122a8f546943",
+      "size": 3364
+    },
+    "agent_tools/wrappers/skill_merger_wrapper.py": {
+      "target": "agents/tools/wrappers/skill_merger_wrapper.py",
+      "sha256": "0e18593ea1fb78e4e5fae1114e937b52d4ea06b9f8c9d3c01445c67fb68febb3",
+      "size": 4211
+    },
+    "agent_tools/wrappers/ui_advisor_wrapper.py": {
+      "target": "agents/tools/wrappers/ui_advisor_wrapper.py",
+      "sha256": "4ba46ec368184517734d8881e13fe7274bffa46c462799a61856edaba01c34a6",
+      "size": 6181
+    },
+    "agent_tools/wrappers/xml_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/xml_explorer_wrapper.py",
+      "sha256": "0d73eefe843bdeab022cc2e0f91fe6c1548fb2843bc9602f3af15338a82a1c74",
+      "size": 2232
+    },
+    "agent_tools/wrappers/yaml_explorer_wrapper.py": {
+      "target": "agents/tools/wrappers/yaml_explorer_wrapper.py",
+      "sha256": "64914388fb9e16e9287a27b2af4ea4fa68ac59fc8df9956ae8fdaad73c1c12dc",
+      "size": 2997
+    },
+    "agent_tools/wrappers/_explorer_common.py": {
+      "target": "agents/tools/wrappers/_explorer_common.py",
+      "sha256": "1fc26a941d39203470c0a8eef77ee1026ae0308e2a9226d5ef04fdeed3f2a3bf",
+      "size": 3674
+    },
+    "agent_tools/wrappers/__init__.py": {
+      "target": "agents/tools/wrappers/__init__.py",
+      "sha256": "35859562849cf8c96484bb24f67539094fca0d0428f3a223be8539cf0b3dac23",
+      "size": 57
+    },
+    "agent_tools/__pycache__/activate_kernel.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/activate_kernel.cpython-313.pyc",
+      "sha256": "9451fae0e94e3a7b766c83346073465804a28c82dca319a863efe3facffa1943",
+      "size": 2554
+    },
+    "agent_tools/__pycache__/analyze_dependencies.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/analyze_dependencies.cpython-313.pyc",
+      "sha256": "768d0b7c5af2f2e1193bef06018ec5481fcdeabcb9f23c904b73c2669543800f",
+      "size": 19056
+    },
+    "agent_tools/__pycache__/audit_logger.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/audit_logger.cpython-313.pyc",
+      "sha256": "5317f39c2e1ccd6051525846972d6d26787128c6c32d007c0499b67d264b1475",
+      "size": 17754
+    },
+    "agent_tools/__pycache__/chat_shortcuts.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/chat_shortcuts.cpython-313.pyc",
+      "sha256": "51f8cdd2bdd17c032a7ab3ed6dac4198c0f8ad1d4977d191844f95beec3c76cf",
+      "size": 4496
+    },
+    "agent_tools/__pycache__/config_validator.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/config_validator.cpython-313.pyc",
+      "sha256": "c6ce51adbc0414610783e098117832ef92a521f48d3e8482e61d4196c9921776",
+      "size": 7086
+    },
+    "agent_tools/__pycache__/context_loader.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/context_loader.cpython-313.pyc",
+      "sha256": "b88bce5d8f362b54201b1f3f30f6ee321846b3eaf55858a5601f194838be98ca",
+      "size": 8925
+    },
+    "agent_tools/__pycache__/generate_skill_wrappers.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/generate_skill_wrappers.cpython-313.pyc",
+      "sha256": "7dc1a636bceae57bbcd1cafeb9d7daf1ab58a08d9e9025897f6536eda14756b7",
+      "size": 16892
+    },
+    "agent_tools/__pycache__/git_checkpoint.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/git_checkpoint.cpython-313.pyc",
+      "sha256": "49e2b8c0c0a9b1c07ec7dd21c66c7cb6848aa665fa11b5a9869162ea36d181b1",
+      "size": 5788
+    },
+    "agent_tools/__pycache__/kernel_guard.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/kernel_guard.cpython-313.pyc",
+      "sha256": "a602c507eff97f102d46b807e4bb775a934461cf99df1c880b8531f6fa2289ea",
+      "size": 5526
+    },
+    "agent_tools/__pycache__/load_full_context.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/load_full_context.cpython-313.pyc",
+      "sha256": "fb0d96d6a933b722abc69af34f6ad13cbfc82b2ff798bc7bf3b5679a675e1218",
+      "size": 3968
+    },
+    "agent_tools/__pycache__/load_static_context.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/load_static_context.cpython-313.pyc",
+      "sha256": "272c0f8c897f3d7aad16569392fc3d64527872f7f5faef857fecee2b5d220d04",
+      "size": 41763
+    },
+    "agent_tools/__pycache__/mode_selector.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/mode_selector.cpython-313.pyc",
+      "sha256": "70797efbeb7bab3753facc96093c4a0cc284315ac34611f4d8cc1d678f3a5bfa",
+      "size": 3910
+    },
+    "agent_tools/__pycache__/plan_doc.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/plan_doc.cpython-313.pyc",
+      "sha256": "c6207d1c98f793a5a583cb7504925f52c4c60390b321a59affdb8f19009b099a",
+      "size": 17258
+    },
+    "agent_tools/__pycache__/run_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/run_wrapper.cpython-313.pyc",
+      "sha256": "6e13be4f3ecb07628acb3a701219727ba0d418bb0b7bf9ad2dc0279052a0e166",
+      "size": 9109
+    },
+    "agent_tools/__pycache__/schema_validator.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/schema_validator.cpython-313.pyc",
+      "sha256": "98b470dd00fb7ee9adfedd9c845ca7e0c6a2b12806cc199e229753476ab05d39",
+      "size": 12334
+    },
+    "agent_tools/__pycache__/simulate_execution.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/simulate_execution.cpython-313.pyc",
+      "sha256": "abaf9b6d2d3fc7e89f63a8278def2ecc51c2bbdf3b2c745827a1cb7a6946e0aa",
+      "size": 19632
+    },
+    "agent_tools/__pycache__/test_skill_builder.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/test_skill_builder.cpython-313.pyc",
+      "sha256": "efe01f16350f8b5773c092429103aef32e8ff1bdecf34bf5232f59d8b7a142f7",
+      "size": 1595
+    },
+    "agent_tools/__pycache__/test_skill_merger.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/test_skill_merger.cpython-313.pyc",
+      "sha256": "642c1538541e59d7ea45a80f876666358e3c89c8a572d027da4c33e1ae1c9860",
+      "size": 3716
+    },
+    "agent_tools/__pycache__/treemap.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/treemap.cpython-313.pyc",
+      "sha256": "e3787346bc6d82dc39c251a04cd778a33832e15714076f0cff059601867a66a7",
+      "size": 6703
+    },
+    "agent_tools/__pycache__/user_task_builder.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/user_task_builder.cpython-313.pyc",
+      "sha256": "b69748c437b1ffcf41a7d30e450c7158a4708540f53ffdb1c0b5ab8f58f63d17",
+      "size": 13132
+    },
+    "agent_tools/__pycache__/validate_message.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/validate_message.cpython-313.pyc",
+      "sha256": "bef8d1b3095c8da0229b3a7d170aed8f2e308f6d8f4701d0955d4f49f21883ce",
+      "size": 12897
+    },
+    "agent_tools/__pycache__/validate_skill_metadata.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/validate_skill_metadata.cpython-313.pyc",
+      "sha256": "83f095a7999880e2d8ed68a176d8fa6fdc05a75e281f04b0c2f309d542929353",
+      "size": 13048
+    },
+    "agent_tools/__pycache__/verify_profiles.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/verify_profiles.cpython-313.pyc",
+      "sha256": "30d6a599be55d9ef5367b2c03a2dd7fa68ff3d0521f5cabd68734b1ca8a3a6b7",
+      "size": 1724
+    },
+    "agent_tools/__pycache__/_context_common.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/_context_common.cpython-313.pyc",
+      "sha256": "4758578c7a189d12d0eadb3ec3f1945250fa8972bd0c3c77906f8bb0936cf23c",
+      "size": 3012
+    },
+    "agent_tools/__pycache__/_profile_state.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/_profile_state.cpython-313.pyc",
+      "sha256": "e155aa28a6bb583794fdeb8f6070da4904022acd88c478fa2c30ae901204969b",
+      "size": 6027
+    },
+    "agent_tools/__pycache__/_repo_root.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/_repo_root.cpython-313.pyc",
+      "sha256": "8b3f46c7d1039cbc0bf714aa83b0436dce74a7958e56cf4b24a07f15b3e214f2",
+      "size": 1038
+    },
+    "agent_tools/__pycache__/_schema_utils.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/_schema_utils.cpython-313.pyc",
+      "sha256": "ae86153954ed23842b8e52b68d7c7e0844d0c27112649be80354c7bd30623dd0",
+      "size": 5072
+    },
+    "agent_tools/__pycache__/__init__.cpython-313.pyc": {
+      "target": "agents/tools/__pycache__/__init__.cpython-313.pyc",
+      "sha256": "44b9f5982e4aaa76474cf09ddaa7e50d301202ef3afc60fdd0138dc47097bc95",
+      "size": 173
+    },
+    "agent_tools/wrappers/__pycache__/connect_duckdb_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/connect_duckdb_wrapper.cpython-313.pyc",
+      "sha256": "b72eacce9b8dc7aeb0c19ba8a9ab3a95fc55ea37ea24c35983789e9665222d32",
+      "size": 5242
+    },
+    "agent_tools/wrappers/__pycache__/csv_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/csv_explorer_wrapper.cpython-313.pyc",
+      "sha256": "3136e5847d148ce01127fc87dd78577e389e196af73cd02aaed8a12862742671",
+      "size": 3955
+    },
+    "agent_tools/wrappers/__pycache__/db_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/db_explorer_wrapper.cpython-313.pyc",
+      "sha256": "c237e6bef07efc7d76e0b08b1858319b770374e1231e3570b9929533ced37193",
+      "size": 7221
+    },
+    "agent_tools/wrappers/__pycache__/docx_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/docx_explorer_wrapper.cpython-313.pyc",
+      "sha256": "14f727669f8d329f297d7dbdb0a4dbb2c4ddb2abd688e9ce233a6adf51f72079",
+      "size": 4608
+    },
+    "agent_tools/wrappers/__pycache__/excel_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/excel_explorer_wrapper.cpython-313.pyc",
+      "sha256": "91785faefbe2cf40fa4965a6918145299a8bfeb6789d1d9c1b189601b79b3085",
+      "size": 4762
+    },
+    "agent_tools/wrappers/__pycache__/excel_to_parquet_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/excel_to_parquet_wrapper.cpython-313.pyc",
+      "sha256": "bca10278ee7f83abca02b0097b8d1c537548c9d7995e0461c9c6857afa0824c4",
+      "size": 9632
+    },
+    "agent_tools/wrappers/__pycache__/execution_timer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/execution_timer_wrapper.cpython-313.pyc",
+      "sha256": "00d4687474ff4af1f49750e66e31a28e806e6d46c05c15ff448a3a90846949bc",
+      "size": 3837
+    },
+    "agent_tools/wrappers/__pycache__/file_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/file_explorer_wrapper.cpython-313.pyc",
+      "sha256": "b7c00ddfa89297593f5b63e31d120a7f26ee3d353050f11dd376e42292762623",
+      "size": 6767
+    },
+    "agent_tools/wrappers/__pycache__/generate_exe_pyinstaller_onedir_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/generate_exe_pyinstaller_onedir_wrapper.cpython-313.pyc",
+      "sha256": "0f220495d22048004313f39e1581267c1a0a4242cc78f88017ff5bd63000cda6",
+      "size": 8425
+    },
+    "agent_tools/wrappers/__pycache__/html_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/html_explorer_wrapper.cpython-313.pyc",
+      "sha256": "ad65e54af18926cf4d4751e9034aa9f45f336e0f6cc57e4fcaf7d2f151f686a1",
+      "size": 4977
+    },
+    "agent_tools/wrappers/__pycache__/input_file_handler_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/input_file_handler_wrapper.cpython-313.pyc",
+      "sha256": "13811d8fd3e69e99cf94e28b9d97219ac562dfa3eab953dda8442ceaab24333d",
+      "size": 4670
+    },
+    "agent_tools/wrappers/__pycache__/input_validation_sanitizer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/input_validation_sanitizer_wrapper.cpython-313.pyc",
+      "sha256": "4db153fc51499dd5947bb97a8c551e9f01d0c5e251cbf9d94330436f9a6aecf8",
+      "size": 6522
+    },
+    "agent_tools/wrappers/__pycache__/json_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/json_explorer_wrapper.cpython-313.pyc",
+      "sha256": "df01a401a1b96dd4de24b5264cf3d344097154f617017d2abc3abecb6eea5b30",
+      "size": 4089
+    },
+    "agent_tools/wrappers/__pycache__/load_json_files_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/load_json_files_wrapper.cpython-313.pyc",
+      "sha256": "93bfb4926f72d888035e3ecd65d3649c8f2eaae5c1dd29ab3c25b3d258517540",
+      "size": 4748
+    },
+    "agent_tools/wrappers/__pycache__/load_sql_queries_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/load_sql_queries_wrapper.cpython-313.pyc",
+      "sha256": "12687e1fed0e45392021a28cd3c448ac05b2eab5dc88308c6b92b67f881b75b5",
+      "size": 6308
+    },
+    "agent_tools/wrappers/__pycache__/load_yaml_files_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/load_yaml_files_wrapper.cpython-313.pyc",
+      "sha256": "6f1faa90bfd4a406f3334cfda363584e827b47c9745710ccf6ee3a573121204b",
+      "size": 4773
+    },
+    "agent_tools/wrappers/__pycache__/log_bundle_folder_management_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/log_bundle_folder_management_wrapper.cpython-313.pyc",
+      "sha256": "a1eba57fc2b5f91d4ece228eec1d15af045c35a0cc7befa8a773b05cfd5edad5",
+      "size": 6265
+    },
+    "agent_tools/wrappers/__pycache__/log_overwrite_policy_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/log_overwrite_policy_wrapper.cpython-313.pyc",
+      "sha256": "7f452b19bde15613f9a66d702d26f5463256e2fe2c8d200f8ff58c44ef8e49a4",
+      "size": 4925
+    },
+    "agent_tools/wrappers/__pycache__/markdown_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/markdown_explorer_wrapper.cpython-313.pyc",
+      "sha256": "85cef9a267b7207c89f7141b3be479181b1d7fb9a139adef4e44eb2b150a5787",
+      "size": 3119
+    },
+    "agent_tools/wrappers/__pycache__/parquet_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/parquet_explorer_wrapper.cpython-313.pyc",
+      "sha256": "bb2a8d57537ab0c9bbd92d1cd1fc6e07a0e6779ef1a25808e5e95b783fedf83d",
+      "size": 3680
+    },
+    "agent_tools/wrappers/__pycache__/parquet_to_excel_polars_xlsxwriter_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/parquet_to_excel_polars_xlsxwriter_wrapper.cpython-313.pyc",
+      "sha256": "6811356cd288b144aba548a5bd6e47791e54f0009ae2a6820a3b69fe5789583c",
+      "size": 10088
+    },
+    "agent_tools/wrappers/__pycache__/pdf_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/pdf_explorer_wrapper.cpython-313.pyc",
+      "sha256": "92ecba0cf45c52d7178c35da6eeaab01c5be9de046b452a7ddf16400f6a13bc3",
+      "size": 2720
+    },
+    "agent_tools/wrappers/__pycache__/policy_guidance_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/policy_guidance_wrapper.cpython-313.pyc",
+      "sha256": "15d0dc911cd36d61083d73c4e8fcaabd994e8a9ced5755e23660967d4accb1b5",
+      "size": 10571
+    },
+    "agent_tools/wrappers/__pycache__/powerbi_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/powerbi_explorer_wrapper.cpython-313.pyc",
+      "sha256": "3b2f43de3dd4c0ed71e3ed4108a610795707e8f3026b554b48d888c297e791c1",
+      "size": 3764
+    },
+    "agent_tools/wrappers/__pycache__/pptx_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/pptx_explorer_wrapper.cpython-313.pyc",
+      "sha256": "625b5654652e1c4d84de2d70f659d70973d64d6896e53439dd10efc3c08704e5",
+      "size": 4664
+    },
+    "agent_tools/wrappers/__pycache__/python_quality_advisor_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/python_quality_advisor_wrapper.cpython-313.pyc",
+      "sha256": "1cb8ce4f5825fae44264acf9b2824b6a4dfe4ebe25986b08e0f6e67bf10776db",
+      "size": 10881
+    },
+    "agent_tools/wrappers/__pycache__/query_parquet_duckdb_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/query_parquet_duckdb_wrapper.cpython-313.pyc",
+      "sha256": "ad22fa327971ae83686850b110773274d57e78f0a4153544fe982dbcde849b89",
+      "size": 4793
+    },
+    "agent_tools/wrappers/__pycache__/read_excel_pandas_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/read_excel_pandas_wrapper.cpython-313.pyc",
+      "sha256": "a1340ed9ac3345a8e9e13415553e2afdf8ba53c9c07fe08550d77ee5969a91aa",
+      "size": 9253
+    },
+    "agent_tools/wrappers/__pycache__/read_excel_polars_openpyxl_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/read_excel_polars_openpyxl_wrapper.cpython-313.pyc",
+      "sha256": "e3f27c3129ef28e14b8e8467c2a40a1bf9d331fc2437824f04973552ba77ed95",
+      "size": 10365
+    },
+    "agent_tools/wrappers/__pycache__/setup_medallion_structure_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/setup_medallion_structure_wrapper.cpython-313.pyc",
+      "sha256": "463e70491bc9786671d22a34e293f7ea91179788a2f8d1c73a829664db8d985e",
+      "size": 4636
+    },
+    "agent_tools/wrappers/__pycache__/skill_builder_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/skill_builder_wrapper.cpython-313.pyc",
+      "sha256": "27591e3f5b6aaa5ab28f746b767f4f6613ea97340fba8ed02707fd0b73d35b13",
+      "size": 4449
+    },
+    "agent_tools/wrappers/__pycache__/skill_merger_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/skill_merger_wrapper.cpython-313.pyc",
+      "sha256": "6e8bb1e5e30cdbb3aa5f7a1eb7c505ea6b185f8c11d0ef9e646dd769e3a3cc03",
+      "size": 4489
+    },
+    "agent_tools/wrappers/__pycache__/ui_advisor_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/ui_advisor_wrapper.cpython-313.pyc",
+      "sha256": "f80bc17ce19a7110dbe51f34cb527f1ce0c1c17b20221deb45a4da206e4fcdb2",
+      "size": 6832
+    },
+    "agent_tools/wrappers/__pycache__/xml_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/xml_explorer_wrapper.cpython-313.pyc",
+      "sha256": "86659d26194f1cc87766ccc7e2b24f20e8efdd8f5d0c812cc20c3a3d9eb64d6f",
+      "size": 3482
+    },
+    "agent_tools/wrappers/__pycache__/yaml_explorer_wrapper.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/yaml_explorer_wrapper.cpython-313.pyc",
+      "sha256": "851612621c21968ca1b3bff00f53f1a840134fcac0563f01b367fe49749d33d8",
+      "size": 4365
+    },
+    "agent_tools/wrappers/__pycache__/_explorer_common.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/_explorer_common.cpython-313.pyc",
+      "sha256": "e67aaf11cc6d9734dc4d8cab168dbef05d2328eb49bf5047293e337c243ac8c4",
+      "size": 6113
+    },
+    "agent_tools/wrappers/__pycache__/__init__.cpython-313.pyc": {
+      "target": "agents/tools/wrappers/__pycache__/__init__.cpython-313.pyc",
+      "sha256": "2269216907594354ade42b39c9b90f37fad2fb8bc531658763e7701058f71d45",
+      "size": 236
+    },
+    "instructions/chat/command_glossary_chat.md": {
+      "target": "agents/instructions/chat/command_glossary_chat.md",
+      "sha256": "8a8b8ed9c191869c822f7aecd6fdbda823c6684132265b9de4d9c4305649cd00",
+      "size": 3703
+    },
+    "instructions/chat/trigger_chat.md": {
+      "target": "agents/instructions/chat/trigger_chat.md",
+      "sha256": "b6f16dc52ad44d9d3f8dcd284a94d45c6ac83473176f98a93d514d396f7afe56",
+      "size": 2477
+    },
+    "instructions/claude/trigger_antigravity.md": {
+      "target": "agents/instructions/claude/trigger_antigravity.md",
+      "sha256": "0c0c2d04624c077295cbdae3004fa1cb1070e9e03a2e899109ed581c8dccf47c",
+      "size": 1151
+    },
+    "instructions/claude/trigger_vscode.md": {
+      "target": "agents/instructions/claude/trigger_vscode.md",
+      "sha256": "60efb0f39eb79b06323b19c46e67f551628b0cc47dd76692041f69553b024cdd",
+      "size": 1471
+    },
+    "instructions/model_agnostic/.gitignore.host": {
+      "target": "agents/instructions/model_agnostic/.gitignore.host",
+      "sha256": "80acb4bd4df4aff1f2250ebd397618819ada2a7fe1d9541498e37d44c171628b",
+      "size": 954
+    },
+    "instructions/model_agnostic/activate_kernel.cmd": {
+      "target": "agents/instructions/model_agnostic/activate_kernel.cmd",
+      "sha256": "17f33211891fc449586872e43d1577b4b6c2ba3b8387c4d11a6cd9c321a268b3",
+      "size": 318
+    },
+    "instructions/model_agnostic/activate_kernel.sh": {
+      "target": "agents/instructions/model_agnostic/activate_kernel.sh",
+      "sha256": "342a23052e099df62b897bb3280b28daa40713ba6ebf7d66bbe0a4597e950dcd",
+      "size": 380
+    },
+    "instructions/model_agnostic/instructions_dummies.md": {
+      "target": "agents/instructions/model_agnostic/instructions_dummies.md",
+      "sha256": "05fd14e4b7c2c7282552222b283228407529cfd920a9cc25caf25b36eb2ec8dd",
+      "size": 781
+    },
+    "instructions/model_agnostic/kernel_profiles.md": {
+      "target": "agents/instructions/model_agnostic/kernel_profiles.md",
+      "sha256": "316de8f5ab216f1b919bcd2846af3fa79a48b3ff2009e4a6df24635bc954b13c",
+      "size": 1050
+    },
+    "instructions/model_agnostic/PORTABLE_DEPLOYMENT.md": {
+      "target": "agents/instructions/model_agnostic/PORTABLE_DEPLOYMENT.md",
+      "sha256": "b0d62c8ed2f39c955a4115c87ab4d1cbd5bcfd77442eb4d7cfd28e7ba26d64e6",
+      "size": 4590
+    },
+    "instructions/model_agnostic/trigger_generic.md": {
+      "target": "agents/instructions/model_agnostic/trigger_generic.md",
+      "sha256": "fd232703bac1996e0494f4cd4f5f4d1fd3ca65bb836da89af6dea20b785d9698",
+      "size": 1664
+    }
+  }
+}
