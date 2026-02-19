@@ -287,6 +287,8 @@ def detect_legacy(dest_root: Path, report: ChangeReport) -> None:
         dest_root / "instructions" / "trigger_generic.md",
         dest_root / "instructions" / "trigger_chat.md",
         dest_root / "instructions" / "command_glossary_chat.md",
+        dest_root / "agent" / "rules" / "agent_rules.md",
+        dest_root / "agent_tools",
     ]
     for p in legacy_paths:
         if p.exists():
@@ -294,7 +296,7 @@ def detect_legacy(dest_root: Path, report: ChangeReport) -> None:
 
 
 def validate_trigger_engine(dest_root: Path, report: ChangeReport) -> None:
-    trigger_path = dest_root / "agent" / "skills" / "_trigger_engine.yaml"
+    trigger_path = dest_root / "agents" / "logic" / "skills" / "_trigger_engine.yaml"
     if not trigger_path.exists():
         report.warnings.append(
             "Missing agents/logic/skills/_trigger_engine.yaml after install; "
@@ -311,7 +313,7 @@ def migrate_legacy(
 ) -> None:
     if not report.legacy_found:
         return
-    legacy_dir = dest_root / "instructions" / "legacy"
+    legacy_dir = dest_root / "agents" / "instructions" / "legacy"
     for p_str in list(report.legacy_found):
         p = Path(p_str)
         if not p.exists():
@@ -328,9 +330,10 @@ def migrate_legacy(
 def framework_items() -> list[Path]:
     root = framework_root()
     candidates = [
-        root / "agent",
-        root / "agent_tools",
-        root / "instructions",
+        root / "agents" / "logic",
+        root / "agents" / "tools",
+        root / "agents" / "hooks",
+        root / "agents" / "instructions",
         root / ".clinerules",
         root / "agent_framework_config.yaml",
         root / "AGENTS.md",
@@ -378,7 +381,7 @@ def main() -> int:
     parser.add_argument(
         "--overwrite-framework",
         action="store_true",
-        help="Overwrite existing framework files (agents/logic/, agents/tools/, agents/instructions/, .clinerules, agent_framework_config.yaml)",
+        help="Overwrite existing framework files (agents/logic/, agents/tools/, agents/hooks/, agents/instructions/, .clinerules, agent_framework_config.yaml)",
     )
     parser.add_argument(
         "--backup",
@@ -400,7 +403,7 @@ def main() -> int:
 
     root = framework_root()
     inv_reqs = root / "requirements.txt"
-    inv_gitignore_host = root / "instructions" / "model_agnostic" / ".gitignore.host"
+    inv_gitignore_host = root / "agents" / "instructions" / "model_agnostic" / ".gitignore.host"
     inv_precommit = root / ".pre-commit-config.yaml"
 
     if not args.skip_requirements and not inv_reqs.exists():
