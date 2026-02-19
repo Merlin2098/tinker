@@ -1,5 +1,5 @@
-﻿# ============================================================================
-# Tinker Framework Repository — .gitignore
+# ============================================================================
+# Tinker Framework Repository � .gitignore
 # ============================================================================
 # This gitignore is for the framework DEVELOPMENT repository.
 # When deploying to a HOST project, the host should add the framework itself
@@ -49,6 +49,8 @@ dist/
 # Auto-generated analysis files (regenerated on each context load)
 agents/logic/analysis/treemap.md
 agents/logic/analysis/dependencies_report.md
+agents/logic/analysis/dependencies_graph.json
+agents/logic/analysis/architecture_metrics.yaml
 
 # Dynamic agent outputs (plans, reports, logs)
 agents/logic/agent_outputs/plans/
@@ -85,5 +87,6 @@ data/
 #   PORTABLE_DEPLOYMENT.md
 #
 # See PORTABLE_DEPLOYMENT.md for deployment instructions.
+
 
 

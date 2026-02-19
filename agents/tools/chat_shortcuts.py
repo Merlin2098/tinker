@@ -6,6 +6,8 @@ Current supported intents:
 - commit
 - sync
 - commit and sync
+- init
+- full context
 """
 
 from __future__ import annotations
@@ -34,6 +36,10 @@ INTENT_ALIASES = {
     "init": "init",
     "start": "init",
     "bootstrap": "init",
+    "full context": "full-context",
+    "refresh full context": "full-context",
+    "build full context": "full-context",
+    "context full": "full-context",
 }
 
 
@@ -53,10 +59,10 @@ def run_cmd(args: list[str], cwd: Path) -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run chat shortcut intents (commit/sync)")
+    parser = argparse.ArgumentParser(description="Run chat shortcut intents (init/commit/sync/full-context)")
     parser.add_argument(
         "intent",
-        help='Shortcut intent text, e.g. "commit", "sync", or "commit and sync"',
+        help='Shortcut intent text, e.g. "commit", "sync", "init", or "full context"',
     )
     parser.add_argument(
         "--message",
@@ -68,6 +74,32 @@ def main() -> int:
         "--profile",
         default="FULL",
         help="Kernel profile for init (LITE/STANDARD/FULL) [default: FULL]",
+    )
+    parser.add_argument(
+        "--task-plan",
+        default="agents/logic/agent_outputs/plans/task_plan.json",
+        help="Task plan JSON path used by full-context intent",
+    )
+    parser.add_argument(
+        "--system-config",
+        default="config/system_config.yaml",
+        help="System config YAML path used by full-context intent",
+    )
+    parser.add_argument(
+        "--summary",
+        default="agents/logic/agent_outputs/summary/summary.yaml",
+        help="Summary YAML path used by full-context intent",
+    )
+    parser.add_argument(
+        "--on-demand",
+        action="append",
+        default=[],
+        help="Repeatable on-demand key for full-context intent",
+    )
+    parser.add_argument(
+        "--include-treemap",
+        action="store_true",
+        help="Include treemap in full-context intent",
     )
     args = parser.parse_args()
 
@@ -92,35 +124,55 @@ def main() -> int:
 
     if resolved == "init":
         profile = args.profile.upper()
-        print(f"🚀 Initializing Tinker Session [Kernel: {profile}]...")
-        
-        # 1. Activate Kernel
+        print(f"Initializing Tinker Session [Kernel: {profile}]...")
+
         print(f"  [1/4] Activating Kernel ({profile})...")
         kernel_script = root / "agents" / "tools" / "activate_kernel.py"
         if run_cmd([str(py), str(kernel_script), "--profile", profile], root) != 0:
             return 1
-            
-        # 2. Compile Registry (SSOT)
+
         print("  [2/4] Compiling Skill Registry...")
         compiler_script = root / "agents" / "tools" / "compile_registry.py"
         if run_cmd([str(py), str(compiler_script)], root) != 0:
             return 1
 
-        # 3. Load Context
         print("  [3/4] Loading Static Context...")
         context_script = root / "agents" / "tools" / "load_static_context.py"
         if run_cmd([str(py), str(context_script)], root) != 0:
             return 1
-            
-        # 4. Verify Mode
+
         print("  [4/4] Verifying Mode State...")
         mode_script = root / "agents" / "tools" / "mode_selector.py"
         run_cmd([str(py), str(mode_script), "--read-state"], root)
-        
-        print("\n✅ Session Initialized. Ready for task execution.")
+
+        print("Session initialized. Ready for task execution.")
         return 0
 
-    # commit-sync
+    if resolved == "full-context":
+        print("Building full context snapshot...")
+        full_context_script = root / "agents" / "tools" / "load_full_context.py"
+
+        on_demand_keys: list[str] = ["architecture_metrics", "dependencies_graph"]
+        for key in args.on_demand:
+            if key not in on_demand_keys:
+                on_demand_keys.append(key)
+        if args.include_treemap and "treemap" not in on_demand_keys:
+            on_demand_keys.append("treemap")
+
+        cmd = [
+            str(py),
+            str(full_context_script),
+            "--task-plan",
+            args.task_plan,
+            "--system-config",
+            args.system_config,
+            "--summary",
+            args.summary,
+        ]
+        for key in on_demand_keys:
+            cmd.extend(["--on-demand", key])
+        return run_cmd(cmd, root)
+
     message = args.message or now_checkpoint_message()
     cmd = [
         str(py),
@@ -141,4 +193,3 @@ if __name__ == "__main__":
         sys.exit(main())
     except KeyboardInterrupt:
         sys.exit(130)
-

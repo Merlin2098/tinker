@@ -11,6 +11,7 @@ Purpose: explicit command-driven setup for chat-based agents.
 Use these exact phrases in chat:
 - `Tinker: validate`
 - `Tinker: run`
+- `Tinker: full context`
 - `Run task from agents/logic/user_task.yaml`
 - `commit`
 - `sync`
@@ -67,8 +68,20 @@ After initialization, follow this cycle:
   - `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "sync"`
 - If the user says `commit and sync`, run:
   - `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "commit and sync"`
+- If the user says `full context` or `refresh full context`, run:
+  - `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "full context"`
+- If the user says `full context with treemap`, run:
+  - `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "full context" --include-treemap`
 - Optional explicit commit message:
   - `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "commit" --message "<checkpoint message>"`
+
+## When To Execute Full Context
+Use full context only when one of these conditions is true:
+- Non-interactive workflow (CI/batch/reproducible handoff snapshot).
+- Cross-cutting architecture analysis needs `dependencies_graph` and `architecture_metrics` together.
+- A task explicitly asks for consolidated dynamic + static context in one JSON artifact.
+
+Do not run full context for routine chat turns that only need static context and targeted on-demand reads.
 
 ## Notes
 - `mode_profile` in `agents/logic/user_task.yaml` is optional; leave empty unless explicitly needed.

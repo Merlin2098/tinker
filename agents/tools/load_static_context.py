@@ -18,8 +18,8 @@ priority truncation is applied; if still above budget, generation fails hard.
 
 Gitignore compliance:
 - The initial context FULLY respects .gitignore — no ignored file content is
-  included.  Treemap and dependencies_report are gitignored and excluded.
-- On-demand loading of ignored files (treemap, dependencies_report) is handled
+  included.  Treemap and dependency analysis artifacts are gitignored and excluded.
+- On-demand loading of ignored files (treemap, dependencies_report, dependencies_graph, architecture_metrics) is handled
   by context_loader.py, NOT by this module.
 """
 
@@ -54,6 +54,8 @@ SCHEMAS_PATH = os.path.join("agents", "logic", "agent_protocol", "schemas")
 # Available on-demand via context_loader.load_on_demand().
 # We'll resolve these dynamically from config now.
 DEFAULT_DEPENDENCIES_REPORT_PATH = os.path.join("agents", "logic", "analysis", "dependencies_report.md")
+DEFAULT_DEPENDENCIES_GRAPH_PATH = os.path.join("agents", "logic", "analysis", "dependencies_graph.json")
+DEFAULT_ARCHITECTURE_METRICS_PATH = os.path.join("agents", "logic", "analysis", "architecture_metrics.yaml")
 DEFAULT_TREEMAP_PATH = os.path.join("agents", "logic", "analysis", "treemap.md")
 
 def _get_on_demand_path(file_key: str, default_path: str) -> str:
@@ -67,6 +69,8 @@ def _get_on_demand_path(file_key: str, default_path: str) -> str:
     return default_path
 
 DEPENDENCIES_REPORT_PATH = _get_on_demand_path("dependencies_report", DEFAULT_DEPENDENCIES_REPORT_PATH)
+DEPENDENCIES_GRAPH_PATH = _get_on_demand_path("dependencies_graph", DEFAULT_DEPENDENCIES_GRAPH_PATH)
+ARCHITECTURE_METRICS_PATH = _get_on_demand_path("architecture_metrics", DEFAULT_ARCHITECTURE_METRICS_PATH)
 TREEMAP_PATH = _get_on_demand_path("treemap", DEFAULT_TREEMAP_PATH)
 
 # Runtime model has no role-specific agent definitions.
@@ -338,14 +342,27 @@ def _load_gitignore_spec(root: str):
     """Load .gitignore patterns from project root. Returns a pathspec or None."""
     try:
         import pathspec
-        gitignore_path = os.path.join(root, ".gitignore")
-        if os.path.exists(gitignore_path):
-            with open(gitignore_path, "r", encoding="utf-8") as f:
-                patterns = [p for p in f.read().splitlines() if p.strip() and not p.startswith("#")]
-            return pathspec.PathSpec.from_lines("gitwildmatch", patterns)
     except ImportError:
-        pass
-    return None
+        return None
+
+    gitignore_path = os.path.join(root, ".gitignore")
+    if not os.path.exists(gitignore_path):
+        return None
+
+    raw = None
+    for encoding in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            with open(gitignore_path, "r", encoding=encoding) as f:
+                raw = f.read()
+            break
+        except UnicodeDecodeError:
+            continue
+
+    if raw is None:
+        return None
+
+    patterns = [p for p in raw.splitlines() if p.strip() and not p.startswith("#")]
+    return pathspec.PathSpec.from_lines("gitwildmatch", patterns)
 
 
 def load_yaml_file(path: str) -> Any:
@@ -761,10 +778,11 @@ def load_static_context(profile: Optional[str] = None) -> Dict[str, Any]:
     # 2. Agent rules — metadata reference only (governance content, always tracked)
     context["agent_rules"] = _file_metadata(AGENT_RULES_PATH)
 
-    # 3. Gitignored files — path-only references.
+    # 3. Gitignored files - path-only references.
     #    These files are NOT included in the initial context.
-    #    Use context_loader.load_on_demand("treemap") or
-    #    context_loader.load_on_demand("dependencies_report") to fetch them.
+    #    Prefer loading architecture_metrics/dependencies_graph first for compact,
+    #    machine-readable dependency context; use dependencies_report for narrative.
+    #    Use context_loader.load_on_demand("<key>") to fetch them.
     context["on_demand_files"] = {
         "treemap": {
             "path": TREEMAP_PATH,
@@ -774,10 +792,19 @@ def load_static_context(profile: Optional[str] = None) -> Dict[str, Any]:
         "dependencies_report": {
             "path": DEPENDENCIES_REPORT_PATH,
             "loader": "context_loader.load_on_demand('dependencies_report')",
-            "_note": "Gitignored. Load on demand for dependency analysis.",
+            "_note": "Gitignored narrative dependency report. Prefer structured artifacts for LLM analysis.",
+        },
+        "dependencies_graph": {
+            "path": DEPENDENCIES_GRAPH_PATH,
+            "loader": "context_loader.load_on_demand('dependencies_graph')",
+            "_note": "Gitignored canonical dependency graph JSON. Prefer for precise dependency queries.",
+        },
+        "architecture_metrics": {
+            "path": ARCHITECTURE_METRICS_PATH,
+            "loader": "context_loader.load_on_demand('architecture_metrics')",
+            "_note": "Gitignored dependency metrics YAML. Prefer first for compact architecture overview.",
         },
     }
-
     # Shared .gitignore spec for file tree and signatures
     project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     gitignore_spec = _load_gitignore_spec(project_root)
@@ -870,6 +897,12 @@ if __name__ == "__main__":
             f"  Context budget: {budget.get('final_lines', '?')}/{budget.get('max_lines', '?')} lines"
             f" (truncated={budget.get('truncation_applied', False)})"
         )
+
+
+
+
+
+
 
 
 

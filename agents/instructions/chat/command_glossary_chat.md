@@ -21,6 +21,9 @@ Purpose: command-specific reference for chat operation.
 - `./.venv/Scripts/python.exe agents/tools/load_static_context.py`
 - `./.venv/Scripts/python.exe agents/tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path>`
 - `./.venv/Scripts/python.exe agents/tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path> --on-demand treemap`
+- `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "full context"` (loads full context with `architecture_metrics` + `dependencies_graph` by default)
+- `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "full context" --include-treemap`
+- `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "full context" --on-demand <key>` (repeatable)
 
 ## Validation
 - `./.venv/Scripts/python.exe agents/tools/schema_validator.py <file> --type user_task|task_plan|system_config|envelope|report|plan_doc`

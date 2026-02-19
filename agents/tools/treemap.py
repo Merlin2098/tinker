@@ -27,7 +27,16 @@ def load_gitignore(directory: Path) -> pathspec.PathSpec | None:
     gitignore_path = directory / ".gitignore"
     if not gitignore_path.exists():
         return None
-    patterns = gitignore_path.read_text(encoding="utf-8").splitlines()
+    raw = None
+    for encoding in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            raw = gitignore_path.read_text(encoding=encoding)
+            break
+        except UnicodeDecodeError:
+            continue
+    if raw is None:
+        return None
+    patterns = raw.splitlines()
     patterns = [p for p in patterns if p.strip() and not p.startswith("#")]
     return pathspec.PathSpec.from_lines("gitwildmatch", patterns)
 

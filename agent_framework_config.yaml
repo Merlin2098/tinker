@@ -1,4 +1,4 @@
-﻿# agent_framework_config.yaml
+# agent_framework_config.yaml
 
 deployment:
   framework_footprint:
@@ -105,6 +105,19 @@ on_demand_files:
     format: markdown
     generated_by: agents/tools/analyze_dependencies.py
 
+  dependencies_graph:
+    path: agents/logic/analysis/dependencies_graph.json
+    description: >
+      Canonical directed dependency graph for machine consumption.
+    format: json
+    generated_by: agents/tools/analyze_dependencies.py
+
+  architecture_metrics:
+    path: agents/logic/analysis/architecture_metrics.yaml
+    description: >
+      Architecture metrics summary derived from dependency graph.
+    format: yaml
+    generated_by: agents/tools/analyze_dependencies.py
 gitignore:
   respect_gitignore: true
   fallback_warning: >
@@ -132,4 +145,6 @@ data_governance:
   require_source_output_separation: true
   require_final_layer_from_materialized_inputs: true
   required_output_format_policy: per_use_case_declared
+
+
 
