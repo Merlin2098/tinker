@@ -1,28 +1,19 @@
-﻿# ============================================================================
+# ============================================================================
 # Host Project Gitignore Template - Tinker Framework
 # ============================================================================
 # Add these entries to the HOST project's .gitignore when deploying Tinker.
+# This reflects the current portable structure where the framework lives under
+# `agents/` plus root-level bootstrap files.
 
-# Core framework footprint
-agents/logic/
-agents/tools/
-agents/instructions/
+# Full Tinker framework tree
+agents/
+
+# Root-level framework bootstrap/config files
 .clinerules
 agent_framework_config.yaml
-
-# Framework bootstrap docs/prompts
-agents/instructions/claude/trigger_vscode.md
-agents/instructions/claude/trigger_antigravity.md
-agents/instructions/chat/trigger_chat.md
-agents/instructions/chat/command_glossary_chat.md
-agents/instructions/model_agnostic/trigger_generic.md
-agents/instructions/model_agnostic/PORTABLE_DEPLOYMENT.md
-agents/instructions/model_agnostic/kernel_profiles.md
-agents/instructions/model_agnostic/.gitignore.host
-agents/instructions/model_agnostic/instructions_dummies.md
-agents/logic/agent_outputs/runtime/
-
-# Optional framework metadata files at host root
 AGENTS.md
 agent.md
+.pre-commit-config.yaml
 
+# Installer backup folder (created when using --backup)
+.tinker_backups/
