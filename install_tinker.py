@@ -34,7 +34,12 @@ def now_stamp() -> str:
 
 
 def read_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        # Some host files (for example .gitignore on Windows) may be in
+        # legacy encodings. Fallback keeps installer robust across projects.
+        return path.read_text(encoding="cp1252")
 
 
 def write_text(path: Path, content: str) -> None:
@@ -330,10 +335,7 @@ def migrate_legacy(
 def framework_items() -> list[Path]:
     root = framework_root()
     candidates = [
-        root / "agents" / "logic",
-        root / "agents" / "tools",
-        root / "agents" / "hooks",
-        root / "agents" / "instructions",
+        root / "agents",
         root / ".clinerules",
         root / "agent_framework_config.yaml",
         root / "AGENTS.md",
@@ -381,7 +383,7 @@ def main() -> int:
     parser.add_argument(
         "--overwrite-framework",
         action="store_true",
-        help="Overwrite existing framework files (agents/logic/, agents/tools/, agents/hooks/, agents/instructions/, .clinerules, agent_framework_config.yaml)",
+        help="Overwrite existing framework files (agents/, .clinerules, agent_framework_config.yaml, AGENTS.md, agent.md)",
     )
     parser.add_argument(
         "--backup",
@@ -457,8 +459,10 @@ def main() -> int:
 
         if not args.skip_framework:
             for item in framework_items():
-                rel_name = item.name
-                dest_item = dest_root / rel_name
+                # Preserve the repository-relative path so framework roots
+                # (especially agents/) stay in the expected location.
+                rel_path = item.relative_to(root)
+                dest_item = dest_root / rel_path
                 if item.is_dir():
                     copy_tree(
                         item,
