@@ -1,7 +1,7 @@
 # Dependency Analyzer Migration Plan
 
 ## Goal
-Refactor `agents/tools/analyze_dependencies.py` from a list-based AST report generator into a true directed graph engine with structured outputs:
+Refactor `agents/hooks/analyze_dependencies.py` from a list-based AST report generator into a true directed graph engine with structured outputs:
 - `dependencies_graph.json`
 - `architecture_metrics.yaml`
 - `dependencies_report.md`
@@ -55,4 +55,5 @@ Refactor `agents/tools/analyze_dependencies.py` from a list-based AST report gen
 - Record unresolved imports in `issues` instead of silently dropping.
 - Keep output filenames deterministic and stable.
 - Preserve markdown as a first-class output for continuity.
+
 

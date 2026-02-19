@@ -15,7 +15,7 @@ Status reflects framework state as of 2026-02-12.
   - `regression_test_automation`
   - `code_analysis_qa_gate`
 - Wrapper generation is deterministic:
-  - `agents/tools/generate_skill_wrappers.py` only rewrites wrappers when content changes.
+- `agents/hooks/generate_skill_wrappers.py` only rewrites wrappers when content changes.
 
 ## 2. Target Layout
 
@@ -160,6 +160,6 @@ After deployment verify:
 2. Output prints active profile info.
 3. `agents/logic/agent_outputs/context.json` is generated.
 4. Host `.gitignore` includes template entries.
-5. Running `agents/tools/generate_skill_wrappers.py` twice yields `Wrappers updated: 0` on second run.
+5. Running `agents/hooks/generate_skill_wrappers.py` twice yields `Wrappers updated: 0` on second run.
 
 

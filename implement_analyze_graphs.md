@@ -4,7 +4,7 @@
 Upgrade dependency context consumption from markdown-only (`dependencies_report.md`) to structured graph artifacts (`dependencies_graph.json`, `architecture_metrics.yaml`) to improve LLM accuracy, latency, and token efficiency while preserving backward compatibility.
 
 ## Current State
-- Producer: `agents/tools/analyze_dependencies.py` generates:
+- Producer: `agents/hooks/analyze_dependencies.py` generates:
   - `agents/logic/analysis/dependencies_report.md`
   - `agents/logic/analysis/dependencies_graph.json`
   - `agents/logic/analysis/architecture_metrics.yaml`
@@ -26,11 +26,11 @@ Upgrade dependency context consumption from markdown-only (`dependencies_report.
    - Add `dependencies_graph`:
      - path: `agents/logic/analysis/dependencies_graph.json`
      - format: `json`
-     - generated_by: `agents/tools/analyze_dependencies.py`
+     - generated_by: `agents/hooks/analyze_dependencies.py`
    - Add `architecture_metrics`:
      - path: `agents/logic/analysis/architecture_metrics.yaml`
      - format: `yaml`
-     - generated_by: `agents/tools/analyze_dependencies.py`
+     - generated_by: `agents/hooks/analyze_dependencies.py`
 2. Update fallback registry in `agents/tools/context_loader.py` with same keys and paths.
 3. Update `agents/tools/load_static_context.py` `context["on_demand_files"]` to include both new keys.
 4. Keep `dependencies_report` unchanged.
@@ -84,7 +84,7 @@ Acceptance criteria:
    - artifact mtimes vs latest Python source mtime
 2. If stale, return warning object:
    - `stale: true`
-   - `recommended_command: python agents/tools/analyze_dependencies.py`
+   - `recommended_command: python agents/hooks/analyze_dependencies.py`
 3. Optional strict mode to fail structured loads when stale.
 
 Acceptance criteria:
@@ -131,7 +131,7 @@ Validation rules:
    - JSON/YAML extraction logic
    - staleness check logic
 2. Integration tests:
-   - run `python agents/tools/analyze_dependencies.py`
+   - run `python agents/hooks/analyze_dependencies.py`
    - verify on-demand load for all four keys
    - verify compact snapshot output shape
 3. Regression tests:
@@ -154,3 +154,4 @@ Validation rules:
 - Structured dependency artifacts are discoverable and queryable on demand.
 - LLM-facing dependency loads are smaller and more precise than markdown-only loads.
 - Legacy markdown flows continue to function without modification.
+

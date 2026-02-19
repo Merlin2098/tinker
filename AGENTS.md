@@ -30,7 +30,7 @@ This repository uses a thin-skill + canonical-wrapper model.
 - Wrapper execution:
   - `python agents/tools/run_wrapper.py --skill <skill> --args-file <json>`
 - Schema validation:
-  - `python agents/tools/schema_validator.py <file> --type <type>`
+  - `python agents/hooks/schema_validator.py <file> --type <type>`
   - Supported aliases include `plan` -> `task_plan` and `config` -> `system_config`.
 - Full context assembly (optional fast-start context):
   - `python agents/tools/load_full_context.py --task-plan <path> --system-config <path> --summary <path>`
@@ -57,10 +57,10 @@ This repository uses a thin-skill + canonical-wrapper model.
   - `agents/logic/analysis/dependencies_report.md`
 
 ## Portability Rules
-- Keep framework assets under `agents/logic/`, `agents/tools/`, and `agents/instructions/`.
+- Keep framework assets under `agents/logic/`, `agents/tools/`, `agents/hooks/`, and `agents/instructions/`.
 - Do not move skill markdown/meta files as part of compatibility layering.
 - If a host runtime needs per-skill `SKILL.md`, regenerate wrappers via:
-  - `python agents/tools/generate_skill_wrappers.py`
+  - `python agents/hooks/generate_skill_wrappers.py`
 
 ## Compatibility
 - `agent.md` is a compatibility alias that points to this file.

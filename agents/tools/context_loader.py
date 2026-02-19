@@ -154,7 +154,7 @@ def _staleness_info(name: str, artifact_path: str) -> Dict[str, Any]:
     stale = latest_py > artifact_mtime
     return {
         "stale": stale,
-        "recommended_command": "python agents/tools/analyze_dependencies.py" if stale else None,
+        "recommended_command": "python agents/hooks/analyze_dependencies.py" if stale else None,
     }
 
 

@@ -15,7 +15,7 @@ Purpose: command-specific reference for chat operation.
 ## Contract commands
 - `./.venv/Scripts/python.exe agents/tools/user_task_builder.py --input <yaml>`
 - `./.venv/Scripts/python.exe agents/tools/user_task_builder.py --from-template <yaml> ...`
-- `./.venv/Scripts/python.exe agents/tools/schema_validator.py agents/logic/user_task.yaml --type user_task`
+- `./.venv/Scripts/python.exe agents/hooks/schema_validator.py agents/logic/user_task.yaml --type user_task`
 
 ## Context refresh
 - `./.venv/Scripts/python.exe agents/tools/load_static_context.py`
@@ -26,8 +26,8 @@ Purpose: command-specific reference for chat operation.
 - `./.venv/Scripts/python.exe agents/tools/chat_shortcuts.py "full context" --on-demand <key>` (repeatable)
 
 ## Validation
-- `./.venv/Scripts/python.exe agents/tools/schema_validator.py <file> --type user_task|task_plan|system_config|envelope|report|plan_doc`
-- `./.venv/Scripts/python.exe agents/tools/schema_validator.py <file> --type plan|config` (alias types)
+- `./.venv/Scripts/python.exe agents/hooks/schema_validator.py <file> --type user_task|task_plan|system_config|envelope|report|plan_doc`
+- `./.venv/Scripts/python.exe agents/hooks/schema_validator.py <file> --type plan|config` (alias types)
 - `./.venv/Scripts/python.exe agents/tools/validate_message.py <file> --type plan|config|...` (compatibility validator)
 
 ## Optional plan docs

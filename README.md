@@ -8,7 +8,7 @@ skill management, and controlled execution — without modifying your source cod
 
 ### Core Principles
 
-- **Wrappers are the execution source of truth** (`agents/tools/`).
+- **Wrappers are the execution source of truth** (`agents/tools/`), with git hook entry scripts under `agents/hooks/`.
 - **Skills are thin interfaces**, not business-logic containers (`agents/logic/skills/`).
 - **Governance is centralized and minimal** (`.clinerules`, `agents/logic/rules/agent_rules.md`).
 - **Kernel profiles are capability allowlists**, not role orchestration.
@@ -73,7 +73,7 @@ tinker/
 │   │   └── dependencies_report.md  # Dependency graph (on-demand)
 │   └── agent_outputs/              # Plans, reports, context.json
 │
-├── agents/tools/                    # Execution scripts (source of truth)
+├── agents/tools/                    # Execution and runtime scripts (source of truth)
 │   ├── chat_shortcuts.py           # Chat command router (init, commit, sync)
 │   ├── compile_registry.py         # SSOT registry compiler
 │   ├── load_static_context.py      # Context generator → context.json
@@ -81,6 +81,13 @@ tinker/
 │   ├── run_wrapper.py              # Wrapper execution engine
 │   ├── wrappers/                   # Canonical skill wrappers
 │   └── ...                         # Validators, analyzers, utilities
+│
+├── agents/hooks/                    # Pre-commit hook entry scripts
+│   ├── analyze_dependencies.py
+│   ├── treemap.py
+│   ├── generate_skill_wrappers.py
+│   ├── schema_validator.py
+│   └── update_requirements.py
 │
 ├── agents/instructions/                   # Model-specific instruction layers
 │   ├── chat/                       # Chat bootstrap (trigger_chat.md)
