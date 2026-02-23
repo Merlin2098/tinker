@@ -191,7 +191,7 @@ def create_project(project_root: Path, templates_dir: Path, include_reusable: bo
 
     # --- Cargar y parsear estructura canónica del proyecto ---
     treemap_template_text = load_template(templates_dir, "etl_local.template")
-    folder_paths, treemap_content = parse_tree_template(treemap_template_text)
+    folder_paths, _ = parse_tree_template(treemap_template_text)
 
     if not folder_paths:
         raise ValueError(
@@ -215,12 +215,6 @@ def create_project(project_root: Path, templates_dir: Path, include_reusable: bo
         filepath.write_text(content, encoding="utf-8")
 
         print(f"📄 Created: {target}")
-
-    # Treemap generado desde la misma fuente usada para crear carpetas
-    treemap_path = project_root / "docs/treemap.md"
-    treemap_path.parent.mkdir(parents=True, exist_ok=True)
-    treemap_path.write_text(treemap_content, encoding="utf-8")
-    print("📄 Created: docs/treemap.md")
 
     # --- Opción reusable_files ---
     if include_reusable:
