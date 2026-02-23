@@ -1,7 +1,7 @@
 {
-  "profile": "STANDARD",
+  "profile": "FULL",
   "agent_id": null,
-  "profile_path": "C:\\Users\\ricuculm\\OneDrive - Metso\\Documents\\VS Code\\invoker\\agent\\profiles\\standard.yaml",
-  "updated_at": "2026-02-12T17:08:13.640374+00:00",
+  "profile_path": "C:\\Users\\ricuculm\\OneDrive - Metso\\Documents\\VS Code\\tinker\\agents\\logic\\profiles\\full.yaml",
+  "updated_at": "2026-02-23T16:21:41.785451+00:00",
   "source": "activate_kernel"
 }

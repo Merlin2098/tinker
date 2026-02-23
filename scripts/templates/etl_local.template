@@ -1,12 +1,6 @@
-# TreeMap — ETL Local Skeleton (Generic)
+# TreeMap - ETL Local Skeleton (Generic)
 
-Este proyecto sigue una arquitectura **monolito modular desktop ETL**, diseñada para:
-
-- procesamiento local (sin API)
-- pipelines independientes en `core/`
-- UI PySide6 desacoplada
-- configuración declarativa en `config/`
-- utilidades transversales en `utils/`
+Este arbol es la fuente unica de verdad para el scaffold de carpetas.
 
 ---
 
@@ -14,30 +8,29 @@ Este proyecto sigue una arquitectura **monolito modular desktop ETL**, diseñada
 
 ```text
 project_root/
-│
 ├── main.py
 ├── requirements.txt
 ├── .gitignore
-│
 ├── src/
-│   ├── __init__.py
-│   │
-│   ├── config/                  # Declarativo (inputs del sistema)
+│   ├── app/
+│   │   ├── facade/
+│   │   ├── use_cases/
+│   │   └── dto/
+│   ├── config/
+│   │   ├── contracts/
 │   │   ├── json/
 │   │   ├── yaml/
 │   │   ├── sql/
 │   │   └── ui/
 │   │       ├── icon/
 │   │       └── themes/
-│   │
-│   ├── core/                    # Dominio ETL (vacío al inicio)
-│   │   └── (pipelines definidos por proyecto)
-│   │
-│   ├── ui/                      # Capa Desktop (PySide6)
+│   ├── core/
+│   │   ├── preflight/
+│   │   └── pipeline/
+│   ├── ui/
 │   │   ├── widgets/
 │   │   └── workers/
-│   │
-│   └── utils/                   # Infraestructura reusable
+│   └── utils/
 │       ├── core/
 │       ├── etl/
 │       │   ├── converters/
@@ -46,8 +39,11 @@ project_root/
 │       ├── formatting/
 │       ├── logs/
 │       └── ui/
-│
-├── tests/                       # Testing (pytest)
-├── scripts/                     # Tooling interno
-└── docs/
-    └── treemap.md               # Mapa cognitivo para agentes
+├── tests/
+├── scripts/
+├── docs/
+│   └── treemap.md
+└── data/
+    ├── source/
+    └── output/
+```

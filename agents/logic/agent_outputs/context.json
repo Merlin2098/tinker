@@ -7,7 +7,7 @@
   "skills_registry": {
     "metadata": {
       "version": "2.0.0",
-      "last_updated": "2026-02-18",
+      "last_updated": "2026-02-23",
       "generated_from": "compile_registry.py"
     },
     "skills": [
@@ -372,21 +372,6 @@
         "purpose": "PyInstaller --onedir Windows executables"
       },
       {
-        "name": "generate_exe_pyinstaller_onedir",
-        "cluster": "devops",
-        "purpose": "PyInstaller --onedir Windows executables"
-      },
-      {
-        "name": "log_bundle_folder_management",
-        "cluster": "observability",
-        "purpose": "Log folders outside PyInstaller bundles"
-      },
-      {
-        "name": "log_overwrite_policy",
-        "cluster": "observability",
-        "purpose": "Fresh logs per execution, no accumulation"
-      },
-      {
         "name": "log_bundle_folder_management",
         "cluster": "observability",
         "purpose": "Log folders outside PyInstaller bundles"
@@ -486,9 +471,6 @@
     "tree": [
       "\u251c\u2500\u2500 .clinerules",
       "\u251c\u2500\u2500 .gitignore",
-      "\u251c\u2500\u2500 .migration/",
-      "\u2502   \u251c\u2500\u2500 move_manifest.json",
-      "\u2502   \u2514\u2500\u2500 move_manifest_post_cutover.json",
       "\u251c\u2500\u2500 .pre-commit-config.yaml",
       "\u251c\u2500\u2500 AGENTS.md",
       "\u251c\u2500\u2500 README.md",
@@ -510,7 +492,6 @@
       "\u2502   \u2502   \u2514\u2500\u2500 model_agnostic/",
       "\u2502   \u251c\u2500\u2500 logic/",
       "\u2502   \u2502   \u251c\u2500\u2500 agent_protocol/",
-      "\u2502   \u2502   \u251c\u2500\u2500 analysis/",
       "\u2502   \u2502   \u251c\u2500\u2500 kernel/",
       "\u2502   \u2502   \u251c\u2500\u2500 profiles/",
       "\u2502   \u2502   \u251c\u2500\u2500 rules/",
@@ -545,13 +526,11 @@
       "\u2502       \u251c\u2500\u2500 verify_profiles.py",
       "\u2502       \u2514\u2500\u2500 wrappers/",
       "\u251c\u2500\u2500 architecture.md",
-      "\u251c\u2500\u2500 implement_analyze_graphs.md",
       "\u251c\u2500\u2500 install_tinker.py",
-      "\u251c\u2500\u2500 migrate_verify.py",
-      "\u251c\u2500\u2500 migration_plan.md",
       "\u251c\u2500\u2500 requirements.txt",
       "\u2514\u2500\u2500 scripts/",
       "    \u251c\u2500\u2500 reusable_files/",
+      "    \u2502   \u251c\u2500\u2500 generar_exe.py",
       "    \u2502   \u251c\u2500\u2500 themes/",
       "    \u2502   \u251c\u2500\u2500 ui/",
       "    \u2502   \u2514\u2500\u2500 utils/",
@@ -895,6 +874,24 @@
       "def _compression(value, default)",
       "def run(args)"
     ],
+    "agents/tools/wrappers/execution_timer_wrapper.py": [
+      "def _parse_task_type(value)",
+      "def _parse_float(value, field)",
+      "def _format_general(elapsed_seconds)",
+      "def _resolve_elapsed(args)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/file_explorer_wrapper.py": [
+      "def _read_generic_text(path, encoding, preview_chars)",
+      "def run(args)"
+    ],
+    "agents/tools/wrappers/generate_exe_pyinstaller_onedir_wrapper.py": [
+      "def _project_root()",
+      "def _resolve_repo_dir(raw_path)",
+      "def _parse_string_list(raw)",
+      "def _tail(text, max_lines)",
+      "def run(args)"
+    ],
     "agents/tools/wrappers/_explorer_common.py": [
       "def project_root()",
       "def resolve_repo_path(raw_path)",
@@ -983,10 +980,9 @@
   },
   "_context_budget": {
     "max_lines": 1000,
-    "final_lines": 998,
+    "final_lines": 994,
     "truncation_applied": true,
     "truncation_actions": [
-      "trim_python_signatures",
       "trim_python_signatures",
       "trim_python_signatures",
       "trim_python_signatures",
