@@ -248,16 +248,12 @@ if __name__ == "__main__":
     if not project_name:
         raise SystemExit("❌ Nombre inválido.")
 
-    # Ruta de templates
-    default_templates_dir = Path(__file__).resolve().parent / "templates"
-    templates_path_str = input(
-        "📌 Ruta de templates (Enter para usar scripts/templates): "
-    ).strip()
-
-    templates_dir = Path(templates_path_str) if templates_path_str else default_templates_dir
+    # Ruta de templates (siempre relativa al script)
+    templates_dir = Path(__file__).resolve().parent / "templates"
+    print(f"📁 Templates path: {templates_dir}")
 
     if not templates_dir.exists():
-        raise SystemExit("❌ La ruta de templates no existe.")
+        raise SystemExit(f"❌ La ruta de templates no existe: {templates_dir}")
 
     # Opción reusable_files
     reusable_choice = input(
